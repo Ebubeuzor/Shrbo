@@ -1,14 +1,17 @@
-import { useState } from 'react'
-import { createBrowserRouter } from 'react-router-dom'
-import './App.css'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Views/Home";
+import "./App.css";
 
 function App() {
-
   return (
-    <>
-     <h1 className="bg-orange-400 text-white">Hello</h1>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+       
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
