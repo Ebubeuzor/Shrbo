@@ -1,17 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import ListingInfoMain from './Views/ListingInfo/ListingInfoMain'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Views/Home";
+import ListingInfoMain from "./Views/ListingInfo/ListingInfoMain"
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-     <ListingInfoMain/>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/ListingInfoMain" element={<ListingInfoMain />} />
+
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
