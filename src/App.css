@@ -16,11 +16,90 @@
 
 input{
     width: 100%;
-    color: white;
+    color: black;
     background: none;
+    outline: none !important;
 }
 
 input::placeholder {
     color: white; 
-    
+
+  }
+
+  .css-1xc3v61-indicatorContainer .css-tj5bde-Svg {
+    background-image: url('./assets/location-sign-svgrepo-com.svg') !important; /* Replace with your SVG file path */
+    width: 20px; /* Adjust to match the SVG's width */
+    height: 20px; /* Adjust to match the SVG's height */
+    fill: red;
+    content: "";
+
+  }
+
+  .custom-icon::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    fill: red;
+
+  }
+
+ .css-13cymwt-control{
+    border-radius: 50px !important;
+    border: none;
+    border-style: none !important;
+  }
+
+
+  .react-datepicker {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+  }
+
+  .react-datepicker__month-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .react-datepicker__current-month {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .react-datepicker__day {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  .react-datepicker__day--disabled {
+    color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .react-datepicker__day--today {
+    background-color: #f0f0f0;
+  }
+
+  .react-datepicker__day--keyboard-selected {
+    background-color: #87CEEB;
+    color: white;
+  }
+  .react-datepicker__navigation{
+    top: 40px;
+  }
+
+  .ant-modal-footer{
+    display: none;
   }
