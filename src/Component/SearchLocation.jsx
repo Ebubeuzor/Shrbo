@@ -171,10 +171,10 @@ export default function SearchLocation() {
   };
 
   return (
-    <form className="absolute -bottom-10 w-3/4 mx-auto   bg-slate-400 left-0 right-0   justify-center text-gray-400">
+    <form className="absolute -bottom-10 md:w-3/4 mx-auto   bg-slate-400 left-0 right-0   justify-center text-gray-400">
       <div className="">
-        <div className=" flex space-x-14 justify-center bg-orange-400  p-10 items-center text-center rounded-sm">
-          <div className="search md:w-[250px] md:h-[80px] border border-gray-300 shadow-sm p-4 bg-white ">
+        <div className=" flex  justify-center flex-col md:flex-row bg-orange-400  p-10 items-center text-center rounded-sm">
+          <div className="search md:w-[450px] w-full md:h-[80px] border border-gray-300 shadow-sm p-4 bg-white ">
             <Select
               className="text-black"
               defaultValue={selectedOption}
@@ -184,8 +184,8 @@ export default function SearchLocation() {
               components={{ DropdownIndicator }} // Use the custom DropdownIndicator
             />
           </div>
-          <div className="date flex justify-between">
-            <div className="md:w-[150px] border  border-gray-300 shadow-sm p-4 bg-white  md:h-[80px] flex items-center justify-between ">
+          <div className="date flex flex-col  md:flex-row w-full mx-auto md:justify-center md:space-x-4">
+            <div className="md:w-[150px] border   border-gray-300 shadow-sm p-4 bg-white  md:h-[80px] flex items-center  justify-between">
               <DatePicker
                 selected={checkInDate}
                 onChange={(date) => setCheckInDate(date)}
@@ -224,7 +224,7 @@ export default function SearchLocation() {
                 />
               </svg>
             </div>
-            <div className="md:w-[150px] border border-gray-300 shadow-sm p-4 w-full bg-white flex items-center">
+            <div className="md:w-[150px]  border border-gray-300 shadow-sm p-4  bg-white flex items-center justify-between">
               <DatePicker
                 selected={checkOutDate}
                 onChange={(date) => setCheckOutDate(date)}
@@ -263,7 +263,7 @@ export default function SearchLocation() {
               </svg>
             </div>
           </div>
-          <div className="guest md:w-[200px] border border-gray-300 shadow-sm p-4 bg-white flex justify-between  md:h-[80px] items-center">
+          <div className="guest md:w-[200px] w-full border border-gray-300 shadow-sm p-4 bg-white flex justify-between  md:h-[80px] items-center">
             <div onClick={() => setGuestModalVisible(true)}>Guest</div>
             <GuestModal
               visible={guestModalVisible}
@@ -286,7 +286,7 @@ export default function SearchLocation() {
               />
             </svg>
           </div>
-          <div className="submit md:w-[200px] border border-gray-300 shadow-sm p-4 bg-white  md:h-[80px] items-center flex text-center justify-center">
+          <div className="submit md:w-[200px] w-full border border-gray-300 shadow-sm p-4 bg-white  md:h-[80px] items-center flex text-center justify-center">
             <button type="submit">Search</button>
           </div>
         </div>

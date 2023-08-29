@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import SearchLocation from "../Component/SearchLocation";
-export default function Home() {
 
+export default function Home() {
   return (
     <div>
-      <div>
-        <div className="pageHeader"></div>
-      </div>
+      <div className="pageHeader"></div>
       <div className="storeFrontHomeage">
         <div>
-          <div className="hero-pattern relative  bg-cover bg-center h-[70vh]  bg-[url('https://forever.travel-assets.com/flex/flexmanager/images/2022/12/09/Exterior-Cabin_Privacy_Wrigley_VRBO_APFT2__Vancouver__Therin_8256x3960.jpg?impolicy=fcrop&w=1040&h=580&q=mediumHigh')]">
-            <h1 className="absolute inset-0 flex items-center justify-center text-white text-6xl">
+          <div className="hero-pattern relative bg-cover bg-center md:h-[70vh] h-[100vh] bg-[url('https://forever.travel-assets.com/flex/flexmanager/images/2022/12/09/Exterior-Cabin_Privacy_Wrigley_VRBO_APFT2__Vancouver__Therin_8256x3960.jpg?impolicy=fcrop&w=1040&h=580&q=mediumHigh')]">
+            <h1 className="absolute inset-0 flex items-center justify-center -top-20 md:top-0 text-white md:text-6xl text-5xl lg:text-6xl p-4 text-center">
               Find your place for together
             </h1>
-            <p className="absolute inset-0 flex items-center justify-center text-white -bottom-40">Find great places , hotels , restourants , shops.</p>
-            <section className=" flex bg-slate-300  justify-center bottom-0  w-[70%]">
-             <SearchLocation/>
+            <p className="absolute inset-0 flex items-center justify-center text-white -bottom-20 md:-bottom-40 md:text-lg   text-xl">
+              Find great places, hotels, restaurants, shops.
+            </p>
+            <section className="flex bg-slate-300 justify-center bottom-0 ">
+              <SearchLocation />
             </section>
           </div>
         </div>
