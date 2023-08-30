@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import the styles
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from "react-responsive-carousel";
 import Rating from "./Ratings";
 
@@ -137,7 +137,7 @@ const Listings = () => {
           </Carousel>
           <div className=" py-4">
             <div className="font-medium text-base mb-2">{listing.location}</div>
-            <Rating rating={listing.rating} /> {/* Use the rating from the listing */}
+            <Rating rating={listing.rating} /> 
 
             <p className="text-gray-400 text-base">{listing.kilometres}</p>
 

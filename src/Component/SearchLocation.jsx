@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Select, { components } from "react-select"; // Import components from react-select
+import Select, { components } from "react-select"; 
 import { Modal, Button } from "antd";
 import { Link } from "react-router-dom";
-import DatePicker from "react-datepicker"; // Import DatePicker
-import "react-datepicker/dist/react-datepicker.css"; // Import DatePicker styles
+import DatePicker from "react-datepicker"; 
+import "react-datepicker/dist/react-datepicker.css"; 
 import DateIcon from "../assets/svg/date-icon.svg";
 import GuestIcon from "../assets/svg/couple-icon.svg";
 import LocationIcon from "../assets/svg/maps-pin-black-icon.svg";
@@ -148,8 +148,8 @@ export default function SearchLocation() {
   const [pets, setPets] = useState(0);
   const [infants, setInfants] = useState(0);
 
-  const [checkInDate, setCheckInDate] = useState(null); // State for check-in date
-  const [checkOutDate, setCheckOutDate] = useState(null); // State for check-out date
+  const [checkInDate, setCheckInDate] = useState(null);
+  const [checkOutDate, setCheckOutDate] = useState(null); 
 
   const handleGuestModalOk = (newAdults) => {
     setGuestModalVisible(false);
@@ -175,7 +175,7 @@ export default function SearchLocation() {
               onChange={setSelectedOption}
               options={options}
               placeholder={"Choose Location"}
-              components={{ DropdownIndicator }} // Use the custom DropdownIndicator
+              components={{ DropdownIndicator }} 
             />
           </div>
           <div className="date flex flex-col  md:flex-row w-full md:w-auto  md:space-x-4 space-y-3 md:space-y-0 ">

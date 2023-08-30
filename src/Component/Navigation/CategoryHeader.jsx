@@ -28,7 +28,6 @@ export default function CategoryHeader() {
     { id: "9", label: "Art", image: Art, link: "/time" },
     { id: "3", label: "Beach", image: Beach, link: "/time" },
 
-    // Add more categories here
   ];
 
   const [selectedCategory, setSelectedCategory] = useState(categories[0].id);
@@ -60,7 +59,7 @@ export default function CategoryHeader() {
       const selectedCategoryIndex = categories.findIndex(
         (category) => category.id === selectedCategory
       );
-      const scrollAmount = selectedCategoryIndex * 120; // Adjust this value based on your needs
+      const scrollAmount = selectedCategoryIndex * 120; 
       scrollerRef.current.scroll({ left: scrollAmount, behavior: "smooth" });
     }
   }, [selectedCategory]);
@@ -80,7 +79,7 @@ export default function CategoryHeader() {
           } shadow-2xl`}
           onClick={handlePreviousCategory}
           disabled={!canScrollBackward}
-          style={{ border: "1px solid black" }} // Adding the border style
+          style={{ border: "1px solid black" }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +134,7 @@ export default function CategoryHeader() {
           } shadow-md`}
           onClick={handleNextCategory}
           disabled={!canScrollForward}
-          style={{ border: "1px solid black" }} // Adding the border style
+          style={{ border: "1px solid black" }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
