@@ -103,3 +103,13 @@ input::placeholder {
   .ant-modal-footer{
     display: none;
   }
+
+  .css-13cymwt-control{
+    /* justify-content: space-between !important; */
+    padding: 5px;
+  }
+
+
+  .css-b62m3t-container{
+    width: 100%;
+  }

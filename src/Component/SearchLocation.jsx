@@ -93,7 +93,7 @@ function GuestModal({
               </Link>
             </p>
           </div>
-          <div className="space-x-2"> 
+          <div className="space-x-2">
             <Button
               shape="circle"
               onClick={() => handleDecrease(setPetCount, petCount)}
@@ -114,21 +114,21 @@ function GuestModal({
             <span className="text-lg">Infants:</span>
             <p className="text-gray-400">Under 2</p>
           </div>
-         <div className="space-x-2">
-         <Button
-            shape="circle"
-            onClick={() => handleDecrease(setInfantCount, infantCount)}
-          >
-            -
-          </Button>
-          <span>{infantCount}</span>
-          <Button
-            shape="circle"
-            onClick={() => handleIncrease(setInfantCount, infantCount)}
-          >
-            +
-          </Button>
-         </div>
+          <div className="space-x-2">
+            <Button
+              shape="circle"
+              onClick={() => handleDecrease(setInfantCount, infantCount)}
+            >
+              -
+            </Button>
+            <span>{infantCount}</span>
+            <Button
+              shape="circle"
+              onClick={() => handleIncrease(setInfantCount, infantCount)}
+            >
+              +
+            </Button>
+          </div>
         </div>
       </div>
     </Modal>
@@ -171,10 +171,10 @@ export default function SearchLocation() {
   };
 
   return (
-    <form className="absolute -bottom-10 md:w-3/4 mx-auto   bg-slate-400 left-0 right-0   justify-center text-gray-400">
+    <form className="absolute -bottom-20  md:-bottom-10 md:w-3/4 mx-auto   left-0 right-0 w-[90%]   justify-center text-gray-400">
       <div className="">
-        <div className=" flex  justify-center flex-col md:flex-row bg-orange-400  p-10 items-center text-center rounded-sm">
-          <div className="search md:w-[450px] w-full md:h-[80px] border border-gray-300 shadow-sm p-4 bg-white ">
+        <div className=" flex   justify-center flex-col md:flex-row bg-orange-400 md:rounded-full rounded-3xl  md:p-10 p-4 items-center text-center md:space-x-4  space-y-4 md:space-y-0">
+          <div className="search md:w-[450px] flex items-center justify-between md:rounded-full w-full md:h-[80px] border border-gray-300 shadow-sm p-2 bg-white rounded-full">
             <Select
               className="text-black"
               defaultValue={selectedOption}
@@ -184,8 +184,8 @@ export default function SearchLocation() {
               components={{ DropdownIndicator }} // Use the custom DropdownIndicator
             />
           </div>
-          <div className="date flex flex-col  md:flex-row w-full mx-auto md:justify-center md:space-x-4">
-            <div className="md:w-[150px] border   border-gray-300 shadow-sm p-4 bg-white  md:h-[80px] flex items-center  justify-between">
+          <div className="date flex flex-col  md:flex-row w-full md:w-auto  md:space-x-4 space-y-3 md:space-y-0">
+            <div className=" border md:rounded-full  border-gray-300 shadow-sm p-3 bg-white  md:h-[80px] flex items-center  justify-between rounded-full">
               <DatePicker
                 selected={checkInDate}
                 onChange={(date) => setCheckInDate(date)}
@@ -224,7 +224,7 @@ export default function SearchLocation() {
                 />
               </svg>
             </div>
-            <div className="md:w-[150px]  border border-gray-300 shadow-sm p-4  bg-white flex items-center justify-between">
+            <div className="  border md:rounded-full border-gray-300 shadow-sm p-3  bg-white flex items-center justify-between rounded-full">
               <DatePicker
                 selected={checkOutDate}
                 onChange={(date) => setCheckOutDate(date)}
@@ -263,8 +263,10 @@ export default function SearchLocation() {
               </svg>
             </div>
           </div>
-          <div className="guest md:w-[200px] w-full border border-gray-300 shadow-sm p-4 bg-white flex justify-between  md:h-[80px] items-center">
-            <div onClick={() => setGuestModalVisible(true)}>Guest</div>
+          <div className="guest md:w-[200px] w-full border md:rounded-full border-gray-300 shadow-sm p-3 bg-white flex justify-between  md:h-[80px] items-center rounded-full">
+            <div onClick={() => setGuestModalVisible(true)} className="w-full text-start">
+              Guest
+            </div>
             <GuestModal
               visible={guestModalVisible}
               onCancel={() => setGuestModalVisible(false)}
@@ -286,7 +288,7 @@ export default function SearchLocation() {
               />
             </svg>
           </div>
-          <div className="submit md:w-[200px] w-full border border-gray-300 shadow-sm p-4 bg-white  md:h-[80px] items-center flex text-center justify-center">
+          <div className="submit md:w-[200px] w-full md:rounded-full border border-gray-300 shadow-sm p-3 bg-white  md:h-[80px] items-center flex text-center justify-center  rounded-full">
             <button type="submit">Search</button>
           </div>
         </div>
