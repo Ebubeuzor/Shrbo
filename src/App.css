@@ -109,6 +109,10 @@ input::placeholder {
     padding: 5px;
   }
 
+  .carousel .thumbs-wrapper {
+    display: none !important;
+  }
+
 
   .css-b62m3t-container{
     width: 100%;

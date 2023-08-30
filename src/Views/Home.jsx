@@ -1,5 +1,7 @@
 import React from "react";
 import SearchLocation from "../Component/SearchLocation";
+import CategoryHeader from "../Component/Navigation/CategoryHeader";
+import Listings from "./ListingInfo/Listings";
 
 export default function Home() {
   return (
@@ -20,13 +22,19 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <p>
+          {/* <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. A, iste
             porro beatae asperiores sapiente dolorum dolor quod voluptatibus
             odit, numquam quasi illo doloremque harum aut rem eaque nesciunt,
             reiciendis nihil?
-          </p>
+          </p> */}
         </div>
+        <section className=" mx-auto justify-center w-[80%]">
+          <div className="justify-center flex">
+            <CategoryHeader />
+          </div>
+          <Listings />
+        </section>
       </div>
     </div>
   );
