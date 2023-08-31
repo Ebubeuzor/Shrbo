@@ -6,6 +6,7 @@ import Office from "../../assets/svg/building-icon.svg";
 import Art from "../../assets/svg/paint-palette-icon.svg";
 import Beach from "../../assets/svg/holiday-vacation-icon.svg";
 import LeftButton from "../../assets/svg/angle-circle-left-icon.svg";
+import FilterModal from "../Filter/FilterModal";
 
 export default function CategoryHeader() {
   const categories = [
@@ -151,6 +152,7 @@ export default function CategoryHeader() {
             />
           </svg>
         </button>
+      <FilterModal/>
       </div>
     </div>
   );

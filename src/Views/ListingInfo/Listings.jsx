@@ -3,6 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Rating from "./Ratings";
 
+
 const Listings = () => {
   const [listings, setListings] = useState([
     {
@@ -110,9 +111,9 @@ const Listings = () => {
                 <button
                   onClick={() => toggleFavorite(listing.id)}
                   className={`flex items-center absolute outline-none bg-${
-                    listing.isFavorite ? "yellow-400" : "gray-300"
+                    listing.isFavorite ? "yellow-400" : ""
                   } hover:bg-${
-                    listing.isFavorite ? "yellow-500" : "gray-400"
+                    listing.isFavorite ? "yellow-500" : ""
                   } text-white font-bold py-2 px-4 rounded`}
                 >
                   <div
