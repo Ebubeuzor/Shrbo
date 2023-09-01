@@ -141,8 +141,8 @@ export default function FilterModal() {
               <h1 className="mx-auto font-bold text-lg">Filter</h1>
             </div>
             <form onSubmit={handleSubmit} className="h-[inherit] w-full p-4">
-              <div className="modal-content overflow-y-auto h-full w-full m-4">
-                <div className="price-container ">
+              <div className="modal-content overflow-y-auto h-full w-full">
+                <div className="price-container w-full p-2">
                   <h3 className="text-2xl">Price Range</h3>
                   <p className="text-sm text-slate-400">
                     Nightly prices before fees and taxes
@@ -179,7 +179,7 @@ export default function FilterModal() {
                         {["Any", 1, 2, 3, 4, 5, 6, 7, "8+"].map((num) => (
                           <div
                             key={num}
-                            className={`room-option m-3 ${
+                            className={`room-option m-2 ${
                               selectedBedroom === num
                                 ? "bg-orange-500 "
                                 : "border "
@@ -213,7 +213,7 @@ export default function FilterModal() {
                         {["Any", 1, 2, 3, 4, 5, 6, 7, "8+"].map((num) => (
                           <div
                             key={num}
-                            className={`room-option ${
+                            className={`room-option m-2 ${
                               selectedRoom === num
                                 ? "bg-orange-500 "
                                 : "border "
@@ -247,7 +247,7 @@ export default function FilterModal() {
                         {["Any", 1, 2, 3, 4, 5, 6, 7, "8+"].map((num) => (
                           <div
                             key={num}
-                            className={`room-option ${
+                            className={`room-option m-2 ${
                               selectedBathroom === num
                                 ? "bg-orange-500"
                                 : "border "
