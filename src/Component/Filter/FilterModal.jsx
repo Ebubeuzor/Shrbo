@@ -129,7 +129,7 @@ export default function FilterModal() {
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="fixed inset-0 bg-black opacity-50"></div>
-          <div className="bg-white rounded-lg  relative z-10 w-[95%] h-[90%] md:w-[50%] ">
+          <div className="bg-white rounded-lg  relative z-10 w-[95%] h-[90%] md:w-[70%] ">
             <div className="flex items-center">
               <button
                 onClick={toggleModal}
