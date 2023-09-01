@@ -1,7 +1,7 @@
 import React from "react";
 import ListingPhotos from "./ListingPhotos";
-
 import HostedBy from "./HostedBy";
+import HostProfilePreview from "./HostProfilePreview";
 
 const ListingInfoMain=()=>{
 
@@ -11,8 +11,9 @@ const ListingInfoMain=()=>{
             <ListingPhotos/>
             
             <div className="w-full flex">
-                <div className=" w-full lg:w-1/2" >
+                <div className=" w-full md:w-[58.3333%]" >
                      <HostedBy/>
+                     <HostProfilePreview/>
                 </div>
                  
 

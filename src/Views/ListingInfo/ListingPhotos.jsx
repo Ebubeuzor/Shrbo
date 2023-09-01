@@ -116,8 +116,8 @@ const ListingPhotos=()=>{
                         
                 </div>
 
-                <div className=" absolute xl:bottom-9  xl:right-8 md:right-6 md:bottom-[10%]"> 
-                      <button className=" bg-black/80 hover:bg-black/90 p-3 xl:w-36 md:w-32  rounded ">
+                <div className=" absolute xl:bottom-7  xl:right-8 md:right-6 md:bottom-[10%]"> 
+                      <button className=" bg-black/80 hover:bg-black/90 p-2 xl:w-36 md:w-32  rounded ">
                         <div className="flex">
                           <span className="mx-1">
                           <svg xmlns="http://www.w3.org/2000/svg" 
