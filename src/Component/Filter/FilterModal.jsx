@@ -173,13 +173,13 @@ export default function FilterModal() {
                   <div className="space-y-4">
                     <h3 className="text-2xl">Rooms & Beds</h3>
 
-                    <div className="room-options">
+                    <div className="room-options ">
                       <h3 className="text-xl">Beds</h3>
                       <div className="flex space-x-3 flex-wrap">
                         {["Any", 1, 2, 3, 4, 5, 6, 7, "8+"].map((num) => (
                           <div
                             key={num}
-                            className={`room-option ${
+                            className={`room-option m-3 ${
                               selectedBedroom === num
                                 ? "bg-orange-500 "
                                 : "border "
