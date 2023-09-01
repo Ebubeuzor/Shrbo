@@ -28,7 +28,6 @@ export default function CategoryHeader() {
     { id: "8", label: "Office", image: Office, link: "/guest" },
     { id: "9", label: "Art", image: Art, link: "/time" },
     { id: "3", label: "Beach", image: Beach, link: "/time" },
-
   ];
 
   const [selectedCategory, setSelectedCategory] = useState(categories[0].id);
@@ -60,7 +59,7 @@ export default function CategoryHeader() {
       const selectedCategoryIndex = categories.findIndex(
         (category) => category.id === selectedCategory
       );
-      const scrollAmount = selectedCategoryIndex * 120; 
+      const scrollAmount = selectedCategoryIndex * 120;
       scrollerRef.current.scroll({ left: scrollAmount, behavior: "smooth" });
     }
   }, [selectedCategory]);
@@ -72,32 +71,31 @@ export default function CategoryHeader() {
   const canScrollForward = currentIndex < categories.length - 1;
 
   return (
-    <div className="mt-32 w-full">
+    <div className="mt-40 w-full">
       <div className="flex space-x-1 items-center">
-      <button
-  className={`border-1 p-1 md:w-8 md:h-8 rounded-full ${
-    canScrollBackward ? "" : "opacity-50 cursor-not-allowed"
-  } shadow-2xl`}
-  onClick={handlePreviousCategory}
-  disabled={!canScrollBackward}
-  style={{ border: "1px solid black" }}
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-4 h-4" // You can adjust the width and height here
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M10 19l-7-7m0 0l7-7m-7 7h18"
-    />
-  </svg>
-</button>
-
+        <button
+          className={`border-1 p-1 md:w-8 md:h-8 rounded-full ${
+            canScrollBackward ? "" : "opacity-50 cursor-not-allowed"
+          } shadow-2xl`}
+          onClick={handlePreviousCategory}
+          disabled={!canScrollBackward}
+          style={{ border: "1px solid black" }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-4 h-4" // You can adjust the width and height here
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            />
+          </svg>
+        </button>
 
         <div className="overflow-x-auto flex space-x-10" ref={scrollerRef}>
           {categories.map((category) => (
@@ -131,34 +129,32 @@ export default function CategoryHeader() {
           ))}
         </div>
         <button
-  className={`border-1 p-1 md:w-8 md:h-8 rounded-full ${
-    canScrollForward ? "" : "opacity-50 cursor-not-allowed"
-  } shadow-md`}
-  onClick={handleNextCategory}
-  disabled={!canScrollForward}
-  style={{ border: "1px solid black" }}
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-4 h-4" // You can adjust the width and height here
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M14 5l7 7m0 0l-7 7m7-7H3"
-    />
-  </svg>
-</button>
-
- 
+          className={`border-1 p-1 md:w-8 md:h-8 rounded-full ${
+            canScrollForward ? "" : "opacity-50 cursor-not-allowed"
+          } shadow-md`}
+          onClick={handleNextCategory}
+          disabled={!canScrollForward}
+          style={{ border: "1px solid black" }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-4 h-4" // You can adjust the width and height here
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M14 5l7 7m0 0l-7 7m7-7H3"
+            />
+          </svg>
+        </button>
       </div>
       <div className="mt-4">
-    <FilterModal/>
-    </div>
+        <FilterModal />
+      </div>
     </div>
   );
 }
