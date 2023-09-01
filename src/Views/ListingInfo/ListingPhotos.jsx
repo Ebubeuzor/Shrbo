@@ -1,7 +1,7 @@
 import React from "react";
 import room from "../../assets/room.jpeg";
 import kitchen from "../../assets/room2.jpeg";
-import react from "../../assets/react.svg";
+import react from "../../assets/shower.svg";
 import SliderFull from "./SliderFull"
 const ListingPhotos=()=>{
 
@@ -89,23 +89,35 @@ const ListingPhotos=()=>{
             
             </section>
 
-            <div className=" xl:flex xl:flex-row  relative mt-5 w-full xl:h-[394px]  hidden     ">
-                <div className=" w-1/2 h-full rounded-l-xl  overflow-hidden  ">
-                        <img className=" " src={room}/>
+            <div className=" md:flex md:flex-row  relative mt-5 w-full md:h-[360px] xl:h-[400px]  hidden    ">
+                <div className=" w-1/2 h-full rounded-l-xl  overflow-hidden bg-black  ">
+                        <img className=" h-full w-full " src={room}/>
                 </div>
 
-                <div className=" w-1/4  pl-2 h-full flex flex-wrap flex-col overflow-hidden gap-2    "   >
-                        <img src={kitchen} className=""/>
-                        <img src={room} className="  "/>
+                <div className=" w-1/4  pl-2 h-full flex  flex-col overflow-hidden gap-2    "   >
+                    <div className="  h-full w-full overflow-hidden flex bg-slate-600 justify-center ">
+                            <img className=" h-full w-full " src={kitchen}/>
+                    </div>
+                    <div className="  h-full w-full  overflow-hidden bg-slate-600  ">
+                      
+                            <img className="h-full w-full " src={room}/>
+                    </div>
                 </div>
 
-                <div className=" w-1/4 flex flex-wrap flex-col gap-2  pl-2 h-full overflow-hidden  rounded-r-xl   ">
-                        <img src={room} className=" " />
-                        <img src={kitchen} className=""/>
+                <div className=" w-1/4 flex  flex-col gap-2  pl-2 h-full overflow-hidden  rounded-r-xl    ">
+                       
+                      <div className="  h-full  overflow-hidden flex bg-slate-600 justify-center ">
+                              <img className=" h-full w-full" src={room}/>
+                      </div>
+                      <div className="  h-full   overflow-hidden bg-slate-600  ">
+                              <img className="  h-full w-full" src={kitchen}/>
+                      </div>
+                            
+                        
                 </div>
 
-                <div className=" absolute bottom-9 right-9 "> 
-                      <button className=" bg-black/80 hover:bg-black/90 p-3 w-36 rounded ">
+                <div className=" absolute xl:bottom-9  xl:right-8 md:right-6 md:bottom-[10%]"> 
+                      <button className=" bg-black/80 hover:bg-black/90 p-3 xl:w-36 md:w-32  rounded ">
                         <div className="flex">
                           <span className="mx-1">
                           <svg xmlns="http://www.w3.org/2000/svg" 
@@ -119,7 +131,7 @@ const ListingPhotos=()=>{
                             0 3,23H19V21H3M15.96,10.29L13.21,13.83L11.25,11.47L8.5,15H19.5L15.96,10.29Z" />
                           </svg>
                           </span>
-                          <label className=" text-white text-sm">More Photos</label>
+                          <label className=" text-white text-sm md:text-xs">More Photos</label>
                           
                         </div>
                        
