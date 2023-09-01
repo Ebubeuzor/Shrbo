@@ -113,16 +113,16 @@ export default function FilterModal() {
   };
 
   return (
-    <div>
+    <div className="flex">
       <button
         onClick={toggleModal}
-        className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded flex items-center justify-between"
+        className="border text-black font-bold p-2 px-4 w-[15%] rounded-full  flex items-center justify-between"
       >
         <div className=" w-4">
           <img src={FilterIcon} alt="" />
         </div>
-      <div>
-      Filter
+      <div className="hidden md:block">
+      Filters
       </div>
       </button>
 
@@ -141,8 +141,8 @@ export default function FilterModal() {
               <h1 className="mx-auto font-bold text-lg">Filter</h1>
             </div>
             <form onSubmit={handleSubmit} className="h-[inherit] w-full p-4">
-              <div className="modal-content overflow-y-auto h-full w-full">
-                <div className="price-container  m-4">
+              <div className="modal-content overflow-y-auto h-full w-full m-4">
+                <div className="price-container ">
                   <h3 className="text-2xl">Price Range</h3>
                   <p className="text-sm text-slate-400">
                     Nightly prices before fees and taxes

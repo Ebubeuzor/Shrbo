@@ -74,29 +74,30 @@ export default function CategoryHeader() {
   return (
     <div className="mt-32 w-full">
       <div className="flex space-x-1 items-center">
-        <button
-          className={`border-1 p-2 w-10 h-10 rounded-full ${
-            canScrollBackward ? "" : "opacity-50 cursor-not-allowed"
-          } shadow-2xl`}
-          onClick={handlePreviousCategory}
-          disabled={!canScrollBackward}
-          style={{ border: "1px solid black" }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            />
-          </svg>
-        </button>
+      <button
+  className={`border-1 p-1 md:w-8 md:h-8 rounded-full ${
+    canScrollBackward ? "" : "opacity-50 cursor-not-allowed"
+  } shadow-2xl`}
+  onClick={handlePreviousCategory}
+  disabled={!canScrollBackward}
+  style={{ border: "1px solid black" }}
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-4 h-4" // You can adjust the width and height here
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M10 19l-7-7m0 0l7-7m-7 7h18"
+    />
+  </svg>
+</button>
+
 
         <div className="overflow-x-auto flex space-x-10" ref={scrollerRef}>
           {categories.map((category) => (
@@ -115,7 +116,7 @@ export default function CategoryHeader() {
                   checked={selectedCategory === category.id}
                   onChange={() => handleCategoryChange(category.id)}
                 />
-                <div className="p-2 rounded-full h-10 w-10">
+                <div className="  rounded-full h-4 w-4 md:h-10 md:w-10">
                   <img
                     src={category.image}
                     alt=""
@@ -130,30 +131,34 @@ export default function CategoryHeader() {
           ))}
         </div>
         <button
-          className={`border p-2 w-10 h-10 rounded-full flex ${
-            canScrollForward ? "" : "opacity-50 cursor-not-allowed"
-          } shadow-md`}
-          onClick={handleNextCategory}
-          disabled={!canScrollForward}
-          style={{ border: "1px solid black" }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M14 5l7 7m0 0l-7 7m7-7H3"
-            />
-          </svg>
-        </button>
-      <FilterModal/>
+  className={`border-1 p-1 md:w-8 md:h-8 rounded-full ${
+    canScrollForward ? "" : "opacity-50 cursor-not-allowed"
+  } shadow-md`}
+  onClick={handleNextCategory}
+  disabled={!canScrollForward}
+  style={{ border: "1px solid black" }}
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-4 h-4" // You can adjust the width and height here
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M14 5l7 7m0 0l-7 7m7-7H3"
+    />
+  </svg>
+</button>
+
+ 
       </div>
+      <div className="mt-4">
+    <FilterModal/>
+    </div>
     </div>
   );
 }
