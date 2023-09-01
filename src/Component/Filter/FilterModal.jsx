@@ -181,8 +181,8 @@ export default function FilterModal() {
                             key={num}
                             className={`room-option ${
                               selectedBedroom === num
-                                ? "bg-orange-500 w-full"
-                                : "border w-full"
+                                ? "bg-orange-500 "
+                                : "border "
                             }  h-12 w-12 rounded-full text-center`}
                           >
                             <label
@@ -215,8 +215,8 @@ export default function FilterModal() {
                             key={num}
                             className={`room-option ${
                               selectedRoom === num
-                                ? "bg-orange-500 w-full"
-                                : "border w-full"
+                                ? "bg-orange-500 "
+                                : "border "
                             }  h-12 w-12 rounded-full text-center`}
                           >
                             <label
@@ -249,8 +249,8 @@ export default function FilterModal() {
                             key={num}
                             className={`room-option ${
                               selectedBathroom === num
-                                ? "bg-orange-500 w-full"
-                                : "border w-full"
+                                ? "bg-orange-500 "
+                                : "border "
                             }  h-12 w-12 rounded-full text-center`}
                           >
                             <label
