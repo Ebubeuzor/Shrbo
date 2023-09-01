@@ -28,7 +28,6 @@ export default function CategoryHeader() {
     { id: "8", label: "Office", image: Office, link: "/guest" },
     { id: "9", label: "Art", image: Art, link: "/time" },
     { id: "3", label: "Beach", image: Beach, link: "/time" },
-
   ];
 
   const [selectedCategory, setSelectedCategory] = useState(categories[0].id);
@@ -60,7 +59,7 @@ export default function CategoryHeader() {
       const selectedCategoryIndex = categories.findIndex(
         (category) => category.id === selectedCategory
       );
-      const scrollAmount = selectedCategoryIndex * 120; 
+      const scrollAmount = selectedCategoryIndex * 120;
       scrollerRef.current.scroll({ left: scrollAmount, behavior: "smooth" });
     }
   }, [selectedCategory]);
@@ -72,10 +71,10 @@ export default function CategoryHeader() {
   const canScrollForward = currentIndex < categories.length - 1;
 
   return (
-    <div className="mt-32 w-full">
+    <div className="mt-40 w-full">
       <div className="flex space-x-1 items-center">
         <button
-          className={`border-1 p-2 w-10 h-10 rounded-full ${
+          className={`border-1 p-1 md:w-8 md:h-8 rounded-full ${
             canScrollBackward ? "" : "opacity-50 cursor-not-allowed"
           } shadow-2xl`}
           onClick={handlePreviousCategory}
@@ -84,7 +83,7 @@ export default function CategoryHeader() {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
+            className="w-4 h-4" // You can adjust the width and height here
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -115,7 +114,7 @@ export default function CategoryHeader() {
                   checked={selectedCategory === category.id}
                   onChange={() => handleCategoryChange(category.id)}
                 />
-                <div className="p-2 rounded-full h-10 w-10">
+                <div className="  rounded-full h-4 w-4 md:h-10 md:w-10">
                   <img
                     src={category.image}
                     alt=""
@@ -130,7 +129,7 @@ export default function CategoryHeader() {
           ))}
         </div>
         <button
-          className={`border p-2 w-10 h-10 rounded-full flex ${
+          className={`border-1 p-1 md:w-8 md:h-8 rounded-full ${
             canScrollForward ? "" : "opacity-50 cursor-not-allowed"
           } shadow-md`}
           onClick={handleNextCategory}
@@ -139,7 +138,7 @@ export default function CategoryHeader() {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
+            className="w-4 h-4" // You can adjust the width and height here
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -152,7 +151,9 @@ export default function CategoryHeader() {
             />
           </svg>
         </button>
-      <FilterModal/>
+      </div>
+      <div className="mt-4">
+        <FilterModal />
       </div>
     </div>
   );

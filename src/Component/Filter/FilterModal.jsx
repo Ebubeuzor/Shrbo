@@ -113,23 +113,23 @@ export default function FilterModal() {
   };
 
   return (
-    <div>
+    <div className="flex">
       <button
         onClick={toggleModal}
-        className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded flex items-center justify-between"
+        className="border text-black font-bold p-2 px-4 w-[15%] rounded-full  flex items-center justify-between"
       >
         <div className=" w-4">
           <img src={FilterIcon} alt="" />
         </div>
-      <div>
-      Filter
+      <div className="hidden md:block">
+      Filters
       </div>
       </button>
 
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="fixed inset-0 bg-black opacity-50"></div>
-          <div className="bg-white rounded-lg  relative z-10 w-[95%] h-[90%] md:w-[50%] ">
+          <div className="bg-white rounded-lg  relative z-10 w-[95%] h-[90%] md:w-[70%] ">
             <div className="flex items-center">
               <button
                 onClick={toggleModal}
@@ -141,8 +141,8 @@ export default function FilterModal() {
               <h1 className="mx-auto font-bold text-lg">Filter</h1>
             </div>
             <form onSubmit={handleSubmit} className="h-[inherit] w-full p-4">
-              <div className="modal-content overflow-y-auto h-full">
-                <div className="price-container ">
+              <div className="modal-content overflow-y-auto h-full w-full">
+                <div className="price-container w-full p-2">
                   <h3 className="text-2xl">Price Range</h3>
                   <p className="text-sm text-slate-400">
                     Nightly prices before fees and taxes
@@ -173,16 +173,16 @@ export default function FilterModal() {
                   <div className="space-y-4">
                     <h3 className="text-2xl">Rooms & Beds</h3>
 
-                    <div className="room-options">
+                    <div className="room-options ">
                       <h3 className="text-xl">Beds</h3>
                       <div className="flex space-x-3 flex-wrap">
                         {["Any", 1, 2, 3, 4, 5, 6, 7, "8+"].map((num) => (
                           <div
                             key={num}
-                            className={`room-option ${
+                            className={`room-option m-2 ${
                               selectedBedroom === num
-                                ? "bg-orange-500 w-full"
-                                : "border w-full"
+                                ? "bg-orange-500 "
+                                : "border "
                             }  h-12 w-12 rounded-full text-center`}
                           >
                             <label
@@ -213,10 +213,10 @@ export default function FilterModal() {
                         {["Any", 1, 2, 3, 4, 5, 6, 7, "8+"].map((num) => (
                           <div
                             key={num}
-                            className={`room-option ${
+                            className={`room-option m-2 ${
                               selectedRoom === num
-                                ? "bg-orange-500 w-full"
-                                : "border w-full"
+                                ? "bg-orange-500 "
+                                : "border "
                             }  h-12 w-12 rounded-full text-center`}
                           >
                             <label
@@ -247,10 +247,10 @@ export default function FilterModal() {
                         {["Any", 1, 2, 3, 4, 5, 6, 7, "8+"].map((num) => (
                           <div
                             key={num}
-                            className={`room-option ${
+                            className={`room-option m-2 ${
                               selectedBathroom === num
-                                ? "bg-orange-500 w-full"
-                                : "border w-full"
+                                ? "bg-orange-500"
+                                : "border "
                             }  h-12 w-12 rounded-full text-center`}
                           >
                             <label
