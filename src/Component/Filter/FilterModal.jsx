@@ -141,8 +141,8 @@ export default function FilterModal() {
               <h1 className="mx-auto font-bold text-lg">Filter</h1>
             </div>
             <form onSubmit={handleSubmit} className="h-[inherit] w-full p-4">
-              <div className="modal-content overflow-y-auto h-full">
-                <div className="price-container ">
+              <div className="modal-content overflow-y-auto h-full w-full">
+                <div className="price-container  m-4">
                   <h3 className="text-2xl">Price Range</h3>
                   <p className="text-sm text-slate-400">
                     Nightly prices before fees and taxes
