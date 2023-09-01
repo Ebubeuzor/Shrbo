@@ -2,7 +2,7 @@ import React from "react";
 import room from "../../assets/room.jpeg";
 import kitchen from "../../assets/room2.jpeg";
 import react from "../../assets/react.svg";
-
+import SliderFull from "./SliderFull"
 const ListingPhotos=()=>{
 
     const labels = [
@@ -22,7 +22,7 @@ const ListingPhotos=()=>{
     return(
         <div className="w-full flex flex-wrap flex-col-reverse md:flex-row h-full">
             <section className="  w-full mt-5">  
-               <div className=" text-2xl font-semibold ">
+               <div className=" text-3xl font-semibold inline break-words  ">
                      <p>Penthouse in La Juarez</p> 
                 </div>
 
@@ -89,19 +89,19 @@ const ListingPhotos=()=>{
             
             </section>
 
-            <div className=" flex relative mt-5 w-full xl:h-[]   h-[440px] overflow-hidden  ">
-                <div className=" w-1/2 h-full ">
-                        <img className="rounded-l-xl  w-full h-full" src={room}/>
+            <div className=" xl:flex xl:flex-row  relative mt-5 w-full xl:h-[394px]  hidden     ">
+                <div className=" w-1/2 h-full rounded-l-xl  overflow-hidden  ">
+                        <img className=" " src={room}/>
                 </div>
 
-                <div className=" w-[25%] pl-2 h-full  "   >
-                        <img src={kitchen} className="pb-[9.5px] h-1/2"/>
-                        <img src={room} className=" h-1/2   "/>
+                <div className=" w-1/4  pl-2 h-full flex flex-wrap flex-col overflow-hidden gap-2    "   >
+                        <img src={kitchen} className=""/>
+                        <img src={room} className="  "/>
                 </div>
 
-                <div className=" w-[25%] pl-2 h-full ">
-                        <img src={room} className="rounded-r-xl pb-[9.5px] h-1/2" />
-                        <img src={kitchen} className="rounded-r-xl h-1/2"/>
+                <div className=" w-1/4 flex flex-wrap flex-col gap-2  pl-2 h-full overflow-hidden  rounded-r-xl   ">
+                        <img src={room} className=" " />
+                        <img src={kitchen} className=""/>
                 </div>
 
                 <div className=" absolute bottom-9 right-9 "> 
@@ -128,6 +128,8 @@ const ListingPhotos=()=>{
                 </div>
 
             </div>
+
+            <SliderFull/>
 
 
 
