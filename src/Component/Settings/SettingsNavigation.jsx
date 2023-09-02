@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function SettingsNavigation() {
+export default function SettingsNavigation(props) {
   return (
     <div>
       <div className="my-10">
@@ -24,12 +24,12 @@ export default function SettingsNavigation() {
                   <path d="M8.59 16.59L13.17 12 8.59 7.41L10 6l6 6-6 6-1.41-1.41z" />
                 </svg>
               </div>
-              <span >Personal info</span>
+              <span >{props.text}</span>
             </li>
           </ol>
         </nav>
         <div className="mt-3">
-            <h1 className="text-3xl">Perosnal Info</h1>
+            <h1 className="text-3xl">{props.title}</h1>
         </div>
       </div>
     </div>
