@@ -7,7 +7,7 @@ const HostedBy=()=>{
     const Host="Christi-Anna";
    
 
-    const amenities_info = [
+    const room_info = [
         { id: 1,text:"1 bed"},
         { id: 2,text:"Shared bathroom"},
         { id: 3,text:"Host or others may share home "},
@@ -19,8 +19,8 @@ const HostedBy=()=>{
       ];
 
       
-       // Amenities Like 2 bedroom, living room, 3 bath room ,  cinema Room 
-    const amenities=amenities_info.map(amenity=>(
+       // Rooms Like 2 bedroom, living room, 3 bath room , 2 toilet
+    const Rooms=room_info.map(amenity=>(
 
             <li className="flex flex-nowrap content-normal   flex-col p-4  gap-4 justify-between   
                 lg:justify-normal  lg:items-center  lg:flex-row   min-h-[72px]
@@ -94,7 +94,7 @@ const HostedBy=()=>{
                 
                 </div>
                 <ul className=" grid grid-cols-3  w-full gap-2 overflow-x-scroll list-disc box-border grid-rows-1   " >
-                        {amenities}
+                        {Rooms}
                 </ul>
                 
             </div>

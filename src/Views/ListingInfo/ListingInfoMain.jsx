@@ -2,6 +2,7 @@ import React from "react";
 import ListingPhotos from "./ListingPhotos";
 import HostedBy from "./HostedBy";
 import HostProfilePreview from "./HostProfilePreview";
+import Amenities from "./Amenities";
 
 const ListingInfoMain=()=>{
 
@@ -14,6 +15,7 @@ const ListingInfoMain=()=>{
                 <div className=" w-full md:w-[58.3333%] relative" >
                      <HostedBy/>
                      <HostProfilePreview/>
+                     <Amenities/>
                 </div>
                  
 

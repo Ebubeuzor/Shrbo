@@ -42,7 +42,7 @@ const HostProfilePreview=()=>{
 
 
     return(
-         <div>
+         <div className="w-full">
             <div className=" mb-6 box-border block ">
                 <h2 className=" text-2xl font-semibold" >About your host</h2>
 
