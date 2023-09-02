@@ -1,5 +1,3 @@
-// EditLegalNameForm.js
-
 import React, { useState } from "react";
 
 const EditEmailAddress = ({ onCancel, onSave }) => {
@@ -7,8 +5,7 @@ const EditEmailAddress = ({ onCancel, onSave }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform any necessary validation and data submission here
-    // Call onSave with the updated values
+
     onSave({ email });
   };
 

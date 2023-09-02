@@ -9,7 +9,7 @@ export default function SettingsNavigation(props) {
           <ol className="flex">
             <li>
               <span>
-                <Link>Account</Link>
+                <Link to="/settings" >Account</Link>
               </span>
             </li>
             <li className="flex">

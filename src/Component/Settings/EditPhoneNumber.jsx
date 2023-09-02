@@ -1,4 +1,3 @@
-// EditLegalNameForm.js
 
 import React, { useState } from "react";
 
@@ -7,8 +6,7 @@ const EditPhoneNumber = ({ onCancel, onSave }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform any necessary validation and data submission here
-    // Call onSave with the updated values
+  
     onSave({ phoneNumber });
   };
 

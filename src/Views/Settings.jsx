@@ -26,11 +26,13 @@ export default function Settings() {
                 text="Provide personal details and how we can reach you"
               />
             </Link>
-            <Card
+           <Link to="/security">
+           <Card
               icon={Padlock}
               title="Security"
               text="Provide personal details and how we can reach you"
             />
+           </Link>
             <Card
               icon={PaymentIcon}
               title="Payment Details"

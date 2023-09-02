@@ -7,7 +7,6 @@ function AddressForm({ onCancel, onSave }) {
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
 
-  // Define a function to handle form submission and save the address data
   const handleSaveAddress = (e) => {
     e.preventDefault();
     const addressData = {

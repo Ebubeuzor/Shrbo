@@ -12,33 +12,23 @@ export default function Profile() {
   const [isEditingPhoneNumber, setIsEditingPhoneNumber] = useState(false);
   const [isEditingAddress, setIsEditingAddress] = useState(false);
 
-  // Define a function to handle saving legal name changes
   const handleSaveLegalName = (updatedLegalName) => {
-    // Perform any necessary logic to save the changes
     console.log("Legal Name Updated:", updatedLegalName);
-    // Hide the edit form
     setIsEditingLegalName(false);
   };
 
-  // Define a function to handle saving email address changes
   const handleSaveEmailAddress = (updatedEmailAddress) => {
-    // Perform any necessary logic to save the changes
     console.log("Email Address Updated:", updatedEmailAddress);
-    // Hide the edit form
     setIsEditingEmailName(false);
   };
 
   const handleSavePhoneNumber = (updatedEmailAddress) => {
-    // Perform any necessary logic to save the changes
     console.log("Email Address Updated:", updatedEmailAddress);
-    // Hide the edit form
     setIsEditingPhoneNumber(false);
   };
 
   const handleSaveAddress = (updatedAddress) => {
-    // Perform any necessary logic to save the changes
     console.log("Address Updated:", updatedAddress);
-    // Hide the edit form
     setIsEditingAddress(false);
   };
 
