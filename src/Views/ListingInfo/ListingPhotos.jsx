@@ -89,7 +89,7 @@ const ListingPhotos=()=>{
             
             </section>
 
-            <div className=" md:flex md:flex-row  relative mt-5 w-full md:h-[360px] xl:h-[400px]  hidden    ">
+            <div className=" md:flex md:flex-row  relative mt-5 w-full md:h-[360px] lg:h-[320px] xl:h-[400px]  hidden    ">
                 <div className=" w-1/2 h-full rounded-l-xl  overflow-hidden bg-black  ">
                         <img className=" h-full w-full " src={room}/>
                 </div>

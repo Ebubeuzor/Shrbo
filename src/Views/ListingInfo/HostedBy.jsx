@@ -23,8 +23,8 @@ const HostedBy=()=>{
     const amenities=amenities_info.map(amenity=>(
 
             <li className="flex flex-nowrap content-normal   flex-col p-4  gap-4 justify-between   
-                xl:justify-normal xl:items-center  xl:flex-row   min-h-[72px]
-                rounded-xl border xl:py-4 xl:px-6  " key={amenity.id} >
+                lg:justify-normal  lg:items-center  lg:flex-row   min-h-[72px]
+                rounded-xl border lg:py-4 lg:px-6  " key={amenity.id} >
                 <div className="   ">
                     <svg 
                     xmlns="http://www.w3.org/2000/svg" 
@@ -64,7 +64,7 @@ const HostedBy=()=>{
                     4 16.17,4C16.58,2.84 17.69,2 19,2A3,3 0 0,1 22,5V14H21V14M19,14H5V15A3,3 0 0,0 8,18H16A3,3 0 0,0 19,15V14Z" /></svg>
                 </div>
             <div className=" ml-4 block ">
-                <div className=" text-base font-semibold md:text-lg " >
+                <div className=" text-base font-[500] " >
                     {perk.text}
 
                 </div>
@@ -93,7 +93,7 @@ const HostedBy=()=>{
                     </div>
                 
                 </div>
-                <ul className=" grid grid-cols-3  w-full gap-2 overflow-x-scroll list-disc box-border    " >
+                <ul className=" grid grid-cols-3  w-full gap-2 overflow-x-scroll list-disc box-border grid-rows-1   " >
                         {amenities}
                 </ul>
                 
