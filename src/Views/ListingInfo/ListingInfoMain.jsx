@@ -3,6 +3,7 @@ import ListingPhotos from "./ListingPhotos";
 import HostedBy from "./HostedBy";
 import HostProfilePreview from "./HostProfilePreview";
 import Amenities from "./Amenities";
+import AboutProperty from './AboutProperty';
 
 const ListingInfoMain=()=>{
 
@@ -15,11 +16,13 @@ const ListingInfoMain=()=>{
                 <div className=" w-full md:w-[58.3333%] relative" >
                      <HostedBy/>
                      <HostProfilePreview/>
-                     <Amenities/>
+                     <AboutProperty/>
+                   
                 </div>
-                 
+              
 
             </div>
+            <Amenities/>
             
 
         </div>

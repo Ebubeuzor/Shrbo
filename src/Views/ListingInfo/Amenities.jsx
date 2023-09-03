@@ -33,8 +33,8 @@ import Popup from "../../hoc/Popup";
           
            // Amenities Like 2 bedroom, living room, 3 bath room ,  cinema Room 
         const amenities=amenities_info.map(amenity=>(
-                <div key={amenity.id} className=" relative px-[6px] border w-full lg:w-1/2 lg:px-2 ">
-                    <div className=" flex itens-center md:max-w-[83.33%] md:justify-between pb-4 justify-end flex-row-reverse ">
+                <div key={amenity.id} className=" relative px-[6px]  w-full md:w-1/2 md:px-2 ">
+                    <div className=" flex itens-center md:max-w-[83.33%]  pb-4 justify-end flex-row-reverse ">
                         <div>{amenity.text}</div>
                         <div className=" mr-4 min-w-[24px]">
                                      <svg xmlns="http://www.w3.org/2000/svg" 
@@ -64,7 +64,7 @@ import Popup from "../../hoc/Popup";
 
 
        return( 
-                <div className=" box-border block text-[#222222] font-normal text-base  " >
+                <div className=" box-border block text-[#222222] font-normal text-base w-full  " >
                         <div className=" py-12 ">
                             <section>
                                 <div className="pb-6">
@@ -72,7 +72,7 @@ import Popup from "../../hoc/Popup";
                                         <h2 className=" text-2xl font-semibold ">Amenities</h2>
                                     </div>
                                 </div>
-                                <div className="mx-3 lg:mx-4 flex items-stretch justify-start flex-wrap w-full ">
+                                <div className=" flex items-stretch justify-start flex-wrap w-full h-[238px] md:h-full overflow-hidden  ">
                                         {amenities}
                                 </div>
                                 <div className=" mt-4  md:mt-6 ">
