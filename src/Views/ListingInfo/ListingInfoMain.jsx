@@ -4,6 +4,7 @@ import HostedBy from "./HostedBy";
 import HostProfilePreview from "./HostProfilePreview";
 import Amenities from "./Amenities";
 import AboutProperty from './AboutProperty';
+import ListingMap from "./ListingMap";
 
 const ListingInfoMain=()=>{
 
@@ -23,6 +24,7 @@ const ListingInfoMain=()=>{
 
             </div>
             <Amenities/>
+            <ListingMap/>
             
 
         </div>
