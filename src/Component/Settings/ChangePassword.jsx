@@ -57,7 +57,7 @@ export default function ChangePassword({ onCancel, onSave }) {
         required
       />
  
-    <div className="text-right">
+    <div className="text-right mt-4">
       <button
         type="button"
         className="text-gray-500 mr-4"

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SettingsNavigation from "./SettingsNavigation";
-import ChangePassword from "./ChangePassword"; 
+import ChangePassword from "./ChangePassword";
 
 export default function Security() {
   const [isChangePassword, setIsChangePassword] = useState(false);
@@ -14,7 +14,7 @@ export default function Security() {
       action: "Update",
       link: "/edit-name",
     },
-   
+
     {
       title: " Account",
       value: "Deactivate your account",
@@ -29,7 +29,7 @@ export default function Security() {
 
         <div>
           <div className="tab">
-          {isChangePassword && (
+            {isChangePassword && (
               <div className="max-w-2xl mx-auto p-4">
                 <h2 className="text-2xl font-medium mb-4">Change Password</h2>
                 <ChangePassword
@@ -72,7 +72,6 @@ export default function Security() {
                       >
                         {detail.action}
                       </button>
-                  
                     </>
                   ) : (
                     <Link className="underline" to={detail.link}>
@@ -83,27 +82,26 @@ export default function Security() {
               </div>
             ))}
 
-{isConfirmDeactivation && (
-                        <div className="bg-white border rounded-md p-4 mt-2">
-                          <p>Are you sure you want to deactivate your account?</p>
-                          <button
-                            className="bg-red-500 text-white rounded-md py-2 px-4 mt-2"
-                            onClick={() => {
-                              console.log("Account Deactivated");
-                              setIsConfirmDeactivation(false);
-                            }}
-                          >
-                            Confirm 
-                          </button>
-                          <button
-                            className="text-gray-500 ml-2 mt-2"
-                            onClick={() => setIsConfirmDeactivation(false)}
-                          >
-                            Cancel
-                          </button>
-                        </div>
-                      )}
-        
+            {isConfirmDeactivation && (
+              <div className="bg-white border rounded-md p-4 mt-2">
+                <p>Are you sure you want to deactivate your account?</p>
+                <button
+                  className="bg-red-500 text-white rounded-md py-2 px-4 mt-2"
+                  onClick={() => {
+                    console.log("Account Deactivated");
+                    setIsConfirmDeactivation(false);
+                  }}
+                >
+                  Confirm
+                </button>
+                <button
+                  className="text-gray-500 ml-2 mt-2"
+                  onClick={() => setIsConfirmDeactivation(false)}
+                >
+                  Cancel
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

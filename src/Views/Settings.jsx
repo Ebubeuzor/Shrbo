@@ -19,25 +19,27 @@ export default function Settings() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <Link to='/Profile'>
+            <Link to="/Profile">
               <Card
                 icon={ProfileIcon}
                 title="Personal Info"
                 text="Provide personal details and how we can reach you"
               />
             </Link>
-           <Link to="/security">
-           <Card
-              icon={Padlock}
-              title="Security"
-              text="Provide personal details and how we can reach you"
-            />
-           </Link>
-            <Card
-              icon={PaymentIcon}
-              title="Payment Details"
-              text="Provide personal details and how we can reach you"
-            />
+            <Link to="/security">
+              <Card
+                icon={Padlock}
+                title="Security"
+                text="Provide personal details and how we can reach you"
+              />
+            </Link>
+            <Link to="/payments">
+              <Card
+                icon={PaymentIcon}
+                title="Payment Details"
+                text="Provide personal details and how we can reach you"
+              />
+            </Link>
             <Card
               icon="hello"
               title="Personal Info"
