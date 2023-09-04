@@ -99,7 +99,7 @@ const HostedBy=()=>{
                 
             </div>
 
-            <div className="Perks py-8 block box-border  border-b mb-6  " >
+            <div className="Perks py-8 block box-border   mb-6  " >
                     <div className=" flex flex-col gap-6 box-border " >
                         {perks}
 

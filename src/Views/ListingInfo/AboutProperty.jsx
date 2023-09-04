@@ -16,7 +16,7 @@ import Popup from "../../hoc/Popup";
         };
 
         return(
-              <div className=" py-3 mb-6  border-t " >
+              <div className=" py-3 mb-6  " >
                   <div className=" mb-4 md:mb-6 box-border block ">
                     <h2 className=" text-2xl font-semibold" >About Property</h2>
 

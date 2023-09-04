@@ -5,6 +5,8 @@ import HostProfilePreview from "./HostProfilePreview";
 import Amenities from "./Amenities";
 import AboutProperty from './AboutProperty';
 import ListingMap from "./ListingMap";
+import ListingReviews from "./ListingReviews"
+import Testimonial from "./Testimonial";
 
 const ListingInfoMain=()=>{
 
@@ -16,7 +18,13 @@ const ListingInfoMain=()=>{
             <div className="w-full flex">
                 <div className=" w-full md:w-[58.3333%] relative" >
                      <HostedBy/>
+                                    <hr
+                    className="my-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50"
+                    />
                      <HostProfilePreview/>
+                                <hr
+                className="my-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50"
+                />
                      <AboutProperty/>
                    
                 </div>
@@ -24,7 +32,9 @@ const ListingInfoMain=()=>{
 
             </div>
             <Amenities/>
+            <Testimonial/>
             <ListingMap/>
+       
             
 
         </div>
