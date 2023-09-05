@@ -20,7 +20,7 @@ import Map from "../../Component/Map/Map"
               <div className=" py-10 block mx-auto  w-full " >
                 <section>
                     <div className=" pb-2" >
-                        <div className=" font-semibold text-xl " >
+                        <div className=" font-semibold text-2xl " >
                             <h2>Where it is located </h2>
                         </div>
                     </div>

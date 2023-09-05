@@ -7,6 +7,7 @@ import AboutProperty from './AboutProperty';
 import ListingMap from "./ListingMap";
 import ListingReviews from "./ListingReviews"
 import Testimonial from "./Testimonial";
+import ListingForm from "./ListingForm";
 
 const ListingInfoMain=()=>{
 
@@ -23,10 +24,13 @@ const ListingInfoMain=()=>{
                     />
                      <HostProfilePreview/>
                                 <hr
-                className="my-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50"
-                />
+                     className="my-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50"
+                       />
                      <AboutProperty/>
                    
+                </div>
+                <div className=" ml-[8.33333%] w-[33.33333%] relative mr-0 ">
+                    <ListingForm/>
                 </div>
               
 

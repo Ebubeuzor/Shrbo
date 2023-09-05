@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ListingReviews() {
   return (
-        <div className=' gap-6 px-8 flex md:flex-row-reverse flex-col'>
+        <div className=' gap-6 px-8 flex md:flex-row-reverse overflow-y-scroll flex-col'>
             <ol className="border-l border-neutral-300 dark:border-neutral-500">
                 {/* <!--First item--> */}
                 <li>
