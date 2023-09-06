@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from "react-responsive-carousel";
 import Rating from "./Ratings";
+import { Link } from "react-router-dom";
 
 
 const Listings = () => {
@@ -18,6 +19,8 @@ const Listings = () => {
       date: "22/08/2023",
       kilometres: "22miles away",
       rating: 4.8,
+      link:"/ListingInfoMain",
+
     },
     {
       id: 2,
@@ -31,6 +34,8 @@ const Listings = () => {
       date: "22/08/2023",
       kilometres: "22miles away",
       rating: 4.2,
+      link:"/ListingInfoMain",
+
     },
     {
       id: 3,
@@ -44,6 +49,8 @@ const Listings = () => {
       date: "22/08/2023",
       kilometres: "22miles away",
       rating: 4.0,
+            link:"/ListingInfoMain",
+
     },
 
     {
@@ -58,6 +65,8 @@ const Listings = () => {
       date: "22/08/2023",
       kilometres: "22miles away",
       rating: 4.8,
+      link:"/ListingInfoMain",
+
     },
     {id: 5,
     pictures: [
@@ -70,6 +79,7 @@ const Listings = () => {
     date: "22/08/2023",
     kilometres: "22miles away",
     rating: 4.8,
+    link:"/ListingInfoMain",
   },
   {
     id: 6,
@@ -83,6 +93,7 @@ const Listings = () => {
     date: "22/08/2023",
     kilometres: "22miles away",
     rating: 4.8,
+    link:"/ListingInfoMain",
 
   },
   ]);
@@ -105,6 +116,7 @@ const Listings = () => {
           key={listing.id}
           className="max-w-[26rem] md:max-w-[18rem] rounded overflow-hidden  m-4 cursor-pointer"
         >
+            <Link to={listing.link}> 
           <Carousel>
             {listing.pictures.map((picture, index) => (
               <div key={index}>
@@ -145,6 +157,7 @@ const Listings = () => {
             <p className="text-gray-400 text-base">{listing.date}</p>
             <p className="font-medium text-gray-700 text-base">{listing.price}</p>
           </div>
+          </Link>
         </div>
       ))}
     </div>
