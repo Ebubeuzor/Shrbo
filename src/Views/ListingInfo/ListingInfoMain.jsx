@@ -29,7 +29,7 @@ const ListingInfoMain=()=>{
                      <AboutProperty/>
                    
                 </div>
-                <div className=" ml-[8.33333%] w-[33.33333%] relative mr-0 ">
+                <div className=" md:ml-[8.33333%] md:w-[33.33333%] relative mr-0 ">
                     <ListingForm/>
                 </div>
               

@@ -4,27 +4,75 @@ import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import room from "../../assets/room.jpeg";
 import kitchen from "../../assets/room2.jpeg";
 
-const MainSlider = () => {
+const MainSlider = (props) => {
+
+  const pics= [
+    { 
+      id: 1,min:room
+    },
+    { 
+      id: 2,min:kitchen
+    },
+    { 
+      id: 3,min:room
+    },
+    { 
+      id: 4,min:kitchen
+    },
+    { 
+      id: 5,min:room
+    },   
+    
+  ];
+
+ const slides=pics.map(slide=>(
+  <SplideSlide key={slide.id}>
+  <div className="  ">
+  <div className=" relative      h-[258px]  ">
+
+      
+    <div className='  h-full w-full '>
+      <img src={slide.min} alt="slide 1" className='    h-full w-full' />
+
+    </div>
+    </div>
+
+    
+
+  </div>
+    
+  </SplideSlide>
+
+ ));
+
+
+
   return (
-    <Splide options={{
-      perPage: 1,
-      mediaQuery: 'min',
-      breakpoints: {
-          640: {
-              destroy: true,
+    <div className=' w-full  md:hidden' >
+
+      <Splide ref={(slider)=>(props.slider1.current=slider)} className="main-slider"  options={{
+        perPage: 1,
+        perMove:1,
+        arrows:false,
+        rewind:true,
+        pagination:false,
+        mediaQuery: 'min',
+        breakpoints: {
+          767: {
+            destroy: true,
           },
-      }
-   
-    }}>
-      <SplideSlide>
-        <img src={room} alt="Slide 1 "  className='md:hidden'/>
-      </SplideSlide>
-      <SplideSlide>
-        <img src={kitchen} alt="Slide 2"className='md:hidden' />
-      </SplideSlide>
-      {/* Add more SplideSlides as needed */}
-    </Splide>
-  );
+        },
+      
+      }}>
+
+        
+       {slides}
+        {/* Add more SplideSlides as needed */}
+      </Splide>
+    
+    </div>
+
+    );
 };
 
 export default MainSlider;

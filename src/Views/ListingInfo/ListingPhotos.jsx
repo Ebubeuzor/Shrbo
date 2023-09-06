@@ -1,9 +1,19 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import room from "../../assets/room.jpeg";
 import kitchen from "../../assets/room2.jpeg";
-import react from "../../assets/shower.svg";
 import SliderFull from "./SliderFull"
 const ListingPhotos=()=>{
+
+  const [width,setWidth]=useState();
+
+  
+ 
+  const handleWindowSizeChange = () => {
+    setWidth(window.innerWidth)
+
+  
+  };
+  
 
     const labels = [
         'Rating(4.8)',
@@ -18,6 +28,15 @@ const ListingPhotos=()=>{
         </React.Fragment>
       ));
 
+      useEffect(()=>{
+         handleWindowSizeChange();
+        
+        console.log('hello')
+        return () => {
+         handleWindowSizeChange();
+        };
+
+    },[])
 
     return(
         <div className="w-full flex flex-wrap flex-col-reverse md:flex-row h-full">
@@ -90,15 +109,15 @@ const ListingPhotos=()=>{
             </section>
 
             <div className=" md:flex md:flex-row  relative mt-5 w-full md:h-[360px] lg:h-[320px] xl:h-[400px]  hidden    ">
-                <div className=" w-1/2 h-full rounded-l-xl  overflow-hidden bg-black  ">
+                <div className=" w-1/2 h-full rounded-l-xl  overflow-hidden   ">
                         <img className=" h-full w-full " src={room}/>
                 </div>
 
                 <div className=" w-1/4  pl-2 h-full flex  flex-col overflow-hidden gap-2    "   >
-                    <div className="  h-full w-full overflow-hidden flex bg-slate-600 justify-center ">
+                    <div className="  h-full w-full overflow-hidden flex justify-center ">
                             <img className=" h-full w-full " src={kitchen}/>
                     </div>
-                    <div className="  h-full w-full  overflow-hidden bg-slate-600  ">
+                    <div className="  h-full w-full  overflow-hidden  ">
                       
                             <img className="h-full w-full " src={room}/>
                     </div>
@@ -106,10 +125,10 @@ const ListingPhotos=()=>{
 
                 <div className=" w-1/4 flex  flex-col gap-2  pl-2 h-full overflow-hidden  rounded-r-xl    ">
                        
-                      <div className="  h-full  overflow-hidden flex bg-slate-600 justify-center ">
+                      <div className="  h-full  overflow-hidden flex  justify-center ">
                               <img className=" h-full w-full" src={room}/>
                       </div>
-                      <div className="  h-full   overflow-hidden bg-slate-600  ">
+                      <div className="  h-full   overflow-hidden   ">
                               <img className="  h-full w-full" src={kitchen}/>
                       </div>
                             
@@ -141,7 +160,7 @@ const ListingPhotos=()=>{
 
             </div>
 
-            <SliderFull/>
+           {width<=767 ? <SliderFull/> : null} 
 
 
 
