@@ -7,6 +7,7 @@ import Profile from "./Component/Settings/Profile"
 import Payments from "./Component/Settings/Payments"
 import Security from "./Component/Settings/Security"
 import "./App.css";
+import RequestBook from "./Views/RequestBook/RequestBook";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ListingInfoMain" element={<ListingInfoMain />} />
+        <Route path="/RequestBook" element={<RequestBook/>} />
         <Route path="/Settings" element={<Settings />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Payments" element={<Payments />} />
