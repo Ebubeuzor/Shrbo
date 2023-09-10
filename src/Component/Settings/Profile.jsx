@@ -55,7 +55,7 @@ export default function Profile() {
       title: "Government ID",
       value: "Not provided",
       action: "Add",
-      link: "/add-government-id",
+      link: "/AddGovvernmentId",
     },
     {
       title: "Address",
