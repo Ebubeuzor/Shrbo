@@ -1,7 +1,7 @@
 import React from "react";
 import SearchLocation from "../Component/SearchLocation";
 import CategoryHeader from "../Component/Navigation/CategoryHeader";
-import Listings from "./ListingInfo/Listings";
+import Listings from "../Component/ListingInfo/Listings";
 
 export default function Home() {
   return (

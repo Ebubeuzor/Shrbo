@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Views/Home";
-import ListingInfoMain from "./Views/ListingInfo/ListingInfoMain"
+import ListingInfoMain from "./Views/ListingInfoMain";
 import Settings from "./Views/Settings";
 import Profile from "./Component/Settings/Profile"
 import Payments from "./Component/Settings/Payments"
 import Security from "./Component/Settings/Security"
 import "./App.css";
-import RequestBook from "./Views/RequestBook/RequestBook";
+import RequestBook from "./Views/RequestBook";
 
 function App() {
   return (

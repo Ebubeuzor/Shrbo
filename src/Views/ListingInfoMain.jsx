@@ -1,13 +1,13 @@
 import React from "react";
-import ListingPhotos from "./ListingPhotos";
-import HostedBy from "./HostedBy";
-import HostProfilePreview from "./HostProfilePreview";
-import Amenities from "./Amenities";
-import AboutProperty from './AboutProperty';
-import ListingMap from "./ListingMap";
-import ListingReviews from "./ListingReviews"
-import Testimonial from "./Testimonial";
-import ListingForm from "./ListingForm";
+import ListingPhotos from "../Component/ListingInfo/ListingPhotos";
+import HostedBy from "../Component/ListingInfo/HostedBy";
+import HostProfilePreview from "../Component/ListingInfo/HostProfilePreview";
+import Amenities from "../Component/ListingInfo/Amenities";
+import AboutProperty from '../Component/ListingInfo/AboutProperty';
+import ListingMap from "../Component/ListingInfo/ListingMap";
+import ListingReviews from "../Component/ListingInfo/ListingReviews"
+import Testimonial from "../Component/ListingInfo/Testimonial";
+import ListingForm from "../Component/ListingInfo/ListingForm";
 
 const ListingInfoMain=()=>{
 
