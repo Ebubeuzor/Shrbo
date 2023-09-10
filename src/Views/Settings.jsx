@@ -42,7 +42,7 @@ export default function Settings() {
             </Link>
             <Card
               icon="hello"
-              title="Personal Info"
+              title="Notifications "
               text="Provide personal details and how we can reach you"
             />
             <Card

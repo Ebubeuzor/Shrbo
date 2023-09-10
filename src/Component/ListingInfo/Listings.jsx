@@ -116,7 +116,6 @@ const Listings = () => {
           key={listing.id}
           className="max-w-[26rem] md:max-w-[18rem] rounded overflow-hidden  m-4 cursor-pointer"
         >
-            <Link to={listing.link}> 
           <Carousel>
             {listing.pictures.map((picture, index) => (
               <div key={index}>
@@ -148,6 +147,8 @@ const Listings = () => {
               </div>
             ))}
           </Carousel>
+          <Link to={listing.link}> 
+
           <div className=" py-4">
             <div className="font-medium text-base mb-2">{listing.location}</div>
             <Rating rating={listing.rating} /> 

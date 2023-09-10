@@ -7,8 +7,8 @@ import Profile from "./Component/Settings/Profile"
 import Payments from "./Component/Settings/Payments"
 import Security from "./Component/Settings/Security"
 import "./App.css";
-import RequestBook from "./Views/RequestBook";
-
+import RequestBook from "./Views/RequestBook/RequestBook";
+import AddGovvernmentId from "./Component/Settings/ProfileCardSettings/AddGovernmentId"
 function App() {
   return (
     <Router>
@@ -20,6 +20,7 @@ function App() {
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Payments" element={<Payments />} />
         <Route path="/Security" element={<Security />} />
+        <Route path="/AddGovvernmentId" element={<AddGovvernmentId />} />
 
 
 
