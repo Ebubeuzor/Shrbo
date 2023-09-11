@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import ProfileIcon from "../assets/svg/id-card-line-icon.svg";
 import Padlock from "../assets/svg/lock-icon.svg";
 import PaymentIcon from "../assets/svg/credit-card-icon.svg";
+import BellIcon from "../assets/svg/bell-icon.svg";
+
 
 export default function Settings() {
   return (
@@ -40,11 +42,13 @@ export default function Settings() {
                 text="Provide personal details and how we can reach you"
               />
             </Link>
+            <Link to="/AccountNotifications">
             <Card
-              icon="hello"
+              icon={BellIcon}
               title="Notifications "
               text="Provide personal details and how we can reach you"
             />
+            </Link>
             <Card
               icon="hello"
               title="Personal Info"
