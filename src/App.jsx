@@ -6,6 +6,7 @@ import Settings from "./Views/Settings";
 import Profile from "./Component/Settings/Profile"
 import Payments from "./Component/Settings/Payments"
 import Security from "./Component/Settings/Security"
+import Chat from "./Component/Chat/Chat";
 import AccountNotifications from "./Component/Settings/ProfileCardSettings/AccountNotifications";
 import "./App.css";
 import RequestBook from "./Views/RequestBook";
@@ -23,6 +24,8 @@ function App() {
         <Route path="/Security" element={<Security />} />
         <Route path="/AddGovvernmentId" element={<AddGovvernmentId />} />
         <Route path="/AccountNotifications" element={<AccountNotifications />} />
+        <Route path="/Chat" element={<Chat />} />
+
 
 
 
