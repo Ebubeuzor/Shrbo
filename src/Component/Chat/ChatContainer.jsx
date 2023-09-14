@@ -226,9 +226,9 @@ export default function ChatContainer() {
                   key={index}
                   className={`${
                     message.isUser1
-                      ? "bg-gray-400 text-white"
+                      ? "bg-gray-300 text-white"
                       : "bg-orange-400 text-white"
-                  } rounded-lg p-2 mb-2`}
+                  } rounded-full p-2 m-10`}
                 >
                   <div className="flex space-x-4">
                     {message.image && (
