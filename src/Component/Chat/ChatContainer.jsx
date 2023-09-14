@@ -3,7 +3,7 @@ import johnDoe from "../../assets/johnDoe.png";
 import { Link } from "react-router-dom";
 import cancelButton from "../../assets/svg/close-line-icon.svg";
 import sendButton from "../../assets/svg/direction-arrow-top-icon.svg";
-import ChatErrorModal from "./chatErrorModal";
+import ChatErrorModal from "./ChatErrorModal";
 import emailValidator from "email-validator";
 
 
