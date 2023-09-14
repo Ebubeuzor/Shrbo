@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import johnDoe from "../../assets/johnDoe.png";
 import { Link } from "react-router-dom";
 import cancelButton from "../../assets/svg/close-line-icon.svg";
-
+import sendButton from "../../assets/svg/direction-arrow-top-icon.svg";
+import ChatErrorModal from "./chatErrorModal";
+import emailValidator from "email-validator";
 
 
 export default function ChatContainer() {
@@ -59,6 +61,34 @@ export default function ChatContainer() {
     },
   ]);
 
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const chatContainerRef = useRef(null);
+  const [consecutiveNumbersCount, setConsecutiveNumbersCount] = useState(0); // Define consecutiveNumbersCount
+
+  
+  const handleOpenErrorModal = (message) => {
+    setErrorMessage(message);
+    setIsErrorModalOpen(true);
+  };
+
+  const handleCloseErrorModal = () => {
+    setIsErrorModalOpen(false);
+  };
+
+  // Function to scroll to the bottom of the chat container
+  const scrollToBottom = () => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop =
+        chatContainerRef.current.scrollHeight;
+    }
+  };
+
+  // Use useEffect to scroll to the bottom whenever messages change
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   const paymentDetails = {
     nightlyRate: "$108.00",
     numberOfNights: 2,
@@ -71,49 +101,170 @@ export default function ChatContainer() {
     checkInDate: "Dec 27, 2022",
     checkOutDate: "Dec 29, 2022",
     numberOfGuests: "7 adults",
-
   };
 
-  const host ={
-    hostImage : cancelButton,
-    hostName : "username",
-  }
+  const host = {
+    hostImage: cancelButton,
+    hostName: "username",
+  };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
+    console.log("Opening modal"); // Added log
+
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
+    console.log("Closing modal"); // Added log
+
     setIsModalOpen(false);
   };
 
+ 
+
   // Function to handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+  // Function to handle form submission
+// Function to handle form submission
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    // Create a new message object for the user's input
-    const newMessage = {
-      text: inputMessage,
-      user: "User 1", // Assuming the user sending the message is always User 1
-      date: "2023-09-11",
-      time: new Date().toLocaleTimeString(),
-      isUser1: true,
-      image: johnDoe,
-    };
+  // Define regular expressions for link and phone number detection
+  const linkRegex = /(http[s]?:\/\/[^\s]+)/;
+  const comRegex = /(\.com|com)/i;
+  const invalidWordsRegex = /\b(one|two|o-ne|t-wo)\b/i;
+  const phoneRegex = /\b\d{4,}\b/;
+  const containsNumber = /^(\d,\s)*\d$/;
+  const hasNumber = /\d+/;
+  const addressRegex = /\b\d{1,5}\s\w+\s\w+\b/i;
+  const passwordKeywords = ["password", "secret", "passcode"];
+  const sensitiveKeywords = ["confidential", "private", "sensitive", "bvn", "address", "sensitive"];
 
-    // Update the messages state by appending the new message
-    setMessages([...messages, newMessage]);
 
-    // Clear the input field
-    setInputMessage("");
+
+
+  for (const keyword of sensitiveKeywords) {
+    if (inputMessage.toLowerCase().includes(keyword)) {
+      console.log("Sensitive keyword error");
+      handleOpenErrorModal("Sensitive information is not allowed in messages.");
+      return; // Do not send the message if it contains a sensitive keyword
+    }
+  }
+
+
+  for (const keyword of passwordKeywords) {
+    if (inputMessage.toLowerCase().includes(keyword)) {
+      console.log("Password-related error");
+      handleOpenErrorModal("Password-related information is not allowed in messages.");
+      return; // Do not send the message if it contains a password-related keyword
+    }
+  }
+
+  if (addressRegex.test(inputMessage)) {
+    console.log("Address error");
+    handleOpenErrorModal("Personal addresses are not allowed in messages.");
+    return; // Do not send the message if it contains a personal address
+  }
+
+  // Function to check for more than 3 consecutive numbers
+  const hasConsecutiveNumbers = (text) => {
+    const consecutiveNumbersRegex = /\d{4,}/;
+    return consecutiveNumbersRegex.test(text);
   };
+
+  if (linkRegex.test(inputMessage)) {
+    console.log("Link error");
+    handleOpenErrorModal("Links are not allowed in messages.");
+    return; // Do not send the message if it contains a link
+  }
+
+  if (comRegex.test(inputMessage)) {
+    console.log("Link error");
+    handleOpenErrorModal("Links are not allowed in messages.");
+    return; // Do not send the message if it contains a link
+  }
+
+  if (phoneRegex.test(inputMessage)) {
+    console.log("Phone number error");
+    handleOpenErrorModal("Phone numbers are not allowed in messages.");
+    return; // Do not send the message if it contains a phone number
+  }
+
+
+  if (invalidWordsRegex.test(inputMessage)) {
+    console.log("Invalid words error");
+    handleOpenErrorModal("Words are not allowed in messages.");
+    return; // Do not send the message if it contains invalid words
+  }
+
+  // Check for more than 3 consecutive numbers
+  if (hasConsecutiveNumbers(inputMessage)) {
+    if (consecutiveNumbersCount >= 3) {
+      console.log("Consecutive numbers error");
+      handleOpenErrorModal("You've exceeded the limit of consecutive numbers.");
+      return; // Do not send the message if it contains more than 3 consecutive numbers
+    } else {
+      setConsecutiveNumbersCount(consecutiveNumbersCount + 1);
+      handleOpenErrorModal("You've exceeded the limit of consecutive numbers.");
+
+      console.log("Consecutive numbers detected:", inputMessage);
+    }
+  } else {
+    // Reset the consecutive numbers count if the message doesn't contain consecutive numbers
+    setConsecutiveNumbersCount(0);
+  }
+
+  if (hasNumber.test(inputMessage)) {
+    console.log("Number detected in the text");
+    // You can perform further actions here if a number is detected in the inputMessage.
+  } else {
+    console.log("No number detected in the text");
+    // You can handle the case where no number is detected in the inputMessage.
+  }
+
+
+  const containsEmail = (text) => {
+    const words = text.split(" ");
+    for (const word of words) {
+      if (emailValidator.validate(word)) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  if (containsEmail(inputMessage)) {
+    console.log("Email address error");
+    handleOpenErrorModal("Email addresses are not allowed in messages.");
+    return; // Do not send the message if it contains an email address
+  }
+  // Create a new message object for the user's input
+  const newMessage = {
+    text: inputMessage,
+    user: "User 1",
+    date: "2023-09-11",
+    time: new Date().toLocaleTimeString(),
+    isUser1: true,
+    image: johnDoe,
+  };
+
+  // Update the messages state by appending the new message
+  setMessages([...messages, newMessage]);
+
+  // Clear the input field
+  setInputMessage("");
+
+  scrollToBottom();
+};
+
+  
 
   return (
     <div>
       {isModalOpen && (
         <div className="modal fixed flex justify-center items-center inset-0 z-50">
+        
           <div
             className="fixed bg-black inset-0 opacity-50 z-10"
             onClick={handleCloseModal}
@@ -145,7 +296,7 @@ export default function ChatContainer() {
                         alt=""
                       />
                     </div>
-                  
+
                     <div className="property-info-details flex justify-between w-3/4">
                       <div>Check in</div>
                       <div>Dec 27, 2022</div>
@@ -155,14 +306,23 @@ export default function ChatContainer() {
                 <div className="property-listed--2 m-5 w-2/5">
                   <header className="text-2xl">Trip Details</header>
                   <div>
-                    <p className="">Well crafted to perfection with impeccable art</p>
-
-                    </div>
-                  <div className="property-location text-gray-400 text-sm border-b-[1px] py-4">Lekki, Lagos, NG</div>
+                    <p className="">
+                      Well crafted to perfection with impeccable art
+                    </p>
+                  </div>
+                  <div className="property-location text-gray-400 text-sm border-b-[1px] py-4">
+                    Lekki, Lagos, NG
+                  </div>
 
                   <div className="property-info-details flex items-center justify-between py-4 text-gray-500 border-b-[1px]">
                     <div>{host.hostName}</div>
-                    <div><img src="https://a0.muscache.com/im/pictures/user/24f4c560-4586-4eaf-bfef-06164ab677b4.jpg?aki_policy=profile_x_medium" className="w-10 object-cover rounded-full" alt="" /></div>
+                    <div>
+                      <img
+                        src="https://a0.muscache.com/im/pictures/user/24f4c560-4586-4eaf-bfef-06164ab677b4.jpg?aki_policy=profile_x_medium"
+                        className="w-10 object-cover rounded-full"
+                        alt=""
+                      />
+                    </div>
                   </div>
                   <div className="property-info-details flex justify-between py-4 text-gray-500 border-b-[1px]">
                     <div>Check-in</div>
@@ -219,7 +379,17 @@ export default function ChatContainer() {
           </div>
         </header>
         <div className="chats">
-          <div className="chat--conversations h-[80vh] overflow-auto border-b-[1px]">
+        {isErrorModalOpen && (
+            <ChatErrorModal
+              isOpen={isErrorModalOpen}
+              errorMessage={errorMessage}
+              onClose={handleCloseErrorModal}
+            />
+          )}
+          <div
+            className="chat--conversations h-[80vh] overflow-auto border-b-[1px]"
+            ref={chatContainerRef}
+          >
             <div className="rounded-lg p-4 m-10">
               {messages.map((message, index) => (
                 <div
@@ -257,15 +427,15 @@ export default function ChatContainer() {
               <input
                 type="text"
                 placeholder="Type a message"
-                className="bg-gray-200 "
+                className="bg-gray-200 rounded-full place-content-center pl-4"
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
               />
               <button
                 type="submit"
-                className="bg-orange-500 text-white px-4 py-2  ml-2"
+                className="bg-orange-500 text-white px-4 py-4  ml-2 rounded-full"
               >
-                Send
+                <img src={sendButton} className="w-4  rotate-45" alt="" />
               </button>
             </form>
           </div>
