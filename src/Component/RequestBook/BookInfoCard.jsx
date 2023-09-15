@@ -6,7 +6,7 @@ const BookInfoCard =()=>{
 
     return(
         <div className=" mt-16 px-4 relative box-border block  ">
-            <div className="rounded-lg shadow-md  pt-4  ">
+            <div className="rounded-lg border shadow-md  pt-4  ">
             <div className="sticky z-[100] ">
                 <div className=" rounded-lg ">
                     <div className=" relative box-border block ">
@@ -31,7 +31,7 @@ const BookInfoCard =()=>{
                         <div className=" p-[30px] relative">
                             <div className="booking-details block box-border ">
                                 <div className=" block relative">
-                                    <h3 className=" whitespace-nowrap overflow-hidden text-ellipsis text-lg ">South Range Vacation Home: 6 Mi to Lake Superior!</h3>
+                                    <h3 className=" whitespace-nowrap overflow-hidden text-ellipsis text-lg font-medium ">South Range Vacation Home: 6 Mi to Lake Superior!</h3>
                                 </div>
 
                             </div>
@@ -74,14 +74,14 @@ const BookInfoCard =()=>{
                                                         </div>
                                                     </div>
 
-                                                    <div className={`px-4 pb-5 rounded   ${show ? " block  " : " hidden  "} `}>
+                                                    <div className={`px-4 pb-5  rounded bg-slate-200   ${show ? " block  " : " hidden  "} `}>
                                                             <div className=" flex items-end justify-between break-words mb-2    ">
                                                                 <div>Damage Waiver</div>
-                                                                <div className=" break-normal">$48</div>
+                                                                <div className=" break-normal text-slate-700">$48</div>
                                                             </div>
-                                                            <div className=" flex items-end justify-between break-words    ">
+                                                            <div className=" flex items-end justify-between break-words     ">
                                                             <div>Cleaning Fee</div>
-                                                                <div className=" break-normal">$148</div>
+                                                                <div className=" break-normal text-slate-700 ">$148</div>
                                                             </div>
                                                     </div>
                                                     

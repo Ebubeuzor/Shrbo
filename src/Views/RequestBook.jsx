@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import BookInfoCard from "../Component/RequestBook/BookinfoCard";
+import BookingInfo from "../Component/RequestBook/BookingInfo";
 
 const RequestBook=()=>{
 
@@ -13,7 +14,7 @@ const RequestBook=()=>{
                 <div className=" pb-8 box-border text-base ">
                     <section>
                         <div className=" pt-16  pb-4 flex flex-row items-center box-border">
-                            <div className=" pr-[18px] -ml-8 mt-[10px] ">
+                            <div className=" pr-[18px] -ml-8 mt-[10px] hidden md:block ">
                                 <Link>
                                     <svg xmlns="http://www.w3.org/2000/svg" 
                                       width="24px"
@@ -53,17 +54,20 @@ const RequestBook=()=>{
                             </div>
                         </div>
 
+                        <div className=" h-full ">
+                        <BookingInfo/>
+
+                        </div>
+
                     </div>
 
-                    <div className="">
-
-                    </div>
+                   
 
 
 
                 </div>
 
-                <div className=" md:ml-[8.33333%] md:w-[41.6667%] relative mr-0 ">
+                <div className="  w-full md:ml-[8.33333%] md:w-[41.6667%] relative mr-0 h-full ">
                     <BookInfoCard/>
                     
                 </div>
