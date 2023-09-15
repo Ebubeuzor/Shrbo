@@ -217,12 +217,12 @@ export default function SearchLocation() {
             />
             <img src={GuestIcon} className="w-5" alt="" />
           </div>
-          <div className="submit md:w-[200px] w-full md:rounded-full border border-gray-300 shadow-sm p-3 px-6 bg-white  md:h-[80px] items-center  text-center   rounded-full flex justify-between">
-            <button type="submit">Search</button>
+          <div className="submit md:w-[200px] w-full md:rounded-full border border-orange-400 shadow-sm p-3 px-6 bg-orange-500  md:h-[80px] items-center  text-center text-white   rounded-full flex justify-between">
             <div>
-            <img src={SearchIcon} className="w-5" alt="" />
+            <img src={SearchIcon} className="w-5"  alt="" />
 
             </div>
+            <button type="submit">Search</button>
           </div>
         </div>
       </div>
