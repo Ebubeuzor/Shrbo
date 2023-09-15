@@ -1,30 +1,25 @@
 import React, { useState } from 'react';
+import { Modal, Button, Dropdown, Space  } from "antd";
 
-const Popup = ({ isOpen, onClose, children }) => {
-  const [isPopupOpen, setIsPopupOpen] = useState(isOpen);
+const Popup = ({ isModalVisible, handleCancel, children ,title}) => {
+  
+  return(
+    <div>
+        
+        <Modal
+            title={title}
+            open={isModalVisible}
+            onCancel={handleCancel}
+            footer={null}
+        > 
+          {children}
+        </Modal>
 
-  const handleClose = () => {
-    setIsPopupOpen(false);
-    onClose();
-  };
-
-  return (
-    <>
-      {isPopupOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="bg-white w-96 p-6 rounded-lg shadow-lg">
-            <button
-              className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
-              onClick={handleClose}
-            >
-              &times;
-            </button>
-            {children}
-          </div>
-        </div>
-      )}
-    </>
-  );
+    </div>
+);
 };
 
 export default Popup;
+
+
+

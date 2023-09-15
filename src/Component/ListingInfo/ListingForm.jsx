@@ -4,6 +4,7 @@ import DateIcon from "../../assets/svg/date-icon.svg"
 import 'react-datepicker/dist/react-datepicker.css';
 import { Modal, Button, Dropdown, Space  } from "antd";
 import { Link } from "react-router-dom";
+import Popup from '../../hoc/Popup';
 
 
 
@@ -29,7 +30,7 @@ export default function ListingForm(){
       const [checkInDate, setCheckInDate] = useState(null);
       const [checkOutDate, setCheckOutDate] = useState(null);
       const [isModalVisible, setIsModalVisible] = useState(false);
-      const [adults, setAdults] = useState(0);
+      const [adults, setAdults] = useState(1);
       const [children, setChildren] = useState(0);
       const [pets, setPets] = useState(0);
       const [infants, setInfants] = useState(0);
@@ -39,7 +40,7 @@ export default function ListingForm(){
    <div className=' hidden md:block w-full h-full'>
         <div className="block mt-12 mb-12 sticky z-[100]  top-[80px] box-border  
          w-full max-w-sm rounded-lg bg-white p-6 
-         shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
+        shadow-xl ">
             <div className=' p-3 rounded relative box-border'>
                 <div className=' justify-between items-center flex text-sm'>
                     <div className=' gap-2 items-end flex box-border' >
@@ -123,37 +124,28 @@ export default function ListingForm(){
                             </div>   
      
 
-                    {/* <!--Subscribe newsletter checkbox--> */}
-                    <div className="mb-6 flex min-h-[1.5rem] items-center justify-center pl-[1.5rem]">
-                    <input
-                        className="relative float-left -ml-[1.5rem] mr-[6px] h-[1.125rem] w-[1.125rem] appearance-none rounded-[0.25rem]
-                         border-[0.125rem] border-solid border-neutral-300 outline-none before:pointer-events-none before:absolute 
-                         before:h-[0.875rem] before:w-[0.875rem] before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 
-                         before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] checked:border-primary checked:bg-primary 
-                         checked:before:opacity-[0.16] checked:after:absolute checked:after:-mt-px checked:after:ml-[0.25rem] 
-                         checked:after:block checked:after:h-[0.8125rem] checked:after:w-[0.375rem] checked:after:rotate-45 
-                         checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid 
-                         checked:after:border-white checked:after:bg-transparent checked:after:content-[''] 
-                         hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] 
-                         focus:shadow-none focus:transition-[border-color_0.2s] focus:before:scale-100 focus:before:opacity-[0.12] 
-                         focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] 
-                         focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[0.875rem] focus:after:w-[0.875rem] 
-                         focus:after:rounded-[0.125rem] focus:after:content-[''] checked:focus:before:scale-100 
-                         checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s]
-                          checked:focus:after:-mt-px checked:focus:after:ml-[0.25rem] checked:focus:after:h-[0.8125rem] checked:focus:after:w-[0.375rem] 
-                          checked:focus:after:rotate-45 checked:focus:after:rounded-none checked:focus:after:border-[0.125rem] checked:focus:after:border-l-0 
-                          checked:focus:after:border-t-0 checked:focus:after:border-solid checked:focus:after:border-white checked:focus:after:bg-transparent 
-                          dark:border-neutral-600 dark:checked:border-primary dark:checked:bg-primary"
-                        type="checkbox"
-                        value=""
-                        id="exampleCheck25"
-                    />
-                    <label
-                        className="inline-block pl-[0.15rem] hover:cursor-pointer"
-                        htmlFor="exampleCheck25"
-                    >
-                        Subscribe to our newsletter
-                    </label>
+                    {/* <!--total before and after tax--> */}
+                    <div className=" min-h-[1.5rem] w-full   p-3">
+                   
+                      <div className=" border-t py-4 flex flex-col gap-1">
+                                    <div className=" font-medium text-base box-border flex items-end justify-between break-words    ">
+                                        <span > Total before tax  </span>
+                                        <div className=" whitespace-nowrap break-normal ">$566.54</div>
+                                    </div>
+
+                                    <div className=" font-normal text-sm box-border flex items-end justify-between break-words    ">
+                                        <span > see full price</span>
+                                        <button type='button' className=" whitespace-nowrap break-normal underline text-blue-500 cursor-pointer " onClick={showModal} >price details</button>
+                                                  
+                                    
+                                     
+                                    </div>
+                             {/*                                       
+                                // handles the modal  when price details is clicked  */}
+                                    <Popup isModalVisible={isModalVisible} handleCancel={handleCancel} title={"Price details"} >   
+                                            <label>hello</label>
+                                    </Popup>
+                       </div>
 
                     
 
@@ -166,7 +158,7 @@ export default function ListingForm(){
                     <div className='p-2'>
                         <button
                             type="button"
-                            className="block w-full rounded bg-orange-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal 
+                            className="block w-full h-11 rounded bg-orange-500 px-6 pb-2 pt-2.5 text-sm font-medium uppercase leading-normal 
                             text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]
                             focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
                             focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
@@ -174,7 +166,7 @@ export default function ListingForm(){
                             dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2)
                             ,0_4px_18px_0_rgba(59,113,202,0.1)]]"
                         >
-                            Sign up
+                            Book
                         </button>
 
                     </div>
@@ -193,29 +185,7 @@ export default function ListingForm(){
 
 
 
-function ListingFormModal({isModalVisible, handleCancel}){
-   
-
-    return(
-        <div>
-            
-            <Modal
-                title="Traveler"
-                open={isModalVisible}
-                onCancel={handleCancel}
-                footer={null}
-            >
-                     <p>This is the content of the modal.</p>
-            </Modal>
-
-        </div>
-    );
-
-}
-
-
-
-
+// handles the drop down when Traveler is clicked 
 
 function MyDropdown({
     adults,
@@ -227,6 +197,7 @@ function MyDropdown({
     const [childCount, setChildCount] = useState(children);
     const [petCount, setPetCount] = useState(pets);
     const [infantCount, setInfantCount] = useState(infants);
+    const [visible,setVisible]=useState(false);
 
     const handleDecrease = (setter, value) => {
         if (value > 0) {
@@ -237,12 +208,19 @@ function MyDropdown({
       const handleIncrease = (setter, value) => {
         setter(parseInt(value, 10) + 1);
       };
+
+
+    const handleSubmit=()=>{
+        // e.preventDefault();
+        setVisible(!visible);
+
+    }  
   
 
     const items = [
         
         
-         <div key={1} className="flex flex-col space-y-4">
+         <div key={1} className="flex w-[295px] flex-col space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex-col">
             <span className="text-lg">Adults:</span> <br />
@@ -344,18 +322,20 @@ function MyDropdown({
 
     return (
       <Dropdown trigger={['click']}
+      autoAdjustOverflow={false}
+      onOpenChange={handleSubmit}
+      open={visible}
+   
      
       dropdownRender={(menu) => (
         <div className=' bg-white' >
           
           <Space
-            style={{
-              padding: 8,
-              flexDirection:'column'
-            }}
+            
+            className='p-6  flex-col w-full shadow-md'
           >
              {items}
-            <Button loading='true' className='bg-orange-700' type="primary">Click me!</Button>
+            <Button  className='bg-orange-700' type="primary" onClick={handleSubmit}>Click me!</Button>
           </Space>
         </div>
       )}
@@ -363,7 +343,7 @@ function MyDropdown({
       >
         <Space>
 
-           <button type='button' className=' block m-4 cursor-pointer overflow-hidden text-ellipsis text-start whitespace-nowrap text-base font-normal      '>1 traveler</button>  
+           <button type='button' className=' block m-4 cursor-pointer overflow-hidden text-ellipsis text-start whitespace-nowrap text-base font-normal      '>1 traveler 2 pets </button>  
         </Space>
                             
       </Dropdown>
