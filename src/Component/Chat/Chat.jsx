@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ChatCard from "./ChatCard";
 import ChatContainer from "./ChatContainer";
+import sendButton from "../../assets/svg/angle-circle-left-icon.svg";
+
 
 export default function Chat() {
   const [showGreen, setShowGreen] = useState(true);
@@ -16,12 +18,10 @@ export default function Chat() {
     <div className="grid grid-cols-3 ">
       {/* Only show green part on mobile */}
       {showGreen && (
-        <div
-          className=" col-span-5 md:col-span-1 h-[100vh] border-r-[1px]"
-          onClick={toggleGreen}
-        >
-            
-          <ChatCard/>
+        <div className=" col-span-5 md:col-span-1 h-[100vh] border-r-[1px]">
+          <div onClick={toggleGreen}>
+            <ChatCard />
+          </div>
         </div>
       )}
 
@@ -32,16 +32,13 @@ export default function Chat() {
         }`}
       >
         {window.innerWidth <= 768 && (
-          <div>
-            <span onClick={toggleGreen}>back</span>
+          <div className="ml-4 mt-4">
+            <span onClick={toggleGreen}><img src={sendButton} className="w-4" alt="" /></span>
           </div>
-
         )}
 
-        <ChatContainer/>
+        <ChatContainer />
       </div>
-
-   
     </div>
   );
 }
