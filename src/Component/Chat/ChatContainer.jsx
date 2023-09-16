@@ -61,10 +61,14 @@ export default function ChatContainer() {
     },
   ]);
 
+  const [selectedUser, setSelectedUser] = useState(null);
+
+
   const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const chatContainerRef = useRef(null);
   const [consecutiveNumbersCount, setConsecutiveNumbersCount] = useState(0); // Define consecutiveNumbersCount
+
 
   
   const handleOpenErrorModal = (message) => {

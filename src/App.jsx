@@ -11,6 +11,7 @@ import AccountNotifications from "./Component/Settings/ProfileCardSettings/Accou
 import "./App.css";
 import RequestBook from "./Views/RequestBook";
 import AddGovvernmentId from "./Component/Settings/ProfileCardSettings/AddGovernmentId"
+import Trip from "./Component/TripHistory/Trip"
 function App() {
   return (
     <Router>
@@ -25,6 +26,7 @@ function App() {
         <Route path="/AddGovvernmentId" element={<AddGovvernmentId />} />
         <Route path="/AccountNotifications" element={<AccountNotifications />} />
         <Route path="/Chat" element={<Chat />} />
+        <Route path="/Trip" element={<Trip />} />
 
 
 
