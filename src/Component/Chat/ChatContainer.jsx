@@ -61,10 +61,14 @@ export default function ChatContainer() {
     },
   ]);
 
+  const [selectedUser, setSelectedUser] = useState(null);
+
+
   const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const chatContainerRef = useRef(null);
   const [consecutiveNumbersCount, setConsecutiveNumbersCount] = useState(0); // Define consecutiveNumbersCount
+
 
   
   const handleOpenErrorModal = (message) => {
@@ -132,7 +136,7 @@ const handleSubmit = (e) => {
 
   // Define regular expressions for link and phone number detection
   const linkRegex = /(http[s]?:\/\/[^\s]+)/;
-  const comRegex = /(\.com|com)/i;
+  // const comRegex = /(\.com|com)/i;
   const invalidWordsRegex = /\b(one|two|o-ne|t-wo)\b/i;
   const phoneRegex = /\b\d{4,}\b/;
   const containsNumber = /^(\d,\s)*\d$/;
@@ -179,11 +183,11 @@ const handleSubmit = (e) => {
     return; // Do not send the message if it contains a link
   }
 
-  if (comRegex.test(inputMessage)) {
-    console.log("Link error");
-    handleOpenErrorModal("Links are not allowed in messages.");
-    return; // Do not send the message if it contains a link
-  }
+  // if (comRegex.test(inputMessage)) {
+  //   console.log("Link error");
+  //   handleOpenErrorModal("Links are not allowed in messages.");
+  //   return; // Do not send the message if it contains a link
+  // }
 
   if (phoneRegex.test(inputMessage)) {
     console.log("Phone number error");
@@ -283,7 +287,7 @@ const handleSubmit = (e) => {
 
             <div className="property-listing overflow-auto h-[70vh]">
               <div className="property-listing-container flex flex-wrap   ">
-                <div className="property-listed--1 w-1/2 m-5">
+                <div className="property-listed--1  h-1/2  m-5 w-full">
                   <div className="property-listed--image__container relative">
                     <div className="image__status absolute bg-white border-2 p-2">
                       Available
@@ -292,18 +296,18 @@ const handleSubmit = (e) => {
                     <div className="image">
                       <img
                         src="https://a0.muscache.com/im/pictures/miso/Hosting-761451869585880202/original/87ced3f9-56d9-412a-a0f6-e0697f9b67e5.jpeg?aki_policy=large"
-                        className="w-3/4"
+                        className="w-full md:h-1/2"
                         alt=""
                       />
                     </div>
 
-                    <div className="property-info-details flex justify-between w-3/4">
+                    <div className="property-info-details flex justify-between w-full md:w-3/4">
                       <div>Check in</div>
                       <div>Dec 27, 2022</div>
                     </div>
                   </div>
                 </div>
-                <div className="property-listed--2 m-5 w-2/5">
+                <div className="property-listed--2 m-5 w-full md:w-full">
                   <header className="text-2xl">Trip Details</header>
                   <div>
                     <p className="">
@@ -341,7 +345,7 @@ const handleSubmit = (e) => {
               <div className="property-listed--3 m-5">
                 <header className="text-2xl">Payment details</header>
 
-                <div className="payment-details-info w-1/2">
+                <div className="payment-details-info w-full md:w-full">
                   <div className="property-info-details flex justify-between py-4 text-gray-500 border-b-[1px]">
                     <div>Rate per night</div>
                     <div>{paymentDetails.nightlyRate}</div>
@@ -375,7 +379,7 @@ const handleSubmit = (e) => {
             <span className="text-sm text-gray-400">Response time: 1 hour</span>
           </div>
           <div>
-            <button onClick={handleOpenModal}>see details</button>
+            <button onClick={handleOpenModal}>see housing details</button>
           </div>
         </header>
         <div className="chats">
