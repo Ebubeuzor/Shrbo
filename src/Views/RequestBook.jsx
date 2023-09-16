@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import BookInfoCard from "../Component/RequestBook/BookinfoCard";
+import BookInfoCard from "../Component/RequestBook/BookInfoCard";
 import BookingInfo from "../Component/RequestBook/BookingInfo";
 
 const RequestBook = () => {
