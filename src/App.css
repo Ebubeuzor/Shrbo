@@ -27,7 +27,7 @@ input::placeholder {
   }
 
   .css-1xc3v61-indicatorContainer .css-tj5bde-Svg {
-    background-image: url('./assets/location-sign-svgrepo-com.svg') !important; /* Replace with your SVG file path */
+    /* background-image: url('./assets/location-sign-svgrepo-com.svg') !important;  */
     width: 20px; /* Adjust to match the SVG's width */
     height: 20px; /* Adjust to match the SVG's height */
     fill: red;
