@@ -11,7 +11,7 @@ const RequestBook = () => {
         <div className=" pb-8 box-border text-base ">
           <section>
             <div className=" pt-16  pb-4 flex flex-row items-center box-border">
-              <div className=" pr-[18px] -ml-8 mt-[10px] hidden md:block ">
+              <div className=" pr-[18px] -ml-8 mt-[10px] hidden md:block cursor-pointer ">
                 <Link>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

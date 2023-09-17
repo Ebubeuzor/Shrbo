@@ -13,6 +13,7 @@ import RequestBook from "./Views/RequestBook";
 import AddGovvernmentId from "./Component/Settings/ProfileCardSettings/AddGovernmentId"
 import Trip from "./Component/TripHistory/Trip"
 import WishList from "./Views/WishList"
+import WishlistsSet from "./Component/WishList/WishlistsSet" ;
 function App() {
   return (
     <Router>
@@ -29,6 +30,7 @@ function App() {
         <Route path="/Chat" element={<Chat />} />
         <Route path="/Trip" element={<Trip />} />
         <Route path="/WishList" element={<WishList />} />
+        <Route path="/WishlistsSet" element={<WishlistsSet />} />
 
 
 

@@ -1,5 +1,7 @@
 import React from "react";
 import room from "../../assets/room.jpeg";
+import {Link} from "react-router-dom";
+import WishlistsSet from "./WishlistsSet";
 
 const Wishlists=()=>{
 
@@ -12,6 +14,7 @@ const Wishlists=()=>{
   ];
 
   const wishlist=wishlist_groups.map(group=>(
+    <Link to={"/WishlistsSet"}>
         <div className=" rounded-[0.25em] overflow-hidden  relative bg-cover" key={group.id}>
           <div className=" overflow-hidden aspect-video relative rounded-[0.25em] block ">
             <div className=" absolute start-0 end-0  m-0 p-0 block  ">
@@ -26,6 +29,7 @@ const Wishlists=()=>{
           </div>
 
         </div>
+      </Link>
   ));
 
   
