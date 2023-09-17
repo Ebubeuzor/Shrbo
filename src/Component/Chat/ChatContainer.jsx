@@ -296,7 +296,7 @@ const handleSubmit = (e) => {
                     <div className="image">
                       <img
                         src="https://a0.muscache.com/im/pictures/miso/Hosting-761451869585880202/original/87ced3f9-56d9-412a-a0f6-e0697f9b67e5.jpeg?aki_policy=large"
-                        className="w-full md:h-1/2"
+                        className="w-full md:h-[50vh] object-cover "
                         alt=""
                       />
                     </div>
