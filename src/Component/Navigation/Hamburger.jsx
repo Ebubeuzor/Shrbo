@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import HamburgerMenu from 'hamburger-react';
+import React, { useState } from "react";
+import HamburgerMenu from "hamburger-react";
+import { Link } from "react-router-dom";
 
 export default function Hamburger() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,19 +19,27 @@ export default function Hamburger() {
         <HamburgerMenu
           toggled={isOpen}
           toggle={toggleMenu}
-          size={30} 
-          color='white'
+          size={30}
+          color="white"
         />
       </div>
 
       {/* Menu */}
       {isOpen && (
         <div className="menu absolute top-12 right-0 bg-white p-4 space-y-2 z-40">
-        
           <ul>
-            <li>Menu Item 1</li>
-            <li>Menu Item 2</li>
-            <li>Menu Item 3</li>
+            <li>
+              <Link to="/Chat">Chat</Link>
+            </li>
+            <li>
+              <Link to="/WishList">WishList</Link>
+            </li>
+            <li>
+              <Link to="/Trip">Trip</Link>
+            </li>
+            <li>
+              <Link to="/Settings">Settings</Link>
+            </li>
           </ul>
         </div>
       )}
