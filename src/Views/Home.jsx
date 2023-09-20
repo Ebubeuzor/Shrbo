@@ -5,10 +5,11 @@ import Listings from "../Component/ListingInfo/Listings";
 import Header from "../Component/Navigation/Header";
 import Hamburger from "../Component/Navigation/Hamburger";
 
+
 export default function Home() {
   return (
     <div>
-      {/* <Header/> */}
+      <Header/>
       <Hamburger/>
       <div className="pageHeader"></div>
       <div className="storeFrontHomeage">
