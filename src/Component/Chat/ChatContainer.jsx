@@ -265,7 +265,7 @@ const handleSubmit = (e) => {
   
 
   return (
-    <div>
+    <div className="h-[70vh]">
       {isModalOpen && (
         <div className="modal fixed flex justify-center items-center inset-0 z-50">
         
@@ -423,7 +423,7 @@ const handleSubmit = (e) => {
               ))}
             </div>
           </div>
-          <div className="send-texts mt-2 absolute left-0 right-0 bottom-0">
+          <div className="send-texts mt-2 ">
             <form
               onSubmit={handleSubmit}
               className=" w-full md:w-3/4  mx-auto flex justify-center p-2"
