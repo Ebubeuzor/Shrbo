@@ -394,7 +394,7 @@ const handleSubmit = (e) => {
             className="chat--conversations h-[80vh] overflow-auto border-b-[1px]"
             ref={chatContainerRef}
           >
-            <div className="rounded-lg p-4 m-10">
+            <div className="rounded-lg p-4 mb-10">
               {messages.map((message, index) => (
                 <div
                   key={index}
@@ -402,7 +402,7 @@ const handleSubmit = (e) => {
                     message.isUser1
                       ? "bg-gray-300 text-white"
                       : "bg-orange-400 text-white"
-                  } rounded-full p-2 m-10`}
+                  } rounded-full p-2 mb-4 md:m-10`}
                 >
                   <div className="flex space-x-4">
                     {message.image && (
