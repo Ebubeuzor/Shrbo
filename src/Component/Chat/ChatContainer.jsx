@@ -373,9 +373,9 @@ const handleSubmit = (e) => {
         </div>
       )}
       <div>
-        <header className="py-1 pl-4  items-center border-b-[1px]">
-          <div>
-            <span className=" text-2xl">User 1</span> <br />
+        <header className="py-1 px-4  items-center border-b-[1px] ">
+          <div className="flex justify-between items-center">
+            <span className=" text-xl">User 1</span> <br />
             <span className="text-sm text-gray-400">Response time: 1 hour</span>
           </div>
           <div>
@@ -391,7 +391,7 @@ const handleSubmit = (e) => {
             />
           )}
           <div
-            className="chat--conversations h-[80vh] overflow-auto border-b-[1px]"
+            className="chat--conversations h-[75vh] overflow-auto border-b-[1px]"
             ref={chatContainerRef}
           >
             <div className="rounded-lg p-4 mb-10">
@@ -426,7 +426,7 @@ const handleSubmit = (e) => {
           <div className="send-texts mt-2">
             <form
               onSubmit={handleSubmit}
-              className="w-3/4 mx-auto flex justify-center p-2"
+              className=" w-full md:w-3/4  mx-auto flex justify-center p-2"
             >
               <input
                 type="text"
