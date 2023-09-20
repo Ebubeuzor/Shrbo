@@ -265,7 +265,7 @@ const handleSubmit = (e) => {
   
 
   return (
-    <div className="">
+    <div className="h-[70vh]">
       {isModalOpen && (
         <div className="modal fixed flex justify-center items-center inset-0 z-50">
         
@@ -285,7 +285,7 @@ const handleSubmit = (e) => {
               </div>
             </header>
 
-            <div className="property-listing overflow-auto ">
+            <div className="property-listing overflow-auto h-[70vh]">
               <div className="property-listing-container flex flex-wrap   ">
                 <div className="property-listed--1  h-1/2  m-5 w-full">
                   <div className="property-listed--image__container relative">
@@ -391,7 +391,7 @@ const handleSubmit = (e) => {
             />
           )}
           <div
-            className="chat--conversations h-[600px] overflow-auto border-b-[1px]"
+            className="chat--conversations h-[75vh] overflow-auto border-b-[1px]"
             ref={chatContainerRef}
           >
             <div className="rounded-lg p-4 mb-10">
