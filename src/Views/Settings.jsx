@@ -11,16 +11,16 @@ export default function Settings() {
   return (
     <div>
       <div>
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl md:mx-auto mx-9">
           <div className="my-14">
             <h1 className="text-4xl">Account</h1>
             <div className="text-xl">
-              <span className="font-medium">User name,</span>
+              <span className="font-medium">Username,</span>
               <span>username@gmail.com</span>
               <Link className="underline">Go to profile</Link>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-4 mb-4">
             <Link to="/Profile">
               <Card
                 icon={ProfileIcon}
