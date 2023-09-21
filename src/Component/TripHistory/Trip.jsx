@@ -216,15 +216,16 @@ export default function Trip() {
             onClick={closeModal}
           ></div>
           <div className="bg-white p-8 rounded-lg z-10 overflow-auto h-[100vh] md:h-[90vh]  md:w-3/6">
-            <div className="text-right">
+         
+            <div className="p-4">
+            {/* <div className="text-right"> */}
               <button
                 className="text-gray-500 hover:text-gray-700"
                 onClick={closeModal}
               >
                 <img src={close} className="w-4" alt="" />
               </button>
-            </div>
-            <div className="p-4">
+            {/* </div> */}
               <div className="">
                 {/* <h3 className="text-xl font-semibold">Main Photo:</h3> */}
                 <img
