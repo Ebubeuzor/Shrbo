@@ -18,7 +18,7 @@ export default function Chat() {
     <div className="grid grid-cols-3 ">
       {/* Only show green part on mobile */}
       {showGreen && (
-        <div className=" col-span-5 md:col-span-1 h-[100vh] border-r-[1px]">
+        <div className=" col-span-5 md:col-span-1 overflow-auto h-[100vh] border-r-[1px]">
           <div onClick={toggleGreen}>
             <ChatCard />
           </div>

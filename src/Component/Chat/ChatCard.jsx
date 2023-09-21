@@ -42,6 +42,69 @@ const messages = [
 
 
   },
+  {
+    image: johnDOe,
+    username: "User 2",
+    text: "Hi there! theretheretheretheretheretheretherethere",
+    status: "Unavailable",
+    date: "Sept 22 - 27, 2023",
+    location: "Oyo"
+
+
+  },
+
+  {
+    image: johnDOe,
+    username: "User 2",
+    text: "Hi there! theretheretheretheretheretheretherethere",
+    status: "Unavailable",
+    date: "Sept 22 - 27, 2023",
+    location: "Oyo"
+
+
+  },
+  {
+    image: johnDOe,
+    username: "User 2",
+    text: "Hi there! theretheretheretheretheretheretherethere",
+    status: "Unavailable",
+    date: "Sept 22 - 27, 2023",
+    location: "Oyo"
+
+
+  },
+
+  {
+    image: johnDOe,
+    username: "User 2",
+    text: "Hi there! theretheretheretheretheretheretherethere",
+    status: "Unavailable",
+    date: "Sept 22 - 27, 2023",
+    location: "Oyo"
+
+
+  },
+  {
+    image: johnDOe,
+    username: "User 2",
+    text: "Hi there! theretheretheretheretheretheretherethere",
+    status: "Unavailable",
+    date: "Sept 22 - 27, 2023",
+    location: "Oyo"
+
+
+  },
+
+  {
+    image: johnDOe,
+    username: "User 2",
+    text: "Hi there! theretheretheretheretheretheretherethere",
+    status: "Unavailable",
+    date: "Sept 22 - 27, 2023",
+    location: "Oyo"
+
+
+  },
 ];
 
 export default function ChatCard() {
