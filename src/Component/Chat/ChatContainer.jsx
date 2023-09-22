@@ -423,7 +423,7 @@ const handleSubmit = (e) => {
               ))}
             </div>
           </div>
-          <div className="send-texts mt-2  fixed left-0 right-0 bottom-0">
+          <div className="send-texts mt-2  pt-8 bg-white fixed left-0 right-0 bottom-0">
             <form
               onSubmit={handleSubmit}
               className=" w-full md:w-3/4  mx-auto flex justify-center p-2"
