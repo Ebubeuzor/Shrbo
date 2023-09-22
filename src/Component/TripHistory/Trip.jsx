@@ -217,7 +217,7 @@ export default function Trip() {
           ></div>
           <div className="bg-white p-8 rounded-lg z-10 overflow-auto h-[100vh] md:h-[90vh]  md:w-3/6">
          
-            <div className="p-4">
+            <div className="p-4 mt-10 ">
             {/* <div className="text-right"> */}
               <button
                 className="text-gray-500 hover:text-gray-700"
@@ -253,7 +253,7 @@ export default function Trip() {
                       <img
                         src={photo}
                         alt={`Photo ${index + 1}`}
-                        className="w-32 h-32 object-cover rounded-lg"
+                        className="w-20 md:w-32 m-2 md:h-32 object-cover rounded-lg"
                       />
                     </div>
                   ))}
@@ -311,11 +311,11 @@ export default function Trip() {
                 </div>
               </div>
             </div>
-            <div>
+            <div className="mb-10">
               {selectedTrip.contactHost && (
                 <Link
                   to={selectedTrip.contactHost}
-                  className="bg-orange-400 p-4 rounded-full  text-white text-lg"
+                  className="bg-orange-400 p-4 rounded-full   text-white text-lg"
                 >
                   Contact Host
                 </Link>
