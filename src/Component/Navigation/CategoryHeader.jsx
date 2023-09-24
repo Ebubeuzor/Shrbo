@@ -71,7 +71,7 @@ export default function CategoryHeader() {
   const canScrollForward = currentIndex < categories.length - 1;
 
   return (
-    <div className="mt-40 w-full">
+    <div className="mt-16 md:mt-40 w-full">
       <div className="flex space-x-1 items-center">
         <button
           className={`border-1 p-1 md:w-8 md:h-8 rounded-full ${

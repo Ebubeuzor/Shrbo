@@ -165,7 +165,7 @@ export default function SearchLocation() {
   };
 
   return (
-    <form className="absolute -bottom-32  md:-bottom-10 md:w-3/4 mx-auto   left-0 right-0 w-[90%]   justify-center text-gray-400">
+    <form className="absolute -bottom-32  md:-bottom-10 md:w-3/4 mx-auto   left-0 right-0 w-[90%]   justify-center text-gray-400  hidden md:block">
       <div className="">
         <div className=" flex   justify-center flex-col md:flex-row bg-orange-400 md:rounded-full rounded-3xl  md:p-10 p-4 items-center text-center md:space-x-4  space-y-4 md:space-y-0">
           <div className="search md:w-[450px] flex items-center justify-between md:rounded-full w-full md:h-[80px] border border-gray-300 shadow-sm p-2 bg-white rounded-full">
