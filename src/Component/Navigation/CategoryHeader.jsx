@@ -71,10 +71,10 @@ export default function CategoryHeader() {
   const canScrollForward = currentIndex < categories.length - 1;
 
   return (
-    <div className="mt-16 md:mt-40 w-full">
-      <div className="flex space-x-1 items-center">
+    <div className="mt-16 md:mt-40 w-full ">
+      <div className="flex space-x-1 items-center " >
         <button
-          className={`border-1 p-1 md:w-8 md:h-8 rounded-full ${
+          className={`border-1 p-1 md:w-8 md:h-8 rounded-full hidden md:block ${
             canScrollBackward ? "" : "opacity-50 cursor-not-allowed"
           } shadow-2xl`}
           onClick={handlePreviousCategory}
@@ -97,7 +97,7 @@ export default function CategoryHeader() {
           </svg>
         </button>
 
-        <div className="overflow-x-auto flex space-x-10" ref={scrollerRef}>
+        <div className="overflow-x-auto example flex space-x-10" ref={scrollerRef}>
           {categories.map((category) => (
             <a key={category.id} href={category.link} className="text-center">
               <div
@@ -114,7 +114,7 @@ export default function CategoryHeader() {
                   checked={selectedCategory === category.id}
                   onChange={() => handleCategoryChange(category.id)}
                 />
-                <div className="  rounded-full h-4 w-4 md:h-10 md:w-10">
+                <div className="  rounded-full h-7 w-7 md:h-10 md:w-10">
                   <img
                     src={category.image}
                     alt=""
@@ -129,7 +129,7 @@ export default function CategoryHeader() {
           ))}
         </div>
         <button
-          className={`border-1 p-1 md:w-8 md:h-8 rounded-full ${
+          className={`border-1 p-1 md:w-8 md:h-8 rounded-full hidden md:block ${
             canScrollForward ? "" : "opacity-50 cursor-not-allowed"
           } shadow-md`}
           onClick={handleNextCategory}
