@@ -27,7 +27,7 @@ export default function Chat() {
 
       {/* Show yellow part on desktop */}
       <div
-        className={`col-span-3 md:col-span-2   ${
+        className={`col-span-3 md:col-span-2 mb-32   ${
           showGreen ? "hidden md:block" : ""
         }`}
       >
