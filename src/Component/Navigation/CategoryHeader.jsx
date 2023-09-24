@@ -152,7 +152,7 @@ export default function CategoryHeader() {
           </svg>
         </button>
       </div>
-      <div className="mt-4">
+      <div className="mt-4 hidden md:block">
         <FilterModal />
       </div>
     </div>

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import FilterModal from '../Filter/FilterModal';
 
 const Modal = ({ isOpen, onClose }) => {
   const [location, setLocation] = useState('');
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
   const [guests, setGuests] = useState(1);
+  
 
   const handleLocationChange = (e) => {
     setLocation(e.target.value);
@@ -75,6 +77,9 @@ const Modal = ({ isOpen, onClose }) => {
             onChange={handleGuestsChange}
             className="w-full px-4 py-2 border rounded-lg"
           />
+        </div>
+        <div>
+            <FilterModal/>
         </div>
         <button
           onClick={handleSubmit}

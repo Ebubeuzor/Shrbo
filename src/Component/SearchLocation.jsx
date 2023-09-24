@@ -9,6 +9,7 @@ import GuestIcon from "../assets/svg/couple-icon.svg";
 import LocationIcon from "../assets/svg/maps-pin-black-icon.svg";
 import SearchIcon from "../assets/svg/search-icon.svg"
 
+
 const options = [
   { value: "Lekki", label: "Lekki" },
   { value: "Victoria Island", label: "Victoria Island" },

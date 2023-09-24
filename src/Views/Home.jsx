@@ -6,6 +6,7 @@ import Header from "../Component/Navigation/Header";
 import Hamburger from "../Component/Navigation/Hamburger";
 import Modal from "../Component/SearchModal/Modal";
 import searchIcon from "../assets/svg/search-icon.svg";
+import FilterModal from "../Component/Filter/FilterModal";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -63,6 +64,7 @@ export default function Home() {
               </div>
             </div>
           </button>
+          
           <Modal isOpen={isModalOpen} onClose={closeModal} />
         </div>
       <div className="pageHeader"></div>
