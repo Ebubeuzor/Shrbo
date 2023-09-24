@@ -9,13 +9,15 @@ import ListingReviews from "../Component/ListingInfo/ListingReviews"
 import Testimonial from "../Component/ListingInfo/Testimonial";
 import ListingForm from "../Component/ListingInfo/ListingForm";
 import BottomNavigation from "../Component/Navigation/BottomNavigation";
-
+import Header from "../Component/Navigation/Header";
 
 const ListingInfoMain=()=>{
 
 
     return(
-        <div className=" px-6 md:px-10 xl:px-20 max-w-7xl  m-auto justify-center items-center flex flex-wrap flex-col gap-6 lg:gap-10 ">
+       <div>
+        <Header/>
+         <div className=" px-6 md:px-10 xl:px-20 max-w-7xl  m-auto justify-center items-center flex flex-wrap flex-col gap-6 lg:gap-10 ">
             <ListingPhotos/>
             
             <div className="w-full flex">
@@ -44,6 +46,7 @@ const ListingInfoMain=()=>{
             
 <BottomNavigation/>
         </div>
+       </div>
     );
 
 

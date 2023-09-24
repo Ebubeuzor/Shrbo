@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 
 import BookInfoCard from "../Component/RequestBook/BookInfoCard";
 import BookingInfo from "../Component/RequestBook/BookingInfo";
+import Header from "../Component/Navigation/Header";
+import BottomNavigation from "../Component/Navigation/BottomNavigation";
 
 const RequestBook = () => {
   return (
-    <div className=" h-full px-6 md:px-10 xl:px-20 max-w-7xl  m-auto justify-center items-center flex flex-wrap flex-col gap-6 lg:gap-10 ">
+  <div>
+    <Header/>
+      <div className=" h-full px-6 md:px-10 xl:px-20 max-w-7xl  m-auto justify-center items-center flex flex-wrap flex-col gap-6 lg:gap-10  pb-32">
       <div className=" mx-auto w-full box-border block text-base  ">
         <div className=" pb-8 box-border text-base ">
           <section>
@@ -56,6 +60,8 @@ const RequestBook = () => {
         </div>
       </div>
     </div>
+    <BottomNavigation/>
+  </div>
   );
 };
 
