@@ -5,6 +5,7 @@ import EditLegalNameForm from "./EditLegalFormName";
 import EditEmailAddress from "./EditEmailAddress";
 import EditPhoneNumber from "./EditPhoneNumber";
 import AddressForm from "./AddressForm";
+import BottomNavigation from "../Navigation/BottomNavigation";
 
 export default function Profile() {
   const [isEditingLegalName, setIsEditingLegalName] = useState(false);
@@ -164,6 +165,7 @@ export default function Profile() {
           </div>
         </div>
       </div>
+      <BottomNavigation/>
     </div>
   );
 }

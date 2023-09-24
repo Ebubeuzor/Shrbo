@@ -110,7 +110,7 @@ const Listings = () => {
   };
 
   return (
-    <div className="flex flex-wrap justify-center mt-10">
+    <div className="flex flex-wrap justify-center mt-10 mb-32">
       {listings.map((listing) => (
         <div
           key={listing.id}

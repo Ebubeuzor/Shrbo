@@ -8,6 +8,8 @@ import ListingMap from "../Component/ListingInfo/ListingMap";
 import ListingReviews from "../Component/ListingInfo/ListingReviews"
 import Testimonial from "../Component/ListingInfo/Testimonial";
 import ListingForm from "../Component/ListingInfo/ListingForm";
+import BottomNavigation from "../Component/Navigation/BottomNavigation";
+
 
 const ListingInfoMain=()=>{
 
@@ -40,7 +42,7 @@ const ListingInfoMain=()=>{
             <ListingMap/>
        
             
-
+<BottomNavigation/>
         </div>
     );
 

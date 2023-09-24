@@ -8,6 +8,7 @@ import bathroom from "../../assets/svg/bathtub-icon.svg";
 import calender from "../../assets/svg/calendar-icon.svg";
 import { Link } from "react-router-dom";
 import PaginationExample from "../PaginationExample";
+import BottomNavigation from "../Navigation/BottomNavigation";
 
 export default function Trip() {
   const [selectedTrip, setSelectedTrip] = useState(null);
@@ -326,12 +327,13 @@ export default function Trip() {
           </div>
         </div>
       )}
-      <div className="my-10">
+      <div className="my-10 mb-32">
         {tripHistory.length > 0 && (
 
         <PaginationExample />
         )}
       </div>
+      <BottomNavigation/>
     </div>
   );
 }

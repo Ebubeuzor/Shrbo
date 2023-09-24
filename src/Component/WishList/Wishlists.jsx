@@ -2,6 +2,7 @@ import React from "react";
 import room from "../../assets/room.jpeg";
 import {Link} from "react-router-dom";
 import WishlistsSet from "./WishlistsSet";
+import BottomNavigation from "../Navigation/BottomNavigation";
 
 const Wishlists=()=>{
 
@@ -38,7 +39,7 @@ const Wishlists=()=>{
 
     return (
         <div className=" min-h-[100dvh] relative block box-border">
-          <div className=" main block box-border">
+          <div className=" main block box-border mb-32">
             <div className=" mr-auto">
               <div className=" mb-6 mt-8 ">
                 <section>
@@ -60,6 +61,7 @@ const Wishlists=()=>{
               
             </div>
           </div>
+          <BottomNavigation/>
       </div>
     );
 

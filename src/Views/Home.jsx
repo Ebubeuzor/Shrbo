@@ -6,8 +6,7 @@ import Header from "../Component/Navigation/Header";
 import Hamburger from "../Component/Navigation/Hamburger";
 import Modal from "../Component/SearchModal/Modal";
 import searchIcon from "../assets/svg/search-icon.svg";
-import FilterModal from "../Component/Filter/FilterModal";
-
+import BottomNavigation from "../Component/Navigation/BottomNavigation";
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSearchButtonFixed, setIsSearchButtonFixed] = useState(false);
@@ -41,10 +40,11 @@ export default function Home() {
 
   return (
     <div>
-      {/* <Header />
-      <Hamburger /> */}
+      <Header />
+      {/* <Hamburger /> */}
+      <BottomNavigation/>
       <div
-        className={` md:hidden flex justify-center fixed z-10 left-0 right-0 transition-all ${
+        className={` md:w-2/5 mx-auto flex justify-center fixed z-10 left-0 right-0 transition-all ${
           isSearchButtonFixed ? "top-0" : "mt-6"
         }`}
       >          <button
@@ -78,7 +78,7 @@ export default function Home() {
               Find great places, hotels, restaurants, shops.
             </p>
             <section className="flex  justify-center bottom-0 ">
-              <SearchLocation />
+              {/* <SearchLocation /> */}
             </section>
           </div>
         </div>
