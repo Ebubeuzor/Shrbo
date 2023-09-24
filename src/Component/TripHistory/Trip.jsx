@@ -138,7 +138,7 @@ export default function Trip() {
   ];
 
   return (
-    <div className="bg-gray-200 h-[100vh] pb-32 overflow-auto">
+    <div className="bg-gray-200 h-[100vh]  overflow-auto">
       <div className="mx-auto md:w-[90%]">
         <header className="text-4xl pl-6 py-6 font-bold">Trips History</header>
 
@@ -216,7 +216,7 @@ export default function Trip() {
             className="absolute inset-0 bg-black opacity-50"
             onClick={closeModal}
           ></div>
-          <div className="bg-white p-8 rounded-lg pb-32 overflow-auto h-[100vh] md:h-[90vh]  md:w-3/6">
+          <div className="bg-white pb-32 p-8 rounded-lg z-10 overflow-auto h-[100vh] md:h-[90vh]  md:w-3/6">
          
             <div className="p-4 mt-10 ">
             {/* <div className="text-right"> */}
