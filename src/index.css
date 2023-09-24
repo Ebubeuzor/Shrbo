@@ -73,3 +73,7 @@
   -ms-overflow-style: none;  
   scrollbar-width: none;  
 }
+
+.slider-wrapper {
+  border-radius: 20px;
+}

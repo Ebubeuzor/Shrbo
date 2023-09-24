@@ -72,7 +72,7 @@ export default function CategoryHeader() {
 
   return (
     <div className="mt-16 md:mt-40 w-full ">
-      <div className="flex space-x-1 items-center " >
+      <div className="flex space-x-1 items-center p-4" style={{ boxShadow: "0px 12px 7px -15px" }} >
         <button
           className={`border-1 p-1 md:w-8 md:h-8 rounded-full hidden md:block ${
             canScrollBackward ? "" : "opacity-50 cursor-not-allowed"

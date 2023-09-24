@@ -91,7 +91,7 @@ export default function Home() {
           </p> */}
         </div>
       
-        <section className=" mx-auto justify-center w-[80%]">
+        <section className=" mx-auto justify-center w-[95%] md:w-[80%]">
           <div className="justify-center flex">
             <CategoryHeader />
           </div>
