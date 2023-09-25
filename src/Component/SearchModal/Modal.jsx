@@ -318,7 +318,7 @@ const SearchModal = ({ isOpen, onClose }) => {
             <FilterModal />
           </div>
         </div>
-        <div className="absolute bottom-4 md:bottom-7 left-0 right-0 w-2/3 mx-auto space-y-4">
+        <div className="absolute bottom-20 md:bottom-7 flex items-center left-0 right-0 w-2/3 mx-auto space-x-2">
           <button
             onClick={handleSubmit}
             className="w-full bg-orange-400 text-white font-semibold py-2 rounded-lg hover:bg-orange-500 transition duration-300"
@@ -327,7 +327,7 @@ const SearchModal = ({ isOpen, onClose }) => {
           </button>
           <button
             onClick={onClose}
-            className="w-full mt-2 text-gray-700 font-semibold py-2 border rounded-lg hover:bg-gray-100 transition duration-300"
+            className="w-full  text-gray-700 font-semibold py-2 border rounded-lg hover:bg-gray-100 transition duration-300"
           >
             Cancel
           </button>
