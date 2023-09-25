@@ -139,7 +139,7 @@ export default function Trip() {
   ];
 
   return (
-    <div className="bg-gray-200 h-[100vh]  overflow-auto">
+    <div className=" h-[100vh]  overflow-auto">
       <Header/>
       <div className="mx-auto md:w-[90%]">
         <header className="text-4xl pl-6 py-6 font-bold">Trips History</header>

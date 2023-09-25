@@ -318,7 +318,7 @@ const SearchModal = ({ isOpen, onClose }) => {
             <FilterModal />
           </div>
         </div>
-        <div className="absolute bottom-20 md:bottom-7 flex items-center left-0 right-0 w-2/3 mx-auto space-x-2">
+        <div className="absolute bottom-20 md:bottom-7 flex items-center left-0 right-0 w-[90%] mx-auto space-x-2">
           <button
             onClick={handleSubmit}
             className="w-full bg-orange-400 text-white font-semibold py-2 rounded-lg hover:bg-orange-500 transition duration-300"
