@@ -257,11 +257,11 @@ const SearchModal = ({ isOpen, onClose }) => {
 
   return (
     <div
-      className={`fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75 ${
+      className={`fixed top-0 left-0 z-50 w-full h-[100vh] overflow-auto md:h-full flex items-center justify-center bg-gray-800 bg-opacity-75 ${
         isOpen ? "visible" : "invisible"
       }`}
     >
-      <div className="bg-white p-4  w-full h-full">
+      <div className="bg-white p-4  w-full h-[100vh] overflow-auto md:h-full">
         <header>
           <h1 className="text-center text-2xl mb-4">Lorem Ipsum</h1>
         </header>
@@ -318,7 +318,7 @@ const SearchModal = ({ isOpen, onClose }) => {
             <FilterModal />
           </div>
         </div>
-        <div className="fixed bottom-24 md:bottom-7 left-0 right-0 w-2/3 mx-auto space-y-4">
+        <div className="absolute bottom-4 md:bottom-7 left-0 right-0 w-2/3 mx-auto space-y-4">
           <button
             onClick={handleSubmit}
             className="w-full bg-orange-400 text-white font-semibold py-2 rounded-lg hover:bg-orange-500 transition duration-300"
