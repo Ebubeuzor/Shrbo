@@ -262,8 +262,11 @@ const SearchModal = ({ isOpen, onClose }) => {
       }`}
     >
       <div className="bg-white p-4  w-full h-full">
-        <div className="w-2/3">
-          <div className="mb-4">
+        <header>
+          <h1 className="text-center text-2xl mb-4">Lorem Ipsum</h1>
+        </header>
+        <div className=" md:h-2/6">
+          <div className="mb-4 bg-gray-300 p-4">
             <Select
               className="text-black"
               defaultValue={selectedOption}
@@ -273,8 +276,8 @@ const SearchModal = ({ isOpen, onClose }) => {
               components={{ DropdownIndicator }}
             />
           </div>
-          <div className="mb-4">
-            <label className="block font-semibold mb-2">Check-in Date</label>
+          <div className="mb-4 bg-gray-300 p-4">
+            <label className="block font-semibold mb-2 ">Check-in Date</label>
             <DatePicker
               selected={checkInDate}
               onChange={handleCheckInDateChange}
@@ -282,7 +285,7 @@ const SearchModal = ({ isOpen, onClose }) => {
               minDate={new Date()} // Prevent past dates
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-4 bg-gray-300 p-4">
             <label className="block font-semibold mb-2">Check-out Date</label>
             <DatePicker
               selected={checkOutDate}
@@ -294,11 +297,12 @@ const SearchModal = ({ isOpen, onClose }) => {
           <div className="mb-4">
             <div
               onClick={() => setGuestModalVisible(true)}
-              className="w-full text-start"
+              className="w-full text-start bg-gray-300 p-4"
             >
-              Guests: {displayGuestData.adults} Adults,{" "}
-              {displayGuestData.children} Children, {displayGuestData.pets}{" "}
-              Pets, {displayGuestData.infants} Infants
+              <label className="font-semibold"> Guests:</label> <br />{" "}
+              {displayGuestData.adults} Adults, {displayGuestData.children}{" "}
+              Children, {displayGuestData.pets} Pets, {displayGuestData.infants}{" "}
+              Infants
             </div>
             <GuestModal
               visible={guestModalVisible}
@@ -314,18 +318,20 @@ const SearchModal = ({ isOpen, onClose }) => {
             <FilterModal />
           </div>
         </div>
-        <button
-          onClick={handleSubmit}
-          className="w-full bg-orange-400 text-white font-semibold py-2 rounded-lg hover:bg-orange-500 transition duration-300"
-        >
-          Check Availability
-        </button>
-        <button
-          onClick={onClose}
-          className="w-full mt-2 text-gray-700 font-semibold py-2 border rounded-lg hover:bg-gray-100 transition duration-300"
-        >
-          Cancel
-        </button>
+        <div className="absolute bottom-24 md:bottom-7 left-0 right-0 w-2/3 mx-auto space-y-4">
+          <button
+            onClick={handleSubmit}
+            className="w-full bg-orange-400 text-white font-semibold py-2 rounded-lg hover:bg-orange-500 transition duration-300"
+          >
+            Check Availability
+          </button>
+          <button
+            onClick={onClose}
+            className="w-full mt-2 text-gray-700 font-semibold py-2 border rounded-lg hover:bg-gray-100 transition duration-300"
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );

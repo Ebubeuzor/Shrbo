@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Slider } from "antd";
 import { FaHome, FaHotel, FaBed, FaBuilding } from "react-icons/fa";
 import FilterIcon from "../../assets/svg/sliders-icon.svg";
+import close from "../../assets/svg/close-line-icon.svg"
+
 
 export default function FilterModal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -129,13 +131,13 @@ export default function FilterModal() {
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="fixed inset-0 bg-black opacity-50"></div>
-          <div className="bg-white rounded-lg  relative z-10 w-[95%] h-[90%] md:w-[70%] ">
+          <div className="bg-white rounded-lg  p-4 relative z-10 w-[95%] h-[90%] md:w-[70%] ">
             <div className="flex items-center">
               <button
                 onClick={toggleModal}
                 className=" text-gray-800 font-bold py-2 px-4 rounded"
               >
-                X
+                <img src={close} className="w-4" alt="" />
               </button>
 
               <h1 className="mx-auto font-bold text-lg">Filter</h1>
