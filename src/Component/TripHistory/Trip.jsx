@@ -16,8 +16,13 @@ export default function Trip() {
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
   const [comments, setComments] = useState([]);
 
+  const [selectedTab, setSelectedTab] = useState("All"); // Default to "All" trips
+
   const [newComment, setNewComment] = useState("");
 
+
+
+  
   const handleCommentChange = (event) => {
     setNewComment(event.target.value);
   };
@@ -59,6 +64,9 @@ export default function Trip() {
       morePhotos: [room, room2, room],
       contactHost: "/chat",
       comments: [],
+      checkedIn: "checked out",
+      checkingInDate:"",
+      checkingInTime:""
     },
     {
       destination:
@@ -78,6 +86,10 @@ export default function Trip() {
       morePhotos: [room, room2, room],
       contactHost: "/chat",
       comments: [],
+      checkedIn: "Reserved",
+      checkingInDate:"Thursday, 28 december 2023",
+      checkingInTime:"12:00pm"
+
     },
     {
       destination:
@@ -97,6 +109,10 @@ export default function Trip() {
       morePhotos: [room, room2, room],
       contactHost: "/chat",
       comments: [],
+      checkedIn: "Checked in",
+      checkingInDate:"",
+      checkingInTime:""
+
     },
 
     {
@@ -116,6 +132,10 @@ export default function Trip() {
       morePhotos: [room, room2, room],
       contactHost: "/chat",
       comments: [],
+      checkedIn: "checked out",
+      checkingInDate:"",
+      checkingInTime:""
+
     },
 
     {
@@ -135,23 +155,78 @@ export default function Trip() {
       morePhotos: [room, room2, room],
       contactHost: "/chat",
       comments: [],
+      checkedIn: "Reserved",
+      checkingInDate:"Thursday, 28 december 2023",
+      checkingInTime:"12:00pm"
+
     },
   ];
 
+  const [filteredTrips, setFilteredTrips] = useState(tripHistory);
+
+
+  const filterTripsByTab = (tab) => {
+    if (tab === "All") {
+      setFilteredTrips(tripHistory);
+    } else {
+      const filtered = tripHistory.filter((trip) => {
+        return trip.checkedIn.toLowerCase() === tab.toLowerCase(); // Make it case-insensitive
+      });
+      setFilteredTrips(filtered);
+    }
+    setSelectedTab(tab);
+  };
+
+  
+
   return (
-    <div className=" h-[100vh]  overflow-auto">
+    <div className=" h-[100vh]  overflow-auto example">
       <Header/>
       <div className="mx-auto md:w-[90%]">
         <header className="text-4xl pl-6 py-6 font-bold">Trips History</header>
-
+  <div className="flex flex-wrap  p-4">
+          <button
+            className={`${
+              selectedTab === "All" ? "bg-orange-400  text-white" : "bg-gray-200 text-gray-600"
+            } px-4 py-2 rounded-full m-2`}
+            onClick={() => filterTripsByTab("All")}
+          >
+            All
+          </button>
+          <button
+            className={`${
+              selectedTab === "Reserved" ? "bg-orange-400 text-white" : "bg-gray-200 text-gray-600"
+            } px-4 py-2 rounded-full m-2`}
+            onClick={() => filterTripsByTab("Reserved")}
+          >
+            Reserved
+          </button>
+          <button
+            className={`${
+              selectedTab === "Checked in" ? "bg-orange-400 text-white" : "bg-gray-200 text-gray-600"
+            } px-4 py-2 rounded-full m-2`}
+            onClick={() => filterTripsByTab("Checked in")}
+          >
+            Checked In
+          </button>
+          <button
+            className={`${
+              selectedTab === "Checked Out" ? "bg-orange-400 text-white" : "bg-gray-200 text-gray-600"
+            } px-4 py-2 rounded-full m-2`}
+            onClick={() => filterTripsByTab("Checked Out")}
+          >
+            Checked Out
+          </button>
+        </div>
         <div className="flex flex-wrap">
-          {tripHistory.length > 0 ? (
-            tripHistory.map((trip, index) => (
+          {filteredTrips.length > 0 ? (
+            filteredTrips.map((trip, index) => (
               <div
                 key={index}
                 className="md:w-2/5 m-5 cursor-pointer w-full   rounded-lg"
               >
-                <div>
+                <div className="relative">
+                  <div className="absolute p-4 uppercase text-white bg-orange-400">{trip.checkedIn}</div>
                   <img
                     src={trip.image}
                     alt=""
@@ -183,6 +258,10 @@ export default function Trip() {
                   <div className="text-lg text-orange-400 font-bold mt-2">
                     ₦{trip.price}
                   </div>
+                  <div>
+                    
+                  <span>{trip.checkingInDate}</span>
+                </div>
                   <div>
                     <button
                       className="bg-orange-400 p-4 rounded-full mt-7 text-white text-lg"
@@ -218,7 +297,7 @@ export default function Trip() {
             className="absolute inset-0 bg-black opacity-50"
             onClick={closeModal}
           ></div>
-          <div className="bg-white pb-32 p-8 rounded-lg z-10 overflow-auto h-[100vh] md:h-[90vh]  md:w-3/6">
+          <div className="bg-white pb-32 p-8 rounded-lg z-10 overflow-auto h-[100vh] md:h-[90vh]  md:w-3/6 example">
          
             <div className="p-4 mt-10 ">
             {/* <div className="text-right"> */}
@@ -298,6 +377,7 @@ export default function Trip() {
                 <div className="text-lg text-orange-400 font-medium mt-2">
                <span className="text-black"> Price: </span> ₦{selectedTrip.price}
                 </div>
+                
                 <div className="text-base text-orange-400  mt-2">
                   {selectedTrip.notes}
                 </div>
