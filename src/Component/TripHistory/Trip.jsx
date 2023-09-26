@@ -409,7 +409,7 @@ export default function Trip() {
           </div>
         </div>
       )}
-      <div className="my-10 mb-32">
+      <div className="my-10 pb-32">
         {tripHistory.length > 0 && (
 
         <PaginationExample />
