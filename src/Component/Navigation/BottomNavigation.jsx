@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { FaSearch, FaHeart, FaSuitcase, FaInbox, FaUser,FaBars } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
+import HostModal from '../Dashboard/HostModal';
 
 export default function BottomNavigation() {
   const location = useLocation();
@@ -48,17 +49,9 @@ export default function BottomNavigation() {
           <span className="text-[10px]">Menu</span>
         </div>
       </div>
-      {isModalOpen && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white w-full h-full max-w-screen-md p-4">
-            {/* Modal content goes here */}
-            <p>This is a full-screen modal.</p>
-            <button className="text-blue-500" onClick={toggleModal}>
-              Close Modal
-            </button>
-          </div>
-        </div>
-      )}
+      <HostModal isOpen={isModalOpen} onClose={toggleModal} />
+      
+
     </div>
   );
 }
