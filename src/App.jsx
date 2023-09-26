@@ -14,6 +14,7 @@ import AddGovvernmentId from "./Component/Settings/ProfileCardSettings/AddGovern
 import Trip from "./Component/TripHistory/Trip"
 import WishList from "./Views/WishList"
 import WishlistsSet from "./Component/WishList/WishlistsSet" ;
+import ManageListings from "./Component/Dashboard/ManageListings";
 function App() {
   return (
     <Router>
@@ -31,6 +32,7 @@ function App() {
         <Route path="/Trip" element={<Trip />} />
         <Route path="/WishList" element={<WishList />} />
         <Route path="/WishlistsSet" element={<WishlistsSet />} />
+        <Route path="/ManageListings" element={<ManageListings />} />
 
 
 

@@ -1,10 +1,17 @@
-import React from 'react';
-import { FaSearch, FaHeart, FaSuitcase, FaInbox, FaUser } from 'react-icons/fa';
+import React, {useState} from 'react';
+import { FaSearch, FaHeart, FaSuitcase, FaInbox, FaUser,FaBars } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function BottomNavigation() {
   const location = useLocation();
   const currentPage = location.pathname;
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    console.log('Menu clicked'); // Add this line to check if the click event is triggered
+    setIsModalOpen(!isModalOpen);
+  };
 
   // Define the default color and active color for each navigation item
   const defaultColor = 'white';
@@ -36,7 +43,22 @@ export default function BottomNavigation() {
           <FaUser className={`text-2xl text-${getColor('/profile')}`} />
           <span className={`text-[10px] text-${getColor('/profile')}`}>Profile</span>
         </Link>
+        <div className="cursor-pointer flex flex-col items-center" onClick={toggleModal}>
+          <FaBars className="text-2xl" />
+          <span className="text-[10px]">Menu</span>
+        </div>
       </div>
+      {isModalOpen && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white w-full h-full max-w-screen-md p-4">
+            {/* Modal content goes here */}
+            <p>This is a full-screen modal.</p>
+            <button className="text-blue-500" onClick={toggleModal}>
+              Close Modal
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
