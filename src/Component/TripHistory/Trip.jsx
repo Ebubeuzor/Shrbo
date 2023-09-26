@@ -411,21 +411,7 @@ export default function Trip() {
       )}
       <div className="my-10 pb-32"> 
 
-      {
-    id: 6,
-    pictures: [
-      "https://a0.muscache.com/im/pictures/7ca6118f-68c7-4a32-8bbc-09ce1840a373.jpg?im_w=720",
-      "https://a0.muscache.com/im/pictures/c99e5b00-a779-40e9-bd0e-5062dfdb7eb8.jpg?im_w=720",
-      "https://a0.muscache.com/im/pictures/f8099680-c563-4491-9258-f679eef415e9.jpg?im_w=720",
-    ],
-    location: "2b, Admiralty Road",
-    price: "$120 per night",
-    date: "22/08/2023",
-    kilometres: "22miles away",
-    rating: 4.8,
-    link:"/ListingInfoMain",
-
-  }
+      
         {tripHistory.length > 0 && (
 
         <PaginationExample />
