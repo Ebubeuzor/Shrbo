@@ -5,8 +5,16 @@ import BookInfoCard from "../Component/RequestBook/BookInfoCard";
 import BookingInfo from "../Component/RequestBook/BookingInfo";
 import Header from "../Component/Navigation/Header";
 import BottomNavigation from "../Component/Navigation/BottomNavigation";
+import { useNavigate } from "react-router-dom";
 
 const RequestBook = () => {
+
+  const navigate = useNavigate();
+
+  // Takes you back to previous page
+  const handleGoBack = () => {
+    navigate(-1);
+  };
   return (
   <div>
     <Header/>
@@ -16,7 +24,7 @@ const RequestBook = () => {
           <section>
             <div className=" pt-16  pb-4 flex flex-row items-center box-border">
               <div className=" pr-[18px] -ml-8 mt-[10px] hidden md:block cursor-pointer ">
-                <Link>
+               <button onClick={handleGoBack}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24px"
@@ -26,7 +34,7 @@ const RequestBook = () => {
                     <title>keyboard-backspace</title>
                     <path d="M21,11H6.83L10.41,7.41L9,6L3,12L9,18L10.41,16.58L6.83,13H21V11Z" />
                   </svg>
-                </Link>
+                </button>
               </div>
               <div className=" text-3xl font-semibold">
                 <h1 className=" ">Request to book</h1>

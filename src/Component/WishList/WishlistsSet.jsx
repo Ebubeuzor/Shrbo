@@ -1,6 +1,7 @@
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import { Button, Modal, Dropdown, Space } from 'antd';
+import {  useNavigate } from 'react-router-dom';
 import Map from "../Map/Map";
 import { Link } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
@@ -10,7 +11,16 @@ import Popup from '../../hoc/Popup';
 
 
 
+
 const WishlistsSet=()=>{
+
+  const navigate = useNavigate();
+
+  // Takes you back to previous page
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [textField,setTextField]=useState(null);
 
@@ -192,7 +202,7 @@ const WishlistsSet=()=>{
                             <div className=" flex items-center justify-between  "> 
 
                                 <div className=" items-center flex w-11 "> 
-                                    <button className=" cursor-pointer p-0 m-0 transition-transform transparent 
+                                    <button  onClick={handleGoBack} className=" cursor-pointer p-0 m-0 transition-transform transparent 
                                      border-none rounded-[50%] relative outline-none touch-manipulation inline-block   ">
                                        
                                             <svg

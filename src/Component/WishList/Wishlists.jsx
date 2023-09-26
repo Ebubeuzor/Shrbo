@@ -15,8 +15,8 @@ const Wishlists=()=>{
   ];
 
   const wishlist=wishlist_groups.map(group=>(
-    <Link to={"/WishlistsSet"}>
-        <div className=" rounded-[0.25em] overflow-hidden  relative bg-cover" key={group.id}>
+    <Link to={"/WishlistsSet"} key={group.id}>
+        <div className=" rounded-[0.25em] overflow-hidden  relative bg-cover" >
           <div className=" overflow-hidden aspect-video relative rounded-[0.25em] block ">
             <div className=" absolute start-0 end-0  m-0 p-0 block  ">
               <img className=" absolute opacity-100 transition block object-cover align-middle overflow-hidden   " src={group.url}></img>
