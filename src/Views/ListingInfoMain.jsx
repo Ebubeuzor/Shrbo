@@ -8,12 +8,9 @@ import ListingMap from "../Component/ListingInfo/ListingMap";
 import ListingReviews from "../Component/ListingInfo/ListingReviews"
 import Testimonial from "../Component/ListingInfo/Testimonial";
 import ListingForm from "../Component/ListingInfo/ListingForm";
-<<<<<<< HEAD
 import HouseRules from "../Component/ListingInfo/HouseRules";
-=======
 import BottomNavigation from "../Component/Navigation/BottomNavigation";
 import Header from "../Component/Navigation/Header";
->>>>>>> 059158bb7af77555fd8e20a582abfd268480a2f8
 
 const ListingInfoMain=()=>{
 
