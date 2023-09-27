@@ -37,10 +37,10 @@ export default function ListingForm(){
 
 
   return (
-   <div className=' hidden md:block w-full h-full'>
-        <div className="block mt-12 mb-12 sticky z-[100]  top-[80px] box-border  
-         w-full max-w-sm rounded-lg bg-white p-6 
-        shadow-xl ">
+   <div className=' block w-full h-full'>
+        <div className="block mt-12 mb-12 md:sticky z-[100]  top-[80px] box-border  
+         w-full max-w-sm rounded-lg bg-white md:p-6 
+        md:shadow-xl ">
             <div className=' p-3 rounded relative box-border'>
                 <div className=' justify-between items-center flex text-sm'>
                     <div className=' gap-2 items-end flex box-border' >
@@ -143,7 +143,87 @@ export default function ListingForm(){
                              {/*                                       
                                 // handles the modal  when price details is clicked  */}
                                     <Popup isModalVisible={isModalVisible} handleCancel={handleCancel} title={"Price details"} >   
-                                            <label>hello</label>
+                                           <div className='p-3 pt-6 border-y   '>
+                                              <div>
+                                                <div className=' pb-4 md:pb-0 '>
+                                                <div className=" ">
+                                                      <div className="relative">
+                                                        {/* 1 */}
+                                                        <div className=" pb-4 border-b">
+                                                          <div className=" mb-2 box-border block">
+                                                            <div className=" flex items-end justify-between break-words    ">
+                                                              <div className=" block box-border">
+                                                                <span>$140.00 x 2 nights</span>
+                                                              </div>
+                                                              <div className=" ml-4 whitespace-nowrap block box-border   ">
+                                                                $280.00
+                                                              </div>
+                                                            </div>
+                                                          </div>
+
+                                                          <div className=" mb-2 box-border block">
+                                                            <div className=" relative box-border ">
+                                                              <div className=" overflow-hidden max-h-24 relative   ">
+                                                                <div className=" ">
+                                                                  <div className=" mb-2 flex justify-between items-end break-words  ">                             
+                                                                      <span className=" capitalize">Host Fees</span>
+                                                                                          
+                                                                    <div className=" ml-4 ">$194.00</div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div className=" mb-2 box-border block">
+                                                            <div className=" flex items-end justify-between break-words    ">
+                                                              <div className=" block box-border">
+                                                                <span>Service Fee</span>
+                                                              </div>
+                                                              <div className=" ml-4 whitespace-nowrap block box-border   ">
+                                                                $20.00
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div className=" mb-2 box-border block">
+                                                            <div className=" flex items-end justify-between break-words    ">
+                                                              <div className=" block box-border">
+                                                                <span>Tax</span>
+                                                              </div>
+                                                              <div className=" ml-4 whitespace-nowrap block box-border   ">
+                                                                $18.00
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        {/* Total */}
+                                                        <div className="  py-4">
+                                                          <div className=" font-bold text-lg flex items-end justify-between break-words    ">
+                                                            <span> Total </span>
+                                                            <div className=" whitespace-nowrap break-normal ">
+                                                              $566.54
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                              </div>
+                                           </div>
+                                           <div className='p-2'>
+                                                    <button
+                                                        type="button"
+                                                        className="block w-full h-11 rounded bg-orange-500 px-6 pb-2 pt-2.5 text-sm font-medium uppercase leading-normal 
+                                                        text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]
+                                                        focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
+                                                        focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
+                                                        dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] 
+                                                        dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2)
+                                                        ,0_4px_18px_0_rgba(59,113,202,0.1)]]"
+                                                    >
+                                                        Book
+                                                    </button>
+
+                                            </div>
                                     </Popup>
                        </div>
 

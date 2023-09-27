@@ -8,6 +8,7 @@ import ListingMap from "../Component/ListingInfo/ListingMap";
 import ListingReviews from "../Component/ListingInfo/ListingReviews"
 import Testimonial from "../Component/ListingInfo/Testimonial";
 import ListingForm from "../Component/ListingInfo/ListingForm";
+import HouseRules from "../Component/ListingInfo/HouseRules";
 
 const ListingInfoMain=()=>{
 
@@ -19,17 +20,25 @@ const ListingInfoMain=()=>{
             <div className="w-full flex">
                 <div className=" w-full md:w-[58.3333%] relative" >
                      <HostedBy/>
+                     <div className="  md:hidden relative mr-0 ">
+                         <ListingForm/>
+                    </div>
                                     <hr
                     className="my-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50"
                     />
                      <HostProfilePreview/>
+                    
                                 <hr
                      className="my-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50"
                        />
                      <AboutProperty/>
+                     <hr
+                    className="my-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50"
+                    />
+                    <HouseRules/>
                    
                 </div>
-                <div className=" md:ml-[8.33333%] md:w-[33.33333%] relative mr-0 ">
+                <div className=" md:ml-[8.33333%] md:w-[33.33333%] hidden md:block relative mr-0 ">
                     <ListingForm/>
                 </div>
               

@@ -1,6 +1,5 @@
 import React ,{ useState } from "react";
 import { Tabs } from 'antd';
-import HouseRulesTab from "./HouseRulesTab";
 
 
 
@@ -8,7 +7,7 @@ const items = [
   {
     key: '1',
     label: 'House Rules',
-    children: <HouseRulesTab/>,
+    children: 'Content of Tab Pane 1',
   },
   {
     key: '2',

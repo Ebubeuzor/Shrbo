@@ -1,11 +1,13 @@
 import React ,{ useState } from "react";
 import Popup from "../../hoc/Popup";
+import PopupFull from "../../hoc/PopupFull";
 
 
 
 
     const Amenities=()=>{
         const [isPopupOpen, setIsPopupOpen] = useState(false);
+        const [open, setOpen] = useState(false);
 
         const openPopup = () => {
             setIsPopupOpen(true);
@@ -13,6 +15,14 @@ import Popup from "../../hoc/Popup";
 
         const closePopup = () => {
             setIsPopupOpen(false);
+        };
+
+      
+        const showDrawer = () => {
+          setOpen(true);
+        };
+        const onClose = () => {
+          setOpen(false);
         };
 
         const amenities_info = [
@@ -76,9 +86,28 @@ import Popup from "../../hoc/Popup";
                                         {amenities}
                                 </div>
                                 <div className=" mt-4  md:mt-6 ">
-                                    <button type="button" className=" rounded-lg inline-block relative border transition-shadow py-[13px] px-[23px] text-base font-semibold">
+                                    <button type="button" className=" rounded-lg hidden md:inline-block relative border transition-shadow py-[13px] px-[23px] text-base font-semibold" onClick={openPopup}>
                                         See more
                                     </button>
+
+                                    {/* This button shows the drawer instead of Popup and it is only visible on mobile view */}
+                                    <button type="button" className=" rounded-lg inline-block relative border transition-shadow py-[13px] px-[23px] md:hidden text-base font-semibold" onClick={showDrawer}>
+                                        See more
+                                    </button>
+
+                                    <Popup isModalVisible={isPopupOpen} handleCancel={closePopup} title={"Amenities"}   >
+                                                    {amenities}
+                                    </Popup>
+                                    {/* Drawer Popup */}
+                                    <PopupFull title={"Amenities"} open={open} onClose={onClose}  >
+                                        {amenities}
+                                    </PopupFull>
+
+
+                                    
+                                    {/* {isPopupOpen&& <div className=" fixed inset-0 flex items-center justify-center  z-[100] bg-white  " >ggggggggggggggg </div> } */}
+
+
 
                                 </div>
                             </section>

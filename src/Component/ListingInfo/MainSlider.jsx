@@ -31,8 +31,8 @@ const MainSlider = (props) => {
   <div className=" relative      h-[258px]  ">
 
       
-    <div className='  h-full w-full '>
-      <img src={slide.min} alt="slide 1" className='    h-full w-full' />
+    <div className='  h-full w-full rounded  '>
+      <img src={slide.min} alt="slide 1" className=' rounded   h-full w-full' />
 
     </div>
     </div>

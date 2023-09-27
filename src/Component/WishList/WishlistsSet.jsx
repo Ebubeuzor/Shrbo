@@ -187,7 +187,7 @@ const WishlistsSet=()=>{
                     <div className=" min-h-[400px] block box-border ">
 
                             {/* Menu and back buttton  */}
-                        <div className=" px-6 py-[18px] md:top-20 sticky left-0 w-full top-0 block 
+                        <div className=" px-6 py-[18px] md:top-20 sticky left-0 w-full top-0 block bg-white
                                          box-border z-[2]   md:px-10 lg:px-6    ">
                             <div className=" flex items-center justify-between  "> 
 
@@ -212,7 +212,7 @@ const WishlistsSet=()=>{
 
                                 <div className="  items-center justify-end flex" >
                                     <button className=" cursor-pointer p-0 m-0 transition-transform transparent 
-                                        border-none rounded-[50%] relative outline-none touch-manipulation inline-block   ">
+                                        border-none  relative outline-none touch-manipulation inline-block   ">
                                           <svg xmlns="http://www.w3.org/2000/svg" 
                                         viewBox="0 0 24 24"
                                         width="17px"
@@ -229,7 +229,7 @@ const WishlistsSet=()=>{
                                     <label className=" pr-6"></label>
                                       <MyDropdown click={handleMenu} >   
                                      <button className=" cursor-pointer p-0 m-0 transition-transform transparent 
-                                        border-none rounded-[50%] relative outline-none touch-manipulation inline-block   ">
+                                        border-none  relative outline-none touch-manipulation inline-block   ">
                                           <div className=" flex items-center justify-between underline ">
                                             <span className=" mr-1">
                                             <svg  aria-hidden="true"
@@ -249,7 +249,7 @@ const WishlistsSet=()=>{
                                      </button>
                                      </MyDropdown> 
 
-                                   <Popup isModalVisible={isModalVisible} handleCancel={handleCancel} title={" Rename Wishlist "} className={" top-[40%] max-w-[400px] "} >   
+                                   <Popup isModalVisible={isModalVisible} handleCancel={handleCancel} title={" Rename Wishlist "} className={" top-[40%] md:max-w-[400px] "} >   
                                             <div className=' pb-6 pt-3 block box-border '>
                                                  <div className=' font-normal text-base m-0 rounded-md   border w-full flex relative min-h-[56px]'>
                                                    <label className=' p-0 relative flex-1 '>
@@ -297,7 +297,7 @@ const WishlistsSet=()=>{
                         </div>    
 
                           {/*  */}
-                          <div className=" top-8 pt-6 px-6 sticky z-[1] min-[744px]:top-28 min-[744px]:px-10 min-[950px]:px-6   ">
+                          <div className=" top-8 pt-6 px-6 sticky z-[1] min-[744px]:top-28 min-[744px]:px-10 min-[950px]:px-6 bg-white   ">
                             <h2 className=" block box-border text-2xl font-medium  ">Your saved items</h2>
                           </div>
 
