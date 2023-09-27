@@ -15,6 +15,7 @@ import Trip from "./Component/TripHistory/Trip"
 import WishList from "./Views/WishList"
 import WishlistsSet from "./Component/WishList/WishlistsSet" ;
 import ManageListings from "./Component/Dashboard/ManageListings";
+
 function App() {
   return (
     <Router>

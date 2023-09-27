@@ -76,7 +76,7 @@ export default function Header() {
                   Edit Profile
                 </Link>
                 <Link
-                  to="/profile"
+                  to="/Settings"
                   className="block text-gray-800 hover:text-orange-400 p-2 cursor-pointer"
                 >
                   Settings
@@ -84,7 +84,7 @@ export default function Header() {
                 <div
                   to=""
                   className="block text-gray-800 hover:text-orange-400 p-2 cursor-pointer"
-                  onClick={toggleModal}
+                
                 >
                   Manage Listings
                 </div>

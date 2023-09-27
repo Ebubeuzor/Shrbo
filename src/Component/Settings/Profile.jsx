@@ -7,6 +7,7 @@ import EditPhoneNumber from "./EditPhoneNumber";
 import AddressForm from "./AddressForm";
 import BottomNavigation from "../Navigation/BottomNavigation";
 import Header from "../Navigation/Header";
+import Footer from "../Navigation/Footer";
 
 export default function Profile() {
   const [isEditingLegalName, setIsEditingLegalName] = useState(false);
@@ -74,7 +75,8 @@ export default function Profile() {
   ];
 
   return (
-    <div className="pb-48">
+    <div>
+      <div className="pb-48">
       <Header/>
       <div className="max-w-2xl mx-auto  p-4">
         <SettingsNavigation title="Personal Info" text="Personal info" />
@@ -167,7 +169,9 @@ export default function Profile() {
           </div>
         </div>
       </div>
+    </div>
       <BottomNavigation/>
+      <Footer/>
     </div>
   );
 }

@@ -44,10 +44,10 @@ export default function BottomNavigation() {
           <FaUser className={`text-2xl text-${getColor('/profile')}`} />
           <span className={`text-[10px] text-${getColor('/profile')}`}>Profile</span>
         </Link>
-        <div className="cursor-pointer flex flex-col items-center" onClick={toggleModal}>
+        <Link to="/Settings" className="cursor-pointer flex flex-col items-center" >
           <FaBars className="text-2xl" />
           <span className="text-[10px]">Menu</span>
-        </div>
+        </Link>
       </div>
       <HostModal isOpen={isModalOpen} onClose={toggleModal} />
       

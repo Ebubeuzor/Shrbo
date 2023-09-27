@@ -7,6 +7,7 @@ import Hamburger from "../Component/Navigation/Hamburger";
 import Modal from "../Component/SearchModal/Modal";
 import searchIcon from "../assets/svg/search-icon.svg";
 import BottomNavigation from "../Component/Navigation/BottomNavigation";
+import Footer from "../Component/Navigation/Footer";
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSearchButtonFixed, setIsSearchButtonFixed] = useState(false);
@@ -99,6 +100,7 @@ export default function Home() {
           <Listings />
         </section>
       </div>
+      <Footer/>
     </div>
   );
 }
