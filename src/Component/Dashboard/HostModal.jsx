@@ -11,13 +11,14 @@ export default function HostModal({ isOpen, onClose }) {
     isOpen && (
       <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center md:z-[99] text-black">
         <div className="bg-white w-full   p-4 z-[999] h-full  overflow-auto">
-          <div className="text-black md:w-2/4  p-5 pb-32">
-            <h1 className="text-2xl">Menu</h1>
+          <div className="text-black md:w-2/4  p-3 pb-32">
+            <h1 className="text-2xl font-bold">Menu</h1>
 
             <div>
               <section className="bg-orange-400 p-2 rounded-lg my-10">
                 <div>
-                  <Link to="/profile">
+                  <Link to="/UsersShow" className="flex items-center space-x-10">
+                    <div>
                     <label htmlFor="profilePictureInput" className="w-fit">
                       <div
                         className="cursor-pointer bg-slate-200"
@@ -40,11 +41,34 @@ export default function HostModal({ isOpen, onClose }) {
                         )}
                       </div>
                     </label>
+                    </div>
+                    <div>
+                      <h1 className="text-white text-2xl">
+                      Welcome David
+                      </h1>
+                    </div>
                   </Link>
                 </div>
               </section>
               <section>
                 <ul>
+
+                <li>
+                    <div className=" p-4 my-4">
+                      <Link className="flex justify-between cursor-pointer items-center">
+                        <div className="bg-orange-400 text-white rounded-full p-2">
+                          <BsHouseDoor />
+                        </div>
+                        <div className="text-base text-slate-500 text-center">
+                         Create a new listing
+                        </div>
+                        <div className="text-2xl">
+                          <img src={rightArrow} className="w-4 h-4" alt="" />
+                        </div>{" "}
+                        {/* Right arrow icon */}
+                      </Link>
+                    </div>
+                  </li>
                   <li>
                     <div className="shadow-lg p-4 my-4 border rounded-xl">
                       <Link className="flex justify-between cursor-pointer items-center">
@@ -75,7 +99,22 @@ export default function HostModal({ isOpen, onClose }) {
                       </Link>
                     </div>
                   </li>
-
+                  <li>
+                    <div className=" p-4 my-4">
+                      <Link className="flex justify-between cursor-pointer items-center">
+                        <div className="bg-orange-400 text-white rounded-full p-2">
+                          <BsHouseDoor />
+                        </div>
+                        <div className="text-base text-slate-500 text-center">
+                          Guide Book
+                        </div>
+                        <div className="text-2xl">
+                          <img src={rightArrow} className="w-4 h-4" alt="" />
+                        </div>{" "}
+                        {/* Right arrow icon */}
+                      </Link>
+                    </div>
+                  </li>
                   <li>
                     <div className=" p-4 my-4">
                       <Link className="flex justify-between cursor-pointer items-center">
