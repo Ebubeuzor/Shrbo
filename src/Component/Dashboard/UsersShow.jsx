@@ -165,7 +165,7 @@ export default function usersShow() {
                 <div className="">
                   <div>
                     <p>
-                      Before you book or Host on Airbnb, you’ll need to complete
+                      Before you book or Host on Shbro, you’ll need to complete
                       this step.
                     </p>
                   </div>
@@ -188,7 +188,7 @@ export default function usersShow() {
               <div className="">
                 <div>
                   <p>
-                    Your Airbnb profile is an important part of every
+                    Your Shbro profile is an important part of every
                     reservation. Create yours to help other Hosts and guests get
                     to know you.
                   </p>
@@ -260,7 +260,7 @@ export default function usersShow() {
                     Your profile
                   </h1>
                   <p>
-                    The information you share will be used across Airbnb to help
+                    The information you share will be used across Shbro to help
                     other guests and Hosts get to know you. Learn more
                   </p>
                   <div className="my-4">
