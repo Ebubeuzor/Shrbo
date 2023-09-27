@@ -40,13 +40,13 @@ export default function BottomNavigation() {
           <FaInbox className={`text-2xl text-${getColor('/chat')}`} />
           <span className={`text-[10px] text-${getColor('/chat')}`}>Inbox</span>
         </Link>
-        <Link to="/profile" className="cursor-pointer flex flex-col items-center">
+        {/* <Link to="/profile" className="cursor-pointer flex flex-col items-center">
           <FaUser className={`text-2xl text-${getColor('/profile')}`} />
           <span className={`text-[10px] text-${getColor('/profile')}`}>Profile</span>
-        </Link>
+        </Link> */}
         <Link to="/Settings" className="cursor-pointer flex flex-col items-center" >
-          <FaBars className="text-2xl" />
-          <span className="text-[10px]">Menu</span>
+          <FaBars className={`text-2xl text-${getColor('/Settings')}`} />
+          <span className={`text-[10px] text-${getColor('/Settings')}`} >Menu</span>
         </Link>
       </div>
       <HostModal isOpen={isModalOpen} onClose={toggleModal} />
