@@ -44,7 +44,7 @@ export default function HostModal({ isOpen, onClose }) {
                     </div>
                     <div>
                       <h1 className="text-white text-2xl">
-                      Welcome David
+                      Welcome Endo
                       </h1>
                     </div>
                   </Link>
