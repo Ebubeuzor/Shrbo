@@ -1,20 +1,28 @@
 import React, { useState } from "react";
 import room from "../../assets/room.jpeg";
 import room2 from "../../assets/room2.jpeg";
+import close from "../../assets/svg/close-line-icon.svg";
 
 import bedroom from "../../assets/svg/double-bed-icon.svg";
 import bathroom from "../../assets/svg/bathtub-icon.svg";
 import calender from "../../assets/svg/calendar-icon.svg";
 import { Link } from "react-router-dom";
 import PaginationExample from "../PaginationExample";
+import BottomNavigation from "../Navigation/BottomNavigation";
+import Header from "../Navigation/Header";
 
 export default function Trip() {
   const [selectedTrip, setSelectedTrip] = useState(null);
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
   const [comments, setComments] = useState([]);
 
+  const [selectedTab, setSelectedTab] = useState("All"); // Default to "All" trips
+
   const [newComment, setNewComment] = useState("");
 
+
+
+  
   const handleCommentChange = (event) => {
     setNewComment(event.target.value);
   };
@@ -56,6 +64,9 @@ export default function Trip() {
       morePhotos: [room, room2, room],
       contactHost: "/chat",
       comments: [],
+      checkedIn: "checked out",
+      checkingInDate:"",
+      checkingInTime:""
     },
     {
       destination:
@@ -75,6 +86,10 @@ export default function Trip() {
       morePhotos: [room, room2, room],
       contactHost: "/chat",
       comments: [],
+      checkedIn: "Reserved",
+      checkingInDate:"Thursday, 28 december 2023",
+      checkingInTime:"12:00pm"
+
     },
     {
       destination:
@@ -94,6 +109,10 @@ export default function Trip() {
       morePhotos: [room, room2, room],
       contactHost: "/chat",
       comments: [],
+      checkedIn: "Checked in",
+      checkingInDate:"",
+      checkingInTime:""
+
     },
 
     {
@@ -113,6 +132,10 @@ export default function Trip() {
       morePhotos: [room, room2, room],
       contactHost: "/chat",
       comments: [],
+      checkedIn: "checked out",
+      checkingInDate:"",
+      checkingInTime:""
+
     },
 
     {
@@ -132,22 +155,78 @@ export default function Trip() {
       morePhotos: [room, room2, room],
       contactHost: "/chat",
       comments: [],
+      checkedIn: "Reserved",
+      checkingInDate:"Thursday, 28 december 2023",
+      checkingInTime:"12:00pm"
+
     },
   ];
 
-  return (
-    <div className="bg-gray-200 h-[100vh] overflow-auto">
-      <div className="mx-auto md:w-[90%]">
-        <header className="text-4xl pl-6 py-6">Trips History</header>
+  const [filteredTrips, setFilteredTrips] = useState(tripHistory);
 
+
+  const filterTripsByTab = (tab) => {
+    if (tab === "All") {
+      setFilteredTrips(tripHistory);
+    } else {
+      const filtered = tripHistory.filter((trip) => {
+        return trip.checkedIn.toLowerCase() === tab.toLowerCase(); // Make it case-insensitive
+      });
+      setFilteredTrips(filtered);
+    }
+    setSelectedTab(tab);
+  };
+
+  
+
+  return (
+    <div className=" h-[100vh]  overflow-auto example">
+      <Header/>
+      <div className="mx-auto md:w-[90%]">
+        <header className="text-4xl pl-6 py-6 font-bold">Trips History</header>
+  <div className="flex flex-wrap  p-4">
+          <button
+            className={`${
+              selectedTab === "All" ? "bg-orange-400  text-white" : "bg-gray-200 text-gray-600"
+            } px-4 py-2 rounded-full m-2`}
+            onClick={() => filterTripsByTab("All")}
+          >
+            All
+          </button>
+          <button
+            className={`${
+              selectedTab === "Reserved" ? "bg-orange-400 text-white" : "bg-gray-200 text-gray-600"
+            } px-4 py-2 rounded-full m-2`}
+            onClick={() => filterTripsByTab("Reserved")}
+          >
+            Reserved
+          </button>
+          <button
+            className={`${
+              selectedTab === "Checked in" ? "bg-orange-400 text-white" : "bg-gray-200 text-gray-600"
+            } px-4 py-2 rounded-full m-2`}
+            onClick={() => filterTripsByTab("Checked in")}
+          >
+            Checked In
+          </button>
+          <button
+            className={`${
+              selectedTab === "Checked Out" ? "bg-orange-400 text-white" : "bg-gray-200 text-gray-600"
+            } px-4 py-2 rounded-full m-2`}
+            onClick={() => filterTripsByTab("Checked Out")}
+          >
+            Checked Out
+          </button>
+        </div>
         <div className="flex flex-wrap">
-          {tripHistory.length > 0 ? (
-            tripHistory.map((trip, index) => (
+          {filteredTrips.length > 0 ? (
+            filteredTrips.map((trip, index) => (
               <div
                 key={index}
                 className="md:w-2/5 m-5 cursor-pointer w-full   rounded-lg"
               >
-                <div>
+                <div className="relative">
+                  <div className="absolute p-4 uppercase text-white bg-orange-400">{trip.checkedIn}</div>
                   <img
                     src={trip.image}
                     alt=""
@@ -155,13 +234,13 @@ export default function Trip() {
                   />
                 </div>
                 <div className="mt-4">
-                  <h2 className="font-bold text-2xl">{trip.destination}</h2>
+                  <h2 className="font-bold text-xl">{trip.destination}</h2>
                   <div className="flex flex-wrap  my-1">
-                    <p className="flex items-center mr-2">
+                    <p className="flex items-center mr-2 text-sm">
                       <img src={calender} className="w-4 mr-3" alt="" />{" "}
                       {trip.startDate}
                     </p>
-                    <p className="flex items-center">
+                    <p className="flex items-center text-sm">
                       <img src={calender} className="w-4 mr-3" alt="" />{" "}
                       {trip.endDate}
                     </p>
@@ -176,9 +255,13 @@ export default function Trip() {
                       {trip.bedrooms}
                     </p>
                   </div>
-                  <div className="text-lg text-orange-400 font-medium mt-2">
+                  <div className="text-lg text-orange-400 font-bold mt-2">
                     ₦{trip.price}
                   </div>
+                  <div>
+                    
+                  <span>{trip.checkingInDate}</span>
+                </div>
                   <div>
                     <button
                       className="bg-orange-400 p-4 rounded-full mt-7 text-white text-lg"
@@ -214,16 +297,17 @@ export default function Trip() {
             className="absolute inset-0 bg-black opacity-50"
             onClick={closeModal}
           ></div>
-          <div className="bg-white p-8 rounded-lg z-10 overflow-auto h-3/4 md:h-[70vh]  md:w-3/6">
-            <div className="text-right">
+          <div className="bg-white pb-32 p-8 rounded-lg z-10 overflow-auto h-[100vh] md:h-[90vh]  md:w-3/6 example">
+         
+            <div className="p-4 mt-10 ">
+            {/* <div className="text-right"> */}
               <button
                 className="text-gray-500 hover:text-gray-700"
                 onClick={closeModal}
               >
-                Close
+                <img src={close} className="w-4" alt="" />
               </button>
-            </div>
-            <div className="p-4">
+            {/* </div> */}
               <div className="">
                 {/* <h3 className="text-xl font-semibold">Main Photo:</h3> */}
                 <img
@@ -237,7 +321,7 @@ export default function Trip() {
               </h2>
               <div className="mt-4">
                 <h3 className="text-xl font-semibold">More Photos:</h3>
-                <div className="flex space-x-2 mt-2">
+                <div className="flex flex-wrap mt-2">
                   {selectedTrip.morePhotos.map((photo, index) => (
                     <div
                       key={index}
@@ -251,7 +335,7 @@ export default function Trip() {
                       <img
                         src={photo}
                         alt={`Photo ${index + 1}`}
-                        className="w-32 h-32 object-cover rounded-lg"
+                        className="w-20 md:w-32 m-2 md:h-32 object-cover rounded-lg"
                       />
                     </div>
                   ))}
@@ -262,9 +346,6 @@ export default function Trip() {
                 <h2 className="font-bold text-2xl">
                   {selectedTrip.destination}
                 </h2>
-                <div className="text-lg text-orange-400 font-medium mt-2">
-                  {selectedTrip.notes}
-                </div>
                 <div className="text-sm font-medium mt-2 flex space-x-2">
                   <span className="mr-2"> Hosted by:</span>
                   {selectedTrip.hostName}
@@ -294,10 +375,18 @@ export default function Trip() {
                   {selectedTrip.guests}
                 </div>
                 <div className="text-lg text-orange-400 font-medium mt-2">
-                  ₦{selectedTrip.price}
+               <span className="text-black"> Price: </span> ₦{selectedTrip.price}
                 </div>
+                
+                <div className="text-base text-orange-400  mt-2">
+                  {selectedTrip.notes}
+                </div>
+               
+               
+              
+               
 
-                <div>
+                <div className="my-4">
                   <h1 className="font-bold text-2xl">Amenities</h1>
                   {selectedTrip.amenities.map((amenity, index) => (
                     <li key={index}>{amenity}</li>
@@ -305,50 +394,30 @@ export default function Trip() {
                 </div>
               </div>
             </div>
-            <div>
+            <div className="mb-10">
               {selectedTrip.contactHost && (
                 <Link
                   to={selectedTrip.contactHost}
-                  className="bg-orange-400 p-4 rounded-full  text-white text-lg"
+                  className="bg-orange-400 p-4 rounded-full   text-white text-lg"
                 >
                   Contact Host
                 </Link>
               )}
             </div>
 
-            <div className="mt-4">
-              <h2 className="font-bold text-2xl">Comments</h2>
-              <p className="text-gray-300">How was your stay?</p>
-              <ul>
-                {comments.map((comment, index) => (
-                  <li key={index}>{comment}</li>
-                ))}
-              </ul>
-              <div className="mt-2">
-                <textarea
-                  rows="4"
-                  placeholder="Add a comment..."
-                  value={newComment}
-                  onChange={handleCommentChange}
-                  className="w-full border rounded p-2"
-                />
-                <button
-                  onClick={addComment}
-                  className="bg-orange-400 text-white px-4 py-2 mt-2 rounded cursor-pointer"
-                >
-                  Add Comment
-                </button>
-              </div>
-            </div>
+           
           </div>
         </div>
       )}
-      <div className="my-10">
+      <div className="my-10 pb-32"> 
+
+      
         {tripHistory.length > 0 && (
 
         <PaginationExample />
         )}
       </div>
+      <BottomNavigation/>
     </div>
   );
 }

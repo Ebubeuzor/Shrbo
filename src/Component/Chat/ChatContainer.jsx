@@ -265,7 +265,7 @@ const handleSubmit = (e) => {
   
 
   return (
-    <div>
+    <div className="h-[70vh]">
       {isModalOpen && (
         <div className="modal fixed flex justify-center items-center inset-0 z-50">
         
@@ -373,9 +373,9 @@ const handleSubmit = (e) => {
         </div>
       )}
       <div>
-        <header className="py-1 pl-4  items-center border-b-[1px]">
-          <div>
-            <span className=" text-2xl">User 1</span> <br />
+        <header className="py-1 px-4  items-center border-b-[1px] ">
+          <div className="flex justify-between items-center">
+            <span className=" text-xl">User 1</span> <br />
             <span className="text-sm text-gray-400">Response time: 1 hour</span>
           </div>
           <div>
@@ -391,10 +391,10 @@ const handleSubmit = (e) => {
             />
           )}
           <div
-            className="chat--conversations h-[80vh] overflow-auto border-b-[1px]"
+            className="chat--conversations h-[75vh] overflow-auto border-b-[1px]"
             ref={chatContainerRef}
           >
-            <div className="rounded-lg p-4 m-10">
+            <div className="rounded-lg p-4 mb-10">
               {messages.map((message, index) => (
                 <div
                   key={index}
@@ -402,7 +402,7 @@ const handleSubmit = (e) => {
                     message.isUser1
                       ? "bg-gray-300 text-white"
                       : "bg-orange-400 text-white"
-                  } rounded-full p-2 m-10`}
+                  } rounded-full p-2 mb-7 text-sm md:m-10`}
                 >
                   <div className="flex space-x-4">
                     {message.image && (
@@ -423,10 +423,10 @@ const handleSubmit = (e) => {
               ))}
             </div>
           </div>
-          <div className="send-texts mt-2">
+          <div className="send-texts mt-2 z-[999] pt-8 bg-white fixed md:relative left-0 right-0 bottom-0">
             <form
               onSubmit={handleSubmit}
-              className="w-3/4 mx-auto flex justify-center p-2"
+              className=" w-full md:w-3/4  mx-auto flex justify-center p-2"
             >
               <input
                 type="text"

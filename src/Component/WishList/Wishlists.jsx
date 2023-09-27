@@ -2,6 +2,7 @@ import React from "react";
 import room from "../../assets/room.jpeg";
 import {Link} from "react-router-dom";
 import WishlistsSet from "./WishlistsSet";
+import BottomNavigation from "../Navigation/BottomNavigation";
 
 const Wishlists=()=>{
 
@@ -14,8 +15,8 @@ const Wishlists=()=>{
   ];
 
   const wishlist=wishlist_groups.map(group=>(
-    <Link to={"/WishlistsSet"}>
-        <div className=" rounded-[0.25em] overflow-hidden  relative bg-cover" key={group.id}>
+    <Link to={"/WishlistsSet"} key={group.id}>
+        <div className=" rounded-[0.25em] overflow-hidden  relative bg-cover" >
           <div className=" overflow-hidden aspect-video relative rounded-[0.25em] block ">
             <div className=" absolute start-0 end-0  m-0 p-0 block  ">
               <img className=" absolute opacity-100 transition block object-cover align-middle overflow-hidden   " src={group.url}></img>
@@ -38,7 +39,7 @@ const Wishlists=()=>{
 
     return (
         <div className=" min-h-[100dvh] relative block box-border">
-          <div className=" main block box-border">
+          <div className=" main block box-border mb-32">
             <div className=" mr-auto">
               <div className=" mb-6 mt-8 ">
                 <section>
@@ -60,6 +61,7 @@ const Wishlists=()=>{
               
             </div>
           </div>
+          <BottomNavigation/>
       </div>
     );
 

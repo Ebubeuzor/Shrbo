@@ -64,3 +64,44 @@
   .slider.round:before {
     border-radius: 50%;
   }
+
+  .example::-webkit-scrollbar {
+    display: none;
+}
+
+.example {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+
+.slider-wrapper {
+  border-radius: 20px;
+}
+
+.react-datepicker{
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.react-datepicker__header {
+  background-color: none !important;
+  background: none;
+  border: none;
+}
+
+
+
+.react-datepicker__current-month{
+  color: black;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+.react-datepicker__day-name{
+  color: grey;
+
+}
+
+.react-datepicker__day--keyboard-selected {
+  background: orange;
+}

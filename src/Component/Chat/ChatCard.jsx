@@ -42,11 +42,74 @@ const messages = [
 
 
   },
+  {
+    image: johnDOe,
+    username: "User 2",
+    text: "Hi there! theretheretheretheretheretheretherethere",
+    status: "Unavailable",
+    date: "Sept 22 - 27, 2023",
+    location: "Oyo"
+
+
+  },
+
+  {
+    image: johnDOe,
+    username: "User 2",
+    text: "Hi there! theretheretheretheretheretheretherethere",
+    status: "Unavailable",
+    date: "Sept 22 - 27, 2023",
+    location: "Oyo"
+
+
+  },
+  {
+    image: johnDOe,
+    username: "User 2",
+    text: "Hi there! theretheretheretheretheretheretherethere",
+    status: "Unavailable",
+    date: "Sept 22 - 27, 2023",
+    location: "Oyo"
+
+
+  },
+
+  {
+    image: johnDOe,
+    username: "User 2",
+    text: "Hi there! theretheretheretheretheretheretherethere",
+    status: "Unavailable",
+    date: "Sept 22 - 27, 2023",
+    location: "Oyo"
+
+
+  },
+  {
+    image: johnDOe,
+    username: "User 2",
+    text: "Hi there! theretheretheretheretheretheretherethere",
+    status: "Unavailable",
+    date: "Sept 22 - 27, 2023",
+    location: "Oyo"
+
+
+  },
+
+  {
+    image: johnDOe,
+    username: "User 2",
+    text: "Hi there! theretheretheretheretheretheretherethere",
+    status: "Unavailable",
+    date: "Sept 22 - 27, 2023",
+    location: "Oyo"
+
+
+  },
 ];
 
 export default function ChatCard() {
   return (
-    <div className="rounded-lg   mx-3">
+    <div className="rounded-lg pb-32  mx-3">
         <div className="border-b-[1px] py-4 border-gray-100">
             <h1 className="text-3xl">Messages</h1>
         </div>

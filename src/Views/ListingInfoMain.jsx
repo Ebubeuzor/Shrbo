@@ -8,13 +8,20 @@ import ListingMap from "../Component/ListingInfo/ListingMap";
 import ListingReviews from "../Component/ListingInfo/ListingReviews"
 import Testimonial from "../Component/ListingInfo/Testimonial";
 import ListingForm from "../Component/ListingInfo/ListingForm";
+<<<<<<< HEAD
 import HouseRules from "../Component/ListingInfo/HouseRules";
+=======
+import BottomNavigation from "../Component/Navigation/BottomNavigation";
+import Header from "../Component/Navigation/Header";
+>>>>>>> 059158bb7af77555fd8e20a582abfd268480a2f8
 
 const ListingInfoMain=()=>{
 
 
     return(
-        <div className=" px-6 md:px-10 xl:px-20 max-w-7xl  m-auto justify-center items-center flex flex-wrap flex-col gap-6 lg:gap-10 ">
+       <div>
+        <Header/>
+         <div className=" px-6 md:px-10 xl:px-20 max-w-7xl  m-auto justify-center items-center flex flex-wrap flex-col gap-6 lg:gap-10 ">
             <ListingPhotos/>
             
             <div className="w-full flex">
@@ -49,8 +56,9 @@ const ListingInfoMain=()=>{
             <ListingMap/>
        
             
-
+<BottomNavigation/>
         </div>
+       </div>
     );
 
 
