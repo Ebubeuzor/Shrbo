@@ -6,6 +6,10 @@ export default function HostHomes() {
   const [step, setStep] = useState(0);
   const [uploadedImages, setUploadedImages] = useState([]);
   const [fileInputKey, setFileInputKey] = useState(0);
+  const [houseTitle, setHouseTitle] = useState("");
+  const [houseDescriptions, setHouseDescriptions] = useState("");
+
+  const [housePrice, setHousePrice] = useState(""); // Add this line for the house price
 
   const handleNext = () => {
     setStep(step + 1);
@@ -25,6 +29,24 @@ export default function HostHomes() {
     }
   };
 
+  const [hostingType, setHostingType] = useState("private");
+  const [propertyFeatures, setPropertyFeatures] = useState({
+    securityCamera: false,
+    weapons: false,
+    dangerousAnimals: false,
+  });
+
+  const handleHostingTypeChange = (type) => {
+    setHostingType(type);
+  };
+
+  const handlePropertyFeatureChange = (feature) => {
+    setPropertyFeatures({
+      ...propertyFeatures,
+      [feature]: !propertyFeatures[feature],
+    });
+  };
+
   const [guestDetails, setGuestDetails] = useState({
     guests: 0,
     bedrooms: 0,
@@ -35,6 +57,19 @@ export default function HostHomes() {
   // Function to handle changes in guest details
   const handleGuestDetailsChange = (field, value) => {
     setGuestDetails({ ...guestDetails, [field]: value });
+  };
+
+  const [discounts, setDiscounts] = useState({
+    newListingPromotion: false,
+    weeklyDiscount: false,
+    monthlyDiscount: false,
+  });
+
+  const handleDiscountChange = (discountType) => {
+    setDiscounts({
+      ...discounts,
+      [discountType]: !discounts[discountType],
+    });
   };
 
   const propertyTypes = [
@@ -66,8 +101,153 @@ export default function HostHomes() {
     },
   ];
 
+  const houseDescription = [
+    {
+      id: "peaceful",
+      label: "An entire place",
+      icon: <FaHome />,
+      description: "Guests have the whole place to themselves.",
+    },
+    {
+      id: "unique",
+      label: "A room",
+      icon: <FaHotel />,
+      description: "Guests have the whole place to themselves.",
+    },
+
+    {
+      id: "family-friendly",
+      label: "A shared room",
+      icon: <FaBed />,
+      description: "Guests have the whole place to themselves.",
+    },
+    {
+      id: "stylish",
+      label: "A shared room",
+      icon: <FaBed />,
+      description: "Guests have the whole place to themselves.",
+    },
+
+    {
+      id: "central",
+      label: "A shared room",
+      icon: <FaBed />,
+      description: "Guests have the whole place to themselves.",
+    },
+
+    {
+      id: "spacious",
+      label: "A shared room",
+      icon: <FaBed />,
+      description: "Guests have the whole place to themselves.",
+    },
+  ];
+
+  const instantBook = [
+    {
+      id: "Use Instant Book",
+      label: "An entire place",
+      icon: <FaHome />,
+      description: "Guests can book automatically.",
+    },
+    {
+      id: "Approve or decline requests",
+      label: "A room",
+      icon: <FaHotel />,
+      description: "Guests must ask if they can book.",
+    },
+  ];
+
+
+  const caution = [
+    {
+      id: "              Security camera(s) ",
+      label: "An entire place",
+      icon: <FaHome />,
+      description: "Guests can book automatically.",
+    },
+    {
+      id: "              Weapons      ",
+      label: "A room",
+      icon: <FaHotel />,
+      description: "Guests must ask if they can book.",
+    },
+
+    {
+      id: "              Dangerous Animal      ",
+      label: "A room",
+      icon: <FaHotel />,
+      description: "Guests must ask if they can book.",
+    },
+
+    
+  ];
+
+  const visiblity = [
+    {
+      id: "Any Shbro guest",
+      label: "An entire place",
+      icon: <FaHome />,
+      description:
+        "Get reservations faster when you welcome anyone from the Shbro community.",
+    },
+    {
+      id: "An experienced guest",
+      label: "A room",
+      icon: <FaHotel />,
+      description:
+        "For your first guest, welcome someone with a good track record on Shbro who can offer tips for how to be a great Host.",
+    },
+  ];
+
+  const HostType = [
+    {
+      id: "              I'm hosting as a private individual      ",
+      label: "An entire place",
+      icon: <FaHome />,
+      description:
+        "Get reservations faster when you welcome anyone from the Shbro community.",
+    },
+    {
+      id: "              I'm hosting as a business  ",
+      label: "A room",
+      icon: <FaHotel />,
+      description:
+        "For your first guest, welcome someone with a good track record on Shbro who can offer tips for how to be a great Host.",
+    },
+  ];
+
+  const houseDiscount = [
+    {
+      id: "     20% New listing promotion",
+      label: "An entire place",
+      icon: <FaHome />,
+      description: "Offer 20% off your first 3 bookings",
+    },
+    {
+      id: "    5% Weekly discount",
+      label: "A room",
+      icon: <FaHotel />,
+      description: "For stays of 7 nights or more",
+    },
+    {
+      id: "   10% Monthly discount",
+      label: "A room",
+      icon: <FaHotel />,
+      description: "For stays of 28 nights or more",
+    },
+  ];
+
   const handleTypeSelection = (typeId) => {
     setSelectedTypes([typeId]);
+  };
+
+  const handleTypeSelections = (typeId) => {
+    if (selectedTypes.includes(typeId)) {
+      setSelectedTypes(selectedTypes.filter((type) => type !== typeId));
+    } else {
+      setSelectedTypes([...selectedTypes, typeId]);
+    }
   };
 
   const addressFields = [
@@ -463,54 +643,340 @@ export default function HostHomes() {
 
       case 7:
         return (
-            <div className=" mx-auto flex justify-center p-4">
-              <div className="overflow-auto">
-                <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-10">
-                  <h1 className="text-6xl">
-                    Add some photos of your house
-                  </h1>
-                  <p className="text-gray-400 mt-10">
-                    You can add more or make changes later.
-                  </p>
-                </div>
-                <div className="pb-32">
-                  <div className="text-center">
-                    <div className="border-2 border-dashed border-gray-300 p-8 my-6">
-                      <p className="text-gray-400 mb-4">Drag your photos here</p>
-                      <input
-                        type="file"
-                        multiple
-                        accept="image/*"
-                        onChange={handleImageUpload}
-                        key={fileInputKey}
-                      />
-                    </div>
-                    <p className="text-gray-400">Choose at least 5 photos</p>
+          <div className=" mx-auto flex justify-center p-4">
+            <div className="overflow-auto">
+              <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-10">
+                <h1 className="text-6xl">Add some photos of your house</h1>
+                <p className="text-gray-400 mt-10">
+                  You can add more or make changes later.
+                </p>
+              </div>
+              <div className="pb-32">
+                <div className="text-center">
+                  <div className="border-2 border-dashed border-gray-300 p-8 my-6">
+                    <p className="text-gray-400 mb-4">Drag your photos here</p>
+                    <input
+                      type="file"
+                      multiple
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      key={fileInputKey}
+                    />
                   </div>
-                  <div className="flex flex-wrap mt-6">
-                    {uploadedImages.map((image) => (
-                      <div key={image.id} className="relative w-1/4 p-2">
-                        <img
-                          src={image.src}
-                          alt="House"
-                          className="w-full h-auto"
-                        />
-                        <button
-                          onClick={() => handleImageDelete(image.id)}
-                          className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition duration-300"
-                        >
-                          <FaTrash />
-                        </button>
+                  <p className="text-gray-400">Choose at least 5 photos</p>
+                </div>
+                <div className="flex flex-wrap mt-6">
+                  {uploadedImages.map((image) => (
+                    <div key={image.id} className="relative w-1/4 p-2">
+                      <img
+                        src={image.src}
+                        alt="House"
+                        className="w-full h-auto"
+                      />
+                      <button
+                        onClick={() => handleImageDelete(image.id)}
+                        className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition duration-300"
+                      >
+                        <FaTrash />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 8: // Step for adding a house title
+        const maxCharacterCount = 32;
+        const currentCharacterCount = houseTitle.length;
+        const remainingCharacterCount =
+          maxCharacterCount - currentCharacterCount;
+
+        return (
+          <div className="mx-auto flex justify-center p-4">
+            <div className="overflow-auto">
+              <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-10">
+                <h1 className="text-6xl">Now, let's give your house a title</h1>
+                <p className="text-gray-400 mt-10">
+                  Short titles work best. Have fun with it—you can always change
+                  it later.
+                </p>
+              </div>
+              <div className=" text-center">
+                <input
+                  type="text"
+                  className="border rounded-lg px-4 py-2 w-2/3 text-lg"
+                  placeholder="Enter a title for your house"
+                  value={houseTitle}
+                  onChange={(e) => {
+                    const inputText = e.target.value;
+                    if (inputText.length <= maxCharacterCount) {
+                      setHouseTitle(inputText);
+                    }
+                  }}
+                />
+                <p className="text-gray-400 mt-4">
+                  {currentCharacterCount}/{maxCharacterCount} characters left
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 9:
+        return (
+          <div className=" mx-auto  flex justify-center p-4">
+            <div className="  overflow-auto">
+              <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-10">
+                <h1 className="text-6xl">Next, let's describe your house</h1>
+                <p className="text-gray-400">
+                  Choose up to 2 highlights. We'll use these to get your
+                  description started.
+                </p>
+              </div>
+              <div className="pb-32">
+                <div className=" ">
+                  <div className="flex flex-wrap   w-full">
+                    {houseDescription.map((type) => (
+                      <div
+                        key={type.id}
+                        className={`property-type h-24  w-32 m-3   flex ${
+                          selectedTypes.includes(type.id)
+                            ? "bg-orange-300 border-2 border-black text-white"
+                            : "bg-gray-200 text-black"
+                        } px-4 py-2 rounded-md cursor-pointer flex-col justify-between`}
+                        onClick={() => handleTypeSelections(type.id)}
+                      >
+                        <span className="mr-2 text-2xl">{type.icon}</span>
+                        {type.id}
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
             </div>
-          );
+          </div>
+        );
 
-      // ... Rest of your code ...
+      case 10:
+        const maxCharCount = 500;
+        const currentCharCount = houseDescriptions.length;
+        const remainingCharCount = maxCharCount - currentCharCount;
 
+        return (
+          <div className="mx-auto flex justify-center p-4">
+            <div className="overflow-auto">
+              <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-10">
+                <h1 className="text-6xl">Create your description</h1>
+                <p className="text-gray-400 mt-10">
+                  Share what makes your place special.
+                </p>
+              </div>
+              <div className="pb-32 text-center">
+                <textarea
+                  type="text"
+                  className="border rounded-lg px-4 py-2 w-2/3 text-lg"
+                  placeholder="Enter a description for your house"
+                  value={houseDescriptions} // Use houseDescription here
+                  onChange={(e) => {
+                    const inputText = e.target.value;
+                    if (inputText.length <= maxCharCount) {
+                      setHouseDescriptions(inputText); // Update houseDescription state
+                    }
+                  }}
+                />
+                <p className="text-gray-400 mt-4">
+                  {currentCharCount}/{maxCharCount} characters left
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 11:
+        return (
+          <div className=" mx-auto  flex justify-center p-4">
+            <div className="  overflow-auto">
+              <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-20">
+                <h1 className="text-6xl">
+                  Decide how you’ll confirm reservations
+                </h1>
+              </div>
+              <div className="pb-32">
+                <div className=" space-y-4">
+                  <div className="flex flex-wrap   w-full">
+                    {instantBook.map((type) => (
+                      <div
+                        key={type.id}
+                        className={`property-type  m-3   flex ${
+                          selectedTypes.includes(type.id)
+                            ? "bg-orange-300 border-2 border-black text-white"
+                            : "bg-gray-200 text-black"
+                        } px-4 py-2 rounded-md cursor-pointer flex-col justify-between`}
+                        onClick={() => handleTypeSelection(type.id)}
+                      >
+                        <span className="mr-2 text-2xl">{type.icon}</span>
+                        {type.description}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 12:
+        return (
+          <div className=" mx-auto  flex justify-center p-4">
+            <div className="  overflow-auto">
+              <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-20">
+                <h1 className="text-6xl">
+                  Choose who to welcome for your first reservation
+                </h1>
+                <p>After your first guest, anyone can book your place.</p>
+              </div>
+              <div className="pb-32">
+                <div className=" space-y-4">
+                  <div className="flex flex-wrap   w-full">
+                    {visiblity.map((type) => (
+                      <div
+                        key={type.id}
+                        className={`property-type  m-3   flex ${
+                          selectedTypes.includes(type.id)
+                            ? "bg-orange-300 border-2 border-black text-white"
+                            : "bg-gray-200 text-black"
+                        } px-4 py-2 rounded-md cursor-pointer flex-col justify-between`}
+                        onClick={() => handleTypeSelection(type.id)}
+                      >
+                        <span className="mr-2 text-2xl">{type.icon}</span>
+                        {type.description}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 13:
+        return (
+          <div className=" mx-auto  flex justify-center p-4">
+            <div className="  overflow-auto">
+              <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-20">
+                <h1 className="text-6xl">Now, set your price</h1>
+                <p>You can change it anytime.</p>
+              </div>
+              <div className="pb-32">
+                <div className="text-center">
+                  <input
+                    type="number"
+                    className="border rounded-lg px-4 py-2 w-2/3 text-lg"
+                    placeholder="Price per night"
+                    value={housePrice}
+                    onChange={(e) => setHousePrice(e.target.value)}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 14: // Step for adding discounts
+        return (
+          <div className=" mx-auto  flex justify-center p-4">
+            <div className="  overflow-auto">
+              <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-10">
+                <h1 className="text-6xl">Add discounts</h1>
+                <p>
+                  Help your place stand out to get booked faster and earn your
+                  first reviews.
+                </p>
+              </div>
+              <div className="pb-32">
+                <div className=" ">
+                  <div className="flex flex-wrap   w-full">
+                    {houseDiscount.map((type) => (
+                      <div
+                        key={type.id}
+                        className={`property-type  m-3   flex ${
+                          selectedTypes.includes(type.id)
+                            ? "bg-orange-300 border-2 border-black text-white"
+                            : "bg-gray-200 text-black"
+                        } px-4 py-2 rounded-md cursor-pointer flex-col justify-between`}
+                        onClick={() => handleTypeSelections(type.id)}
+                      >
+                        <span className="mr-2 text-2xl">{type.icon}</span>
+                        {type.id}
+                        <div>{type.description}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 15: // Step for hosting type and property features
+        return (
+          <div className=" mx-auto  flex justify-center p-4">
+            <div className="  overflow-auto">
+              <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-20">
+                <h1 className="text-6xl">How are you hosting on Shbro?</h1>
+              </div>
+              <div className="pb-32">
+                <div className=" space-y-4">
+                  <div className="flex flex-wrap   w-full">
+                    {HostType.map((type) => (
+                      <div
+                        key={type.id}
+                        className={`property-type  m-3   flex ${
+                          selectedTypes.includes(type.id)
+                            ? "bg-orange-300 border-2 border-black text-white"
+                            : "bg-gray-200 text-black"
+                        } px-4 py-2 rounded-md cursor-pointer flex-col justify-between`}
+                        onClick={() => handleTypeSelection(type.id)}
+                      >
+                        <span className="mr-2 text-2xl">{type.icon}</span>
+                        {type.id}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="md:flex md:justify-center md:flex-col ">
+                <h1 className="text-2xl">
+                  {" "}
+                  Does your place have any of these?
+                </h1>
+              </div>
+              <div className="pb-32">
+                <div className=" space-y-4">
+                  <div className="flex flex-wrap   w-full">
+                    {caution.map((type) => (
+                      <div
+                        key={type.id}
+                        className={`property-type  m-3   flex ${
+                          selectedTypes.includes(type.id)
+                            ? "bg-orange-300 border-2 border-black text-white"
+                            : "bg-gray-200 text-black"
+                        } px-4 py-2 rounded-md cursor-pointer flex-col justify-between`}
+                        onClick={() => handleTypeSelections(type.id)}
+                      >
+                        <span className="mr-2 text-2xl">{type.icon}</span>
+                        {type.id}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
       default:
         return null;
     }
@@ -528,7 +994,7 @@ export default function HostHomes() {
             Previous
           </button>
         )}
-        {step < 7 && (
+        {step < 15 && (
           <button
             onClick={handleNext}
             className="text-white text-center  bg-orange-400 w-full p-4"
