@@ -185,14 +185,14 @@ export default function HostHomes() {
                     {propertyTypes.map((type) => (
                       <div
                         key={type.id}
-                        className={`property-type h-20 w-32 m-3   flex ${
+                        className={`property-type h-24  w-32 m-3   flex ${
                           selectedTypes.includes(type.id)
-                            ? "bg-orange-500 text-white"
+                            ? "bg-orange-300 border-2 border-black text-white"
                             : "bg-gray-200 text-black"
                         } px-4 py-2 rounded-md cursor-pointer flex-col justify-between`}
                         onClick={() => handleTypeSelection(type.id)}
                       >
-                        <span className="mr-2">{type.icon}</span>
+                        <span className="mr-2 text-2xl">{type.icon}</span>
                         {type.label}
                       </div>
                     ))}
@@ -219,7 +219,7 @@ export default function HostHomes() {
                     {privacyTypes.map((type) => (
                       <div
                         key={type.id}
-                        className={`property-type h-20  m-3   flex ${
+                        className={`property-type   m-3   flex ${
                           selectedTypes.includes(type.id)
                             ? "bg-orange-500 text-white"
                             : "bg-gray-200 text-black"
