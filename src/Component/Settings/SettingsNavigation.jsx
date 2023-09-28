@@ -5,7 +5,7 @@ export default function SettingsNavigation(props) {
   return (
     <div>
       <div className="my-10">
-        <nav className="">
+        <nav className="hidden md:block">
           <ol className="flex">
             <li>
               <span>

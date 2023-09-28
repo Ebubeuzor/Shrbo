@@ -17,7 +17,7 @@ export default function HostModal({ isOpen, onClose }) {
             <div>
               <section className="bg-orange-400 p-2 rounded-lg my-10">
                 <div>
-                  <Link to="/UsersShow" className="flex items-center space-x-10">
+                  <Link to="/UsersShow" className="flex flex-wrap space-y-2  items-center space-x-4">
                     <div>
                     <label htmlFor="profilePictureInput" className="w-fit">
                       <div
@@ -55,7 +55,7 @@ export default function HostModal({ isOpen, onClose }) {
 
                 <li>
                     <div className=" p-4 my-4">
-                      <Link className="flex justify-between cursor-pointer items-center">
+                      <Link to="/HostHomes" className="flex justify-between cursor-pointer items-center">
                         <div className="bg-orange-400 text-white rounded-full p-2">
                           <BsHouseDoor />
                         </div>
@@ -85,7 +85,7 @@ export default function HostModal({ isOpen, onClose }) {
                   </li>
                   <li>
                     <div className=" p-4 my-4">
-                      <Link className="flex justify-between cursor-pointer items-center">
+                      <Link to="/Profile" className="flex justify-between cursor-pointer items-center">
                         <div className="bg-orange-400 text-white rounded-full p-2">
                           <BsHouseDoor />
                         </div>
@@ -101,12 +101,12 @@ export default function HostModal({ isOpen, onClose }) {
                   </li>
                   <li>
                     <div className=" p-4 my-4">
-                      <Link className="flex justify-between cursor-pointer items-center">
+                      <Link to="/Payments" className="flex justify-between cursor-pointer items-center">
                         <div className="bg-orange-400 text-white rounded-full p-2">
                           <BsHouseDoor />
                         </div>
                         <div className="text-base text-slate-500 text-center">
-                          Guide Book
+                         Payments
                         </div>
                         <div className="text-2xl">
                           <img src={rightArrow} className="w-4 h-4" alt="" />
@@ -133,12 +133,12 @@ export default function HostModal({ isOpen, onClose }) {
                   </li>
                   <li>
                     <div className=" p-4 my-4">
-                      <Link className="flex justify-between cursor-pointer items-center">
+                      <Link to="/Security" className="flex justify-between cursor-pointer items-center">
                         <div className="bg-orange-400 text-white rounded-full p-2">
                           <BsHouseDoor />
                         </div>
                         <div className="text-base text-slate-500 text-center">
-                          Settings{" "}
+                          Security{" "}
                         </div>
                         <div className="text-2xl">
                           <img src={rightArrow} className="w-4 h-4" alt="" />

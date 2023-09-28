@@ -12,7 +12,6 @@ import HouseRules from "../Component/ListingInfo/HouseRules";
 import BottomNavigation from "../Component/Navigation/BottomNavigation";
 import Header from "../Component/Navigation/Header";
 
-
 const ListingInfoMain=()=>{
 
 
