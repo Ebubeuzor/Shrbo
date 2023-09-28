@@ -120,7 +120,7 @@ import ContactInfo from './ContactInfo';
                                 <div className='cancellation box-border gap-1  flex'>
                                     <span className=' font-medium text-base'>Free cancellation</span>
                                     <label>until</label>
-                                    <div className=' inline-block relative font-medium text-blue-600 underline cursor-pointer z-10 ' onClick={showModal}><span>Oct 10,2023</span></div>
+                                    <div className=' inline-block relative font-medium text-blue-600 underline cursor-pointer  ' onClick={showModal}><span>Oct 10,2023</span></div>
                                 </div>
                                 
                                  {/*                                       
