@@ -17,7 +17,7 @@ export default function HostModal({ isOpen, onClose }) {
             <div>
               <section className="bg-orange-400 p-2 rounded-lg my-10">
                 <div>
-                  <Link to="/UsersShow" className="flex items-center space-x-10">
+                  <Link to="/UsersShow" className="flex flex-wrap space-y-2  items-center space-x-4">
                     <div>
                     <label htmlFor="profilePictureInput" className="w-fit">
                       <div
