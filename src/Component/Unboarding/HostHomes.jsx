@@ -60,7 +60,7 @@ export default function HostHomes() {
                       />
                     </div>
                   </div>
-                  <div className="flex pb-2 my-4">
+                  <div className="flex pb-32 my-4">
                     <div className="text-2xl mr-2">3</div>
                     <div className="flex flex-col  w-[100%]">
                       <h2 className="font-medium text-2xl mb-3 ">Publish</h2>
@@ -88,7 +88,7 @@ export default function HostHomes() {
               <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-20">
                 <h1 className="text-6xl">It’s easy to get started on Shbro</h1>
               </div>
-              <div className="">
+              <div className="pb-32">
                 <div>
                   <div className=" pb-2 my-4">
                     <div className="text-2xl mr-2">Step 1</div>
