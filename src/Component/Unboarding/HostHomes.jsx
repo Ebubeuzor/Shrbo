@@ -120,7 +120,7 @@ export default function HostHomes() {
     switch (step) {
       case 0:
         return (
-          <div className="mt-32 mx-auto  flex justify-center p-4 ">
+          <div className=" mx-auto  flex justify-center p-4 ">
             <div className=" ">
               <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-28">
                 <h1 className="text-6xl">It’s easy to get started on Shbro</h1>
@@ -189,12 +189,12 @@ export default function HostHomes() {
         );
       case 1:
         return (
-          <div className="mt-32 mx-auto  flex justify-center p-4">
+          <div className=" mx-auto  flex justify-center p-4">
             <div className="  overflow-auto">
               <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-20">
                 <h1 className="text-6xl">It’s easy to get started on Shbro</h1>
               </div>
-              <div className="pb-32">
+              <div className="">
                 <div>
                   <div className=" pb-2 my-4">
                     <div className="text-2xl mr-2">Step 1</div>
@@ -222,7 +222,7 @@ export default function HostHomes() {
         );
       case 2:
         return (
-          <div className="mt-32 mx-auto  flex justify-center p-4">
+          <div className=" mx-auto  flex justify-center p-4">
             <div className="  overflow-auto">
               <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-20">
                 <h1 className="text-6xl">
@@ -256,7 +256,7 @@ export default function HostHomes() {
 
       case 3:
         return (
-          <div className="mt-32 mx-auto  flex justify-center p-4">
+          <div className=" mx-auto  flex justify-center p-4">
             <div className="  overflow-auto">
               <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-20">
                 <h1 className="text-6xl">
@@ -299,7 +299,7 @@ export default function HostHomes() {
 
       case 5:
         return (
-          <div className="mt-32 mx-auto flex justify-center p-4">
+          <div className=" mx-auto flex justify-center p-4">
             <div className="overflow-auto">
               <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-10">
                 <h1 className="text-6xl">Share some basics about your place</h1>
@@ -429,7 +429,7 @@ export default function HostHomes() {
 
       case 6:
         return (
-          <div className="mt-32 mx-auto  flex justify-center p-4">
+          <div className=" mx-auto  flex justify-center p-4">
             <div className="  overflow-auto">
               <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-20">
                 <h1 className="text-6xl">
@@ -463,7 +463,7 @@ export default function HostHomes() {
 
       case 7:
         return (
-            <div className="mt-32 mx-auto flex justify-center p-4">
+            <div className=" mx-auto flex justify-center p-4">
               <div className="overflow-auto">
                 <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-10">
                   <h1 className="text-6xl">
