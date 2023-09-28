@@ -51,7 +51,7 @@ const ListingInfoMain=()=>{
             <Amenities/>
             <Testimonial/>
             <ListingMap/>
-       
+           
             
 <BottomNavigation/>
         </div>

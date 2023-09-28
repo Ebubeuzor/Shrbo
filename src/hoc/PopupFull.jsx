@@ -8,7 +8,7 @@ const PopupFull = ({title,onClose,open,children}) => {
     <div className=' hidden'>
       <Drawer
         title={title}
-        width={720}
+        width={"100%"}
         onClose={onClose}
         open={open}
         bodyStyle={{

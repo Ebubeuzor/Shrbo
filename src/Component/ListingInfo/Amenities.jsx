@@ -87,12 +87,12 @@ import PopupFull from "../../hoc/PopupFull";
                                 </div>
                                 <div className=" mt-4  md:mt-6 ">
                                     <button type="button" className=" rounded-lg hidden md:inline-block relative border transition-shadow py-[13px] px-[23px] text-base font-semibold" onClick={openPopup}>
-                                        See more
+                                        See all {amenities_info.length} amenities
                                     </button>
 
                                     {/* This button shows the drawer instead of Popup and it is only visible on mobile view */}
                                     <button type="button" className=" rounded-lg inline-block relative border transition-shadow py-[13px] px-[23px] md:hidden text-base font-semibold" onClick={showDrawer}>
-                                        See more
+                                        See all {amenities_info.length} amenities
                                     </button>
 
                                     <Popup isModalVisible={isPopupOpen} handleCancel={closePopup} title={"Amenities"}   >
