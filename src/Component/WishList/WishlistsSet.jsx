@@ -198,7 +198,7 @@ const WishlistsSet=()=>{
 
                             {/* Menu and back buttton  */}
                         <div className=" px-6 py-[18px] md:top-20 sticky left-0 w-full top-0 block bg-white
-                                         box-border z-[2]   md:px-10 lg:px-6    ">
+                                         box-border z-[50]   md:px-10 lg:px-6    ">
                             <div className=" flex items-center justify-between  "> 
 
                                 <div className=" items-center flex w-11 "> 
