@@ -172,7 +172,7 @@ const slides=clients.map((client)=>(
 
 
 
-            <div className='  h-full overflow-y-scroll' >
+            <div className='  h-full md:overflow-y-scroll' >
                 <div className=' w-full mb-8 uppercase '><span>Comments From Verified Purchase  </span></div>
                 <div> {slides} </div>
             </div>
