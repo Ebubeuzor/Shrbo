@@ -1,12 +1,25 @@
-import React from "react";
+import React,{useState} from "react";
 import { Splide, SplideSlide} from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import adv from "../../assets/user.png";
+import PopupFull from "../../hoc/PopupFull";
+import TestimonialInfo from "./TestimonialInfo";
 
 
 
 
 const Testimonial=()=>{
+
+    const [open, setOpen] = useState(false);
+
+    const openPopup = () => {
+        setOpen(true);
+    };
+
+    const closePopup = () => {
+        setOpen(false);
+    };
+
 
     const clients= [
         { 
@@ -94,48 +107,48 @@ const Testimonial=()=>{
 
     ));
 
-    const ratinginfo=[
-        { 
-            id: 1,category:'Neatness',rating:'4.8',
+//     const ratinginfo=[
+//         { 
+//             id: 1,category:'Neatness',rating:'4.8',
            
-          },
-          { 
-            id: 2,category:'Check-in',rating:'4.9',
+//           },
+//           { 
+//             id: 2,category:'Check-in',rating:'4.9',
            
-          },
-          { 
-            id: 3,category:'Neatness',rating:'4.9',
-          },
-          { 
-            id: 4,category:'Value',rating:'4.8',
+//           },
+//           { 
+//             id: 3,category:'Neatness',rating:'4.9',
+//           },
+//           { 
+//             id: 4,category:'Value',rating:'4.8',
            
-          },
+//           },
 
-    ];
+//     ];
 
-    const rating_category=ratinginfo.map(cat=>(
-        <div key={cat.id} className=" relative px-2 mr-[8.33%]  w-full md:w-1/2 md:px-2 ">
-            <div className=" flex itens-center md:max-w-[83.33%]  mb-4 justify-end flex-row">
-                <div className="w-full overflow-hidden text-ellipsis whitespace-nowrap">
-                    {cat.category}
-                </div>
-                <div className=" w-[75%] md:w-1/2 flex flex-row items-center ml-3" >
-                    <div className=" relative h-1 w-full mr-2 rounded-sm bg-slate-300 ">
-                        <span className=" absolute top-0 rounded-sm left-0 w-[96%] bg-black h-full "></span>
-                    </div>
-                    <span className=" text-black font-semibold text-sm ml-[6px]  ">
-                            {cat.rating}
-                    </span>
+//     const rating_category=ratinginfo.map(cat=>(
+//         <div key={cat.id} className=" relative px-2 mr-[8.33%]  w-full md:w-1/2 md:px-2 ">
+//             <div className=" flex itens-center md:max-w-[83.33%]  mb-4 justify-end flex-row">
+//                 <div className="w-full overflow-hidden text-ellipsis whitespace-nowrap">
+//                     {cat.category}
+//                 </div>
+//                 <div className=" w-[75%] md:w-1/2 flex flex-row items-center ml-3" >
+//                     <div className=" relative h-1 w-full mr-2 rounded-sm bg-slate-300 ">
+//                         <span className=" absolute top-0 rounded-sm left-0 w-[96%] bg-black h-full "></span>
+//                     </div>
+//                     <span className=" text-black font-semibold text-sm ml-[6px]  ">
+//                             {cat.rating}
+//                     </span>
 
-                </div>
+//                 </div>
 
-            </div>
+//             </div>
            
 
-        </div>
+//         </div>
 
        
-));  
+// ));  
     
 
 
@@ -148,7 +161,7 @@ const Testimonial=()=>{
         <div className="w-full py-12 ">
                 <div className=" w-full ">
 
-                    <div className="text-2xl font-semibold ">
+                    <div className="text-2xl font-semibold  ">
 
                             <span className=" inline-flex mr-2 ">                                                       
                                              <svg xmlns="http://www.w3.org/2000/svg" 
@@ -178,7 +191,7 @@ const Testimonial=()=>{
                                          
                                             <div className=" flex box-border ">
                                                 <button className="relative text-orange-500 z-50 text-start text-sm  ">
-                                                    36 reviews
+                                                {clients.length} reviews
                                                 </button>
                                             </div>
                                     </div>
@@ -187,13 +200,13 @@ const Testimonial=()=>{
                             </span>                    
                     </div>        
 
-
+{/* 
                     <div className=" md:flex items-stretch my-8 justify-start flex-wrap w-full max-h-[258px] md:h-full overflow-hidden hidden  ">
                                 {rating_category}                 
-                    </div>
+                    </div> */}
 
 
-                    <div className=" w-full mt-6 md:mt-0  ">
+                    <div className=" w-full mt-6 md:mt-6  ">
 
                              
                         <Splide  options={ {
@@ -226,10 +239,14 @@ const Testimonial=()=>{
 
                     </div>
 
-                    <div className=" mt-8  md:mt-6 ">
-                                    <button type="button" className=" rounded-lg inline-block relative border transition-shadow py-[13px] px-[23px] text-base font-semibold">
-                                        See all 36 reviews
+                    <div className=" mt-8  md:mt-8 ">
+                                    <button type="button" className=" rounded-lg inline-block relative border transition-shadow py-[13px] px-[23px] text-base font-semibold" onClick={openPopup} >
+                                        See all {clients.length} reviews
                                     </button>
+
+                                    <PopupFull title={""} open={open} onClose={closePopup} >
+                                        <TestimonialInfo/>
+                                    </PopupFull>
 
                     </div>                    
 
