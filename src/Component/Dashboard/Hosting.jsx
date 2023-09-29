@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import exclammationMark from "../../assets/svg/exclamation-round-icon.svg"
+import exclammationMark from "../../assets/svg/exclamation-round-icon.svg";
 
 export default function Hosting() {
   const [activeTab, setActiveTab] = useState("checkingOut");
@@ -11,11 +11,67 @@ export default function Hosting() {
   const renderTabContent = () => {
     switch (activeTab) {
       case "checkingOut":
-        return <div >
-            <div >
-            2
+        return (
+          <div className="whitespace-nowrap overflow-x-auto example">
+            <div className="flex space-x-3">
+            <div className="border w-64 p-4 mt-4 rounded-xl">
+              <div className="current text-orange-300 text-sm">Currently hosting</div>
+              <div className="flex items-center justify-between mt-5 flex-wrap" >
+                <div className="guest-name">
+                  <h1>Endo</h1>
+                  <p>Sept 22 -Oct 22</p>
+                </div>
+                <div className="guest-image">img</div>
+              </div>
+              <div className="mt-4">
+                <button className="bg-orange-400 py-2 px-4 w-full text-white ">message</button>
+              </div>
             </div>
-        </div>;
+
+            <div className="border w-64 p-4 mt-4 rounded-xl">
+              <div className="current text-orange-300 text-sm">Currently hosting</div>
+              <div className="flex items-center justify-between mt-5 flex-wrap" >
+                <div className="guest-name">
+                  <h1>Endo</h1>
+                  <p>Sept 22 -Oct 22</p>
+                </div>
+                <div className="guest-image">img</div>
+              </div>
+              <div className="mt-4">
+                <button className="bg-orange-400 py-2 px-4 w-full text-white ">message</button>
+              </div>
+            </div>
+
+            <div className="border w-64 p-4 mt-4 rounded-xl">
+              <div className="current text-orange-300 text-sm">Currently hosting</div>
+              <div className="flex items-center justify-between mt-5 flex-wrap" >
+                <div className="guest-name">
+                  <h1>Endo</h1>
+                  <p>Sept 22 -Oct 22</p>
+                </div>
+                <div className="guest-image">img</div>
+              </div>
+              <div className="mt-4">
+                <button className="bg-orange-400 py-2 px-4 w-full text-white ">message</button>
+              </div>
+            </div>
+
+            <div className="border w-64 p-4 mt-4 rounded-xl">
+              <div className="current text-orange-300 text-sm">Currently hosting</div>
+              <div className="flex items-center justify-between mt-5 flex-wrap" >
+                <div className="guest-name">
+                  <h1>Endo</h1>
+                  <p>Sept 22 -Oct 22</p>
+                </div>
+                <div className="guest-image">img</div>
+              </div>
+              <div className="mt-4">
+                <button className="bg-orange-400 py-2 px-4 w-full text-white ">message</button>
+              </div>
+            </div>
+            </div>
+          </div>
+        );
       case "currentlyHosting":
         return <div>Currently hosting content goes here.</div>;
       case "arrivingSoon":
@@ -38,7 +94,7 @@ export default function Hosting() {
             <h1 className="text-3xl font-medium my-7">Welcome back, Endo</h1>
           </div>
           <div className="flex space-x-5">
-            <div className="flex border rounded-lg p-4 md:w-fit items-center space-x-4 w-full w-80">
+            <div className="flex justify-between border rounded-lg p-4 md:w-fit items-center space-x-4 w-full w-80">
               <div className="">
                 <div>
                   <h1 className="text-sm font-medium mb-2">
@@ -59,7 +115,9 @@ export default function Hosting() {
                   </span>
                 </div>
               </div>
-              <div className="px-4"><img src={exclammationMark} className="w-7" alt="" /></div>
+              <div className="px-4">
+                <img src={exclammationMark} className="w-7" alt="" />
+              </div>
             </div>
           </div>
         </div>
@@ -72,7 +130,7 @@ export default function Hosting() {
               }`}
               onClick={() => handleTabClick("checkingOut")}
             >
-              Checking out (0)
+              Checking out (4)
             </div>
             <div
               className={`tab border py-2 px-4 rounded-full cursor-pointer  ${
@@ -110,8 +168,6 @@ export default function Hosting() {
           <div className="tab-content">{renderTabContent()}</div>
         </div>
       </div>
-
-      
     </div>
   );
 }
