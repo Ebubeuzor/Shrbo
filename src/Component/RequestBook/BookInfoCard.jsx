@@ -5,7 +5,7 @@ const BookInfoCard = () => {
   const toggleShow = () => setShow(!show);
 
   return (
-    <div className=" mt-16 px-4 relative box-border block  ">
+    <div className=" hidden mt-16 px-4 relative box-border md:block  ">
       <div className="rounded-lg border shadow-md  pt-4  ">
         <div className="sticky z-[100] ">
           <div className=" rounded-lg ">
