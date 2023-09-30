@@ -86,7 +86,7 @@ export default function Hosting() {
         return null;
     }
   };
-
+ 
   return (
     <div className="pb-20">
       <div className="flex flex-wrap md:flex-col md:w-[80vw] md:mx-auto md:my-10 p-10">
