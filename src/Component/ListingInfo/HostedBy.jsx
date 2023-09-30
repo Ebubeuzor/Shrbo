@@ -94,7 +94,7 @@ const HostedBy=()=>{
                     </div> */}
                 
                 </div>
-                <ul className=" grid grid-cols-3  w-full gap-2 overflow-x-scroll list-disc box-border grid-rows-1   " >
+                <ul className=" example grid grid-cols-3  w-full gap-2 overflow-x-scroll list-disc box-border grid-rows-1   " >
                         {Rooms}
                 </ul>
                 
