@@ -8,69 +8,62 @@ export default function Hosting() {
     setActiveTab(tab);
   };
 
+  const hosts = [
+    {
+      name: "Endo",
+      date: "Sept 22 - Oct 22",
+      image: "img",
+    },
+    {
+      name: "Endo",
+      date: "Sept 22 - Oct 22",
+      image: "img",
+    },
+    {
+      name: "Endo",
+      date: "Sept 22 - Oct 22",
+      image: "img",
+    },
+    {
+        name: "Endo",
+        date: "Sept 22 - Oct 22",
+        image: "img",
+      },
+  ];
+
   const renderTabContent = () => {
     switch (activeTab) {
       case "checkingOut":
+        if (hosts.length === 0) {
+            return <div className="bg-orange-100 mt-4 h-36 flex justify-center items-center">No hosts are currently hosting.</div>;
+          }
         return (
-          <div className="whitespace-nowrap overflow-x-auto example">
-            <div className="flex space-x-3">
-            <div className="border w-64 p-4 mt-4 rounded-xl">
-              <div className="current text-orange-300 text-sm">Currently hosting</div>
-              <div className="flex items-center justify-between mt-5 flex-wrap" >
-                <div className="guest-name">
-                  <h1>Endo</h1>
-                  <p>Sept 22 -Oct 22</p>
+         <div className="bg-orange-100 mt-4">
+             <div className="whitespace-nowrap overflow-x-auto example">
+            <div className="flex space-x-3 p-6 ">
+              {hosts.map((host, index) => (
+                <div className=" w-64 p-4 mt-4 rounded-xl bg-white shadow-sm" key={index}>
+                  <div className="current text-orange-300 text-sm">
+                    Currently hosting
+                  </div>
+                  <div className="flex items-center justify-between mt-5 flex-wrap">
+                    <div className="guest-name">
+                      <h1>{host.name}</h1>
+                      <p>{host.date}</p>
+                    </div>
+                    <div className="guest-image">{host.image}</div>
+                  </div>
+                  <div className="mt-4">
+                    <button className="bg-orange-400 rounded-full py-2 px-4 w-full text-white ">
+                      message
+                    </button>
+                  </div>
                 </div>
-                <div className="guest-image">img</div>
-              </div>
-              <div className="mt-4">
-                <button className="bg-orange-400 py-2 px-4 w-full text-white ">message</button>
-              </div>
+              ))}
             </div>
-
-            <div className="border w-64 p-4 mt-4 rounded-xl">
-              <div className="current text-orange-300 text-sm">Currently hosting</div>
-              <div className="flex items-center justify-between mt-5 flex-wrap" >
-                <div className="guest-name">
-                  <h1>Endo</h1>
-                  <p>Sept 22 -Oct 22</p>
-                </div>
-                <div className="guest-image">img</div>
-              </div>
-              <div className="mt-4">
-                <button className="bg-orange-400 py-2 px-4 w-full text-white ">message</button>
-              </div>
-            </div>
-
-            <div className="border w-64 p-4 mt-4 rounded-xl">
-              <div className="current text-orange-300 text-sm">Currently hosting</div>
-              <div className="flex items-center justify-between mt-5 flex-wrap" >
-                <div className="guest-name">
-                  <h1>Endo</h1>
-                  <p>Sept 22 -Oct 22</p>
-                </div>
-                <div className="guest-image">img</div>
-              </div>
-              <div className="mt-4">
-                <button className="bg-orange-400 py-2 px-4 w-full text-white ">message</button>
-              </div>
-            </div>
-
-            <div className="border w-64 p-4 mt-4 rounded-xl">
-              <div className="current text-orange-300 text-sm">Currently hosting</div>
-              <div className="flex items-center justify-between mt-5 flex-wrap" >
-                <div className="guest-name">
-                  <h1>Endo</h1>
-                  <p>Sept 22 -Oct 22</p>
-                </div>
-                <div className="guest-image">img</div>
-              </div>
-              <div className="mt-4">
-                <button className="bg-orange-400 py-2 px-4 w-full text-white ">message</button>
-              </div>
-            </div>
-            </div>
+            
           </div>
+         </div>
         );
       case "currentlyHosting":
         return <div>Currently hosting content goes here.</div>;
