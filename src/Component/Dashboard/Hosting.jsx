@@ -3,6 +3,7 @@ import exclammationMark from "../../assets/svg/exclamation-round-icon.svg";
 import BottomNavigation from "../Navigation/BottomNavigation";
 import GoBackButton from "../GoBackButton";
 import SuperHostGuidanceCard from "../SuperHostGuidanceCard";
+import { Link } from "react-router-dom";
 
 export default function Hosting() {
   const [activeTab, setActiveTab] = useState("checkingOut");
@@ -238,8 +239,11 @@ export default function Hosting() {
         <GoBackButton />
         <div className="w-full">
           <div className="">Bell</div>
-          <div>
+          <div className="flex items-center justify-between">
             <h1 className="text-3xl font-medium my-7">Welcome back, Endo</h1>
+          <Link>
+         All Reservations(0)
+          </Link>
           </div>
           <div className="flex space-x-5">
             <div className="flex justify-between border rounded-lg p-4 md:w-fit items-center space-x-4 w-full w-80">
@@ -270,7 +274,9 @@ export default function Hosting() {
           </div>
         </div>
         <div className="reservation w-full md:w-[80vw] mt-14 pb-20">
-          <h1 className="text-2xl font-medium mb-4">Your reservations</h1>
+        <div>
+        <h1 className="text-2xl font-medium mb-4">Your reservations</h1>
+        </div>
           <div className="tab-container space-x-4 flex  overflow-x-auto whitespace-nowrap example">
             <div
               className={`tab border py-2 px-4 rounded-full cursor-pointer  ${
