@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import exclammationMark from "../../assets/svg/exclamation-round-icon.svg";
+import BottomNavigation from "../Navigation/BottomNavigation";
+import GoBackButton from "../GoBackButton";
 
 export default function Hosting() {
   const [activeTab, setActiveTab] = useState("checkingOut");
@@ -81,6 +83,7 @@ export default function Hosting() {
   return (
     <div>
       <div className="flex flex-wrap md:flex-col md:w-[80vw] md:mx-auto md:my-10 p-10">
+        <GoBackButton/>
         <div className="w-full">
           <div className="">Bell</div>
           <div>
@@ -161,6 +164,8 @@ export default function Hosting() {
           <div className="tab-content">{renderTabContent()}</div>
         </div>
       </div>
+
+      <BottomNavigation/>
     </div>
   );
 }
