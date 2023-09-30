@@ -75,7 +75,7 @@ export default function Listings() {
   return (
     <div className='md:flex-col md:w-[80vw] md:mx-auto md:my-10 p-4 md:p-10'>
       <h1 className="text-3xl font-semibold mb-4">2 Listings</h1>
-      <div className='flex  justify-between'>
+      <div className='flex  justify-between overflow-auto example space-x-4'>
       <div className="mb-4">
         <label htmlFor="rooms" className="mr-2">Rooms:</label>
         <select
@@ -160,7 +160,8 @@ export default function Listings() {
         </select>
       </div>
       </div>
-      <table className="min-w-full bg-white shadow-md border rounded-lg overflow-hidden">
+   <div className='overflow-auto example shadow-md'>
+   <table className="md:w-full bg-white shadow-md border rounded-lg overflow-hidden">
         <thead className="bg-orange-400 text-white">
           <tr>
             <th className="py-2 px-4">Select</th>
@@ -207,6 +208,7 @@ export default function Listings() {
           )}
         </tbody>
       </table>
+   </div>
     </div>
   );
 }
