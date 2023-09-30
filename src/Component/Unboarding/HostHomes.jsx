@@ -11,6 +11,17 @@ export default function HostHomes() {
 
   const [housePrice, setHousePrice] = useState(""); // Add this line for the house price
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Log all the data to the console
+    console.log("House Title:", houseTitle);
+    console.log("House Descriptions:", houseDescriptions);
+    console.log("House Price:", housePrice);
+    // ... log other data from state variables ...
+
+    // You can now submit the data to your backend or perform other actions here.
+  };
   const handleNext = () => {
     setStep(step + 1);
   };
@@ -158,7 +169,6 @@ export default function HostHomes() {
     },
   ];
 
-
   const caution = [
     {
       id: "              Security camera(s) ",
@@ -179,8 +189,112 @@ export default function HostHomes() {
       icon: <FaHotel />,
       description: "Guests must ask if they can book.",
     },
+  ];
 
-    
+  const amenities = [
+    {
+      id: "Wifi",
+      label: "An entire place",
+      icon: <FaHome />,
+      description:
+        "Get reservations faster when you welcome anyone from the Shbro community.",
+    },
+    {
+      id: "TV",
+      label: "A room",
+      icon: <FaHotel />,
+      description:
+        "For your first guest, welcome someone with a good track record on Shbro who can offer tips for how to be a great Host.",
+    },
+    {
+      id: "Kitchen",
+      label: "A room",
+      icon: <FaHotel />,
+      description:
+        "For your first guest, welcome someone with a good track record on Shbro who can offer tips for how to be a great Host.",
+    },
+    {
+      id: "Washer",
+      label: "A room",
+      icon: <FaHotel />,
+      description:
+        "For your first guest, welcome someone with a good track record on Shbro who can offer tips for how to be a great Host.",
+    },
+
+    {
+      id: "Air conditioning",
+      label: "A room",
+      icon: <FaHotel />,
+      description:
+        "For your first guest, welcome someone with a good track record on Shbro who can offer tips for how to be a great Host.",
+    },
+    {
+      id: "Free parking on premises",
+      label: "A room",
+      icon: <FaHotel />,
+      description:
+        "For your first guest, welcome someone with a good track record on Shbro who can offer tips for how to be a great Host.",
+    },
+
+    {
+      id: "Pool",
+      label: "A room",
+      icon: <FaHotel />,
+      description:
+        "For your first guest, welcome someone with a good track record on Shbro who can offer tips for how to be a great Host.",
+    },
+    {
+      id: "Hot tub",
+      label: "A room",
+      icon: <FaHotel />,
+      description:
+        "For your first guest, welcome someone with a good track record on Shbro who can offer tips for how to be a great Host.",
+    },
+
+    {
+      id: "Fire pit",
+      label: "A room",
+      icon: <FaHotel />,
+      description:
+        "For your first guest, welcome someone with a good track record on Shbro who can offer tips for how to be a great Host.",
+    },
+    {
+      id: "Indoor fireplace",
+      label: "A room",
+      icon: <FaHotel />,
+      description:
+        "For your first guest, welcome someone with a good track record on Shbro who can offer tips for how to be a great Host.",
+    },
+
+    {
+      id: "Smoke Alarm",
+      label: "A room",
+      icon: <FaHotel />,
+      description:
+        "For your first guest, welcome someone with a good track record on Shbro who can offer tips for how to be a great Host.",
+    },
+    {
+      id: "first aid kit",
+      label: "A room",
+      icon: <FaHotel />,
+      description:
+        "For your first guest, welcome someone with a good track record on Shbro who can offer tips for how to be a great Host.",
+    },
+
+    {
+      id: "fire extinguisher",
+      label: "A room",
+      icon: <FaHotel />,
+      description:
+        "For your first guest, welcome someone with a good track record on Shbro who can offer tips for how to be a great Host.",
+    },
+    {
+      id: "smoke alarm",
+      label: "A room",
+      icon: <FaHotel />,
+      description:
+        "For your first guest, welcome someone with a good track record on Shbro who can offer tips for how to be a great Host.",
+    },
   ];
 
   const visiblity = [
@@ -411,7 +525,7 @@ export default function HostHomes() {
               </div>
               <div className="pb-32">
                 <div className=" space-y-4">
-                  <h3 className="text-xl font-semibold">Property Types</h3>
+                  <h3 className="text-xl ">Property Types</h3>
                   <div className="flex flex-wrap   w-full">
                     {propertyTypes.map((type) => (
                       <div
@@ -457,7 +571,7 @@ export default function HostHomes() {
                         } px-4 py-2 rounded-md cursor-pointer flex-col justify-between`}
                         onClick={() => handleTypeSelection(type.id)}
                       >
-                        <span className="mr-2">{type.icon}</span>
+                        <span className="mr-2 text-2xl mb-3">{type.icon}</span>
                         {type.label}
                         <p>{type.description}</p>
                       </div>
@@ -483,7 +597,7 @@ export default function HostHomes() {
             <div className="overflow-auto">
               <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-10">
                 <h1 className="text-6xl">Share some basics about your place</h1>
-                <p className="text-gray-400 mt-10">
+                <p className="text-gray-400 text-lg mt-10">
                   You'll add more details later, like bed types.
                 </p>
               </div>
@@ -611,16 +725,19 @@ export default function HostHomes() {
         return (
           <div className=" mx-auto  flex justify-center p-4">
             <div className="  overflow-auto">
-              <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-20">
+              <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-10">
                 <h1 className="text-6xl">
-                  Which of these best describes your place?
+                  Tell guests what your place has to offer{" "}
                 </h1>
+                <p className="text-gray-400 mt-10 text-lg">
+                  You can add more amenities after you publish your listing.
+                </p>
               </div>
               <div className="pb-32">
                 <div className=" space-y-4">
-                  <h3 className="text-xl font-semibold">Property Types</h3>
+                  <h3 className="text-xl font-semibold">Amenities </h3>
                   <div className="flex flex-wrap   w-full">
-                    {propertyTypes.map((type) => (
+                    {amenities.map((type) => (
                       <div
                         key={type.id}
                         className={`property-type h-24  w-32 m-3   flex ${
@@ -628,10 +745,10 @@ export default function HostHomes() {
                             ? "bg-orange-300 border-2 border-black text-white"
                             : "bg-gray-200 text-black"
                         } px-4 py-2 rounded-md cursor-pointer flex-col justify-between`}
-                        onClick={() => handleTypeSelection(type.id)}
+                        onClick={() => handleTypeSelections(type.id)}
                       >
                         <span className="mr-2 text-2xl">{type.icon}</span>
-                        {type.label}
+                        {type.id}
                       </div>
                     ))}
                   </div>
@@ -706,7 +823,7 @@ export default function HostHomes() {
               <div className=" text-center">
                 <input
                   type="text"
-                  className="border rounded-lg px-4 py-2 w-2/3 text-lg"
+                  className="border rounded-lg px-4 py-2 w-2/3 text-lg w-full"
                   placeholder="Enter a title for your house"
                   value={houseTitle}
                   onChange={(e) => {
@@ -730,7 +847,7 @@ export default function HostHomes() {
             <div className="  overflow-auto">
               <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-10">
                 <h1 className="text-6xl">Next, let's describe your house</h1>
-                <p className="text-gray-400">
+                <p className="text-gray-400 mt-10">
                   Choose up to 2 highlights. We'll use these to get your
                   description started.
                 </p>
@@ -776,7 +893,7 @@ export default function HostHomes() {
               <div className="pb-32 text-center">
                 <textarea
                   type="text"
-                  className="border rounded-lg px-4 py-2 w-2/3 text-lg"
+                  className="border rounded-lg px-4 py-2 h-[400px] text-lg w-full"
                   placeholder="Enter a description for your house"
                   value={houseDescriptions} // Use houseDescription here
                   onChange={(e) => {
@@ -835,7 +952,7 @@ export default function HostHomes() {
                 <h1 className="text-6xl">
                   Choose who to welcome for your first reservation
                 </h1>
-                <p>After your first guest, anyone can book your place.</p>
+                <p className="text-gray-400 mt-10">After your first guest, anyone can book your place.</p>
               </div>
               <div className="pb-32">
                 <div className=" space-y-4">
@@ -867,13 +984,13 @@ export default function HostHomes() {
             <div className="  overflow-auto">
               <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-20">
                 <h1 className="text-6xl">Now, set your price</h1>
-                <p>You can change it anytime.</p>
+                <p className="text-gray-400 mt-10">You can change it anytime.</p>
               </div>
               <div className="pb-32">
                 <div className="text-center">
                   <input
                     type="number"
-                    className="border rounded-lg px-4 py-2 w-2/3 text-lg"
+                    className="border rounded-lg px-4 py-2 w-full text-lg"
                     placeholder="Price per night"
                     value={housePrice}
                     onChange={(e) => setHousePrice(e.target.value)}
@@ -983,7 +1100,7 @@ export default function HostHomes() {
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       {renderContent()}
       <div className="bg-orange-400 flex fixed bottom-0 w-full text-center">
         {step > 0 && (
@@ -1002,7 +1119,15 @@ export default function HostHomes() {
             Next
           </button>
         )}
+        {step === 15 && (
+          <button
+            type="submit"
+            className="text-white text-center  bg-orange-400 w-full p-4"
+          >
+            Submit
+          </button>
+        )}
       </div>
-    </div>
+    </form>
   );
 }
