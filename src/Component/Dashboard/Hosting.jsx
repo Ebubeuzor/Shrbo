@@ -11,33 +11,98 @@ export default function Hosting() {
     setActiveTab(tab);
   };
 
-  const hosts = [
+  const checkingOut = [
     {
       name: "Endo",
-      date: "Sept 22 - Oct 22",
-      image: "img",
+      date: " Oct 22",
+      time: "12:00pm",
+
+      image: "https://img.freepik.com/free-photo/handsome-cheerful-man-with-happy-smile_176420-18028.jpg",
     },
     {
       name: "Endo",
-      date: "Sept 22 - Oct 22",
-      image: "img",
+      date: "Today",
+      time: "12:00pm",
+      image: "https://img.freepik.com/free-photo/handsome-cheerful-man-with-happy-smile_176420-18028.jpg",
     },
     {
       name: "Endo",
-      date: "Sept 22 - Oct 22",
-      image: "img",
+      date: " Oct 22",
+      time: "12:00pm",
+
+      image: "https://img.freepik.com/free-photo/handsome-cheerful-man-with-happy-smile_176420-18028.jpg",
     },
     {
       name: "Endo",
-      date: "Sept 22 - Oct 22",
-      image: "img",
+      date: " Expired",
+      time: "12:00pm",
+
+      image: "https://img.freepik.com/free-photo/handsome-cheerful-man-with-happy-smile_176420-18028.jpg",
     },
   ];
+
+  const currentlyHosting = [
+    {
+      name: "Sonia",
+      date: "Sept 22 - Oct 22",
+      image: "https://img.freepik.com/free-photo/handsome-cheerful-man-with-happy-smile_176420-18028.jpg",
+    },
+    {
+      name: "Abigail",
+      date: "Sept 22 - Oct 22",
+      image: "https://img.freepik.com/free-photo/handsome-cheerful-man-with-happy-smile_176420-18028.jpg",
+    },
+    {
+      name: "Joy",
+      date: "Sept 22 - Oct 22",
+      image: "https://img.freepik.com/free-photo/handsome-cheerful-man-with-happy-smile_176420-18028.jpg",
+    },
+    {
+      name: "Soma",
+      date: "Sept 22 - Oct 22",
+      image: "https://img.freepik.com/free-photo/handsome-cheerful-man-with-happy-smile_176420-18028.jpg",
+    },
+  ];
+
+
+  const arrivingSoonReservations = [
+    {
+      name: "John",
+      date: "Oct 25",
+      time: "3:00pm",
+      image: "https://img.freepik.com/free-photo/handsome-cheerful-man-with-happy-smile_176420-18028.jpg",
+    },
+    {
+      name: "Alice",
+      date: "Oct 26",
+      time: "2:30pm",
+      image: "https://img.freepik.com/free-photo/handsome-cheerful-man-with-happy-smile_176420-18028.jpg",
+    },
+  ];
+
+
+  const upcomingReservations = [
+    {
+      name: "Mary",
+      checkInDate: "Nov 10",
+      
+      time: "4:00pm",
+      image: "https://example.com/mary.jpg",
+    },
+    {
+      name: "David",
+      date: "Nov 15",
+      time: "2:30pm",
+      image: "https://example.com/david.jpg",
+    },
+  ];
+  
+  
 
   const renderTabContent = () => {
     switch (activeTab) {
       case "checkingOut":
-        if (hosts.length === 0) {
+        if (checkingOut.length === 0) {
           return (
             <div className="bg-orange-100 mt-4 h-36 flex justify-center items-center">
               No hosts are currently hosting.
@@ -47,21 +112,23 @@ export default function Hosting() {
         return (
           <div className="bg-orange-100 mt-4">
             <div className="whitespace-nowrap overflow-x-auto example">
-              <div className="flex space-x-3 p-6 ">
-                {hosts.map((host, index) => (
+              <div className="flex space-x-3 w-fit p-6 ">
+                {checkingOut.map((host, index) => (
                   <div
-                    className=" w-64 p-4 mt-4 rounded-xl bg-white shadow-sm"
+                    className=" w-[300px] p-4 mt-4 rounded-xl bg-white shadow-sm"
                     key={index}
                   >
                     <div className="current text-orange-300 text-sm">
-                      Currently hosting
+                      Checking out
                     </div>
-                    <div className="flex items-center justify-between mt-5 flex-wrap">
+                    <div className="flex items-center  gap-2 justify-between mt-5 flex-wrap">
                       <div className="guest-name">
                         <h1>{host.name}</h1>
                         <p>{host.date}</p>
+                        <p>{host.time}</p>
+
                       </div>
-                      <div className="guest-image">{host.image}</div>
+                      <div className="guest-image"><img src={host.image} className="w-10 h-10 object-cover rounded-full" alt="" /></div>
                     </div>
                     <div className="mt-4">
                       <button className="bg-orange-400 rounded-full py-2 px-4 w-full text-white ">
@@ -75,9 +142,87 @@ export default function Hosting() {
           </div>
         );
       case "currentlyHosting":
-        return <div>Currently hosting content goes here.</div>;
-      case "arrivingSoon":
-        return <div>Arriving soon content goes here.</div>;
+        if (currentlyHosting.length === 0) {
+          return (
+            <div className="bg-orange-100 mt-4 h-36 flex justify-center items-center">
+              No hosts are currently hosting.
+            </div>
+          );
+        }
+        return (
+          <div className="bg-orange-100 mt-4">
+            <div className="whitespace-nowrap overflow-x-auto example">
+              <div className="flex space-x-3 w-fit p-6 ">
+                {currentlyHosting.map((host, index) => (
+                  <div
+                    className=" w-64  w-[300px] p-4 mt-4 rounded-xl bg-white shadow-sm"
+                    key={index}
+                  >
+                    <div className="current text-orange-300 text-sm">
+                      Currently hosting
+                    </div>
+                    <div className="flex items-center gap-2 justify-between mt-5 flex-wrap">
+                      <div className="guest-name">
+                        <h1>{host.name}</h1>
+                        <p>{host.date}</p>
+                      </div>
+                      <div className="guest-image"><img src={host.image} className="w-10 h-10 object-cover rounded-full" alt="" /></div>
+                    </div>
+                    <div className="mt-4">
+                      <button className="bg-orange-400 rounded-full py-2 px-4 w-full text-white ">
+                        message
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+     case "arrivingSoon":
+      if (arrivingSoonReservations.length === 0) {
+        return (
+          <div className="bg-orange-100 mt-4 h-36 flex justify-center items-center">
+            No hosts are currently hosting.
+          </div>
+        );
+      }
+      return (
+        <div className="bg-orange-100 mt-4">
+          <div className="whitespace-nowrap overflow-x-auto example">
+            <div className="flex space-x-3 w-fit p-6 ">
+              {arrivingSoonReservations.map((reservation, index) => (
+                <div
+                  className=" w-64  w-[300px] p-4 mt-4 rounded-xl bg-white shadow-sm"
+                  key={index}
+                >
+                  <div className="current text-orange-300 text-sm">
+                    Currently hosting
+                  </div>
+                  <div className="flex items-center gap-2 justify-between mt-5 flex-wrap">
+                    <div className="guest-name">
+                      <h1>{reservation.name}</h1>
+                      <p>{reservation.date}</p>
+                      <div className="flex space-x-3">
+                      <span>Time of arrival:</span>
+                      <p>{reservation.time}</p>
+                      </div>
+
+                    </div>
+                    <div className="guest-image"><img src={reservation.image} className="w-10 h-10 object-cover rounded-full" alt="" /></div>
+                  </div>
+                  <div className="mt-4">
+                    <button className="bg-orange-400 rounded-full py-2 px-4 w-full text-white ">
+                      message
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+
       case "upcoming":
         return <div>Upcoming content goes here.</div>;
       case "pendingReview":
@@ -86,7 +231,7 @@ export default function Hosting() {
         return null;
     }
   };
- 
+
   return (
     <div className="pb-20">
       <div className="flex flex-wrap md:flex-col md:w-[80vw] md:mx-auto md:my-10 p-10">
@@ -129,7 +274,7 @@ export default function Hosting() {
           <div className="tab-container space-x-4 flex  overflow-x-auto whitespace-nowrap example">
             <div
               className={`tab border py-2 px-4 rounded-full cursor-pointer  ${
-                activeTab === "checkingOut" ? "active" : ""
+                activeTab === "checkingOut" ? "active bg-orange-300 text-white" : ""
               }`}
               onClick={() => handleTabClick("checkingOut")}
             >
@@ -137,7 +282,7 @@ export default function Hosting() {
             </div>
             <div
               className={`tab border py-2 px-4 rounded-full cursor-pointer  ${
-                activeTab === "currentlyHosting" ? "active" : ""
+                activeTab === "currentlyHosting" ? "active bg-orange-300 text-white" : ""
               }`}
               onClick={() => handleTabClick("currentlyHosting")}
             >
@@ -145,7 +290,7 @@ export default function Hosting() {
             </div>
             <div
               className={`tab border py-2 px-4 rounded-full cursor-pointer  ${
-                activeTab === "arrivingSoon" ? "active" : ""
+                activeTab === "arrivingSoon" ? "active bg-orange-300 text-white" : ""
               }`}
               onClick={() => handleTabClick("arrivingSoon")}
             >
@@ -153,7 +298,7 @@ export default function Hosting() {
             </div>
             <div
               className={`tab border py-2 px-4 rounded-full cursor-pointer  ${
-                activeTab === "upcoming" ? "active" : ""
+                activeTab === "upcoming" ? "active bg-orange-300 text-white" : ""
               }`}
               onClick={() => handleTabClick("upcoming")}
             >
@@ -161,7 +306,7 @@ export default function Hosting() {
             </div>
             <div
               className={`tab border py-2 px-4 rounded-full cursor-pointer  ${
-                activeTab === "pendingReview" ? "active" : ""
+                activeTab === "pendingReview" ? "active bg-orange-300 text-white" : ""
               }`}
               onClick={() => handleTabClick("pendingReview")}
             >
@@ -190,7 +335,7 @@ export default function Hosting() {
           </div>
 
           <div className="my-10 bg-orange-100 p-5">
-          <h1 className="mb-5 text-2xl">We are here to help</h1>
+            <h1 className="mb-5 text-2xl">We are here to help</h1>
 
             <div className="flex md:space-x-4 flex-wrap">
               <SuperHostGuidanceCard
