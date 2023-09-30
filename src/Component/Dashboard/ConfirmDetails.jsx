@@ -45,7 +45,7 @@ export default function ConfirmDetails() {
             </div>
           </div>
 
-          <div className=" flex flex-row md:hidden border justify-start gap-1 overflow-hidden text-ellipsis whitespace-nowrap   p-2 w-full  h-16 ">
+          <div className=" flex flex-row  md:hidden border justify-start gap-1 overflow-hidden text-ellipsis whitespace-nowrap   p-2 w-full  h-16 ">
             <div className=" w-[20%] rounded-lg   overflow-hidden   ">
               <img className=" w-full h-full" src={room}></img>
             </div>
