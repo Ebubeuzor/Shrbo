@@ -234,7 +234,7 @@ export default function Hosting() {
 
   return (
     <div className="pb-20">
-      <div className="flex flex-wrap md:flex-col md:w-[80vw] md:mx-auto md:my-10 p-10">
+      <div className="flex flex-wrap md:flex-col md:w-[80vw] md:mx-auto md:my-10 p-4 md:p-10">
         <GoBackButton />
         <div className="w-full">
           <div className="">Bell</div>
@@ -269,7 +269,7 @@ export default function Hosting() {
             </div>
           </div>
         </div>
-        <div className="reservation w-[80vw] mt-14 pb-20">
+        <div className="reservation w-full md:w-[80vw] mt-14 pb-20">
           <h1 className="text-2xl font-medium mb-4">Your reservations</h1>
           <div className="tab-container space-x-4 flex  overflow-x-auto whitespace-nowrap example">
             <div
