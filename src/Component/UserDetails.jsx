@@ -36,7 +36,7 @@ const UserDetails = () => {
       },
       {
         rating: 4,
-        comment: "Nice place, clean and comfortable.",
+        comment: "Nice place, clean and comfortable. Nice place, clean and comfortableNice place, clean and comfortableNice place, clean and comfortable",
         propertyName: "Sunny Villa",
         date: "2023-02-10",
         houseImage:
@@ -194,12 +194,12 @@ const UserDetails = () => {
           <h3 className="text-xl font-semibold">Reviews by {user.name}</h3>
           <ul className="list-disc list-inside flex space-x-6 whitespace-nowrap overflow-scroll w-full example">
             {user.reviews.map((review, index) => (
-              <li key={index} className="mt-2 list-none shadow-lg bg-slate-100  h-[200px] p-4 ">
-             <div className="flex items-end space-x-4">
+              <li key={index} className="mt-2 rounded-3xl mb-3 list-none shadow-lg bg-slate-100   p-4 ">
+             <div className="flex items-center space-x-4 ">
              <div className="w-[120px]">
                   <img src={review.houseImage} className="w-32 h-32" alt="" />
                 </div>
-              <div className="">
+              <div className="w-[300px] whitespace-normal">
               <strong>Rating:</strong> {review.rating}
                 <br />
                 <strong>Comment:</strong> {review.comment}
