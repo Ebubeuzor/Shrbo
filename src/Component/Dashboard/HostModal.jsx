@@ -71,7 +71,7 @@ export default function HostModal({ isOpen, onClose }) {
                   </li>
                   <li>
                     <div className="shadow-lg p-4 my-4 border rounded-xl">
-                      <Link className="flex justify-between cursor-pointer items-center">
+                      <Link to="/Listings" className="flex justify-between cursor-pointer items-center">
                         <div className="bg-orange-400 text-white rounded-lg p-2">
                           <BsHouseDoor />
                         </div>

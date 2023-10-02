@@ -18,6 +18,10 @@ import ManageListings from "./Component/Dashboard/ManageListings";
 import UsersShow from "./Component/Dashboard/UsersShow";
 import HostHomes from "./Component/Unboarding/HostHomes";
 import Hosting from "./Component/Dashboard/Hosting";
+import ConfirmDetails from "./Component/Dashboard/ConfirmDetails";
+import Listings from "./Component/Dashboard/Listings";
+import UserDetails from "./Component/UserDetails";
+
 function App() {
   return (
     <Router>
@@ -39,6 +43,10 @@ function App() {
         <Route path="/UsersShow" element={<UsersShow />} />
         <Route path="/HostHomes" element={<HostHomes />} />
         <Route path="/Hosting" element={<Hosting />} />
+        <Route path="/ConfirmDetails" element={<ConfirmDetails />} />
+        <Route path="/Listings" element={<Listings />} />
+        <Route path="/UserDetails" element={<UserDetails />} />
+
 
 
 

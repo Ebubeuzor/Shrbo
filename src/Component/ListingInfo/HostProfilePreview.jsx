@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HostProfilePreview=()=>{
 
@@ -140,9 +141,11 @@ const HostProfilePreview=()=>{
 
 
                     <div className="block w-full box-border px-7 lg:px-8 pb-4 " >
-                        <button className=" w-full text-base font-normal text-white rounded-md border border-solid py-[14px] px-6 bg-[#222222]  ">
+                       <Link to="/UserDetails">
+                       <button className=" w-full text-base font-normal text-white rounded-md border border-solid py-[14px] px-6 bg-[#222222]  ">
                                 View host Profile
                         </button>
+                       </Link>
 
                     </div>
 
