@@ -381,7 +381,7 @@ export default function Hosting() {
           <div className="">Bell</div>
           <div className="flex items-center justify-between">
             <h1 className="text-3xl font-medium my-7">Welcome back, Endo</h1>
-            <Link>All Reservations(0)</Link>
+            <Link to="/Reservations">All Reservations(0)</Link>
           </div>
           <div className="flex space-x-5">
             <div className="flex justify-between border rounded-lg p-4 md:w-fit items-center space-x-4 w-full w-80">

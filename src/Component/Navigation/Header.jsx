@@ -81,13 +81,27 @@ export default function Header() {
                 >
                   Settings
                 </Link>
-                <div
-                  to=""
+                <Link
+                  to="/HostHomes"
+                  className="block text-gray-800 hover:text-orange-400 p-2 cursor-pointer"
+                
+                >
+                  Create a new Listings
+                </Link>
+                <Link
+                  to="/Hosting"
                   className="block text-gray-800 hover:text-orange-400 p-2 cursor-pointer"
                 
                 >
                   Manage Listings
-                </div>
+                </Link>
+                <Link
+                  to="/Listings"
+                  className="block text-gray-800 hover:text-orange-400 p-2 cursor-pointer"
+                
+                >
+                   Listings
+                </Link>
 
                 <Link
                   to="/logout"
