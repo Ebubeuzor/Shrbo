@@ -308,7 +308,10 @@ export default function Listings() {
 </Modal>
 
 <div className="mt-20">
+  {filteredListings.length > 0 &&(
+
 <PaginationExample/>
+  )}
 
 </div>
     </div>
