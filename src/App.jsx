@@ -21,6 +21,7 @@ import Hosting from "./Component/Dashboard/Hosting";
 import ConfirmDetails from "./Component/Dashboard/ConfirmDetails";
 import Listings from "./Component/Dashboard/Listings";
 import UserDetails from "./Component/UserDetails";
+import Reservations from "./Component/Dashboard/Reservations";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route path="/ConfirmDetails" element={<ConfirmDetails />} />
         <Route path="/Listings" element={<Listings />} />
         <Route path="/UserDetails" element={<UserDetails />} />
+        <Route path="/Reservations" element={<Reservations />} />
 
 
 
