@@ -4,6 +4,7 @@ import '@splidejs/react-splide/css';
 import adv from "../../assets/user.png";
 import PopupFull from "../../hoc/PopupFull";
 import TestimonialInfo from "./TestimonialInfo";
+import PaginationExample from "../PaginationExample";
 
 
 
@@ -246,6 +247,7 @@ const Testimonial=()=>{
 
                                     <PopupFull title={""} open={open} onClose={closePopup} >
                                         <TestimonialInfo/>
+                                        <PaginationExample/>
                                     </PopupFull>
 
                     </div>                    
