@@ -110,7 +110,7 @@ input::placeholder {
   }
 
   .carousel .thumbs-wrapper {
-    display: none !important;
+    display: none;
   }
 
 
@@ -118,4 +118,16 @@ input::placeholder {
     width: 100%;
   }
 
+
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #363636 ; 
+    font-weight: 500;
+ }
+
+ 
+ .ant-tabs-ink-bar {
+    position: absolute;
+    background: #000000;
+    pointer-events: none;
+ }
   
