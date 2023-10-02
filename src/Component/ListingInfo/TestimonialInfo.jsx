@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import adv from "../../assets/user.png";
+import PaginationExample from "../PaginationExample";
 const TestimonialInfo = () => {
 
     const ratinginfo=[
@@ -172,9 +173,11 @@ const slides=clients.map((client)=>(
 
 
 
-            <div className='  h-full md:overflow-y-scroll' >
+            <div className='  h-full md:overflow-y-scroll example' >
                 <div className=' w-full mb-8 uppercase '><span>Comments From Verified Purchase  </span></div>
                 <div> {slides} </div>
+
+                <PaginationExample/>
             </div>
 
 
