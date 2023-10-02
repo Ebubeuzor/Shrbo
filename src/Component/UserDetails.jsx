@@ -22,6 +22,7 @@ const UserDetails = () => {
     email: "john.doe@example.com",
     review:"23",
     hosted:"12",
+    yearsHosted:"2 ",
     image:
       "https://img.freepik.com/free-photo/handsome-cheerful-man-with-happy-smile_176420-18028.jpg",
     reviews: [
@@ -176,6 +177,8 @@ const UserDetails = () => {
           <p className="text-gray-600">Email: {user.email}</p>
           <p className="text-gray-600">Reviews: {user.review}</p>
           <p className="text-gray-600">Houses Listed: {user.hosted}</p>
+          <p className="text-gray-600">Years Hosting: {user.yearsHosted}</p>
+
         </div>
       </div>
 
