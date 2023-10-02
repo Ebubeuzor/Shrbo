@@ -20,6 +20,7 @@ import HostHomes from "./Component/Unboarding/HostHomes";
 import Hosting from "./Component/Dashboard/Hosting";
 import ConfirmDetails from "./Component/Dashboard/ConfirmDetails";
 import Listings from "./Component/Dashboard/Listings";
+import UserDetails from "./Component/UserDetails";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path="/Hosting" element={<Hosting />} />
         <Route path="/ConfirmDetails" element={<ConfirmDetails />} />
         <Route path="/Listings" element={<Listings />} />
+        <Route path="/UserDetails" element={<UserDetails />} />
 
 
 
