@@ -269,8 +269,9 @@ export default function Listings() {
                       className="w-14 h-14 object-cover  rounded-lg"
                     />
                   </td>
-                  <td className="py-2 px-4">{listing.title}</td>
-
+                  <td className="py-2 px-4">
+            <Link to="/HostHomes">{listing.title}</Link>
+          </td>
                   <td className="py-2 px-4">{listing.status}</td>
                   <td className="py-2 px-4">{listing.instantBook}</td>
                   <td className="py-2 px-4">{listing.bedroom}</td>
