@@ -8,9 +8,13 @@ import Modal from "../Component/SearchModal/Modal";
 import searchIcon from "../assets/svg/search-icon.svg";
 import BottomNavigation from "../Component/Navigation/BottomNavigation";
 import Footer from "../Component/Navigation/Footer";
+import RateHouseModal from "../Component/RateHouseModal";
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSearchButtonFixed, setIsSearchButtonFixed] = useState(false);
+  const [houseDetails, setHouseDetails] = useState(null); // Store house details here
+  const [isRateHouseModalOpen, setIsRateHouseModalOpen] = useState(false);
+
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -19,6 +23,16 @@ export default function Home() {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+
+  const openRateHouseModal = () => {
+    setIsRateHouseModalOpen(true);
+  };
+
+  const closeRateHouseModal = () => {
+    setIsRateHouseModalOpen(false);
+  };
+  
 
   useEffect(() => {
     // Add an event listener to handle scrolling
@@ -38,6 +52,22 @@ export default function Home() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+
+  useEffect(() => {
+    // Simulate fetching house details after 5 seconds
+    const timer = setTimeout(() => {
+      setHouseDetails({
+        name: "Example House",
+        location: "Example Location",
+        // Add more house details here
+      });
+      openRateHouseModal(); // Show the RateHouseModal after fetching details
+    }, 5000);
+
+    return () => clearTimeout(timer); // Cleanup the timer on unmount
+  }, []);
+
 
   return (
     <div>
@@ -65,6 +95,7 @@ export default function Home() {
               </div>
             </div>
           </button>
+     
           
           <Modal isOpen={isModalOpen} onClose={closeModal} />
         </div>
@@ -99,6 +130,11 @@ export default function Home() {
 
           <Listings />
         </section>
+        <RateHouseModal
+        isOpen={isRateHouseModalOpen}
+        onClose={closeRateHouseModal}
+        houseDetails={houseDetails}
+      />
       </div>
       <Footer/>
     </div>
