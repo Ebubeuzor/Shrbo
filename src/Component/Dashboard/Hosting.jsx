@@ -400,9 +400,11 @@ export default function Hosting() {
                   <span className="text-gray-600 text-sm">House Title</span>
                 </div>
                 <div>
-                  <span className="text-blue-500 cursor-pointer underline-offset-4 underline">
+                 <Link to="/AddGovvernmentId">
+                 <span className="text-blue-500 cursor-pointer underline-offset-4 underline">
                     Get started
                   </span>
+                 </Link>
                 </div>
               </div>
               <div className="px-4">
@@ -478,9 +480,12 @@ export default function Hosting() {
                   Personalizing your profile can improve your search ranking and
                   help guests get to know you better.
                 </p>
-                <button className="bg-orange-400 py-2 px-4 rounded-full mt-2 text-white">
+               <Link to="/UsersShow">
+               
+               <button className="bg-orange-400 py-2 px-4 rounded-full mt-2 text-white">
                   <strong>Add profile details</strong>
                 </button>
+               </Link>
               </div>
               <button className="absolute top-2 right-2 bg-black text-white rounded-full w-6 h-6 flex items-center justify-center cursor-pointer">
                 X
