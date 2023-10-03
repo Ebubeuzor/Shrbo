@@ -132,12 +132,12 @@ const Listings = () => {
           if (!listing.isFavorite) {
             // Show a toast notification when added to wishlist
             toast.success('Added to Wishlist', {
-              position: toast.POSITION.BOTTOM_RIGHT,
+              position: toast.POSITION.TOP_CENTER,
             });
           } else {
             // Show a toast notification when removed from wishlist
             toast.success('Removed from Wishlist', {
-              position: toast.POSITION.BOTTOM_RIGHT,
+              position: toast.POSITION.TOP_CENTER,
             });
           }
           return { ...listing, isFavorite: !listing.isFavorite };
