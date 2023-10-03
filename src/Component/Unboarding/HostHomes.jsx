@@ -8,6 +8,10 @@ export default function HostHomes() {
   const [fileInputKey, setFileInputKey] = useState(0);
   const [houseTitle, setHouseTitle] = useState("");
   const [houseDescriptions, setHouseDescriptions] = useState("");
+  const [additionalRules, setAdditionalRules] = useState("");
+  const handleAdditionalRules = (newValue) => {
+    setAdditionalRules(newValue);
+  };
 
   const [housePrice, setHousePrice] = useState(""); // Add this line for the house price
 
@@ -330,6 +334,15 @@ export default function HostHomes() {
         "For your first guest, welcome someone with a good track record on Shbro who can offer tips for how to be a great Host.",
     },
   ];
+
+  const HouseRules = {
+    guests: "2 guests maximum",
+    pets: "No pets",
+    events: "No parties or events",
+    smoking: "No smoking",
+    partying: "No parties or events"
+  };
+  
 
   const houseDiscount = [
     {
@@ -1037,7 +1050,63 @@ export default function HostHomes() {
           </div>
         );
 
-      case 15: // Step for hosting type and property features
+        case 15: // Step for hosting type and property features
+        return (
+          <div className="mx-auto flex justify-center p-4">
+            <div className="overflow-auto">
+              <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-20">
+                <h1 className="text-6xl">Rules</h1>
+                <p className="text-gray-400 mt-10">You can change it anytime.</p>
+              </div>
+              <div className="pb-32">
+                <div className="space-y-4">
+                  <div className="flex flex-wrap w-full">
+                    {Object.keys(HouseRules).map((rule) => (
+                      <div
+                        key={rule}
+                        className={`property-type  m-3   flex ${
+                          selectedTypes.includes(rule)
+                            ? "bg-orange-300 border-2 border-black text-white"
+                            : "bg-gray-200 text-black"
+                        } px-4 py-2 rounded-md cursor-pointer flex-col justify-between`}
+                        onClick={() => handleTypeSelections(rule)}
+                      >
+                        <span className="mr-2 text-2xl">{rule}</span>
+                        {HouseRules[rule]}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="md:flex md:justify-center md:flex-col">
+                <h1 className="text-2xl">Additional Rules</h1>
+              </div>
+              <div className="pb-32">
+                <div className="space-y-4">
+                  <div className="flex flex-wrap w-full">
+                    <textarea
+                      className="property-type m-3 bg-gray-200 text-black px-4 py-2 rounded-md w-full"
+                      placeholder="Add additional rules as bullet points (one rule per line)..."
+                      onChange={(e) => handleAdditionalRules(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="px-4">
+                  <ul className="list-disc">
+                    {/* Split the text into lines and create list items */}
+                    {additionalRules.split('\n').map((rule, index) => (
+                      <li key={index}>{rule}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      
+      
+
+        case 16: // Step for hosting type and property features
         return (
           <div className=" mx-auto  flex justify-center p-4">
             <div className="  overflow-auto">
@@ -1111,7 +1180,7 @@ export default function HostHomes() {
             Previous
           </button>
         )}
-        {step < 15 && (
+        {step < 16 && (
           <button
             onClick={handleNext}
             className="text-white text-center  bg-orange-400 w-full p-4"
@@ -1119,7 +1188,7 @@ export default function HostHomes() {
             Next
           </button>
         )}
-        {step === 15 && (
+        {step === 16 && (
           <button
             type="submit"
             className="text-white text-center  bg-orange-400 w-full p-4"
