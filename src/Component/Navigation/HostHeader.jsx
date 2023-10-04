@@ -53,7 +53,7 @@ export default function HostHeader() {
           <Link to="/chat" className="text-white hover:text-gray-300 ml-4">
             Inbox
           </Link>
-          <Link to="" className="text-white hover:text-gray-300 ml-4">
+          <Link to="/HostAnalysis" className="text-white hover:text-gray-300 ml-4">
             Analysis
           </Link>
           <Link to="" className="text-white hover:text-gray-300 ml-4">
