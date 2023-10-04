@@ -1,14 +1,27 @@
 import React, { useState } from "react";
-import { Tabs, Modal, Checkbox } from "antd";
+import { Tabs, Modal, Checkbox, Select } from "antd";
 import HostHeader from "../Navigation/HostHeader";
 import Room from "../../assets/room.jpeg";
+import TopEarningApartments from "./TopEarningApartments";
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+} from "chart.js";
 
-const { TabPane } = Tabs;
+ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
+
+const { items } = Tabs;
+const { Option } = Select;
 
 export default function HostAnalysis() {
   const [activeTab, setActiveTab] = useState("1");
   const [showListingsModal, setShowListingsModal] = useState(false);
   const [selectedApartment, setSelectedApartment] = useState(null);
+  const [selectedMonth, setSelectedMonth] = useState(null); // Add selectedMonth state
 
   const handleTabChange = (tabKey) => {
     setActiveTab(tabKey);
@@ -26,18 +39,35 @@ export default function HostAnalysis() {
     setShowListingsModal(false);
   };
 
-  // Define an array of apartment objects with associated images
   const apartmentData = [
-    { id: 1, name: "Apartment 1", image: Room },
-    { id: 2, name: "Apartment 2", image: Room },
-    // Add more apartments here
+    {
+      id: 1,
+      name: "Apartment 1",
+      image: Room,
+      datePosted: "2023-10-01",
+      earnings: [
+        { date: "2023-10-01", amount: 100 },
+        { date: "2023-10-02", amount: 200 },
+      ],
+    },
+    {
+      id: 2,
+      name: "Apartment 2",
+      image: Room,
+      datePosted: "2023-09-01",
+      earnings: [
+        { date: "2023-09-01", amount: 150 },
+        { date: "2023-09-02", amount: 250 },
+      ],
+    },
+
+    
   ];
 
   const selectedApartmentData = apartmentData.find(
     (apartment) => apartment.id === selectedApartment
   );
 
-  // Define an array of review objects
   const reviews = [
     {
       apartmentId: 1,
@@ -79,16 +109,41 @@ export default function HostAnalysis() {
     (review) => review.apartmentId === selectedApartment
   );
 
+  const generateMonths = () => {
+    const startDate = new Date("November 2023");
+    const endDate = new Date("December 2024");
+
+    const months = [];
+    let currentDate = startDate;
+
+    while (currentDate <= endDate) {
+      const year = currentDate.getFullYear();
+      const month = currentDate.toLocaleString("default", { month: "long" });
+      months.push({ value: `${month} ${year}`, date: currentDate });
+      currentDate = new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth() + 1,
+        1
+      );
+    }
+
+    return months;
+  };
+
+ 
+
+  
+
   return (
     <div className="">
       <HostHeader />
-      <div className="w-3/4 mx-auto my-28">
+      <div className="m-3 md:w-3/4 md:mx-auto md:my-28">
         <Tabs
           activeKey={activeTab}
           onChange={handleTabChange}
           className="tab-buttons"
         >
-          <TabPane tab="Reviews" key="1">
+          <items tab="Reviews" key="1">
             <div>
               <h2 className="text-3xl">Reviews</h2>
 
@@ -143,19 +198,99 @@ export default function HostAnalysis() {
                 </div>
               )}
             </div>
-          </TabPane>
-          <TabPane tab="Earnings" key="2">
-            <div>
-              <h2>Earnings</h2>
-              <p>This is the content for Earnings tab.</p>
-            </div>
-          </TabPane>
-          <TabPane tab="Views" key="3">
+            
+          </items>
+          <items tab="Earnings" key="2">
+  <div>
+    <h2 className="text-3xl">Earnings</h2>
+    <div className="md:w-3/5">
+      <label htmlFor="" className="text-base">
+        Select Month
+      </label>
+      <div className="w-full py-4">
+        <Select
+          style={{ width: "100%" }}
+          placeholder="Select a month"
+          onChange={(value) => setSelectedMonth(value)} // Update selectedMonth
+          value={selectedMonth}
+        >
+          {generateMonths().map((monthItem) => (
+            <Option
+              key={monthItem.date.toISOString()}
+              value={monthItem.date.toISOString()}
+            >
+              {monthItem.value}
+            </Option>
+          ))}
+        </Select>
+      </div>
+
+      <div className="">
+     <div className="my-4">
+     <div className="text-4xl font-bold">$0.00</div>
+      <div>
+          <p className="">Booked Earnings for 2023</p>
+        </div>
+     </div>
+
+       <div className="flex items-center space-x-3">
+        <span className="bg-red-400 h-4 w-4"></span>
+       <div className="text-xl font-bold text-[color-for-amount]">
+          $0.00
+        </div>
+        <div>
+          <p className="text-[color-for-label]">Paid out</p>
+        </div>
+       </div>
+       <div className="flex items-center space-x-3">
+       <span className="bg-green-500 h-4 w-4"></span>
+
+       <div className="text-xl font-bold text-[color-for-amount]">
+          $0.00
+        </div>
+        <div>
+          <p className="text-[color-for-label]">Expected</p>
+        </div>
+       </div>
+      </div>
+
+      <Line
+        data={{
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul","Aug","Sep","Oct","Nov", "Dec"],
+          datasets: [
+            {
+              label: "Paid out",
+              data: [200, 200, 600, 800, 1000, 1200,1000, 1200,1000, 1200,1000, 1200], // Replace with your actual paid out data
+              borderColor: "rgba(75, 192, 192, 1)",
+              backgroundColor: "rgba(75, 192, 192, 0.2)",
+              fill: true,
+            },
+            {
+              label: "Expected",
+              data: [250, 450, 650, 850, 1050, 1250,200, 600, 800, 1000, 1200,1400], // Replace with your actual expected data
+              borderColor: "rgba(255, 99, 132, 1)",
+              backgroundColor: "rgba(255, 99, 132, 0.2)",
+              fill: true,
+            },
+          ],
+        }}
+      />
+    </div>
+  </div>
+  <div className="my-20">
+    <h1 className="text-2xl font-bold">2023 Details</h1>
+  <TopEarningApartments apartments={apartmentData} />
+  </div>
+
+</items>
+
+
+          <items tab="Views" key="3">
             <div>
               <h2>Views</h2>
-              <p>This is the content for Views tab.</p>
+              <p>This is the content for the Views tab.</p>
             </div>
-          </TabPane>
+          </items>
         </Tabs>
       </div>
 
