@@ -4,7 +4,7 @@ import BottomNavigation from "../Navigation/BottomNavigation";
 import GoBackButton from "../GoBackButton";
 import SuperHostGuidanceCard from "../SuperHostGuidanceCard";
 import { Link } from "react-router-dom";
-
+import HostHeader from "../Navigation/HostHeader";
 export default function Hosting() {
   const [activeTab, setActiveTab] = useState("checkingOut");
 
@@ -375,6 +375,7 @@ export default function Hosting() {
  
   return (
     <div className="pb-20">
+      <HostHeader/>
       <div className="flex flex-wrap md:flex-col md:w-[80vw] md:mx-auto md:my-10 p-4 md:p-10">
         <GoBackButton />
         <div className="w-full">

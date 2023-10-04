@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import HostModal from "../Dashboard/HostModal";
 
-export default function Header() {
+export default function HostHeader() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -47,19 +47,22 @@ export default function Header() {
           />
         </div>
         <nav className="flex">
-          <Link to="/" className="text-white hover:text-gray-300 ml-4">
-            Home
+          <Link to="" className="text-white hover:text-gray-300 ml-4">
+            Today
           </Link>
-          <Link to="/wishlist" className="text-white hover:text-gray-300 ml-4">
-            Wishlist
+          <Link to="/chat" className="text-white hover:text-gray-300 ml-4">
+            Inbox
           </Link>
-          <Link to="/trip" className="text-white hover:text-gray-300 ml-4">
-            Trips
+          <Link to="" className="text-white hover:text-gray-300 ml-4">
+            Analysis
           </Link>
-          <Link to="/Hosting" className="text-white hover:text-gray-300 ml-4">
-              Switch to Host
+          <Link to="" className="text-white hover:text-gray-300 ml-4">
+            Calender
             </Link>
-          <div
+        
+        </nav>
+        <div>
+        <div
             id="profile-dropdown"
             className={`relative ${isDropdownOpen ? "group" : ""}`}
             onClick={toggleDropdown}
@@ -67,7 +70,7 @@ export default function Header() {
           >
       
             <Link to="" className="text-white hover:text-gray-300 ml-4">
-              Profile
+               Menu
             </Link>
             {isDropdownOpen && (
               <div className="absolute bg-white z-[60] right-0 mt-1 p-2 w-64 border rounded-lg shadow-lg ">
@@ -105,6 +108,20 @@ export default function Header() {
                 >
                    Listings
                 </Link>
+                <Link
+                  to=""
+                  className="block text-gray-800 hover:text-orange-400 p-2 cursor-pointer"
+                
+                >
+                   Visit the help center
+                </Link>
+                <Link
+                  to=""
+                  className="block text-gray-800 hover:text-orange-400 p-2 cursor-pointer"
+                
+                >
+                   Get help with a safety issue
+                </Link>
 
                 <Link
                   to="/logout"
@@ -116,7 +133,7 @@ export default function Header() {
             )}
             <HostModal isOpen={isModalOpen} onClose={toggleModal} />
           </div>
-        </nav>
+        </div>
       </div>
     </header>
   );
