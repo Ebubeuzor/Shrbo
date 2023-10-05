@@ -33,7 +33,7 @@ export default function RateHouseModal({ isOpen, onClose, houseDetails }) {
 
   return (
     <div
-      className={`fixed inset-0 flex items-center justify-center ${
+      className={`fixed z-[9999] inset-0 flex items-center justify-center ${
         isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       } transition-opacity duration-300`}
     >

@@ -4,34 +4,42 @@ const AddressForm = () => {
   const [address, setAddress] = useState("");
   const [map, setMap] = useState(null);
 
-  // Load the Google Maps API with your API key
-  const loadGoogleMapsScript = () => {
-    const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places`;
-    script.async = true;
-    script.defer = true;
-    script.onload = initMap;
-    document.head.appendChild(script);
-  };
-
   useEffect(() => {
+    // Load the Google Maps API with a callback function
+    const loadGoogleMapsScript = () => {
+      const script = document.createElement("script");
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD_RZinZEp_F_YXpKOolcoaVRozY1APwAM&libraries=places`;
+      script.async = true;
+      script.defer = true;
+      script.onload = initMap;
+      document.head.appendChild(script);
+    };
+
     loadGoogleMapsScript();
+
+    return () => {
+      // Cleanup: remove the script when the component unmounts
+      const script = document.querySelector('script[src*="maps.googleapis.com"]');
+      if (script) {
+        script.remove();
+      }
+    };
   }, []);
 
   const initMap = () => {
+    // Your initMap function remains the same
     const mapOptions = {
-      center: { lat: 0, lng: 0 }, // Initial map center (change as needed)
-      zoom: 8, // Initial zoom level
+      center: { lat: 0, lng: 0 },
+      zoom: 8,
     };
 
-    // Create a new Google Map
     const newMap = new window.google.maps.Map(document.getElementById("map"), mapOptions);
     setMap(newMap);
   };
 
   const handleAddressChange = (event) => {
     setAddress(event.target.value);
-
+  
     // Use the Google Places API to get the location based on the address entered
     const geocoder = new window.google.maps.Geocoder();
     geocoder.geocode({ address: event.target.value }, (results, status) => {
@@ -42,6 +50,9 @@ const AddressForm = () => {
       }
     });
   };
+  
+
+  // The rest of your component remains the same
 
   return (
     <div>

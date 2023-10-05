@@ -118,12 +118,12 @@ export default function FilterModal() {
     <div className="flex">
       <button
         onClick={toggleModal}
-        className="border text-black font-bold p-2 px-4 w-[15%] rounded-full  flex items-center justify-between"
+        className="border text-black font-bold p-2 px-4  space-x-3 text-white rounded-full  flex items-center justify-between"
       >
         <div className=" w-4">
           <img src={FilterIcon} alt="" />
         </div>
-      <div className="hidden md:block">
+      <div className="hidden md:block text-sm">
       Filters
       </div>
       </button>
@@ -140,7 +140,7 @@ export default function FilterModal() {
                 <img src={close} className="w-4" alt="" />
               </button>
 
-              <h1 className="mx-auto font-bold text-lg">Filter</h1>
+              <h1 className="mx-auto font-bold text-lg text-black">Filter</h1>
             </div>
             <form onSubmit={handleSubmit} className="h-[inherit] w-full p-4">
               <div className="modal-content overflow-y-auto h-full w-full">
