@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import exclammationMark from "../../assets/svg/exclamation-round-icon.svg";
-import BottomNavigation from "../Navigation/BottomNavigation";
 import GoBackButton from "../GoBackButton";
 import SuperHostGuidanceCard from "../SuperHostGuidanceCard";
 import { Link } from "react-router-dom";
 import HostHeader from "../Navigation/HostHeader";
+import HostBottomNavigation from "./HostBottomNavigation";
 export default function Hosting() {
   const [activeTab, setActiveTab] = useState("checkingOut");
 
@@ -511,7 +511,7 @@ export default function Hosting() {
         </div>
       </div>
 
-      <BottomNavigation />
+      <HostBottomNavigation/>
     </div>
   );
 }

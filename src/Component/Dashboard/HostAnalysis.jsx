@@ -11,6 +11,7 @@ import {
   LinearScale,
   PointElement,
 } from "chart.js";
+import HostBottomNavigation from "./HostBottomNavigation";
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
 
@@ -387,6 +388,8 @@ export default function HostAnalysis() {
           ))}
         </ul>
       </Modal>
+
+      <HostBottomNavigation/>
     </div>
   );
 }
