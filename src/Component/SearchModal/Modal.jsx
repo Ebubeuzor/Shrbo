@@ -316,7 +316,7 @@ const SearchModal = ({ isOpen, onClose }) => {
             />
           </div>
           <div>
-            <FilterModal />
+            {/* <FilterModal /> */}
           </div>
         </div>
         <div className="absolute bottom-20 md:bottom-7 flex items-center left-0 right-0 w-[90%] mx-auto space-x-2">
