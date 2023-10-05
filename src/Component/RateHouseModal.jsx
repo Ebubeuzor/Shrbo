@@ -69,7 +69,7 @@ export default function RateHouseModal({ isOpen, onClose, houseDetails }) {
             Close
           </button>
           <button
-            className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600"
+            className="bg-orange-400 text-white py-2 px-4 rounded-full hover:bg-orange-500"
             onClick={handleSubmit}
           >
             Submit
