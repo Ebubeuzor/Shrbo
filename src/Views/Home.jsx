@@ -58,8 +58,8 @@ export default function Home() {
     // Simulate fetching house details after 5 seconds
     const timer = setTimeout(() => {
       setHouseDetails({
-        name: "Example House",
-        location: "Example Location",
+        name: "4 bedroom neatly compound hehehe",
+        location: "2b Jikwoyi Abuja",
         // Add more house details here
       });
       openRateHouseModal(); // Show the RateHouseModal after fetching details

@@ -46,7 +46,7 @@ export default function Header() {
             className="h-8 w-8 mr-2"
           />
         </div>
-        <nav className="flex">
+        <nav className="flex items-center">
           <Link to="/" className="text-white hover:text-gray-300 ml-4">
             Home
           </Link>
@@ -56,7 +56,7 @@ export default function Header() {
           <Link to="/trip" className="text-white hover:text-gray-300 ml-4">
             Trips
           </Link>
-          <Link to="/Hosting" className="text-white hover:text-gray-300 ml-4">
+          <Link to="/Hosting" className="text-white hover:text-gray-300 bg-orange-400 rounded-full p-2 ml-4">
               Switch to Host
             </Link>
           <div
