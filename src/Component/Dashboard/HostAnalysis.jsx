@@ -60,8 +60,6 @@ export default function HostAnalysis() {
         { date: "2023-09-02", amount: 250 },
       ],
     },
-
-    
   ];
 
   const selectedApartmentData = apartmentData.find(
@@ -130,9 +128,27 @@ export default function HostAnalysis() {
     return months;
   };
 
- 
+  const generateMonthss = () => {
+    const startDate = new Date("November 2023");
+    const endDate = new Date("December 2024");
 
-  
+    const months = [];
+    let currentDate = startDate;
+
+    while (currentDate <= endDate) {
+      const year = currentDate.getFullYear();
+      const month = currentDate.toLocaleString("default", { month: "long" });
+      const monthYear = `${month} ${year}`;
+      months.push(monthYear);
+      currentDate = new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth() + 1,
+        1
+      );
+    }
+
+    return months;
+  };
 
   return (
     <div className="">
@@ -198,97 +214,148 @@ export default function HostAnalysis() {
                 </div>
               )}
             </div>
-            
           </items>
           <items tab="Earnings" key="2">
-  <div>
-    <h2 className="text-3xl">Earnings</h2>
-    <div className="md:w-3/5">
-      <label htmlFor="" className="text-base">
-        Select Month
-      </label>
-      <div className="w-full py-4">
-        <Select
-          style={{ width: "100%" }}
-          placeholder="Select a month"
-          onChange={(value) => setSelectedMonth(value)} // Update selectedMonth
-          value={selectedMonth}
-        >
-          {generateMonths().map((monthItem) => (
-            <Option
-              key={monthItem.date.toISOString()}
-              value={monthItem.date.toISOString()}
-            >
-              {monthItem.value}
-            </Option>
-          ))}
-        </Select>
-      </div>
+            <div>
+              <h2 className="text-3xl">Earnings</h2>
+              <div className="md:w-3/5">
+                <label htmlFor="" className="text-base">
+                  Select Month
+                </label>
+                <div className="w-full py-4">
+                  <Select
+                    style={{ width: "100%" }}
+                    placeholder="Select a month"
+                    onChange={(value) => setSelectedMonth(value)} // Update selectedMonth
+                    value={selectedMonth}
+                  >
+                    {generateMonths().map((monthItem) => (
+                      <Option
+                        key={monthItem.date.toISOString()}
+                        value={monthItem.date.toISOString()}
+                      >
+                        {monthItem.value}
+                      </Option>
+                    ))}
+                  </Select>
+                </div>
 
-      <div className="">
-     <div className="my-4">
-     <div className="text-4xl font-bold">$0.00</div>
-      <div>
-          <p className="">Booked Earnings for 2023</p>
-        </div>
-     </div>
+                <div className="">
+                  <div className="my-4">
+                    <div className="text-4xl font-bold">$0.00</div>
+                    <div>
+                      <p className="">Booked Earnings for 2023</p>
+                    </div>
+                  </div>
 
-       <div className="flex items-center space-x-3">
-        <span className="bg-red-400 h-4 w-4"></span>
-       <div className="text-xl font-bold text-[color-for-amount]">
-          $0.00
-        </div>
-        <div>
-          <p className="text-[color-for-label]">Paid out</p>
-        </div>
-       </div>
-       <div className="flex items-center space-x-3">
-       <span className="bg-green-500 h-4 w-4"></span>
+                  <div className="flex items-center space-x-3">
+                    <span className="bg-red-400 h-4 w-4"></span>
+                    <div className="text-xl font-bold text-[color-for-amount]">
+                      $0.00
+                    </div>
+                    <div>
+                      <p className="text-[color-for-label]">Paid out</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <span className="bg-green-500 h-4 w-4"></span>
 
-       <div className="text-xl font-bold text-[color-for-amount]">
-          $0.00
-        </div>
-        <div>
-          <p className="text-[color-for-label]">Expected</p>
-        </div>
-       </div>
-      </div>
+                    <div className="text-xl font-bold text-[color-for-amount]">
+                      $0.00
+                    </div>
+                    <div>
+                      <p className="text-[color-for-label]">Expected</p>
+                    </div>
+                  </div>
+                </div>
 
-      <Line
-        data={{
-          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul","Aug","Sep","Oct","Nov", "Dec"],
-          datasets: [
-            {
-              label: "Paid out",
-              data: [200, 200, 600, 800, 1000, 1200,1000, 1200,1000, 1200,1000, 1200], // Replace with your actual paid out data
-              borderColor: "rgba(75, 192, 192, 1)",
-              backgroundColor: "rgba(75, 192, 192, 0.2)",
-              fill: true,
-            },
-            {
-              label: "Expected",
-              data: [250, 450, 650, 850, 1050, 1250,200, 600, 800, 1000, 1200,1400], // Replace with your actual expected data
-              borderColor: "rgba(255, 99, 132, 1)",
-              backgroundColor: "rgba(255, 99, 132, 0.2)",
-              fill: true,
-            },
-          ],
-        }}
-      />
-    </div>
-  </div>
-  <div className="my-20">
-    <h1 className="text-2xl font-bold">2023 Details</h1>
-  <TopEarningApartments apartments={apartmentData} />
-  </div>
-
-</items>
-
+                <Line
+                  data={{
+                    labels: [
+                      "Jan",
+                      "Feb",
+                      "Mar",
+                      "Apr",
+                      "May",
+                      "Jun",
+                      "Jul",
+                      "Aug",
+                      "Sep",
+                      "Oct",
+                      "Nov",
+                      "Dec",
+                    ],
+                    datasets: [
+                      {
+                        label: "Paid out",
+                        data: [
+                          200, 200, 600, 800, 1000, 1200, 1000, 1200, 1000,
+                          1200, 1000, 1200,
+                        ], // Replace with your actual paid out data
+                        borderColor: "rgba(75, 192, 192, 1)",
+                        backgroundColor: "rgba(75, 192, 192, 0.2)",
+                        fill: true,
+                      },
+                      {
+                        label: "Expected",
+                        data: [
+                          250, 450, 650, 850, 1050, 1250, 200, 600, 800, 1000,
+                          1200, 1400,
+                        ], // Replace with your actual expected data
+                        borderColor: "rgba(255, 99, 132, 1)",
+                        backgroundColor: "rgba(255, 99, 132, 0.2)",
+                        fill: true,
+                      },
+                    ],
+                  }}
+                />
+              </div>
+            </div>
+            <div className="my-20">
+              <h1 className="text-2xl font-bold">2023 Details</h1>
+              <TopEarningApartments apartments={apartmentData} />
+            </div>
+          </items>
 
           <items tab="Views" key="3">
             <div>
-              <h2>Views</h2>
-              <p>This is the content for the Views tab.</p>
+              <div className="my-4">
+                <Select
+                  style={{ width: "100%" }}
+                  placeholder="Select a month"
+                  onChange={(value) => setSelectedMonth(value)}
+                  value={selectedMonth}
+                >
+                  {generateMonthss().map((monthYear) => (
+                    <Option key={monthYear} value={monthYear}>
+                      {monthYear}
+                    </Option>
+                  ))}
+                </Select>
+              </div>
+
+              <div className="flex flex-wrap">
+                <div>
+                  <div className="flex flex-col mr-6">
+                    <span className="text-4xl font-bold mb-2">0</span>
+                    <span className="text-base">Views, past 30 days</span>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex flex-col mr-7">
+                    <span className="text-4xl font-bold mb-2">0</span>
+                    <span className="text-base">
+                      New bookings, past 30 days
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex flex-col">
+                    <span className="text-4xl font-bold mb-2">0%</span>
+                    <span className="text-base">Booking rate</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </items>
         </Tabs>
