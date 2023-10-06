@@ -47,7 +47,7 @@ export default function HostHeader() {
           />
         </div>
         <nav className="flex">
-          <Link to="" className="text-white hover:text-gray-300 ml-4">
+          <Link to="/Hosting" className="text-white hover:text-gray-300 ml-4">
             Today
           </Link>
           <Link to="/chat" className="text-white hover:text-gray-300 ml-4">

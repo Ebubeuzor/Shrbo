@@ -51,7 +51,7 @@ export default function Settings() {
             <div className="text-base">
               <span className="font-medium">Username,</span>
               <span>username@gmail.com</span><br />
-              <Link className="underline ">Go to profile</Link>
+              <Link to="/UsersShow" className="underline ">Go to profile</Link>
             </div>
           </div>
           <div className="grid md:grid-cols-2 gap-4 mb-10">
