@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import room from "../../assets/room.jpeg";
 import kitchen from "../../assets/room2.jpeg";
 import SliderFull from "./SliderFull";
+import video from "../../assets/videos/luxuryInteriror.mp4";
 
 const ListingPhotos = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -105,17 +106,21 @@ const ListingPhotos = () => {
         </div>
       </section>
 
-      <div className="md:flex md:flex-row relative mt-5 w-full md:h-[360px] lg:h-[320px] xl:h-[400px] hidden">
+      <div className="md:flex md:flex-row relative mt-5 w-full hidden">
         <div className="w-1/2 h-full rounded-l-xl md:mr-2 overflow-hidden">
-          <img className="h-full w-full" src={room} alt="Room 1" />
+          <div className="h-full w-full">
+            <video src={video} className="h-full w-full" controls></video>
+          </div>
         </div>
 
-        <div className="w-3/4 grid grid-cols-2 gap-2">
-          {imageUrls.map((imageUrl, index) => (
-            <div key={index} className="h-full overflow-hidden rounded-xl" onClick={(e) => showModal(e, index)}>
-              <img className="h-full w-full" src={imageUrl} alt={`Image ${index + 1}`} />
-            </div>
-          ))}
+        <div className="w-1/2 h-full rounded-r-xl md:ml-2 overflow-hidden">
+          <div className="h-full w-full grid grid-cols-2 gap-2">
+            {imageUrls.map((imageUrl, index) => (
+              <div key={index} className="h-full overflow-hidden rounded-xl" onClick={(e) => showModal(e, index)}>
+                <img className="h-full w-full" src={imageUrl} alt={`Image ${index + 1}`} />
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="absolute xl:bottom-7 xl:right-8 md:right-6 md:bottom-[10%]">
