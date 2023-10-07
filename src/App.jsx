@@ -24,6 +24,9 @@ import UserDetails from "./Component/UserDetails";
 import Reservations from "./Component/Dashboard/Reservations";
 import ScrollToTop from "./Component/ScrollToTop";
 import HostAnalysis from "./Component/Dashboard/HostAnalysis";
+import Schduler from "./Component/Dashboard/Schduler";
+
+
 function App() {
   return (
     <Router>
@@ -51,6 +54,7 @@ function App() {
         <Route path="/UserDetails" element={<UserDetails />} />
         <Route path="/Reservations" element={<Reservations />} />
         <Route path="/HostAnalysis" element={<HostAnalysis />} />
+        <Route path="/Schduler" element={<Schduler />} />
 
 
 
