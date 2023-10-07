@@ -47,6 +47,8 @@ const ListingPhotos = () => {
     "Ottawa, Ontario, Canada",
   ];
 
+
+  
   const imageUrls = [kitchen, room, apartment1, kitchen, apartment]; // Add more image URLs as needed
 
   // Define the number of images to display on the page
@@ -108,7 +110,7 @@ const ListingPhotos = () => {
 
       <div className="md:flex md:flex-row relative mt-5 w-full hidden">
         <div className="w-1/2 h-full rounded-l-xl md:mr-2 overflow-hidden">
-          <div className="h-full w-full">
+          <div className="h-full w-full cursor-pointer">
             <video src={video} className="h-full w-full" controls></video>
           </div>
         </div>
@@ -122,7 +124,7 @@ const ListingPhotos = () => {
                 onClick={() => showModal(imageUrl, index)}
               >
                 <img
-                  className="h-full w-full"
+                  className="h-full w-full cursor-pointer"
                   src={imageUrl}
                   alt={`Image ${index + 1}`}
                 />
