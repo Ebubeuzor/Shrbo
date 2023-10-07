@@ -4,6 +4,8 @@ import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import room from "../../assets/room.jpeg";
 import kitchen from "../../assets/room2.jpeg";
 import video from "../../assets/videos/luxuryInteriror.mp4";
+import apartment from "../../assets/apartment2.jpeg";
+import apartment1 from "../../assets/apartment1.jpeg";
 import Modal from 'react-modal';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -11,7 +13,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const modalStyles = {
   overlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    backgroundColor: 'black',
     zIndex: 1000,
   },
   content: {
@@ -58,11 +60,11 @@ const MainSlider = (props) => {
     },
     {
       id: 3,
-      min: room,
+      min: apartment,
     },
     {
       id: 4,
-      min: kitchen,
+      min: apartment1,
     },
     {
       id: 5,
