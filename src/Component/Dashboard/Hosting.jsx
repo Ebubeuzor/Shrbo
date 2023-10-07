@@ -273,7 +273,7 @@ export default function Hosting() {
           </div>
         );
 
-      case "upcoming":
+      
       case "upcoming":
         if (upcomingReservations.length === 0) {
           return (
