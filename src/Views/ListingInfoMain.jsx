@@ -11,14 +11,14 @@ import ListingForm from "../Component/ListingInfo/ListingForm";
 import HouseRules from "../Component/ListingInfo/HouseRules";
 import BottomNavigation from "../Component/Navigation/BottomNavigation";
 import Header from "../Component/Navigation/Header";
-import Schduler from "../Component/Dashboard/Schduler";
+
 
 const ListingInfoMain=()=>{
 
 
     return(
        <div className="">
-        {/* <Header/>
+        <Header/>
          <div className=" px-6 md:px-10 xl:px-20 max-w-7xl  m-auto justify-center items-center flex flex-wrap flex-col gap-6 lg:gap-10 ">
             <ListingPhotos/>
             
@@ -55,11 +55,9 @@ const ListingInfoMain=()=>{
            
             
 <BottomNavigation/>
-        </div> */}
+        </div>
 
        
-        <Schduler/>
-        
 
        </div>
     );
