@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Rating from "./Ratings";
 import { Link } from "react-router-dom";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Listings = () => {
   const [listings, setListings] = useState([
@@ -19,8 +20,7 @@ const Listings = () => {
       date: "22/08/2023",
       kilometres: "22miles away",
       rating: 4.8,
-      link:"/ListingInfoMain",
-
+      link: "/ListingInfoMain",
     },
     {
       id: 2,
@@ -34,8 +34,7 @@ const Listings = () => {
       date: "22/08/2023",
       kilometres: "22miles away",
       rating: 4.2,
-      link:"/ListingInfoMain",
-
+      link: "/ListingInfoMain",
     },
     {
       id: 3,
@@ -49,8 +48,7 @@ const Listings = () => {
       date: "22/08/2023",
       kilometres: "22miles away",
       rating: 4.0,
-            link:"/ListingInfoMain",
-
+      link: "/ListingInfoMain",
     },
 
     {
@@ -65,83 +63,90 @@ const Listings = () => {
       date: "22/08/2023",
       kilometres: "22miles away",
       rating: 4.8,
-      link:"/ListingInfoMain",
-
+      link: "/ListingInfoMain",
     },
-    {id: 5,
-    pictures: [
-      "https://a0.muscache.com/im/pictures/959f7a1d-6e52-4317-a2a5-4271b323e19c.jpg?im_w=720",
-      "https://a0.muscache.com/im/pictures/c089e5bd-89cd-4efc-bda5-0b6e36978e9c.jpg?im_w=720",
-      "https://a0.muscache.com/im/pictures/766780af-d334-4b1a-9356-cda032db1f13.jpg?im_w=720",
-    ],
-    location: "1004 Victoria Island",
-    price: "$150 per night",
-    date: "22/08/2023",
-    kilometres: "22miles away",
-    rating: 4.8,
-    link:"/ListingInfoMain",
-  },
-  {
-    id: 6,
-    pictures: [
-      "https://a0.muscache.com/im/pictures/7ca6118f-68c7-4a32-8bbc-09ce1840a373.jpg?im_w=720",
-      "https://a0.muscache.com/im/pictures/c99e5b00-a779-40e9-bd0e-5062dfdb7eb8.jpg?im_w=720",
-      "https://a0.muscache.com/im/pictures/f8099680-c563-4491-9258-f679eef415e9.jpg?im_w=720",
-    ],
-    location: "2b, Admiralty Road",
-    price: "$120 per night",
-    date: "22/08/2023",
-    kilometres: "22miles away",
-    rating: 4.8,
-    link:"/ListingInfoMain",
+    {
+      id: 5,
+      pictures: [
+        "https://a0.muscache.com/im/pictures/959f7a1d-6e52-4317-a2a5-4271b323e19c.jpg?im_w=720",
+        "https://a0.muscache.com/im/pictures/c089e5bd-89cd-4efc-bda5-0b6e36978e9c.jpg?im_w=720",
+        "https://a0.muscache.com/im/pictures/766780af-d334-4b1a-9356-cda032db1f13.jpg?im_w=720",
+      ],
+      location: "1004 Victoria Island",
+      price: "$150 per night",
+      date: "22/08/2023",
+      kilometres: "22miles away",
+      rating: 4.8,
+      link: "/ListingInfoMain",
+    },
+    {
+      id: 6,
+      pictures: [
+        "https://a0.muscache.com/im/pictures/7ca6118f-68c7-4a32-8bbc-09ce1840a373.jpg?im_w=720",
+        "https://a0.muscache.com/im/pictures/c99e5b00-a779-40e9-bd0e-5062dfdb7eb8.jpg?im_w=720",
+        "https://a0.muscache.com/im/pictures/f8099680-c563-4491-9258-f679eef415e9.jpg?im_w=720",
+      ],
+      location: "2b, Admiralty Road",
+      price: "$120 per night",
+      date: "22/08/2023",
+      kilometres: "22miles away",
+      rating: 4.8,
+      link: "/ListingInfoMain",
+    },
 
-  },
+    {
+      id: 7,
+      pictures: [
+        "https://a0.muscache.com/im/pictures/7ca6118f-68c7-4a32-8bbc-09ce1840a373.jpg?im_w=720",
+        "https://a0.muscache.com/im/pictures/c99e5b00-a779-40e9-bd0e-5062dfdb7eb8.jpg?im_w=720",
+        "https://a0.muscache.com/im/pictures/f8099680-c563-4491-9258-f679eef415e9.jpg?im_w=720",
+      ],
+      location: "2b, Admiralty Road",
+      price: "$120 per night",
+      date: "22/08/2023",
+      kilometres: "22miles away",
+      rating: 4.8,
+      link: "/ListingInfoMain",
+    },
 
-  {
-    id: 7,
-    pictures: [
-      "https://a0.muscache.com/im/pictures/7ca6118f-68c7-4a32-8bbc-09ce1840a373.jpg?im_w=720",
-      "https://a0.muscache.com/im/pictures/c99e5b00-a779-40e9-bd0e-5062dfdb7eb8.jpg?im_w=720",
-      "https://a0.muscache.com/im/pictures/f8099680-c563-4491-9258-f679eef415e9.jpg?im_w=720",
-    ],
-    location: "2b, Admiralty Road",
-    price: "$120 per night",
-    date: "22/08/2023",
-    kilometres: "22miles away",
-    rating: 4.8,
-    link:"/ListingInfoMain",
-
-  },
-
-  {
-    id: 8,
-    pictures: [
-      "https://a0.muscache.com/im/pictures/7ca6118f-68c7-4a32-8bbc-09ce1840a373.jpg?im_w=720",
-      "https://a0.muscache.com/im/pictures/c99e5b00-a779-40e9-bd0e-5062dfdb7eb8.jpg?im_w=720",
-      "https://a0.muscache.com/im/pictures/f8099680-c563-4491-9258-f679eef415e9.jpg?im_w=720",
-    ],
-    location: "2b, Admiralty Road",
-    price: "$120 per night",
-    date: "22/08/2023",
-    kilometres: "22miles away",
-    rating: 4.8,
-    link:"/ListingInfoMain",
-
-  },
-
-  
+    {
+      id: 8,
+      pictures: [
+        "https://a0.muscache.com/im/pictures/7ca6118f-68c7-4a32-8bbc-09ce1840a373.jpg?im_w=720",
+        "https://a0.muscache.com/im/pictures/c99e5b00-a779-40e9-bd0e-5062dfdb7eb8.jpg?im_w=720",
+        "https://a0.muscache.com/im/pictures/f8099680-c563-4491-9258-f679eef415e9.jpg?im_w=720",
+      ],
+      location: "2b, Admiralty Road",
+      price: "$120 per night",
+      date: "22/08/2023",
+      kilometres: "22miles away",
+      rating: 4.8,
+      link: "/ListingInfoMain",
+    },
   ]);
 
   const toggleFavorite = (id) => {
     setListings((prevListings) =>
       prevListings.map((listing) => {
         if (listing.id === id) {
+          if (!listing.isFavorite) {
+            // Show a toast notification when added to wishlist
+            toast.success('Added to Wishlist', {
+              position: toast.POSITION.TOP_CENTER,
+            });
+          } else {
+            // Show a toast notification when removed from wishlist
+            toast.success('Removed from Wishlist', {
+              position: toast.POSITION.TOP_CENTER,
+            });
+          }
           return { ...listing, isFavorite: !listing.isFavorite };
         }
         return listing;
       })
     );
   };
+  
 
   return (
     <div className="flex flex-wrap justify-center mt-10 mb-32">
@@ -181,18 +186,22 @@ const Listings = () => {
               </div>
             ))}
           </Carousel>
-          <Link to={listing.link}> 
+          <Link to={listing.link}>
+            <div className=" py-4">
+              <div className="font-medium text-base mb-2">
+                {listing.location}
+              </div>
+              <Rating rating={listing.rating} />
 
-          <div className=" py-4">
-            <div className="font-medium text-base mb-2">{listing.location}</div>
-            <Rating rating={listing.rating} /> 
+              <p className="text-gray-400 text-base">{listing.kilometres}</p>
 
-            <p className="text-gray-400 text-base">{listing.kilometres}</p>
-
-            <p className="text-gray-400 text-base">{listing.date}</p>
-            <p className="font-medium text-gray-700 text-base">{listing.price}</p>
-          </div>
+              <p className="text-gray-400 text-base">{listing.date}</p>
+              <p className="font-medium text-gray-700 text-base">
+                {listing.price}
+              </p>
+            </div>
           </Link>
+          <ToastContainer />
         </div>
       ))}
     </div>

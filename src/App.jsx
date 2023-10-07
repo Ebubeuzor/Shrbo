@@ -22,10 +22,12 @@ import ConfirmDetails from "./Component/Dashboard/ConfirmDetails";
 import Listings from "./Component/Dashboard/Listings";
 import UserDetails from "./Component/UserDetails";
 import Reservations from "./Component/Dashboard/Reservations";
-
+import ScrollToTop from "./Component/ScrollToTop";
+import HostAnalysis from "./Component/Dashboard/HostAnalysis";
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ListingInfoMain" element={<ListingInfoMain />} />
@@ -48,6 +50,7 @@ function App() {
         <Route path="/Listings" element={<Listings />} />
         <Route path="/UserDetails" element={<UserDetails />} />
         <Route path="/Reservations" element={<Reservations />} />
+        <Route path="/HostAnalysis" element={<HostAnalysis />} />
 
 
 

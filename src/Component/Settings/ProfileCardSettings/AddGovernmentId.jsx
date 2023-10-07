@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SettingsNavigation from '../SettingsNavigation';
+import GoBackButton from '../../GoBackButton';
 
 export default function AddGovernmentId() {
   const [uploadedImage, setUploadedImage] = useState(null);
@@ -44,8 +45,8 @@ export default function AddGovernmentId() {
 
   return (
     <div className="container max-w-2xl mx-auto p-4">
+      <GoBackButton/>
               <SettingsNavigation title="Government Info" text="Government info" />
-
       <h1 className="text-2xl font-bold">Upload Government ID Card</h1>
       <p>
         It looks like this isn’t a photo of a valid form of ID. Please provide a

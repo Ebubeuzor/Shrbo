@@ -378,7 +378,7 @@ export default function Trip() {
                <span className="text-black"> Price: </span> ₦{selectedTrip.price}
                 </div>
                 
-                <div className="text-base text-orange-400  mt-2">
+                <div className="text-base text-black  mt-2">
                   {selectedTrip.notes}
                 </div>
                

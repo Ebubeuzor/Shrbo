@@ -267,7 +267,7 @@ const handleSubmit = (e) => {
   return (
     <div className="h-[70vh]">
       {isModalOpen && (
-        <div className="modal fixed flex justify-center items-center inset-0 z-50">
+        <div className="modal fixed flex justify-center items-center inset-0 z-[9999]">
         
           <div
             className="fixed bg-black inset-0 opacity-50 z-10"

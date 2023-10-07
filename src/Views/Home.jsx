@@ -8,9 +8,13 @@ import Modal from "../Component/SearchModal/Modal";
 import searchIcon from "../assets/svg/search-icon.svg";
 import BottomNavigation from "../Component/Navigation/BottomNavigation";
 import Footer from "../Component/Navigation/Footer";
+import RateHouseModal from "../Component/RateHouseModal";
+import FilterModal from "../Component/Filter/FilterModal";
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSearchButtonFixed, setIsSearchButtonFixed] = useState(false);
+  const [houseDetails, setHouseDetails] = useState(null); // Store house details here
+  const [isRateHouseModalOpen, setIsRateHouseModalOpen] = useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -18,6 +22,14 @@ export default function Home() {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const openRateHouseModal = () => {
+    setIsRateHouseModalOpen(true);
+  };
+
+  const closeRateHouseModal = () => {
+    setIsRateHouseModalOpen(false);
   };
 
   useEffect(() => {
@@ -39,35 +51,52 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    // Simulate fetching house details after 5 seconds
+    const timer = setTimeout(() => {
+      setHouseDetails({
+        name: "4 bedroom neatly compound hehehe",
+        location: "2b Jikwoyi Abuja",
+        // Add more house details here
+      });
+      openRateHouseModal(); // Show the RateHouseModal after fetching details
+    }, 500000000);
+
+    return () => clearTimeout(timer); // Cleanup the timer on unmount
+  }, []);
+
   return (
     <div>
       <Header />
       {/* <Hamburger /> */}
-      <BottomNavigation/>
+      <BottomNavigation />
       <div
         className={` md:w-2/5 mx-auto flex justify-center fixed z-10 left-0 right-0 transition-all ${
           isSearchButtonFixed ? "top-0" : "mt-6"
         }`}
-      >          <button
-            onClick={openModal}
-            className="bg-orange-400 z-50 w-[90%] flex items-center py-3 px-5 rounded-full mt-6 text-white shadow-2xl"
-          >
-            <div className="w-[20%]">
+      >
+        <div className="bg-orange-400 z-50 w-[90%] md:w-full flex items-center justify-between  py-3 px-5 rounded-full mt-6 text-white shadow-2xl">
+          <button onClick={openModal} className="flex  items-center w-3/4">
+            <div className="w-[20%]"> 
               <img src={searchIcon} className="w-6" alt="" />
             </div>
-            <div className="w-[80%] text-start">
+            <div className="w-[100%] text-start">
               <div className="">
                 <div className="text-base font-medium">Anywhere</div>
-                <div className="flex space-x-6 text-[12px]">
-                  <div>Any week</div>
-                  <div>Add guests</div>
+                <div className=" text-[12px] flex">
+                  <div className="">Any week</div>
+                  <div className="mx-4">Add guests</div>
                 </div>
               </div>
             </div>
           </button>
-          
-          <Modal isOpen={isModalOpen} onClose={closeModal} />
+         <div>
+         <FilterModal/>
+         </div>
         </div>
+
+        <Modal isOpen={isModalOpen} onClose={closeModal} />
+      </div>
       <div className="pageHeader"></div>
       <div className="storeFrontHomeage">
         <div>
@@ -91,7 +120,7 @@ export default function Home() {
             reiciendis nihil?
           </p> */}
         </div>
-      
+
         <section className=" mx-auto justify-center w-[95%] md:w-[80%]">
           <div className="justify-center flex">
             <CategoryHeader />
@@ -99,8 +128,13 @@ export default function Home() {
 
           <Listings />
         </section>
+        <RateHouseModal
+          isOpen={isRateHouseModalOpen}
+          onClose={closeRateHouseModal}
+          houseDetails={houseDetails}
+        />
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
