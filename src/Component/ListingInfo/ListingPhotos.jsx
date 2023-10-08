@@ -162,6 +162,8 @@ const ListingPhotos = () => {
       {/* Modal for displaying images */}
       <Modal
         isOpen={isModalVisible}
+        ariaHideApp={false}
+
         onRequestClose={closeModal}
         style={{
           overlay: {
