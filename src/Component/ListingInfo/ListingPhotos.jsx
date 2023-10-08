@@ -9,6 +9,7 @@ import SliderFull from "./SliderFull";
 import Modal from "react-modal"; // Import the react-modal library
 import { Carousel } from "react-responsive-carousel"; // Import Carousel from react-responsive-carousel
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import Carousel styles
+import close from "../../assets/svg/close-line-icon 2.svg"
 
 const ListingPhotos = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -47,8 +48,6 @@ const ListingPhotos = () => {
     "Ottawa, Ontario, Canada",
   ];
 
-
-  
   const imageUrls = [kitchen, room, apartment1, kitchen, apartment]; // Add more image URLs as needed
 
   // Define the number of images to display on the page
@@ -187,9 +186,10 @@ const ListingPhotos = () => {
           },
         }}
       >
-        <div className="modal-content">
+        <div className="modal-content p-4">
           <button className="close-button text-white" onClick={closeModal}>
-            Close
+          <img src={close} className='w-4' alt="" />
+
           </button>
 
           {/* Inside the modal content, update the Carousel component as follows: */}
@@ -200,7 +200,12 @@ const ListingPhotos = () => {
               selectedItem={selectedImageIndex}
               showStatus={false} // Set showStatus to false to hide the carousel status
               showThumbs={false}
-              style={{ display: "", justifyContent: "", alignItems: "center", background:"black" }}
+              style={{
+                display: "",
+                justifyContent: "",
+                alignItems: "center",
+                background: "black",
+              }}
             >
               {imageUrls.map((imageUrl, index) => (
                 <div
@@ -209,20 +214,29 @@ const ListingPhotos = () => {
                     height: "",
                     width: "50%",
                     margin: "auto",
-                    background: index === selectedImageIndex ? "transparent" : "black", // Set the background color to transparent for the selected image
+                    background:
+                      index === selectedImageIndex ? "transparent" : "black", // Set the background color to transparent for the selected image
                   }}
                 >
                   {index !== selectedImageIndex ? (
                     <img
                       src={imageUrl}
                       alt={`Image ${index + 1}`}
-                      style={{ height: "100%", width: "100%", margin: "100px auto" }}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        margin: "100px auto",
+                      }}
                     />
                   ) : (
                     <img
                       src={selectedImage}
                       alt={`Image ${index + 1}`}
-                      style={{ height: "100%", width: "100%", margin: "100px auto" }}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        margin: "100px auto",
+                      }}
                     />
                   )}
                 </div>

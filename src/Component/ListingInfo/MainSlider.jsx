@@ -9,6 +9,7 @@ import apartment1 from "../../assets/apartment1.jpeg";
 import Modal from 'react-modal';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import close from "../../assets/svg/close-line-icon 2.svg"
 // import './MainSlider.css'; // Import your custom CSS file
 
 const modalStyles = {
@@ -27,7 +28,7 @@ const modalStyles = {
     overflow: 'auto',
     WebkitOverflowScrolling: 'touch',
     outline: 'none',
-    padding: '0',
+    padding: '20px',
   },
   sliderWrapper: {
     borderRadius: "0px", // CSS properties should use colons instead of colons
@@ -42,6 +43,8 @@ const modalStyles = {
     // maxWidth: '80%', // Adjust the width as needed
     maxHeight: '70vh', // Adjust the height as needed
   },
+
+ 
 };
 
 const MainSlider = (props) => {
@@ -112,7 +115,7 @@ const MainSlider = (props) => {
   ));
 
   return (
-    <div className='w-full md:hidden'>
+    <div className='w-full md:hidden '>
       <Splide
         ref={(slider) => (props.slider1.current = slider)}
         className="main-slider"
@@ -137,9 +140,10 @@ const MainSlider = (props) => {
         isOpen={selectedImage !== null}
         onRequestClose={closeImageModal}
         style={modalStyles}
+        
       >
           <button className="close-button text-white" onClick={closeImageModal}>
-            Close
+            <img src={close} className='w-4' alt="" />
           </button>
         <div className="modal-content" style={modalStyles.modalContent}>
           {selectedImage && (
