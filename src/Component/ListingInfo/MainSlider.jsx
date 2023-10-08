@@ -140,6 +140,7 @@ const MainSlider = (props) => {
         isOpen={selectedImage !== null}
         onRequestClose={closeImageModal}
         style={modalStyles}
+        ariaHideApp={false}
         
       >
           <button className="close-button text-white" onClick={closeImageModal}>
