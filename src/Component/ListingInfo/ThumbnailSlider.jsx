@@ -39,7 +39,7 @@ const ThumbnailSlider = (props) => {
                 src={slide.min}
                 alt="Video"
                 className="rounded h-full w-full"
-                autoPlay
+                
                 controls
                 playsInline // Add playsInline attribute for iOS
               />

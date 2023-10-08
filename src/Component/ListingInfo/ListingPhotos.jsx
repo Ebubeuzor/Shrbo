@@ -9,7 +9,7 @@ import SliderFull from "./SliderFull";
 import Modal from "react-modal"; // Import the react-modal library
 import { Carousel } from "react-responsive-carousel"; // Import Carousel from react-responsive-carousel
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import Carousel styles
-import close from "../../assets/svg/close-line-icon 2.svg"
+import close from "../../assets/svg/close-line-icon 2.svg";
 
 const ListingPhotos = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -163,7 +163,6 @@ const ListingPhotos = () => {
       <Modal
         isOpen={isModalVisible}
         ariaHideApp={false}
-
         onRequestClose={closeModal}
         style={{
           overlay: {
@@ -190,8 +189,7 @@ const ListingPhotos = () => {
       >
         <div className="modal-content p-4">
           <button className="close-button text-white" onClick={closeModal}>
-          <img src={close} className='w-4' alt="" />
-
+            <img src={close} className="w-4" alt="" />
           </button>
 
           {/* Inside the modal content, update the Carousel component as follows: */}
