@@ -116,22 +116,24 @@ export default class Scheduler extends Component {
                 </option>
               ))}
             </select>
-            <FullCalendar
-              plugins={[dayGridPlugin, interactionPlugin, multiMonthPlugin]}
-              initialView="dayGridMonth"
-              editable
-              selectable
-              dateClick={this.handleDateClick} // Handle date clicks to block/unblock dates
-              // Add blocked and unblocked dates to the calendar
-              events={[
-                ...blockedDates.map((date) => ({
-                  title: "Blocked",
-                  start: date,
-                  allDay: true,
-                })),
-                ...this.getUnblockedDates(), // Include unblocked dates
-              ]}
-            />
+            {selectedHouse && ( // Only render the calendar if an apartment is selected
+              <FullCalendar
+                plugins={[dayGridPlugin, interactionPlugin, multiMonthPlugin]}
+                initialView="dayGridMonth"
+                editable
+                selectable
+                dateClick={this.handleDateClick} // Handle date clicks to block/unblock dates
+                // Add blocked and unblocked dates to the calendar
+                events={[
+                  ...blockedDates.map((date) => ({
+                    title: "Blocked",
+                    start: date,
+                    allDay: true,
+                  })),
+                  ...this.getUnblockedDates(), // Include unblocked dates
+                ]}
+              />
+            )}
           </div>
         </div>
 
@@ -170,6 +172,7 @@ export default class Scheduler extends Component {
     return unblockedDates;
   }
 }
+
 
 
 const Pricing = ({ selectedHouse }) => {
