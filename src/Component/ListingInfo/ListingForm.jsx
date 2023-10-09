@@ -590,7 +590,7 @@ function MyDropdown({ adults, children, pets, infants }) {
         >
           <span className="block">Guests</span>
            <span className="text-gray-500">
-              {adultCount + childCount} guests {infantCount!=0&& `,${infantCount} infant`} {petCount!=0&& `,${petCount} pet$`} 
+              {adultCount + childCount} guests {infantCount!=0&& `,${infantCount} infant`} {petCount!=0&& `,${petCount} pet`} 
            </span>
         </button>
       </Space>

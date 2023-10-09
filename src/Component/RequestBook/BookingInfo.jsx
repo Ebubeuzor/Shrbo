@@ -451,7 +451,10 @@ function MyDropdown({ adults, children, pets, infants }) {
           type="button"
           className=" block m-4 cursor-pointer overflow-hidden text-ellipsis text-start whitespace-nowrap text-base font-normal      "
         >
-          2 guests, 1 infant
+         <span className="block">Guests</span>
+           <span className="text-gray-500">
+              {adultCount + childCount} guests {infantCount!=0&& `,${infantCount} infant`} {petCount!=0&& `,${petCount} pet`} 
+           </span>
         </button>
       </Space>
     </Dropdown>
