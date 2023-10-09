@@ -5,6 +5,8 @@ import interactionPlugin from "@fullcalendar/interaction";
 import { Tabs } from "antd";
 import multiMonthPlugin from "@fullcalendar/multimonth";
 import { IoIosArrowForward } from "react-icons/io";
+import HostHeader from "../Navigation/HostHeader";
+import HostBottomNavigation from "./HostBottomNavigation";
 
 export default class Scheduler extends Component {
   constructor(props) {
@@ -116,7 +118,10 @@ export default class Scheduler extends Component {
     const houseOptions = apartments.map((apartment) => apartment.name);
   
     return (
-      <div className="flex flex-wrap box-border w-full">
+      <div>
+        <HostHeader/>
+        <HostBottomNavigation/>
+        <div className="flex flex-wrap box-border w-full">
         <div className="block flex-grow relative  overflow-y-scroll example">
           <div className="flex flex-col relative py-8 px-6">
             <select
@@ -192,6 +197,7 @@ export default class Scheduler extends Component {
             </div>
           </div>
         </section>
+      </div>
       </div>
     );
   }
@@ -355,7 +361,7 @@ const Pricing = ({ selectedHouse }) => {
                     </div>
                   </div>
                 </div>
-                <div className="rounded-2xl flex border p-6 justify-between items-center gap-3">
+                <div className="rounded-2xl flex border p-6 justify-between items-center gap-3 mb-24">
                   <div className="touch-manipulation relative outline-none h-full w-full cursor-pointer">
                     <div className="mr-1 text-sm block box-border">More Discounts</div>
                     <div className="mr-1 text-sm block box-border">
