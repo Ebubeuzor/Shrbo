@@ -35,7 +35,8 @@ export default class Schduler extends React.Component {
           <div className=" flex flex-col relative py-8 px-6">
             <FullCalendar
               plugins={[dayGridPlugin, interactionPlugin, multiMonthPlugin]}
-              initialView="dayGridMonth"
+              initialView='multiMonthYear'
+              multiMonthMaxColumns="1" 
               editable
               selectable
             />
@@ -56,21 +57,28 @@ export default class Schduler extends React.Component {
 
 const Pricing = () => {
 
-
 //   const acceptedCurrencies = [
-//     { id: 1,text:"1 bed"},
-//     { id: 2,text:"Shared bathroom"},
-//     { id: 3,text:"Host or others may share home "},
-//     { id: 4,text:"Iron"},
-//     { id: 5,text:"Swiming pool"},
-//     { id: 6,text:"Hot tub"},
-//     { id: 7,text:"Free parking"},
-//     { id: 8,text:"EV charger"},
-//     { id: 9,text:"Crib"},
-//     { id: 10,text:"Gym",},
- 
-//     // it should have a "url" object aswell for Svg images  
-//   ];
+//     { id: 1, text: "United States Dollar (USD)", symbol: "$" },
+//     { id: 2, text: "Euro (EUR)", symbol: "€" },
+//     { id: 3, text: "British Pound Sterling (GBP)", symbol: "£" },
+//     { id: 4, text: "Japanese Yen (JPY)", symbol: "¥" },
+//     { id: 5, text: "Chinese Yuan Renminbi (CNY)", symbol: "¥" },
+//     { id: 6, text: "Canadian Dollar (CAD)", symbol: "$" },
+//     { id: 7, text: "Australian Dollar (AUD)", symbol: "$" },
+//     { id: 8, text: "Swiss Franc (CHF)", symbol: "Fr" },
+//     { id: 9, text: "Swedish Krona (SEK)", symbol: "kr" },
+//     { id: 10, text: "Norwegian Krone (NOK)", symbol: "kr" },
+//     { id: 11, text: "Danish Krone (DKK)", symbol: "kr" },
+//     { id: 12, text: "New Zealand Dollar (NZD)", symbol: "$" },
+//     { id: 13, text: "Singapore Dollar (SGD)", symbol: "$" },
+//     { id: 14, text: "Hong Kong Dollar (HKD)", symbol: "HK$" },
+//     { id: 15, text: "South Korean Won (KRW)", symbol: "₩" },
+//     { id: 16, text: "Indian Rupee (INR)", symbol: "₹" },
+//     { id: 17, text: "Brazilian Real (BRL)", symbol: "R$" },
+//     { id: 18, text: "South African Rand (ZAR)", symbol: "R" },
+//     { id: 19, text: "Russian Ruble (RUB)", symbol: "₽" },
+//     { id: 20, text: "UAE Dirham (AED)", symbol: "ﺩ.ﺇ" }
+// ];
 
 //   const currencies=acceptedCurrencie.map(currency=>(
 //     <div key={amenity.id} className=" relative px-[6px]  w-full md:w-1/2 md:px-2 ">
