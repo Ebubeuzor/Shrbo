@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import GoBackButton from "./GoBackButton";
 
 const UserDetails = () => {
   const [showReviews, setShowReviews] = useState(false);
@@ -164,6 +165,7 @@ const UserDetails = () => {
 
   return (
     <div className="bg-white md:w-[80vw] md:mx-auto md:my-20 rounded-lg shadow-md p-6">
+      <GoBackButton/>
       <div className="flex flex-wrap items-center space-x-3">
         <div>
           <img
@@ -220,14 +222,15 @@ const UserDetails = () => {
   Houses {user.name} has hosted or stayed in
 </h3>
 <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 ${showAllHouses ? 'w-full' : 'w-fit'}`}>
-        {getHousesForPage(currentPage).map((house, index) => (
-            <Link to="/ListingInfoMain">
-          <div key={index} className="mt-2">
-            <img src={house.image} className="w-32 h-32 object-cover" alt="" />
-            <p className="text-center">{house.name}</p>
-          </div>
-          </Link>
-        ))}
+{getHousesForPage(currentPage).map((house, index) => (
+  <Link to="/ListingInfoMain" key={index}> {/* Add the key prop here */}
+    <div className="mt-2">
+      <img src={house.image} className="w-32 h-32 object-cover" alt="" />
+      <p className="text-center">{house.name}</p>
+    </div>
+  </Link>
+))}
+
       </div>
       {totalPages > 1 && !showAllHouses && (
         <button

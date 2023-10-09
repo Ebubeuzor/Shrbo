@@ -298,7 +298,7 @@ export default function ListingForm() {
             <Button key="cancel" onClick={() => setMessageModalVisible(false)}>
               Cancel
             </Button>,
-            <Button key="send" type="primary" onClick={sendMessage}>
+            <Button key="send" type="primary"  onClick={sendMessage}>
               Send
             </Button>,
           ]}
@@ -327,7 +327,7 @@ export default function ListingForm() {
         />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" className="bg-orange-400 hover:bg-orange-600" htmlType="submit">
           Send
         </Button>
       </Form.Item>
