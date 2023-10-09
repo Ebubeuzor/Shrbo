@@ -151,7 +151,7 @@ const Pricing = () => {
           <span>
             <h2 className=" m-0 p-0 text-2xl block box-border">
               <div className="min-[1128px]:text-lg font-semibold capitalize  ">
-                Base Price
+                Base Price  
               </div>
             </h2>
           </span>
