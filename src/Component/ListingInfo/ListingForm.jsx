@@ -292,7 +292,7 @@ export default function ListingForm() {
       {/* Message Modal */}
       <Modal
           title="Message Host"
-          opeb={messageModalVisible}
+          open={messageModalVisible}
           onCancel={() => setMessageModalVisible(false)}
           footer={[
             <Button key="cancel" onClick={() => setMessageModalVisible(false)}>
