@@ -37,6 +37,7 @@ export default class Schduler extends React.Component {
             <FullCalendar
               plugins={[dayGridPlugin, interactionPlugin, multiMonthPlugin]}
               initialView="multiMonthYear"
+              multiMonthMaxColumns="1"
               editable
               selectable
             />
