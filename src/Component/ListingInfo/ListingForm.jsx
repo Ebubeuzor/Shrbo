@@ -126,9 +126,9 @@ export default function ListingForm() {
 
             <div className=" relative box-border p-2  ">
               <div className=" overflow-hidden relative border rounded min-h-[50px] block box-border ">
-                <label className=" text-xs font-normal px-4  overflow-hidden absolute text-ellipsis whitespace-nowrap  ">
+                {/* <label className=" text-xs font-normal px-4  overflow-hidden absolute text-ellipsis whitespace-nowrap  ">
                   Travelers
-                </label>
+                </label> */}
                 {/* <input className=' border rounded text-base font-normal '/> */}
                 <MyDropdown
                   adults={adults}
@@ -292,7 +292,7 @@ export default function ListingForm() {
       {/* Message Modal */}
       <Modal
           title="Message Host"
-          visible={messageModalVisible}
+          opeb={messageModalVisible}
           onCancel={() => setMessageModalVisible(false)}
           footer={[
             <Button key="cancel" onClick={() => setMessageModalVisible(false)}>
@@ -340,104 +340,260 @@ export default function ListingForm() {
   );
 }
 
-function MyDropdown({ adults, children, pets, infants, messageModalVisible }) {
+// function MyDropdown({ adults, children, pets, infants, messageModalVisible }) {
+//   const [visible, setVisible] = useState(false);
+
+//   const toggleDropdown = () => {
+//     setVisible(!visible);
+//   };
+
+//   return (
+//     <div className="relative">
+//       <button
+//         className="w-full h-11 rounded bg-white  border-gray-300 pl-4 pr-10 py-2 text-left text-sm font-normal"
+//         onClick={toggleDropdown}
+//       >
+//         <span className="block">Guests</span>
+//         <span className="text-gray-500">
+//           {adults + children + pets + infants} guests
+//         </span>
+//       </button>
+
+//       {visible && (
+//         <div className="absolute top-full left-0 w-full bg-white border border-gray-300 shadow-lg rounded-b-lg mt-1 z-10">
+//           <div className="p-4">
+//             <div className="mb-4">
+//               <span className="font-medium text-lg">Guests</span>
+//             </div>
+//             <div className="mb-4">
+//               <span className="text-gray-600 text-sm">Adults</span>
+//               <button
+//                 className="ml-4 text-gray-400"
+//                 onClick={() => setAdults(adults + 1)}
+//               >
+//                 +
+//               </button>
+//               <span className="mx-2">{adults}</span>
+//               <button
+//                 className="text-gray-400"
+//                 onClick={() => setAdults(adults > 1 ? adults - 1 : 1)}
+//               >
+//                 -
+//               </button>
+//             </div>
+//             <div className="mb-4">
+//               <span className="text-gray-600 text-sm">Children</span>
+//               <button
+//                 className="ml-4 text-gray-400"
+//                 onClick={() => setChildren(children + 1)}
+//               >
+//                 +
+//               </button>
+//               <span className="mx-2">{children}</span>
+//               <button
+//                 className="text-gray-400"
+//                 onClick={() => setChildren(children > 0 ? children - 1 : 0)}
+//               >
+//                 -
+//               </button>
+//             </div>
+//             <div className="mb-4">
+//               <span className="text-gray-600 text-sm">Pets</span>
+//               <button
+//                 className="ml-4 text-gray-400"
+//                 onClick={() => setPets(pets + 1)}
+//               >
+//                 +
+//               </button>
+//               <span className="mx-2">{pets}</span>
+//               <button
+//                 className="text-gray-400"
+//                 onClick={() => setPets(pets > 0 ? pets - 1 : 0)}
+//               >
+//                 -
+//               </button>
+//             </div>
+//             <div className="mb-4">
+//               <span className="text-gray-600 text-sm">Infants</span>
+//               <button
+//                 className="ml-4 text-gray-400"
+//                 onClick={() => setInfants(infants + 1)}
+//               >
+//                 +
+//               </button>
+//               <span className="mx-2">{infants}</span>
+//               <button
+//                 className="text-gray-400"
+//                 onClick={() => setInfants(infants > 0 ? infants - 1 : 0)}
+//               >
+//                 -
+//               </button>
+//             </div>
+//             <button
+//               className="block w-full bg-orange-500 text-white text-center rounded py-2"
+//               onClick={toggleDropdown}
+//             >
+//               Done
+//             </button>
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
+
+
+
+function MyDropdown({ adults, children, pets, infants }) {
+  const [adultCount, setAdultCount] = useState(adults);
+  const [childCount, setChildCount] = useState(children);
+  const [petCount, setPetCount] = useState(pets);
+  const [infantCount, setInfantCount] = useState(infants);
   const [visible, setVisible] = useState(false);
 
-  const toggleDropdown = () => {
+  const handleDecrease = (setter, value) => {
+    if (value > 0) {
+      setter(parseInt(value, 10) - 1);
+    }
+  };
+
+  const handleIncrease = (setter, value) => {
+    setter(parseInt(value, 10) + 1);
+  };
+
+  const handleSubmit = () => {
+    // e.preventDefault();
     setVisible(!visible);
   };
 
-  return (
-    <div className="relative">
-      <button
-        className="w-full h-11 rounded bg-white border border-gray-300 pl-4 pr-10 py-2 text-left text-sm font-normal"
-        onClick={toggleDropdown}
-      >
-        <span className="block">Guests</span>
-        <span className="text-gray-500">
-          {adults + children + pets + infants} guests
-        </span>
-      </button>
+  const items = [
+    <div
+      key={1}
+      className="flex md:p-8 p-4 gap-2  lg:w-[520px] flex-col space-y-4"
+    >
+      <div className="flex items-center justify-between">
+        <div className="flex-col">
+          <span className="text-lg">Adults:</span> <br />
+          <p className="text-gray-400">Ages 13 or above</p>
+        </div>
+        <div className="space-x-2">
+          <Button
+            shape="circle"
+            onClick={() => handleDecrease(setAdultCount, adultCount)}
+          >
+            -
+          </Button>
+          <span>{adultCount}</span>
+          <Button
+            shape="circle"
+            onClick={() => handleIncrease(setAdultCount, adultCount)}
+          >
+            +
+          </Button>
+        </div>
+      </div>
+      <div className="flex items-center justify-between">
+        <div className="flex-col">
+          <span className="text-lg">Children:</span>
+          <p className="text-gray-400">Ages 2–12</p>
+        </div>
+        <div className="space-x-2">
+          <Button
+            shape="circle"
+            onClick={() => handleDecrease(setChildCount, childCount)}
+          >
+            -
+          </Button>
+          <span>{childCount}</span>
+          <Button
+            shape="circle"
+            onClick={() => handleIncrease(setChildCount, childCount)}
+          >
+            +
+          </Button>
+        </div>
+      </div>
+      <div className="flex items-center justify-between">
+        <div className="flex-col">
+          <span className="text-lg">Pets:</span>
+          <p>
+            <Link className="text-gray-400 underline">
+              Bringing a service animal?
+            </Link>
+          </p>
+        </div>
+        <div className="space-x-2">
+          <Button
+            shape="circle"
+            onClick={() => handleDecrease(setPetCount, petCount)}
+          >
+            -
+          </Button>
+          <span>{petCount}</span>
+          <Button
+            shape="circle"
+            onClick={() => handleIncrease(setPetCount, petCount)}
+          >
+            +
+          </Button>
+        </div>
+      </div>
+      <div className="flex items-center justify-between">
+        <div className="flex-col">
+          <span className="text-lg">Infants:</span>
+          <p className="text-gray-400">Under 2</p>
+        </div>
+        <div className="space-x-2">
+          <Button
+            shape="circle"
+            onClick={() => handleDecrease(setInfantCount, infantCount)}
+          >
+            -
+          </Button>
+          <span>{infantCount}</span>
+          <Button
+            shape="circle"
+            onClick={() => handleIncrease(setInfantCount, infantCount)}
+          >
+            +
+          </Button>
+        </div>
+      </div>
+    </div>,
+  ];
 
-      {visible && (
-        <div className="absolute top-full left-0 w-full bg-white border border-gray-300 shadow-lg rounded-b-lg mt-1 z-10">
-          <div className="p-4">
-            <div className="mb-4">
-              <span className="font-medium text-lg">Guests</span>
-            </div>
-            <div className="mb-4">
-              <span className="text-gray-600 text-sm">Adults</span>
-              <button
-                className="ml-4 text-gray-400"
-                onClick={() => setAdults(adults + 1)}
-              >
-                +
-              </button>
-              <span className="mx-2">{adults}</span>
-              <button
-                className="text-gray-400"
-                onClick={() => setAdults(adults > 1 ? adults - 1 : 1)}
-              >
-                -
-              </button>
-            </div>
-            <div className="mb-4">
-              <span className="text-gray-600 text-sm">Children</span>
-              <button
-                className="ml-4 text-gray-400"
-                onClick={() => setChildren(children + 1)}
-              >
-                +
-              </button>
-              <span className="mx-2">{children}</span>
-              <button
-                className="text-gray-400"
-                onClick={() => setChildren(children > 0 ? children - 1 : 0)}
-              >
-                -
-              </button>
-            </div>
-            <div className="mb-4">
-              <span className="text-gray-600 text-sm">Pets</span>
-              <button
-                className="ml-4 text-gray-400"
-                onClick={() => setPets(pets + 1)}
-              >
-                +
-              </button>
-              <span className="mx-2">{pets}</span>
-              <button
-                className="text-gray-400"
-                onClick={() => setPets(pets > 0 ? pets - 1 : 0)}
-              >
-                -
-              </button>
-            </div>
-            <div className="mb-4">
-              <span className="text-gray-600 text-sm">Infants</span>
-              <button
-                className="ml-4 text-gray-400"
-                onClick={() => setInfants(infants + 1)}
-              >
-                +
-              </button>
-              <span className="mx-2">{infants}</span>
-              <button
-                className="text-gray-400"
-                onClick={() => setInfants(infants > 0 ? infants - 1 : 0)}
-              >
-                -
-              </button>
-            </div>
-            <button
-              className="block w-full bg-orange-500 text-white text-center rounded py-2"
-              onClick={toggleDropdown}
+  return (
+    <Dropdown
+      trigger={["click"]}
+      onOpenChange={handleSubmit}
+      open={visible}
+      dropdownRender={(menu) => (
+        <div className=" bg-white">
+          <Space className="p-2 flex-col w-full shadow-md">
+            {items}
+            <Button
+              className="bg-orange-700"
+              type="primary"
+              onClick={handleSubmit}
             >
+              {" "}
               Done
-            </button>
-          </div>
+            </Button>
+          </Space>
         </div>
       )}
-    </div>
+    >
+      <Space>
+        <button
+          type="button"
+          className=" block m-4 cursor-pointer overflow-hidden text-ellipsis text-start whitespace-nowrap text-base font-normal w-full     "
+        >
+          <span className="block">Guests</span>
+           <span className="text-gray-500">
+              {adultCount + childCount} guests {infantCount!=0&& `,${infantCount} infant`} {petCount!=0&& `,${petCount} pet$`} 
+           </span>
+        </button>
+      </Space>
+    </Dropdown>
   );
 }

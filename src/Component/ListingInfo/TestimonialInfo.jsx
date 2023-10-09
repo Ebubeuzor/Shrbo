@@ -136,7 +136,7 @@ const slides=clients.map((client)=>(
     
   
   return(
-        <div className='w-full h-full flex flex-col md:flex-row '>
+        <div className='w-full h-full flex flex-col lg:flex-row '>
 
             <div className=" mx-auto w-full   box-border block text-base  ">
                 <div className=" pb-8 box-border text-base ">
