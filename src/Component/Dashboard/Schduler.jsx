@@ -15,13 +15,17 @@ export default class Scheduler extends Component {
     };
   }
 
-  // Function to handle date blocking
+  // Function to handle date blocking/unblocking
   handleDateClick = (dateInfo) => {
     const { blockedDates } = this.state;
     const blockedDate = dateInfo.dateStr;
 
     // Check if the date is already blocked
-    if (!blockedDates.includes(blockedDate)) {
+    if (blockedDates.includes(blockedDate)) {
+      // Date is blocked, remove it from the blockedDates array
+      const updatedBlockedDates = blockedDates.filter((date) => date !== blockedDate);
+      this.setState({ blockedDates: updatedBlockedDates });
+    } else {
       // Date is not blocked, add it to the blockedDates array
       this.setState({ blockedDates: [...blockedDates, blockedDate] });
     }
@@ -102,7 +106,8 @@ export default class Scheduler extends Component {
             <select
               name="houseSelect"
               id="houseSelect"
-              onChange={(e) => this.handleHouseSelect(e.target.value)}
+              onChange={(e) => this.handleHouseSelect(e.target.value)} 
+              className="py-4 border mb-4 pl-4"
             >
               <option value="">Select a house</option>
               {houseOptions.map((house, index) => (
@@ -116,13 +121,16 @@ export default class Scheduler extends Component {
               initialView="dayGridMonth"
               editable
               selectable
-              dateClick={this.handleDateClick} // Handle date clicks to block dates
-              // Add blocked dates to the calendar
-              events={blockedDates.map((date) => ({
-                title: "Blocked",
-                start: date,
-                allDay: true,
-              }))}
+              dateClick={this.handleDateClick} // Handle date clicks to block/unblock dates
+              // Add blocked and unblocked dates to the calendar
+              events={[
+                ...blockedDates.map((date) => ({
+                  title: "Blocked",
+                  start: date,
+                  allDay: true,
+                })),
+                ...this.getUnblockedDates(), // Include unblocked dates
+              ]}
             />
           </div>
         </div>
@@ -137,7 +145,32 @@ export default class Scheduler extends Component {
       </div>
     );
   }
+
+  // Helper function to get unblocked dates
+  getUnblockedDates() {
+    const { blockedDates } = this.state;
+    const today = new Date();
+    const unblockedDates = [];
+
+    // Iterate through future dates and add them if they are not blocked
+    for (let i = 0; i < 365; i++) {
+      const currentDate = new Date();
+      currentDate.setDate(today.getDate() + i);
+      const currentDateString = currentDate.toISOString().split("T")[0];
+
+      if (!blockedDates.includes(currentDateString)) {
+        unblockedDates.push({
+          title: "Available",
+          start: currentDateString,
+          allDay: true,
+        });
+      }
+    }
+
+    return unblockedDates;
+  }
 }
+
 
 const Pricing = ({ selectedHouse }) => {
   // Define an array of apartment objects with pricing details for each house
@@ -233,7 +266,9 @@ const Pricing = ({ selectedHouse }) => {
               <div className="">
                 <form>
                   <span className="px-6 py-5 border rounded-2xl flex items-center justify-between">
-                    <div className="text-sm block box-border">Smart Pricing</div>
+                    <div className="text-sm block box-border">
+                      Smart Pricing
+                    </div>
                     <label className="switch">
                       <input type="checkbox" name="" />
                       <span className="slider round"></span>
@@ -259,7 +294,9 @@ const Pricing = ({ selectedHouse }) => {
                   {/* Render weekly discount */}
                   <div className="cursor-pointer w-full h-full outline-none">
                     <div className="pointer p-6 rounded-2xl border">
-                      <div className="mb-1 font-medium mr-1 text-sm">Weekly</div>
+                      <div className="mb-1 font-medium mr-1 text-sm">
+                        Weekly
+                      </div>
                       <div className="mb-3 mr-1 text-sm">
                         for 7 nights or more
                       </div>
