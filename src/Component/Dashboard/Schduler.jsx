@@ -55,7 +55,6 @@ export default class Schduler extends React.Component {
 }
 
 const Pricing = () => {
-<<<<<<< HEAD
   const acceptedCurrencies = [
     { id: 1, text: "1 bed" },
     { id: 2, text: "Shared bathroom" },
@@ -98,7 +97,6 @@ const Pricing = () => {
       </div>
     </div>
   ));
-=======
 
 //   const acceptedCurrencies = [
 //     { id: 1,text:"1 bed"},
@@ -144,7 +142,6 @@ const Pricing = () => {
 
 
 
->>>>>>> aa3cb6968cc314ad0138b7d6e5f105cecac2d112
 
   return (
     <div className="block box-border overflow-y-scroll example ">
