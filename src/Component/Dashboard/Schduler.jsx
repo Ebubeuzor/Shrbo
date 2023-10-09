@@ -135,7 +135,7 @@ export default class Scheduler extends Component {
               <div className="mb-4">
                 <button
                   className={`${
-                    blockingMode ? "bg-red-500" : "bg-green-500"
+                    blockingMode ? "bg-black" : "bg-orange-400"
                   } text-white py-2 px-4 rounded mr-2`}
                   onClick={this.handleBlockMode}
                 >
@@ -143,7 +143,7 @@ export default class Scheduler extends Component {
                 </button>
                 <button
                   className={`${
-                    blockingMode ? "bg-green-500" : "bg-red-500"
+                    blockingMode ? "bg-orange-400" : "bg-black"
                   } text-white py-2 px-4 rounded`}
                   onClick={this.handleUnblockMode}
                 >
