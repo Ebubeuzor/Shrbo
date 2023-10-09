@@ -116,8 +116,8 @@ export default class Scheduler extends Component {
     const houseOptions = apartments.map((apartment) => apartment.name);
   
     return (
-      <div className="flex box-border w-full">
-        <div className="block flex-grow relative h-screen max-h-[800px] overflow-y-scroll example">
+      <div className="flex flex-wrap box-border w-full">
+        <div className="block flex-grow relative  overflow-y-scroll example">
           <div className="flex flex-col relative py-8 px-6">
             <select
               name="houseSelect"
@@ -185,8 +185,8 @@ export default class Scheduler extends Component {
           </div>
         </div>
   
-        <section className="hidden w-[370px] border-l z-[1] min-[1128px]:block">
-          <div className="max-h-[800px] block box-border overflow-auto h-screen relative bg-white">
+        <section className=" w-[370px] border-l z-[1] min-[1128px]:block">
+          <div className=" block box-border overflow-auto h-screen relative bg-white">
             <div className="block box-border py-8 px-6">
               <Tabs defaultActiveKey="1" items={items} />
             </div>

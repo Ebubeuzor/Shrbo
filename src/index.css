@@ -105,3 +105,13 @@
 .react-datepicker__day--keyboard-selected {
   background: orange;
 }
+
+.fc-header-toolbar{
+  flex-wrap: wrap;
+}
+
+.fc-today-button{
+  text-transform: uppercase !important;
+  background-color: rgb(239, 115, 0) !important;
+  border: none !important;
+}
