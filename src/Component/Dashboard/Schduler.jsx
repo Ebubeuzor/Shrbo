@@ -15,6 +15,7 @@ export default class Scheduler extends Component {
       selectedHouse: null, // Store the selected house details here
       selectedDate: null, // Store the selected date
       selectedDatePrice: "", // Store the price for the selected date
+      
     };
   }
 
