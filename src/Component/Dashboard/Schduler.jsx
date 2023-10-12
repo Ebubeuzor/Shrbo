@@ -9,7 +9,6 @@ import HostHeader from "../Navigation/HostHeader";
 import HostBottomNavigation from "./HostBottomNavigation";
 import { Modal } from "antd";
 
-
 export default class Scheduler extends Component {
   constructor(props) {
     super(props);
@@ -25,26 +24,31 @@ export default class Scheduler extends Component {
       selectedDates: [], // Array to track selected dates
       showWeeklyDiscountDetails: false, // State for toggling details
 
-      
+      apartmentPrices: {
+        "Lekki Admiralty": "$42",
+        "Lekki Phase 1": "$50",
+        "Lekki Units square": "$45",
+        // Add prices for other apartments as needed
+      },
     };
   }
+
+  
   handleToggleWeeklyDetails = () => {
     this.setState((prevState) => ({
       showWeeklyDiscountDetails: !prevState.showWeeklyDiscountDetails,
     }));
   };
 
-
-  
   handleDateClick = (dateInfo) => {
     const { blockedDates, blockingMode, selectedDates } = this.state;
     const clickedDate = dateInfo.dateStr;
-  
+
     if (blockingMode) {
       const updatedBlockedDates = blockedDates.includes(clickedDate)
         ? blockedDates.filter((date) => date !== clickedDate)
         : [...blockedDates, clickedDate];
-  
+
       this.setState({ blockedDates: updatedBlockedDates });
     } else {
       if (blockedDates.includes(clickedDate)) {
@@ -55,11 +59,9 @@ export default class Scheduler extends Component {
       }
     }
 
-    
-  
     if (!blockingMode) {
       const { selectedDates } = this.state;
-  
+
       // Check if the clicked date is in the selectedDates array
       if (selectedDates.includes(clickedDate)) {
         // If the date is already selected, remove it
@@ -74,14 +76,10 @@ export default class Scheduler extends Component {
           selectedEditDate: dateInfo.dateStr,
           selectedDatePrice: "",
           showWeeklyDiscountDetails: true, // Show discount details when a date is clicked
-
         });
       }
     }
   };
-
-
-  
 
   handlePriceChange = (event) => {
     const newPrice = event.target.value;
@@ -94,9 +92,9 @@ export default class Scheduler extends Component {
 
   handleSavePrice = (event) => {
     event.preventDefault();
-  
+
     const { selectedEditDate, selectedDatePrice } = this.state;
-  
+
     if (selectedEditDate) {
       Modal.confirm({
         title: "Save Changes",
@@ -112,7 +110,7 @@ export default class Scheduler extends Component {
       });
     } else {
       console.error("Please select a date before saving the price.");
-      
+
       // Clear the input values with a callback
       this.setState({ selectedDatePrice: "", editedPrice: "" }, () => {
         Modal.confirm({
@@ -121,12 +119,12 @@ export default class Scheduler extends Component {
           onOk: () => {
             // User confirmed, you can choose to handle it as needed
           },
+          okButtonProps: { className: "orange-button" }, // Add a custom class to the OK button
+
         });
       });
     }
   };
-  
-  
 
   handleBlockMode = () => {
     this.setState({ blockingMode: true });
@@ -140,8 +138,14 @@ export default class Scheduler extends Component {
     this.setState({ selectedHouse: house });
   };
 
-   dateHasBackground = (date) => {
+  dateHasBackground = (date) => {
     return this.state.selectedDates.includes(date);
+  };
+
+  toggleBlockMode = () => {
+    this.setState((prevState) => ({
+      blockingMode: !prevState.blockingMode,
+    }));
   };
 
   render() {
@@ -154,7 +158,6 @@ export default class Scheduler extends Component {
       isEditingPrice,
       editedPrice,
       showWeeklyDiscountDetails,
-
     } = this.state;
     const items = [
       {
@@ -164,20 +167,19 @@ export default class Scheduler extends Component {
         ),
         children: (
           <Pricing
-          selectedHouse={selectedHouse}
-          isEditingPrice={isEditingPrice}
-          editedPrice={editedPrice}
-          selectedDate={selectedDate}
-          selectedDatePrice={selectedDatePrice}
-          onEditPrice={this.handleEditPrice}
-          onSavePrice={this.handleSavePrice}
-          onPriceChange={this.handlePriceChange}
-          blockingMode={blockingMode}
-          handleToggleWeeklyDetails={this.handleToggleWeeklyDetails}
-          showWeeklyDiscountDetails={showWeeklyDiscountDetails}
-          // Pass the function as a prop
-        />
-        
+            selectedHouse={selectedHouse}
+            isEditingPrice={isEditingPrice}
+            editedPrice={editedPrice}
+            selectedDate={selectedDate}
+            selectedDatePrice={selectedDatePrice}
+            onEditPrice={this.handleEditPrice}
+            onSavePrice={this.handleSavePrice}
+            onPriceChange={this.handlePriceChange}
+            blockingMode={blockingMode}
+            handleToggleWeeklyDetails={this.handleToggleWeeklyDetails}
+            showWeeklyDiscountDetails={showWeeklyDiscountDetails}
+            // Pass the function as a prop
+          />
         ),
       },
       {
@@ -224,10 +226,6 @@ export default class Scheduler extends Component {
       },
     ];
 
-  
-
-    
-
     const houseOptions = apartments.map((apartment) => apartment.name);
 
     return (
@@ -243,7 +241,7 @@ export default class Scheduler extends Component {
                 onChange={(e) => this.handleHouseSelect(e.target.value)}
                 className="py-4 border mb-4 pl-4"
               >
-                <option value="">Select a house</option>
+                <option value="">Select an Apartment</option>
                 {houseOptions.map((house, index) => (
                   <option key={index} value={house}>
                     {house}
@@ -254,45 +252,47 @@ export default class Scheduler extends Component {
                 <div className="mb-4">
                   <button
                     className={`${
-                      blockingMode ? "bg-black" : "bg-orange-400"
-                    } text-white py-2 px-4 rounded mr-2`}
-                    onClick={this.handleBlockMode}
-                  >
-                    Block
-                  </button>
-                  <button
-                    className={`${
                       blockingMode ? "bg-orange-400" : "bg-black"
                     } text-white py-2 px-4 rounded`}
-                    onClick={this.handleUnblockMode}
+                    onClick={this.toggleBlockMode}
                   >
-                    Unblock
+                    {blockingMode ? "Unblock date" : "Block date"}
                   </button>
                 </div>
               )}
               {selectedHouse && (
-             <FullCalendar
-             plugins={[dayGridPlugin, interactionPlugin, multiMonthPlugin]}
-             initialView="dayGridMonth"
-             editable
-             selectable
-             dateClick={this.handleDateClick}
-             events={[
-               ...blockedDates.map((date) => ({
-                 title: "Blocked",
-                 start: date,
-                 allDay: true,
-               })),
-               ...this.getUnblockedDates(),
-             ]}
-             eventContent={(arg) => {
-               return {
-                 html: `<div  >${arg.event.title}</div>`,
-                 backgroundColor: this.dateHasBackground(arg.event.start) ? 'blue' : 'white',
-                 // Customize the background color as needed
-               };
-             }}
-           />
+                <FullCalendar
+                  plugins={[dayGridPlugin, interactionPlugin, multiMonthPlugin]}
+                  initialView="dayGridMonth"
+                  editable
+                  selectable
+                  dateClick={this.handleDateClick}
+                  events={[
+                    ...blockedDates.map((date) => ({
+                      title: "Blocked",
+                      start: date,
+                      allDay: true,
+                    })),
+                    ...this.getUnblockedDates(),
+                  ]}
+                  eventContent={(arg) => {
+                    const dateStr = arg.event.start.toISOString().split("T")[0];
+                    const price =
+                      this.state.apartmentPrices[this.state.selectedHouse];
+
+                    return {
+                      html: `
+                  <div>
+                    <div>${arg.event.title}</div>
+                    <div>${price}</div>
+                  </div>
+                `,
+                      backgroundColor: this.dateHasBackground(arg.event.start)
+                        ? "blue"
+                        : "white",
+                    };
+                  }}
+                />
               )}
               {selectedDate && blockingMode && (
                 <div className="mt-4 border">
@@ -319,7 +319,7 @@ export default class Scheduler extends Component {
               )}
             </div>
           </div>
-
+          <div className="bg-slate-100 h-2 p-2 w-full md:hidden"></div>
           <section className=" w-[370px] border-l z-[1] min-[1128px]:block">
             <div className=" block box-border overflow-auto h-screen relative bg-white">
               <div className="block box-border py-8 px-6">
@@ -425,7 +425,7 @@ const Pricing = ({
 
             <div className="block box-border uppercase font-semibold text-xs pr-[10px]">
               <button className="bg-transparent cursor-pointer m-0 p-0 rounded-md underline">
-                USD
+                NGR
               </button>
             </div>
           </div>
@@ -440,14 +440,20 @@ const Pricing = ({
                   </div>
                   {isEditingPrice ? (
                     <div>
-                      <form onSubmit={(e) => { onSavePrice(e); clearInputValue(); }}>
+                      <form
+                        onSubmit={(e) => {
+                          onSavePrice(e);
+                          clearInputValue();
+                        }}
+                      >
                         <input
                           type="number"
                           value={selectedDatePrice}
                           onChange={onPriceChange}
                           placeholder="Enter price per night"
+                          className="border w-full p-4 my-4 rounded-md"
                         />
-                        <button type="submit">Save</button>
+                        <button type="submit" className="bg-orange-400 py-2 mt-4 px-4 text-white rounded-full">Save</button>
                       </form>
                     </div>
                   ) : (
@@ -459,79 +465,6 @@ const Pricing = ({
                 </div>
               </div>
             </div>
-            <div className="rounded-2xl flex border p-6 justify-between gap-3">
-              <div className="touch-manipulation relative outline-none h-full w-full cursor-pointer">
-                <div className="mr-1 text-sm block box-border">
-                  Custom Weekend Price
-                </div>
-              </div>
-              <div className="block whitespace-nowrap -my-[10px]">
-                <div className="relative touch-manipulation cursor-pointer text-center p-[10px] -mx-[10px]">
-                  <div className="underline text-sm block box-border">
-                    {selectedApartment.customWeekendPrice}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="">
-              <form>
-                <span className="px-6 py-5 border rounded-2xl flex items-center justify-between">
-                  <div className="text-sm block box-border">Smart Pricing</div>
-                  <label className="switch">
-                    <input type="checkbox" name="" />
-                    <span className="slider round"></span>
-                  </label>
-                </span>
-              </form>
-            </div>
-            <div className="block box-border mt-8 mb-8 min-[1128px]:mb-4">
-              <div className="box-border flex justify-between items-baseline mb-6">
-                <span>
-                  <h2 className="m-0 p-0 text-2xl block box-border">
-                    <div className="min-[1128px]:text-lg font-semibold capitalize">
-                      Discounts
-                    </div>
-                  </h2>
-                  <div className=" ">
-                    Adjust your pricing to add more guests.
-                  </div>
-                </span>
-              </div>
-              <div className="flex flex-col gap-4 relative">
-                <div className="cursor-pointer w-full h-full outline-none">
-                  <div
-                    className="pointer p-6 rounded-2xl border"
-                    onClick={handleToggleWeeklyDetails} // Use the function from props
-                  >
-                    <div className="mb-1 font-medium mr-1 text-sm">
-                      Weekly
-                    </div>
-                    <div className="mb-3 mr-1 text-sm">
-                      for 7 nights or more
-                    </div>
-                    <div className="h-auto visible w-full flex justify-between items-baseline">
-                      <div className="text-3xl break-keep inline-block font-extrabold">
-                        {selectedApartment.weeklyDiscount}
-                      </div>
-                      <div className="break-keep inline-block text-slate-600 text-sm">
-                        Weekly average is {selectedApartment.weeklyAverage}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {showWeeklyDiscountDetails ? (
-                  <div>
-                    <div className="mb-1 font-medium mr-1 text-sm">
-                      Weekly discount details
-                    </div>
-                    {/* Add more details as needed */}
-                    <div>
-                      Weekly discount details content goes here.
-                    </div>
-                  </div>
-                ) : null}
-              </div>
-            </div>
           </div>
         </div>
       ) : (
@@ -540,4 +473,3 @@ const Pricing = ({
     </div>
   );
 };
-

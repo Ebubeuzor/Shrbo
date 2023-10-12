@@ -115,3 +115,14 @@
   background-color: rgb(239, 115, 0) !important;
   border: none !important;
 }
+
+ .ant-btn {
+  background-color: orange !important; /* Set the button's background color to orange */
+  color: white; /* Set the text color to white */
+}
+
+.ant-btn:hover{
+  background-color: none;
+  border: none;
+  color: none !important;
+}
