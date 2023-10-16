@@ -6,7 +6,6 @@ import sendButton from "../../assets/svg/direction-arrow-top-icon.svg";
 import ChatErrorModal from "./ChatErrorModal";
 import emailValidator from "email-validator";
 
-
 export default function ChatContainer() {
   const [inputMessage, setInputMessage] = useState(""); // State to store the input message
   const [messages, setMessages] = useState([
@@ -61,16 +60,29 @@ export default function ChatContainer() {
     },
   ]);
 
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [reservationMessage, setReservationsMessages] = useState([
+    // Your existing messages
+    {
+      // text: "John requests to reserve your apartment with the apartment name and timeline for how long they will stay.",
+      user: "User 2",
+      date: "2023-09-11",
+      time: "11:10 am",
+      isUser1: false,
+      image: johnDoe,
+      timeline:"3 days",
+      houseTitle:"2b Admiralty way",
+      isReservationRequest: true, // Add a flag to identify it as a reservation request
+    },
+    // Your other messages
+  ]);
 
+  const [selectedUser, setSelectedUser] = useState(null);
 
   const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const chatContainerRef = useRef(null);
   const [consecutiveNumbersCount, setConsecutiveNumbersCount] = useState(0); // Define consecutiveNumbersCount
 
-
-  
   const handleOpenErrorModal = (message) => {
     setErrorMessage(message);
     setIsErrorModalOpen(true);
@@ -126,149 +138,153 @@ export default function ChatContainer() {
     setIsModalOpen(false);
   };
 
- 
-
   // Function to handle form submission
   // Function to handle form submission
-// Function to handle form submission
-const handleSubmit = (e) => {
-  e.preventDefault();
+  // Function to handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  // Define regular expressions for link and phone number detection
-  const linkRegex = /(http[s]?:\/\/[^\s]+)/;
-  // const comRegex = /(\.com|com)/i;
-  const invalidWordsRegex = /\b(one|two|o-ne|t-wo)\b/i;
-  const phoneRegex = /\b\d{4,}\b/;
-  const containsNumber = /^(\d,\s)*\d$/;
-  const hasNumber = /\d+/;
-  const addressRegex = /\b\d{1,5}\s\w+\s\w+\b/i;
-  const passwordKeywords = ["password", "secret", "passcode"];
-  const sensitiveKeywords = ["confidential", "private", "sensitive", "bvn", "address", "sensitive"];
+    // Define regular expressions for link and phone number detection
+    const linkRegex = /(http[s]?:\/\/[^\s]+)/;
+    // const comRegex = /(\.com|com)/i;
+    const invalidWordsRegex = /\b(one|two|o-ne|t-wo)\b/i;
+    const phoneRegex = /\b\d{4,}\b/;
+    const containsNumber = /^(\d,\s)*\d$/;
+    const hasNumber = /\d+/;
+    const addressRegex = /\b\d{1,5}\s\w+\s\w+\b/i;
+    const passwordKeywords = ["password", "secret", "passcode"];
+    const sensitiveKeywords = [
+      "confidential",
+      "private",
+      "sensitive",
+      "bvn",
+      "address",
+      "sensitive",
+    ];
 
-
-
-
-  for (const keyword of sensitiveKeywords) {
-    if (inputMessage.toLowerCase().includes(keyword)) {
-      console.log("Sensitive keyword error");
-      handleOpenErrorModal("Sensitive information is not allowed in messages.");
-      return; // Do not send the message if it contains a sensitive keyword
-    }
-  }
-
-
-  for (const keyword of passwordKeywords) {
-    if (inputMessage.toLowerCase().includes(keyword)) {
-      console.log("Password-related error");
-      handleOpenErrorModal("Password-related information is not allowed in messages.");
-      return; // Do not send the message if it contains a password-related keyword
-    }
-  }
-
-  if (addressRegex.test(inputMessage)) {
-    console.log("Address error");
-    handleOpenErrorModal("Personal addresses are not allowed in messages.");
-    return; // Do not send the message if it contains a personal address
-  }
-
-  // Function to check for more than 3 consecutive numbers
-  const hasConsecutiveNumbers = (text) => {
-    const consecutiveNumbersRegex = /\d{4,}/;
-    return consecutiveNumbersRegex.test(text);
-  };
-
-  if (linkRegex.test(inputMessage)) {
-    console.log("Link error");
-    handleOpenErrorModal("Links are not allowed in messages.");
-    return; // Do not send the message if it contains a link
-  }
-
-  // if (comRegex.test(inputMessage)) {
-  //   console.log("Link error");
-  //   handleOpenErrorModal("Links are not allowed in messages.");
-  //   return; // Do not send the message if it contains a link
-  // }
-
-  if (phoneRegex.test(inputMessage)) {
-    console.log("Phone number error");
-    handleOpenErrorModal("Phone numbers are not allowed in messages.");
-    return; // Do not send the message if it contains a phone number
-  }
-
-
-  if (invalidWordsRegex.test(inputMessage)) {
-    console.log("Invalid words error");
-    handleOpenErrorModal("Words are not allowed in messages.");
-    return; // Do not send the message if it contains invalid words
-  }
-
-  // Check for more than 3 consecutive numbers
-  if (hasConsecutiveNumbers(inputMessage)) {
-    if (consecutiveNumbersCount >= 3) {
-      console.log("Consecutive numbers error");
-      handleOpenErrorModal("You've exceeded the limit of consecutive numbers.");
-      return; // Do not send the message if it contains more than 3 consecutive numbers
-    } else {
-      setConsecutiveNumbersCount(consecutiveNumbersCount + 1);
-      handleOpenErrorModal("You've exceeded the limit of consecutive numbers.");
-
-      console.log("Consecutive numbers detected:", inputMessage);
-    }
-  } else {
-    // Reset the consecutive numbers count if the message doesn't contain consecutive numbers
-    setConsecutiveNumbersCount(0);
-  }
-
-  if (hasNumber.test(inputMessage)) {
-    console.log("Number detected in the text");
-    // You can perform further actions here if a number is detected in the inputMessage.
-  } else {
-    console.log("No number detected in the text");
-    // You can handle the case where no number is detected in the inputMessage.
-  }
-
-
-  const containsEmail = (text) => {
-    const words = text.split(" ");
-    for (const word of words) {
-      if (emailValidator.validate(word)) {
-        return true;
+    for (const keyword of sensitiveKeywords) {
+      if (inputMessage.toLowerCase().includes(keyword)) {
+        console.log("Sensitive keyword error");
+        handleOpenErrorModal(
+          "Sensitive information is not allowed in messages."
+        );
+        return; // Do not send the message if it contains a sensitive keyword
       }
     }
-    return false;
+
+    for (const keyword of passwordKeywords) {
+      if (inputMessage.toLowerCase().includes(keyword)) {
+        console.log("Password-related error");
+        handleOpenErrorModal(
+          "Password-related information is not allowed in messages."
+        );
+        return; // Do not send the message if it contains a password-related keyword
+      }
+    }
+
+    if (addressRegex.test(inputMessage)) {
+      console.log("Address error");
+      handleOpenErrorModal("Personal addresses are not allowed in messages.");
+      return; // Do not send the message if it contains a personal address
+    }
+
+    // Function to check for more than 3 consecutive numbers
+    const hasConsecutiveNumbers = (text) => {
+      const consecutiveNumbersRegex = /\d{4,}/;
+      return consecutiveNumbersRegex.test(text);
+    };
+
+    if (linkRegex.test(inputMessage)) {
+      console.log("Link error");
+      handleOpenErrorModal("Links are not allowed in messages.");
+      return; // Do not send the message if it contains a link
+    }
+
+    // if (comRegex.test(inputMessage)) {
+    //   console.log("Link error");
+    //   handleOpenErrorModal("Links are not allowed in messages.");
+    //   return; // Do not send the message if it contains a link
+    // }
+
+    if (phoneRegex.test(inputMessage)) {
+      console.log("Phone number error");
+      handleOpenErrorModal("Phone numbers are not allowed in messages.");
+      return; // Do not send the message if it contains a phone number
+    }
+
+    if (invalidWordsRegex.test(inputMessage)) {
+      console.log("Invalid words error");
+      handleOpenErrorModal("Words are not allowed in messages.");
+      return; // Do not send the message if it contains invalid words
+    }
+
+    // Check for more than 3 consecutive numbers
+    if (hasConsecutiveNumbers(inputMessage)) {
+      if (consecutiveNumbersCount >= 3) {
+        console.log("Consecutive numbers error");
+        handleOpenErrorModal(
+          "You've exceeded the limit of consecutive numbers."
+        );
+        return; // Do not send the message if it contains more than 3 consecutive numbers
+      } else {
+        setConsecutiveNumbersCount(consecutiveNumbersCount + 1);
+        handleOpenErrorModal(
+          "You've exceeded the limit of consecutive numbers."
+        );
+
+        console.log("Consecutive numbers detected:", inputMessage);
+      }
+    } else {
+      // Reset the consecutive numbers count if the message doesn't contain consecutive numbers
+      setConsecutiveNumbersCount(0);
+    }
+
+    if (hasNumber.test(inputMessage)) {
+      console.log("Number detected in the text");
+      // You can perform further actions here if a number is detected in the inputMessage.
+    } else {
+      console.log("No number detected in the text");
+      // You can handle the case where no number is detected in the inputMessage.
+    }
+
+    const containsEmail = (text) => {
+      const words = text.split(" ");
+      for (const word of words) {
+        if (emailValidator.validate(word)) {
+          return true;
+        }
+      }
+      return false;
+    };
+
+    if (containsEmail(inputMessage)) {
+      console.log("Email address error");
+      handleOpenErrorModal("Email addresses are not allowed in messages.");
+      return; // Do not send the message if it contains an email address
+    }
+    // Create a new message object for the user's input
+    const newMessage = {
+      text: inputMessage,
+      user: "User 1",
+      date: "2023-09-11",
+      time: new Date().toLocaleTimeString(),
+      isUser1: true,
+      image: johnDoe,
+    };
+
+    // Update the messages state by appending the new message
+    setMessages([...messages, newMessage]);
+
+    // Clear the input field
+    setInputMessage("");
+
+    scrollToBottom();
   };
-
-  if (containsEmail(inputMessage)) {
-    console.log("Email address error");
-    handleOpenErrorModal("Email addresses are not allowed in messages.");
-    return; // Do not send the message if it contains an email address
-  }
-  // Create a new message object for the user's input
-  const newMessage = {
-    text: inputMessage,
-    user: "User 1",
-    date: "2023-09-11",
-    time: new Date().toLocaleTimeString(),
-    isUser1: true,
-    image: johnDoe,
-  };
-
-  // Update the messages state by appending the new message
-  setMessages([...messages, newMessage]);
-
-  // Clear the input field
-  setInputMessage("");
-
-  scrollToBottom();
-};
-
-  
 
   return (
     <div className="h-[70vh]">
       {isModalOpen && (
         <div className="modal fixed flex justify-center items-center inset-0 z-[9999]">
-        
           <div
             className="fixed bg-black inset-0 opacity-50 z-10"
             onClick={handleCloseModal}
@@ -383,7 +399,7 @@ const handleSubmit = (e) => {
           </div>
         </header>
         <div className="chats">
-        {isErrorModalOpen && (
+          {isErrorModalOpen && (
             <ChatErrorModal
               isOpen={isErrorModalOpen}
               errorMessage={errorMessage}
@@ -422,7 +438,71 @@ const handleSubmit = (e) => {
                 </div>
               ))}
             </div>
+
+            <div className=" mb-10 p-4">
+              {reservationMessage.map((message, index) => (
+                <div
+                  key={index}
+                  className={`${
+                    message.isUser1
+                      ? "bg-gray-300 text-white"
+                      : "bg-orange-400 text-white"
+                  }  p-5 mb-7 text-sm md:m-10`}
+                >
+           <Link to="/">
+           <div className="flex space-x-4 my-4">
+              <img
+              src={message.image}
+              alt={`${message.username}'s profile`}
+              className="w-14 h-14 object-cover rounded-full "
+            />
+                  <button className="my-4">See Guest Profile</button>
+              </div>
+           </Link>
+
+                  {message.isReservationRequest ? (
+                    <div className="reservation-request">
+                      {message.text}
+                     <p>
+                      {message.user} requests to  reserve your apartment  at {message.houseTitle} scheduled for 
+                      {message.timeline}
+                     </p>
+                      <div className="text-xs">time: {message.time}</div>
+                      {/* You can add a button or other UI elements for the host to respond to the reservation request */}
+                    </div>
+                  ) : (
+                    <div className="flex space-x-4">
+                      {message.image && (
+                        <img
+                          src={message.image}
+                          alt={`${message.user}'s Image`}
+                          className="w-16 h-16 rounded-full object-cover"
+                        />
+                      )}
+
+                      <div>
+                      <span className="flex">{message.date}</span>
+
+                        <span className="flex">{message.date}</span>
+                        {message.user}: {message.text}
+                        <div className="text-xs">time: {message.time}</div>
+                      </div>
+                    </div>
+                  )}
+                  <form action=""></form>
+                  <div className=" flex justify-between py-4">
+                    <button className="bg-white text-black py- px-4 rounded-full">
+                      Accept
+                    </button>
+                    <button className="bg-black p-4 rounded-full">
+                      Decline
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
+
           <div className="send-texts mt-2 z-[999] pt-8 bg-white fixed md:relative left-0 right-0 bottom-0">
             <form
               onSubmit={handleSubmit}

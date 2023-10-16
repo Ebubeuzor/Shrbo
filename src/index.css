@@ -126,3 +126,8 @@
   border: none;
   color: none !important;
 }
+
+
+.fc-view-harness .fc-view-harness-active{
+  height: 500px !important;
+}
