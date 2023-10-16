@@ -17,7 +17,7 @@ export default function Chat() {
 
   return (
     <div className="h-[100vh]">
-      <Header />
+      {/* <Header /> */}
       <div className="grid grid-cols-3 ">
         {/* Only show green part on mobile */}
         {showGreen && (
