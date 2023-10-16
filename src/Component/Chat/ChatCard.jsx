@@ -109,7 +109,7 @@ const messages = [
 
 export default function ChatCard() {
   return (
-    <div className="rounded-lg pb-32  mx-3">
+    <div className="rounded-lg pb-56  mx-3">
         <div className="border-b-[1px] py-4 border-gray-100">
             <h1 className="text-3xl">Messages</h1>
         </div>

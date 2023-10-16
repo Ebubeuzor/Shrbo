@@ -11,7 +11,9 @@ import PaginationExample from "../PaginationExample";
 import BottomNavigation from "../Navigation/BottomNavigation";
 import Header from "../Navigation/Header";
 
+
 export default function Trip() {
+  const [isCancellationModalOpen, setIsCancellationModalOpen] = useState(false); // Step 1: Manage modal visibility
   const [selectedTrip, setSelectedTrip] = useState(null);
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
   const [comments, setComments] = useState([]);
@@ -20,9 +22,6 @@ export default function Trip() {
 
   const [newComment, setNewComment] = useState("");
 
-
-
-  
   const handleCommentChange = (event) => {
     setNewComment(event.target.value);
   };
@@ -46,6 +45,14 @@ export default function Trip() {
     setSelectedPhotoIndex(index);
   };
 
+  const openCancellationModal = () => {
+    setIsCancellationModalOpen(true); // Step 2: Open the cancellation modal
+  };
+
+  const closeCancellationModal = () => {
+    setIsCancellationModalOpen(false); // Step 2: Close the cancellation modal
+  };
+
   const tripHistory = [
     {
       destination: "Admirality way, Lekki Lagos",
@@ -65,8 +72,8 @@ export default function Trip() {
       contactHost: "/chat",
       comments: [],
       checkedIn: "checked out",
-      checkingInDate:"",
-      checkingInTime:""
+      checkingInDate: "",
+      checkingInTime: "",
     },
     {
       destination:
@@ -87,9 +94,8 @@ export default function Trip() {
       contactHost: "/chat",
       comments: [],
       checkedIn: "Reserved",
-      checkingInDate:"Thursday, 28 december 2023",
-      checkingInTime:"12:00pm"
-
+      checkingInDate: "Thursday, 28 december 2023",
+      checkingInTime: "12:00pm",
     },
     {
       destination:
@@ -110,9 +116,8 @@ export default function Trip() {
       contactHost: "/chat",
       comments: [],
       checkedIn: "Checked in",
-      checkingInDate:"",
-      checkingInTime:""
-
+      checkingInDate: "",
+      checkingInTime: "",
     },
 
     {
@@ -133,9 +138,8 @@ export default function Trip() {
       contactHost: "/chat",
       comments: [],
       checkedIn: "checked out",
-      checkingInDate:"",
-      checkingInTime:""
-
+      checkingInDate: "",
+      checkingInTime: "",
     },
 
     {
@@ -156,14 +160,12 @@ export default function Trip() {
       contactHost: "/chat",
       comments: [],
       checkedIn: "Reserved",
-      checkingInDate:"Thursday, 28 december 2023",
-      checkingInTime:"12:00pm"
-
+      checkingInDate: "Thursday, 28 december 2023",
+      checkingInTime: "12:00pm",
     },
   ];
 
   const [filteredTrips, setFilteredTrips] = useState(tripHistory);
-
 
   const filterTripsByTab = (tab) => {
     if (tab === "All") {
@@ -177,17 +179,17 @@ export default function Trip() {
     setSelectedTab(tab);
   };
 
-  
-
   return (
     <div className=" h-[100vh]  overflow-auto example">
-      <Header/>
+      <Header />
       <div className="mx-auto md:w-[90%]">
         <header className="text-4xl pl-6 py-6 font-bold">Trips History</header>
-  <div className="flex flex-wrap  p-4">
+        <div className="flex flex-wrap  p-4">
           <button
             className={`${
-              selectedTab === "All" ? "bg-orange-400  text-white" : "bg-gray-200 text-gray-600"
+              selectedTab === "All"
+                ? "bg-orange-400  text-white"
+                : "bg-gray-200 text-gray-600"
             } px-4 py-2 rounded-full m-2`}
             onClick={() => filterTripsByTab("All")}
           >
@@ -195,7 +197,9 @@ export default function Trip() {
           </button>
           <button
             className={`${
-              selectedTab === "Reserved" ? "bg-orange-400 text-white" : "bg-gray-200 text-gray-600"
+              selectedTab === "Reserved"
+                ? "bg-orange-400 text-white"
+                : "bg-gray-200 text-gray-600"
             } px-4 py-2 rounded-full m-2`}
             onClick={() => filterTripsByTab("Reserved")}
           >
@@ -203,7 +207,9 @@ export default function Trip() {
           </button>
           <button
             className={`${
-              selectedTab === "Checked in" ? "bg-orange-400 text-white" : "bg-gray-200 text-gray-600"
+              selectedTab === "Checked in"
+                ? "bg-orange-400 text-white"
+                : "bg-gray-200 text-gray-600"
             } px-4 py-2 rounded-full m-2`}
             onClick={() => filterTripsByTab("Checked in")}
           >
@@ -211,7 +217,9 @@ export default function Trip() {
           </button>
           <button
             className={`${
-              selectedTab === "Checked Out" ? "bg-orange-400 text-white" : "bg-gray-200 text-gray-600"
+              selectedTab === "Checked Out"
+                ? "bg-orange-400 text-white"
+                : "bg-gray-200 text-gray-600"
             } px-4 py-2 rounded-full m-2`}
             onClick={() => filterTripsByTab("Checked Out")}
           >
@@ -226,7 +234,9 @@ export default function Trip() {
                 className="md:w-2/5 m-5 cursor-pointer w-full   rounded-lg"
               >
                 <div className="relative">
-                  <div className="absolute p-4 uppercase text-white bg-orange-400">{trip.checkedIn}</div>
+                  <div className="absolute p-4 uppercase text-white bg-orange-400">
+                    {trip.checkedIn}
+                  </div>
                   <img
                     src={trip.image}
                     alt=""
@@ -259,9 +269,8 @@ export default function Trip() {
                     ₦{trip.price}
                   </div>
                   <div>
-                    
-                  <span>{trip.checkingInDate}</span>
-                </div>
+                    <span>{trip.checkingInDate}</span>
+                  </div>
                   <div>
                     <button
                       className="bg-orange-400 p-4 rounded-full mt-7 text-white text-lg"
@@ -298,16 +307,15 @@ export default function Trip() {
             onClick={closeModal}
           ></div>
           <div className="bg-white pb-32 p-8 rounded-lg z-10 overflow-auto h-[100vh] md:h-[90vh]  md:w-3/6 example">
-         
             <div className="p-4 mt-10 ">
-            {/* <div className="text-right"> */}
+              {/* <div className="text-right"> */}
               <button
                 className="text-gray-500 hover:text-gray-700"
                 onClick={closeModal}
               >
                 <img src={close} className="w-4" alt="" />
               </button>
-            {/* </div> */}
+              {/* </div> */}
               <div className="">
                 {/* <h3 className="text-xl font-semibold">Main Photo:</h3> */}
                 <img
@@ -375,16 +383,13 @@ export default function Trip() {
                   {selectedTrip.guests}
                 </div>
                 <div className="text-lg text-orange-400 font-medium mt-2">
-               <span className="text-black"> Price: </span> ₦{selectedTrip.price}
+                  <span className="text-black"> Price: </span> ₦
+                  {selectedTrip.price}
                 </div>
-                
+
                 <div className="text-base text-black  mt-2">
                   {selectedTrip.notes}
                 </div>
-               
-               
-              
-               
 
                 <div className="my-4">
                   <h1 className="font-bold text-2xl">Amenities</h1>
@@ -394,7 +399,14 @@ export default function Trip() {
                 </div>
               </div>
             </div>
-            <div className="mb-10">
+            <div className="mb-10 flex space-x-3">
+            <div>
+                <button className="bg-orange-400 p-4 rounded-full   text-white text-lg"
+                            onClick={openCancellationModal} // Step 3: Open the cancellation modal
+                            >
+                  Cancel Reservation
+                </button>
+              </div>
               {selectedTrip.contactHost && (
                 <Link
                   to={selectedTrip.contactHost}
@@ -403,21 +415,51 @@ export default function Trip() {
                   Contact Host
                 </Link>
               )}
-            </div>
 
-           
+             
+            </div>
           </div>
         </div>
       )}
-      <div className="my-10 pb-32"> 
 
-      
-        {tripHistory.length > 0 && (
-
-        <PaginationExample />
-        )}
+{isCancellationModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div
+            className="absolute inset-0 bg-black opacity-50"
+            onClick={closeCancellationModal} // Step 3: Close the cancellation modal
+          ></div>
+          <div className="bg-white p-8 rounded-lg z-10 h-[60vh] w-[80vw] overflow-auto">
+            <div className="text-right">
+              <button
+                className="text-gray-500 hover:text-gray-700"
+                onClick={closeCancellationModal} // Step 3: Close the cancellation modal
+              >
+                <img src={close} className="w-4" alt="" />
+              </button>
+            </div>
+            <h2 className="text-2xl font-semibold mt-4">Cancel Reservation</h2>
+            <p className="mt-4">
+              Are you sure you want to cancel your reservation for{" "}
+              {selectedTrip.destination}? Please provide a reason for
+              cancellation:
+            </p>
+            <textarea
+              rows="3"
+              className="w-full mt-2 p-2 border rounded"
+              placeholder="Reason for cancellation"
+            ></textarea>
+            <button
+              className="bg-orange-400 p-4 rounded-full text-white mt-4"
+            >
+              Confirm Cancellation
+            </button>
+          </div>
+        </div>
+      )}
+      <div className="my-10 pb-32">
+        {tripHistory.length > 0 && <PaginationExample />}
       </div>
-      <BottomNavigation/>
+      <BottomNavigation />
     </div>
   );
 }

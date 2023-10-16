@@ -9,8 +9,46 @@ export default function HostHomes() {
   const [houseTitle, setHouseTitle] = useState("");
   const [houseDescriptions, setHouseDescriptions] = useState("");
   const [additionalRules, setAdditionalRules] = useState("");
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [selectedTime, setSelectedTime] = useState("12:00 PM");
+
   const handleAdditionalRules = (newValue) => {
     setAdditionalRules(newValue);
+  };
+
+  const handleTimeChange = (e) => {
+    setSelectedTime(e.target.value);
+  };
+
+  const handleSave = () => {
+    // You can send the selected time to your backend or perform any other action here
+    console.log("Selected check-in time: ", selectedTime);
+  };
+
+  const handleVideoUpload = (e) => {
+    const file = e.target.files[0];
+
+    if (!file) {
+      // No file selected
+      return;
+    }
+
+    if (file.size > 20 * 1024 * 1024) {
+      alert("Video size exceeds 20MB limit.");
+      return;
+    }
+
+    const video = document.createElement("video");
+
+    video.onloadedmetadata = () => {
+      if (video.duration > 60) {
+        alert("Video duration exceeds 1 minute limit.");
+      } else {
+        setSelectedVideo(file);
+      }
+    };
+
+    video.src = URL.createObjectURL(file);
   };
 
   const [housePrice, setHousePrice] = useState(""); // Add this line for the house price
@@ -340,9 +378,8 @@ export default function HostHomes() {
     pets: "No pets",
     events: "No parties or events",
     smoking: "No smoking",
-    partying: "No parties or events"
+    partying: "No parties or events",
   };
-  
 
   const houseDiscount = [
     {
@@ -817,7 +854,55 @@ export default function HostHomes() {
           </div>
         );
 
-      case 8: // Step for adding a house title
+      case 8: // Step for hosting type and property features
+        return (
+          <div className=" mx-auto  flex justify-center p-4">
+            <div className="  overflow-auto">
+              <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-20">
+                <h1 className="text-6xl">Upload Video Apartment on Shbro</h1>
+                <p className="text-gray-400 mt-10">
+                  Gives you a better chance of getting guests
+                </p>
+              </div>
+              <div className="bg-white border p-4 rounded-lg shadow-md max-w-md mx-auto mt-8">
+                <h1 className="text-2xl font-semibold mb-4">Upload Video</h1>
+                <input
+                  type="file"
+                  accept="video/*"
+                  onChange={handleVideoUpload}
+                  className="mb-4"
+                />
+                <p className="text-slate-500">Maximum file size: 20MB</p>
+                <p className="text-slate-500">Maximum duration: 1 minute</p>
+
+                {selectedVideo && (
+                  <div className="mt-4">
+                    <p className="text-lg font-semibold mb-2">
+                      Selected Video: {selectedVideo.name}
+                    </p>
+                    <p className="text-slate-500">
+                      Size: {(selectedVideo.size / (1024 * 1024)).toFixed(2)} MB
+                    </p>
+                    <video controls className="mt-2">
+                      <source
+                        src={URL.createObjectURL(selectedVideo)}
+                        type="video/mp4"
+                      />
+                    </video>
+                    <button
+                      onClick={handleRemoveVideo}
+                      className="bg-red-500 text-white py-2 px-4 mt-4 rounded-full hover:bg-red-600"
+                    >
+                      Remove Video
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        );
+
+      case 9: // Step for adding a house title
         const maxCharacterCount = 32;
         const currentCharacterCount = houseTitle.length;
         const remainingCharacterCount =
@@ -854,7 +939,7 @@ export default function HostHomes() {
           </div>
         );
 
-      case 9:
+      case 10:
         return (
           <div className=" mx-auto  flex justify-center p-4">
             <div className="  overflow-auto">
@@ -889,7 +974,7 @@ export default function HostHomes() {
           </div>
         );
 
-      case 10:
+      case 11:
         const maxCharCount = 500;
         const currentCharCount = houseDescriptions.length;
         const remainingCharCount = maxCharCount - currentCharCount;
@@ -924,7 +1009,7 @@ export default function HostHomes() {
           </div>
         );
 
-      case 11:
+      case 12:
         return (
           <div className=" mx-auto  flex justify-center p-4">
             <div className="  overflow-auto">
@@ -957,7 +1042,7 @@ export default function HostHomes() {
           </div>
         );
 
-      case 12:
+      case 13:
         return (
           <div className=" mx-auto  flex justify-center p-4">
             <div className="  overflow-auto">
@@ -965,7 +1050,9 @@ export default function HostHomes() {
                 <h1 className="text-6xl">
                   Choose who to welcome for your first reservation
                 </h1>
-                <p className="text-gray-400 mt-10">After your first guest, anyone can book your place.</p>
+                <p className="text-gray-400 mt-10">
+                  After your first guest, anyone can book your place.
+                </p>
               </div>
               <div className="pb-32">
                 <div className=" space-y-4">
@@ -991,13 +1078,15 @@ export default function HostHomes() {
           </div>
         );
 
-      case 13:
+      case 14:
         return (
           <div className=" mx-auto  flex justify-center p-4">
             <div className="  overflow-auto">
               <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-20">
                 <h1 className="text-6xl">Now, set your price</h1>
-                <p className="text-gray-400 mt-10">You can change it anytime.</p>
+                <p className="text-gray-400 mt-10">
+                  You can change it anytime.
+                </p>
               </div>
               <div className="pb-32">
                 <div className="text-center">
@@ -1014,7 +1103,7 @@ export default function HostHomes() {
           </div>
         );
 
-      case 14: // Step for adding discounts
+      case 15: // Step for adding discounts
         return (
           <div className=" mx-auto  flex justify-center p-4">
             <div className="  overflow-auto">
@@ -1050,13 +1139,15 @@ export default function HostHomes() {
           </div>
         );
 
-        case 15: // Step for hosting type and property features
+      case 16: // Step for hosting type and property features
         return (
           <div className="mx-auto flex justify-center p-4">
             <div className="overflow-auto">
               <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-20">
                 <h1 className="text-6xl">Rules</h1>
-                <p className="text-gray-400 mt-10">You can change it anytime.</p>
+                <p className="text-gray-400 mt-10">
+                  You can change it anytime.
+                </p>
               </div>
               <div className="pb-32">
                 <div className="space-y-4">
@@ -1094,7 +1185,7 @@ export default function HostHomes() {
                 <div className="px-4">
                   <ul className="list-disc">
                     {/* Split the text into lines and create list items */}
-                    {additionalRules.split('\n').map((rule, index) => (
+                    {additionalRules.split("\n").map((rule, index) => (
                       <li key={index}>{rule}</li>
                     ))}
                   </ul>
@@ -1103,10 +1194,8 @@ export default function HostHomes() {
             </div>
           </div>
         );
-      
-      
 
-        case 16: // Step for hosting type and property features
+      case 17: // Step for hosting type and property features
         return (
           <div className=" mx-auto  flex justify-center p-4">
             <div className="  overflow-auto">
@@ -1163,6 +1252,49 @@ export default function HostHomes() {
             </div>
           </div>
         );
+
+      case 18: // Step for hosting type and property features
+        return (
+          <div className=" mx-auto  flex justify-center p-4">
+            <div className="  overflow-auto">
+              <div className="md:flex md:justify-center md:flex-col md:mt-28 mb-20">
+                <h1 className="text-6xl">When  do you want Guests checking in on Shbro?</h1>
+              </div>
+              <div className="max-w-md mx-auto p-4">
+                <h2 className="text-2xl font-semibold mb-4">
+                  Set Check-In Time
+                </h2>
+                <div className="mb-4">
+                  <label
+                    htmlFor="checkInTime"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Select Check-In Time:
+                  </label>
+                  <select
+                    id="checkInTime"
+                    name="checkInTime"
+                    value={selectedTime}
+                    onChange={handleTimeChange}
+                    className="mt-1 p-2 border rounded-md w-full"
+                  >
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="1:00 PM">1:00 PM</option>
+                    <option value="2:00 PM">2:00 PM</option>
+                    {/* Add more time options as needed */}
+                  </select>
+                </div>
+                <button
+                  onClick={handleSave}
+                  className="bg-orange-400 text-white py-2 px-4 rounded-full hover:bg-orange-600"
+                >
+                  Save Check-In Time
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+
       default:
         return null;
     }
@@ -1180,7 +1312,7 @@ export default function HostHomes() {
             Previous
           </button>
         )}
-        {step < 16 && (
+        {step < 18 && (
           <button
             onClick={handleNext}
             className="text-white text-center  bg-orange-400 w-full p-4"
@@ -1188,7 +1320,7 @@ export default function HostHomes() {
             Next
           </button>
         )}
-        {step === 16 && (
+        {step === 18 && (
           <button
             type="submit"
             className="text-white text-center  bg-orange-400 w-full p-4"

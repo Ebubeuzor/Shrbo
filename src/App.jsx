@@ -25,7 +25,7 @@ import Reservations from "./Component/Dashboard/Reservations";
 import ScrollToTop from "./Component/ScrollToTop";
 import HostAnalysis from "./Component/Dashboard/HostAnalysis";
 import Schduler from "./Component/Dashboard/Schduler";
-
+import ChatAndNotifcationTab from "./Views/ChatAndNotifcationTab";
 
 function App() {
   return (
@@ -55,6 +55,8 @@ function App() {
         <Route path="/Reservations" element={<Reservations />} />
         <Route path="/HostAnalysis" element={<HostAnalysis />} />
         <Route path="/Schduler" element={<Schduler />} />
+        <Route path="/ChatAndNotifcationTab" element={<ChatAndNotifcationTab />} />
+
 
 
 
