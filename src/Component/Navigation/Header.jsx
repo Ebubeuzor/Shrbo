@@ -77,7 +77,7 @@ export default function Header() {
           <Link to="/trip" className="text-white hover:text-gray-300 ml-4">
             Trips
           </Link>
-          <Link to="/chat" className="text-white hover:text-gray-300 ml-4">
+          <Link to="/ChatAndNotifcationTab" className="text-white hover:text-gray-300 ml-4">
             Inbox
           </Link>
           <Link to="/Hosting" className="text-white hover:text-gray-300 ml-4">

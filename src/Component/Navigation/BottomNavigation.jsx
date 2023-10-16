@@ -36,7 +36,7 @@ export default function BottomNavigation() {
           <FaSuitcase className={`text-2xl text-${getColor('/trip')}`} />
           <span className={`text-[10px] text-${getColor('/trip')}`}>Trips</span>
         </Link>
-        <Link to="/chat" className="cursor-pointer flex flex-col items-center">
+        <Link to="/ChatAndNotifcationTab" className="cursor-pointer flex flex-col items-center">
           <FaInbox className={`text-2xl text-${getColor('/chat')}`} />
           <span className={`text-[10px] text-${getColor('/chat')}`}>Inbox</span>
         </Link>
