@@ -1,14 +1,18 @@
-import React,{useState} from 'react'
+import React, { useState } from "react";
 
-export default function Notification({notifications, onClose}) {
+export default function Notification({ notifications, onClose }) {
   return (
-    <div>
-    {notifications.map((notification) => (
-      <div key={notification.id} className="notification">
-        {notification.message}
-        <button onClick={() => onClose(notification.id)}>Close</button>
-      </div>
-    ))}
-  </div>
-  )
+    <div className="notification-container">
+      {notifications.map((notification) => (
+        <div
+          key={notification.id}
+          className="notification bg-orange-200 border-black border-2 p-3 rounded shadow mb-2 cursor-pointer"
+          onClick={() => onClose(notification.id)}
+        >
+          <span>{notification.message}</span>
+          {/* You can add a close button here if needed */}
+        </div>
+      ))}
+    </div>
+  );
 }

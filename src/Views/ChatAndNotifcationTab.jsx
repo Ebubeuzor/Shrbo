@@ -7,9 +7,9 @@ export default function ChatAndNotifcationTab() {
   const [selectedTab, setSelectedTab] = useState("chats"); // "chats" or "notifications"
 
   const [notifications, setNotifications] = useState([
-    { id: 1, message: "Notification 1" },
-    { id: 2, message: "Notification 2" },
-    { id: 3, message: "Notification 3" },
+    { id: 1, message: "You have recieved a message" },
+    { id: 2, message: "User 2 requests to reserve your apartment at 2b Admiralty way scheduled for3 days" },
+    { id: 3, message: "Please verfiy your email address" },
   ]);
 
   const closeNotification = (id) => {
@@ -30,9 +30,9 @@ export default function ChatAndNotifcationTab() {
 <div>
     <Header/>
 
-    <div className="bg-gray-100 p-4">
+    <div className="bg-gray-100">
         
-        <div className="col-span-3 bg-white rounded-md p-4 shadow">
+        <div className="col-span-3 bg-white rounded-md p-4 shadow md:hidden">
           <div className="flex space-x-2">
             <button
               className={`${
