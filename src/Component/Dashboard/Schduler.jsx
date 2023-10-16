@@ -32,13 +32,15 @@ export default class Schduler extends React.Component {
     return (
       <div className=" flex box-border w-full  ">
         <div className=" block flex-grow relative h-screen max-h-[800px] overflow-y-scroll example   ">
-          <div className=" flex flex-col relative py-8 px-6">
+          <div className=" flex flex-col h-full relative py-8 px-6">
             <FullCalendar
               plugins={[dayGridPlugin, interactionPlugin, multiMonthPlugin]}
               initialView='multiMonthYear'
               multiMonthMaxColumns="1" 
               editable
+              height="100%"
               selectable
+              
             />
           </div>
         </div>
@@ -164,9 +166,9 @@ const Pricing = () => {
             <form>
               <span className=" px-6 py-5 border rounded-2xl flex items-center justify-between">
                 <div className="text-sm block box-border">Smart Pricing</div>
-                <label class="switch">
+                <label className="switch">
                   <input type="checkbox" name="" />
-                  <span class="slider round"></span>
+                  <span className="sliderm round"></span>
                 </label>
               </span>
             </form>

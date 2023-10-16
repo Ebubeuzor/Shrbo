@@ -8,6 +8,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Rating from "../ListingInfo/Ratings";
 import Popup from '../../hoc/Popup';
+import BottomNavigation from '../Navigation/BottomNavigation';
+import Header from '../Navigation/Header';
+import Listings from '../ListingInfo/Listings';
+import { toast, ToastContainer } from "react-toastify";
 
 
 
@@ -23,6 +27,51 @@ const WishlistsSet=()=>{
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [textField,setTextField]=useState(null);
+  const [listings, setListings]=useState([
+    {
+      id: 1,
+      pictures: [
+        "https://a0.muscache.com/im/pictures/959f7a1d-6e52-4317-a2a5-4271b323e19c.jpg?im_w=720",
+        "https://a0.muscache.com/im/pictures/c089e5bd-89cd-4efc-bda5-0b6e36978e9c.jpg?im_w=720",
+        "https://a0.muscache.com/im/pictures/766780af-d334-4b1a-9356-cda032db1f13.jpg?im_w=720",
+      ],
+      location: "1004 Victoria Island",
+      price: "$150 per night",
+      date: "22/08/2023",
+      kilometres: "22miles away",
+      rating: 4.8,
+      link: "/ListingInfoMain",
+    },
+    {
+      id: 2,
+      pictures: [
+        "https://a0.muscache.com/im/pictures/7ca6118f-68c7-4a32-8bbc-09ce1840a373.jpg?im_w=720",
+        "https://a0.muscache.com/im/pictures/c99e5b00-a779-40e9-bd0e-5062dfdb7eb8.jpg?im_w=720",
+        "https://a0.muscache.com/im/pictures/f8099680-c563-4491-9258-f679eef415e9.jpg?im_w=720",
+      ],
+      location: "2b, Admiralty Road",
+      price: "$120 per night",
+      date: "22/08/2023",
+      kilometres: "22miles away",
+      rating: 4.2,
+      link: "/ListingInfoMain",
+    },
+    {
+      id: 3,
+      pictures: [
+        "https://a0.muscache.com/im/pictures/prohost-api/Hosting-816385654242432020/original/2468fc87-15fe-40a7-97c8-8910ba6c3267.jpeg?im_w=720",
+        "https://a0.muscache.com/im/pictures/prohost-api/Hosting-816385654242432020/original/819c217b-c551-4de5-9a98-b4fedae488ba.jpeg?im_w=720",
+        "https://a0.muscache.com/im/pictures/prohost-api/Hosting-816385654242432020/original/9e70e7f0-57cf-43de-94a1-8383324687bf.jpeg?im_w=720",
+      ],
+      location: "Eva Pearl Lekki",
+      price: "$200 per night",
+      date: "22/08/2023",
+      kilometres: "22miles away",
+      rating: 4.0,
+      link: "/ListingInfoMain",
+    },
+   
+  ]);
 
     const handleMenu=({ key })=>{
      
@@ -31,9 +80,10 @@ const WishlistsSet=()=>{
               // title: 'Confirm',
               content: 'Are you sure you want to delete ? ',
               icon: <ExclamationCircleOutlined />,
-              okText: <span className=''> Delete </span>,
+              okText: <span className='  '> Delete </span>,
               cancelText:<span className=''>Keep</span>,
               style: { top: '40%' },
+              
               
              
             });      
@@ -120,7 +170,7 @@ const WishlistsSet=()=>{
         // it should have a "url" object aswell for Svg images  
       ];
     
-      const SavedItems=wishlist_groups.map(group=>(
+      const SavedItems=listings.map(group=>(
         <div
         key={group.id}
         className=" md:max-w-[18rem] rounded overflow-hidden  m-4 cursor-pointer"
@@ -172,17 +222,29 @@ const WishlistsSet=()=>{
       ));
 
 
+      
+
       const toggleFavorite = (id) => {
         setListings((prevListings) =>
           prevListings.map((listing) => {
             if (listing.id === id) {
+              if (!listing.isFavorite) {
+                // Show a toast notification when added to wishlist
+                toast.success('Added to Wishlist', {
+                  position: toast.POSITION.TOP_CENTER,
+                });
+              } else {
+                // Show a toast notification when removed from wishlist
+                toast.success('Removed from Wishlist', {
+                  position: toast.POSITION.TOP_CENTER,
+                });
+              }
               return { ...listing, isFavorite: !listing.isFavorite };
             }
             return listing;
           })
         );
       };
-
  
 
   
@@ -191,13 +253,14 @@ const WishlistsSet=()=>{
 
       return (
       <div className=' min-h-[100dvh] relative box-border'>
+         <Header/>
       <div className=" pb-14 left-0 right-0 top-[105px] bottom-0  lg:pb-0      ">
             <div className=" flex box-border ">
                 <div className=" w-full md:w-full lg:w-[55%] xl:w-[63%] flex-shrink-0 flex-grow-0     z-[2] block ">
                     <div className=" min-h-[400px] block box-border ">
 
                             {/* Menu and back buttton  */}
-                        <div className=" px-6 py-[18px] md:top-20 sticky left-0 w-full top-0 block bg-white
+                        <div className=" px-6 py-[18px]  sticky left-0 w-full top-0 block bg-white
                                          box-border z-[50]   md:px-10 lg:px-6    ">
                             <div className=" flex items-center justify-between  "> 
 
@@ -307,8 +370,8 @@ const WishlistsSet=()=>{
                         </div>    
 
                           {/*  */}
-                          <div className=" top-8 pt-6 px-6 sticky z-[1] min-[744px]:top-28 min-[744px]:px-10 min-[950px]:px-6 bg-white   ">
-                            <h2 className=" block box-border text-2xl font-medium  ">Your saved items</h2>
+                          <div className=" top-8 pt-6 px-6 sticky md:relative  z-[1] min-[744px]:top-0 min-[744px]:px-10 min-[950px]:px-6 bg-white   ">
+                            <h2 className=" block box-border text-2xl md:pl-4  font-medium  ">Your saved items</h2>
                           </div>
 
 
@@ -318,13 +381,16 @@ const WishlistsSet=()=>{
                             <div className=" pb-6 block box-border  md:pb-10">
                                 <div className=" pe-6 ps-6 lg:ps-6 lg:pe-6 md:ps-10 md:pe-10 ">
                                     <div className=" gap-10 grid  gap-x-6 gap-y-10 auto-rows-fr  grid-cols-1 min-[551px]:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 min-[1240px]:grid-cols-3    ">
+                                       
                                         {SavedItems}
                                     </div>
                                 </div>
+                                
                             </div>
 
+                            
                         </div>
-
+                        {/* <Listings/> */}
 
                     </div>
 
@@ -332,7 +398,7 @@ const WishlistsSet=()=>{
 
 
                 <div className=" flex-auto box-border hidden flex-grow flex-shrink   lg:flex  ">
-                    <div className=" w-full h-screen sticky top-0 pt-20 pb-[-80px] block  ">
+                    <div className=" w-full h-screen sticky top-0 pb-[-80px] block  ">
                         <div className=" relative w-full h-full">
                             <Map></Map>
                         </div>
@@ -340,9 +406,10 @@ const WishlistsSet=()=>{
                 </div>
 
             </div>
+            <ToastContainer />
 
         </div>
-       
+        <BottomNavigation/>
       </div>
     );
 

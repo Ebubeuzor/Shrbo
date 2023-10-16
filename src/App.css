@@ -218,4 +218,29 @@ The slider*/
   }
 
 
- 
+
+
+  /* for chat support */
+
+  .transition-3 {
+  transition: all 0.33s ease;
+  -webkit-transition: all 0.33s ease;
+  -moz-transition: all 0.33s ease;
+}
+
+
+
+.transition-5 {
+  transition: all 0.66s ease;
+  -webkit-transition: all 0.66s ease;
+  -moz-transition: all 0.66s ease;
+}
+
+
+
+
+  
+
+
+
+

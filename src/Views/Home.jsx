@@ -10,6 +10,7 @@ import BottomNavigation from "../Component/Navigation/BottomNavigation";
 import Footer from "../Component/Navigation/Footer";
 import RateHouseModal from "../Component/RateHouseModal";
 import FilterModal from "../Component/Filter/FilterModal";
+import ChatSupport from "../Component/ChatBot/ChatSupport";
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSearchButtonFixed, setIsSearchButtonFixed] = useState(false);
@@ -133,7 +134,9 @@ export default function Home() {
           onClose={closeRateHouseModal}
           houseDetails={houseDetails}
         />
+       
       </div>
+      <ChatSupport/>
       <Footer />
     </div>
   );
