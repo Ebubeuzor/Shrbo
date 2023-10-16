@@ -46,7 +46,7 @@ export default function ChatAndNotifcationTab() {
               className={`${
                 selectedTab === "notifications"
                   ? "bg-black text-white"
-                  : "bg-slate-700"
+                  : "bg-slate-700 text-white"
               } p-2 rounded`}
               onClick={() => setSelectedTab("notifications")}
             >
