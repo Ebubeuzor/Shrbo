@@ -70,6 +70,12 @@ const ChatEngine= (props) => {
   };
 
 
+  let imagePreview = null;
+  if (imageInput) {
+    imagePreview = <div className="max-w-[200px] mb-2"><img src={imageInput} alt="Image Preview" className="max-w-full" /></div>;
+  }
+
+
 
 
     return (
@@ -162,6 +168,7 @@ const ChatEngine= (props) => {
         </div>
 
           
+        {imagePreview}
         </div>
         </div>
     )
