@@ -3,9 +3,15 @@ import { Link } from 'react-router-dom';
 
 export default function AdminSidebar() {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [propertiesShowDropdown, setPropertiesShowDropdown] = useState(false);
+
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
+  };
+
+  const togglePropertiesDropdown = () => {
+    setPropertiesShowDropdown(!propertiesShowDropdown);
   };
 
   return (
@@ -28,6 +34,21 @@ export default function AdminSidebar() {
             </li>
             <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
               <Link to="/HostsListings">Hosts</Link>
+            </li>
+          </ul>
+        </li>
+
+        <li
+          className={`p-2 cursor-pointer w-full ${propertiesShowDropdown ? 'bg-orange-400' : ''}`}
+          onClick={togglePropertiesDropdown}
+        >
+          Properties
+          <ul className={`list-none ${propertiesShowDropdown ? 'block' : 'hidden'}`}>
+            <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
+              <Link to="/PropertyList">Properties Listings</Link>
+            </li>
+            <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
+              <Link to="/ApartmentListingApproval">Apartment Listing Approval</Link>
             </li>
           </ul>
         </li>

@@ -30,6 +30,8 @@ import EditHomepage from "./Component/AdminDashboard/EditHomepage";
 import AdminAnalytical from "./Component/AdminDashboard/AdminAnalytical";
 import GuestsListings from "./Component/AdminDashboard/GuestsListings";
 import HostsListings from "./Component/AdminDashboard/HostsListings";
+import PropertyList from "./Component/AdminDashboard/PropertyList";
+import ApartmentListingApproval from "./Component/AdminDashboard/ApartmentListingApproval";
 
 function App() {
   return (
@@ -66,10 +68,12 @@ function App() {
         <Route path="/GuestsListings" element={<GuestsListings />} />
 
         <Route path="/HostsListings" element={<HostsListings />} />
+        <Route path="/PropertyList" element={<PropertyList />} />
+        <Route path="/ApartmentListingApproval" element={<ApartmentListingApproval />} />
 
 
 
-
+        
 
 
       </Routes>
