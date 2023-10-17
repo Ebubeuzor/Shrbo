@@ -26,6 +26,10 @@ import ScrollToTop from "./Component/ScrollToTop";
 import HostAnalysis from "./Component/Dashboard/HostAnalysis";
 import Schduler from "./Component/Dashboard/Schduler";
 import ChatAndNotifcationTab from "./Views/ChatAndNotifcationTab";
+import EditHomepage from "./Component/AdminDashboard/EditHomepage";
+import AdminAnalytical from "./Component/AdminDashboard/AdminAnalytical";
+import GuestsListings from "./Component/AdminDashboard/GuestsListings";
+import HostsListings from "./Component/AdminDashboard/HostsListings";
 
 function App() {
   return (
@@ -56,8 +60,12 @@ function App() {
         <Route path="/HostAnalysis" element={<HostAnalysis />} />
         <Route path="/Schduler" element={<Schduler />} />
         <Route path="/ChatAndNotifcationTab" element={<ChatAndNotifcationTab />} />
+        <Route path="/EditHomepage" element={<EditHomepage />} />
+        <Route path="/AdminAnalytical" element={<AdminAnalytical />} />
 
+        <Route path="/GuestsListings" element={<GuestsListings />} />
 
+        <Route path="/HostsListings" element={<HostsListings />} />
 
 
 
