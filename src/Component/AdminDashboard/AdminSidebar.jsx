@@ -52,6 +52,9 @@ export default function AdminSidebar() {
             </li>
           </ul>
         </li>
+        <Link to="/UserVerificationPage">
+          <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">User Verification Page</li>
+        </Link>
         <Link to="/">
           <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">Profile</li>
         </Link>
