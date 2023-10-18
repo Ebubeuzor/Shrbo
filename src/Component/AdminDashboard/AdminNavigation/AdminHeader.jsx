@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import bellIcon from "../../../assets/svg/bell-icon.svg";
+import HamburgerMenu from "./HamburgerMenu";
+import HamburgerMenuComponent from "./HamburgerMenu";
 
 export default function AdminHeader() {
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
@@ -13,6 +15,12 @@ export default function AdminHeader() {
     setIsProfileOpen(!isProfileOpen);
   };
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen); // Toggle the isOpen state when the hamburger icon is clicked
+  };
+
   const [notifications, setNotifications] = useState([
     { id: 1, message: "Notification 1" },
     { id: 2, message: "Notification 2" },
@@ -21,7 +29,11 @@ export default function AdminHeader() {
   return (
     <div>
       <nav className="bg-gray-700 text-white p-4">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center ">
+          <div className="mr-10 md:hidden">
+          <HamburgerMenuComponent isOpen={isOpen} toggleMenu={toggleMenu} />
+
+          </div>
           <h1 className="text-2xl">Admin Dashboard</h1>
           <div className="flex items-center">
             <div className="mr-4 relative">
