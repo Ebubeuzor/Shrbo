@@ -3,17 +3,17 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Views/Home";
 import ListingInfoMain from "./Views/ListingInfoMain";
 import Settings from "./Views/Settings";
-import Profile from "./Component/Settings/Profile"
-import Payments from "./Component/Settings/Payments"
-import Security from "./Component/Settings/Security"
+import Profile from "./Component/Settings/Profile";
+import Payments from "./Component/Settings/Payments";
+import Security from "./Component/Settings/Security";
 import Chat from "./Component/Chat/Chat";
 import AccountNotifications from "./Component/Settings/ProfileCardSettings/AccountNotifications";
 import "./App.css";
 import RequestBook from "./Views/RequestBook";
-import AddGovvernmentId from "./Component/Settings/ProfileCardSettings/AddGovernmentId"
-import Trip from "./Component/TripHistory/Trip"
-import WishList from "./Views/WishList"
-import WishlistsSet from "./Component/WishList/WishlistsSet" ;
+import AddGovvernmentId from "./Component/Settings/ProfileCardSettings/AddGovernmentId";
+import Trip from "./Component/TripHistory/Trip";
+import WishList from "./Views/WishList";
+import WishlistsSet from "./Component/WishList/WishlistsSet";
 import ManageListings from "./Component/Dashboard/ManageListings";
 import UsersShow from "./Component/Dashboard/UsersShow";
 import HostHomes from "./Component/Unboarding/HostHomes";
@@ -32,6 +32,7 @@ import GuestsListings from "./Component/AdminDashboard/GuestsListings";
 import HostsListings from "./Component/AdminDashboard/HostsListings";
 import PropertyList from "./Component/AdminDashboard/PropertyList";
 import ApartmentListingApproval from "./Component/AdminDashboard/ApartmentListingApproval";
+import CurrentBookingsList from "./Component/AdminDashboard/CurrentBookingList";
 
 function App() {
   return (
@@ -40,13 +41,16 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ListingInfoMain" element={<ListingInfoMain />} />
-        <Route path="/RequestBook" element={<RequestBook/>} />
+        <Route path="/RequestBook" element={<RequestBook />} />
         <Route path="/Settings" element={<Settings />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Payments" element={<Payments />} />
         <Route path="/Security" element={<Security />} />
         <Route path="/AddGovvernmentId" element={<AddGovvernmentId />} />
-        <Route path="/AccountNotifications" element={<AccountNotifications />} />
+        <Route
+          path="/AccountNotifications"
+          element={<AccountNotifications />}
+        />
         <Route path="/Chat" element={<Chat />} />
         <Route path="/Trip" element={<Trip />} />
         <Route path="/WishList" element={<WishList />} />
@@ -61,7 +65,10 @@ function App() {
         <Route path="/Reservations" element={<Reservations />} />
         <Route path="/HostAnalysis" element={<HostAnalysis />} />
         <Route path="/Schduler" element={<Schduler />} />
-        <Route path="/ChatAndNotifcationTab" element={<ChatAndNotifcationTab />} />
+        <Route
+          path="/ChatAndNotifcationTab"
+          element={<ChatAndNotifcationTab />}
+        />
         <Route path="/EditHomepage" element={<EditHomepage />} />
         <Route path="/AdminAnalytical" element={<AdminAnalytical />} />
 
@@ -69,13 +76,11 @@ function App() {
 
         <Route path="/HostsListings" element={<HostsListings />} />
         <Route path="/PropertyList" element={<PropertyList />} />
-        <Route path="/ApartmentListingApproval" element={<ApartmentListingApproval />} />
-
-
-
-        
-
-
+        <Route
+          path="/ApartmentListingApproval"
+          element={<ApartmentListingApproval />}
+        />
+        <Route path="/CurrentBookingsList" element={<CurrentBookingsList />} />
       </Routes>
     </Router>
   );

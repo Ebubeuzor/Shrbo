@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AdminHeader from './AdminNavigation/AdminHeader';
 import AdminSidebar from './AdminSidebar';
+import { Table, Input, Select, Modal } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
+
+const { confirm } = Modal;
 
 export default function HostsListings() {
   const [hosts, setHosts] = useState([
@@ -34,17 +38,82 @@ export default function HostsListings() {
 
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleFilterChange = (event) => {
-    const { name, value } = event.target;
+  const handleFilterChange = (value) => {
     setFilters({
-      ...filters,
-      [name]: value,
+      verified: value,
     });
   };
 
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
+
+  const handleDeleteHost = (hostId) => {
+    confirm({
+      title: 'Do you want to delete this host?',
+      icon: <ExclamationCircleOutlined />,
+      onOk() {
+        const updatedHosts = hosts.filter((host) => host.id !== hostId);
+        setHosts(updatedHosts);
+      },
+    });
+  };
+
+  const columns = [
+    {
+      title: 'Image',
+      dataIndex: 'image',
+      key: 'image',
+      render: (image) => (
+        <img
+          src={image}
+          alt="Host"
+          style={{ width: '30px', height: '30px', borderRadius: '50%' }}
+        />
+      ),
+    },
+    {
+      title: 'First Name',
+      dataIndex: 'firstName',
+      key: 'firstName',
+    },
+    {
+      title: 'Last Name',
+      dataIndex: 'lastName',
+      key: 'lastName',
+    },
+    {
+      title: 'Email',
+      dataIndex: 'email',
+      key: 'email',
+    },
+    {
+      title: 'Verified',
+      dataIndex: 'verified',
+      key: 'verified',
+      render: (verified) => (verified ? 'Yes' : 'No'),
+    },
+    {
+      title: 'Date Created',
+      dataIndex: 'dateCreated',
+      key: 'dateCreated',
+    },
+    {
+      title: 'Last Login',
+      dataIndex: 'lastLogin',
+      key: 'lastLogin',
+    },
+    {
+      title: 'Actions',
+      key: 'actions',
+      render: (text, record) => (
+        <div>
+          <Link to={`/hosts/edit/${record.id}`}>Edit</Link>
+          <span onClick={() => handleDeleteHost(record.id)}>Delete</span>
+        </div>
+      ),
+    },
+  ];
 
   const filteredHosts = hosts.filter((host) => {
     const { verified } = filters;
@@ -72,7 +141,7 @@ export default function HostsListings() {
           <h1 className="text-2xl font-semibold mb-4">Host Listings</h1>
           <div className="bg-white p-4 rounded shadow">
             <div className="mb-4 flex justify-end">
-              <input
+              <Input
                 type="text"
                 name="searchQuery"
                 value={searchQuery}
@@ -80,57 +149,17 @@ export default function HostsListings() {
                 placeholder="Search by name or email"
                 className="border p-1 rounded-full mr-2"
               />
-              <select
-                name="verified"
+              <Select
+                style={{ width: 120 }}
                 value={filters.verified}
                 onChange={handleFilterChange}
-                className="border p-1 rounded-full"
               >
-                <option value="Any">Verified</option>
-                <option value="Any">Any</option>
-                <option value="Yes">Verified</option>
-                <option value="No">Not Verified</option>
-              </select>
+                <Select.Option value="Any">Verified</Select.Option>
+                <Select.Option value="Yes">Verified</Select.Option>
+                <Select.Option value="No">Not Verified</Select.Option>
+              </Select>
             </div>
-            <div className='overflow-x-auto'>
-              <table className="w-full text-center">
-                <thead className="bg-orange-400 text-white">
-                  <tr>
-                    <th>Image</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Verified</th>
-                    <th>Date Created</th>
-                    <th>Last Login</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredHosts.map((host) => (
-                    <tr key={host.id}>
-                      <td>
-                        <img
-                          src={host.image}
-                          alt={`${host.firstName} ${host.lastName}`}
-                          className="w-10 h-10 rounded-full"
-                        />
-                      </td>
-                      <td>{host.firstName}</td>
-                      <td>{host.lastName}</td>
-                      <td>{host.email}</td>
-                      <td>{host.verified ? 'Yes' : 'No'}</td>
-                      <td>{host.dateCreated}</td>
-                      <td>{host.lastLogin}</td>
-                      <td className='space-x-2'>
-                        <Link to={`/hosts/edit/${host.id}`}>Edit</Link>
-                        <button onClick={() => handleDeleteHost(host.id)}>Delete</button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <Table columns={columns} dataSource={filteredHosts} />
           </div>
         </div>
       </div>

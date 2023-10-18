@@ -3,6 +3,7 @@ import AdminHeader from './AdminNavigation/AdminHeader';
 import AdminSidebar from './AdminSidebar';
 import { Table, Button, Input, Modal } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 const { confirm } = Modal;
 
@@ -11,10 +12,13 @@ export default function ApartmentListingApproval() {
   const [declineModalVisible, setDeclineModalVisible] = useState(false);
   const [selectedApartmentId, setSelectedApartmentId] = useState(null);
   const [declineReason, setDeclineReason] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Sample data for demonstration purposes
   const sampleApartments = [
     {
+      key: 1, // Add a unique key for each apartment
+
       id: 1,
       propertyName: 'Cozy Retreat',
       propertyID: 'ABC123',
@@ -25,6 +29,8 @@ export default function ApartmentListingApproval() {
       userVerified: true,
     },
     {
+      key: 2, // Add a unique key for each apartment
+
       id: 2,
       propertyName: 'Beachfront Villa',
       propertyID: 'XYZ456',
@@ -62,6 +68,15 @@ export default function ApartmentListingApproval() {
     // You can use the selectedApartmentId and declineReason
     hideDeclineModal();
   };
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredApartments = apartments.filter((apartment) => {
+    // Filter apartments based on property name
+    return apartment.propertyName.toLowerCase().includes(searchQuery.toLowerCase());
+  });
 
   const columns = [
     {
@@ -110,7 +125,10 @@ export default function ApartmentListingApproval() {
           <Button type="danger" onClick={() => showDeclineModal(record.id)}>
             Decline
           </Button>
+          <Link to="/">
           <Button type="default">View Details</Button>
+
+          </Link>
         </div>
       ),
     },
@@ -127,13 +145,19 @@ export default function ApartmentListingApproval() {
         <div className="w-4/5 p-4 h-[100vh]">
           <h1 className="text-2xl font-semibold mb-4">Approve Listings</h1>
           <div className="bg-white p-4 rounded shadow">
-            <Table columns={columns} dataSource={apartments} />
+            <Input
+              placeholder="Search by Property Name"
+              value={searchQuery}
+              onChange={handleSearch}
+              style={{ width: 200, marginBottom: '1rem' }}
+            />
+            <Table columns={columns} dataSource={filteredApartments} />
           </div>
         </div>
       </div>
       <Modal
         title="Provide a reason for declining"
-        visible={declineModalVisible}
+        open={declineModalVisible}
         onOk={handleDecline}
         onCancel={hideDeclineModal}
         okText="Submit"
