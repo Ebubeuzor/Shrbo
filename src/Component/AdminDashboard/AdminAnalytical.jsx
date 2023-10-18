@@ -55,7 +55,7 @@ export default function AdminAnalytical() {
 
             <div className="bg-gray-200 p-4 rounded shadow">
               <h2 className="text-xl font-semibold">Today's Summary</h2>
-              <div className="flex flex-wrap justify-between mt-4 gap-4">
+              <div className="flex flex-col md:flex-row flex-wrap justify-between mt-4 gap-4">
                 {/* Card for Guests Today */}
                 <div className="bg-white rounded p-4 shadow flex-1 mr-4">
                   <p className="text-xl font-semibold">Guests Today</p>
