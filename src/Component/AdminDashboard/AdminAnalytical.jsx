@@ -1,38 +1,30 @@
-import React, { useState } from 'react';
-import AdminHeader from './AdminNavigation/AdminHeader';
-import AdminSidebar from './AdminSidebar';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import AdminHeader from "./AdminNavigation/AdminHeader";
+import AdminSidebar from "./AdminSidebar";
+import { Link } from "react-router-dom";
 import { Select, Card, Row, Col, Table } from 'antd';
 
-const { Option } = Select;
 
 export default function AdminAnalytical() {
   const data = [
     {
-      propertyName: 'Property 1',
-      guestName: 'Guest A',
+      propertyName: "Property 1",
+      guestName: "Guest A",
       total: 100,
-      startDate: '2023-10-01',
-      endDate: '2023-10-05',
-      status: 'Booked',
+      startDate: "2023-10-01",
+      endDate: "2023-10-05",
+      status: "Booked",
     },
     {
-      propertyName: 'Property 2',
-      guestName: 'Guest B',
+      propertyName: "Property 2",
+      guestName: "Guest B",
       total: 150,
-      startDate: '2023-10-06',
-      endDate: '2023-10-10',
-      status: 'Confirmed',
+      startDate: "2023-10-06",
+      endDate: "2023-10-10",
+      status: "Confirmed",
     },
     // Add more data objects as needed
   ];
-
-  const [filter, setFilter] = useState('today');
-
-  const handleChange = (value) => {
-    setFilter(value);
-  };
-
   return (
     <div className="bg-gray-100 h-[100vh]">
       <AdminHeader />
@@ -45,97 +37,89 @@ export default function AdminAnalytical() {
           <h1 className="text-2xl font-semibold mb-4">Dashboard</h1>
           <div className="bg-white p-4 rounded shadow">
             <div className="mb-4">
-              <label htmlFor="filter" className="mr-4">
+              <label htmlFor="" className="mr-4">
                 Filter by:
               </label>
-              <Select
-                id="filter"
-                value={filter}
-                style={{ width: 120 }}
-                onChange={handleChange}
+              <select
+                name=""
+                className="border border-gray-300 rounded p-2"
+                id=""
               >
-                <Option value="today">Today</Option>
-                <Option value="week">Week</Option>
-                <Option value="month">Month</Option>
-                <Option value="year">Year</Option>
-              </Select>
+                <option value="today">Today</option>
+
+                <option value="week">Week</option>
+                <option value="month">Month</option>
+                <option value="year">Year</option>
+              </select>
             </div>
 
-            <Row gutter={16}>
-              <Col span={8}>
-                <Card>
+            <div className="bg-gray-200 p-4 rounded shadow">
+              <h2 className="text-xl font-semibold">Today's Summary</h2>
+              <div className="flex flex-wrap justify-between mt-4">
+                {/* Card for Guests Today */}
+                <div className="bg-white rounded p-4 shadow flex-1 mr-4">
                   <p className="text-xl font-semibold">Guests Today</p>
                   <p className="text-4xl font-bold text-orange-400">0</p>
-                </Card>
-              </Col>
-              <Col span={8}>
-                <Card>
+                </div>
+
+                {/* Card for Hosts Today */}
+                <div className="bg-white rounded p-4 shadow flex-1 mr-4">
                   <p className="text-xl font-semibold">Hosts Today</p>
                   <p className="text-4xl font-bold text-orange-400">0</p>
-                </Card>
-              </Col>
-              <Col span={8}>
-                <Card>
+                </div>
+                <div className="bg-white rounded p-4 shadow flex-1 mr-4">
                   <p className="text-xl font-semibold">Active Guests</p>
                   <p className="text-4xl font-bold text-orange-400">0</p>
-                </Card>
-              </Col>
-            </Row>
-            <Row gutter={16}>
-              <Col span={8}>
-                <Card>
+                </div>
+                <div className="bg-white rounded p-4 shadow flex-1 mr-4">
                   <p className="text-xl font-semibold">Active Hosts</p>
                   <p className="text-4xl font-bold text-orange-400">0</p>
-                </Card>
-              </Col>
-              <Col span={8}>
-                <Card>
-                  <p className="text-xl font-semibold">Total Property Listings</p>
+                </div>
+                <div className="bg-white rounded p-4 shadow flex-1 mr-4">
+                  <p className="text-xl font-semibold">
+                    Total Property Listings
+                  </p>
                   <p className="text-4xl font-bold text-orange-400">0</p>
-                </Card>
-              </Col>
-              <Col span={8}>
-                <Card>
+                </div>
+                <div className="bg-white rounded p-4 shadow flex-1 mr-4">
                   <p className="text-xl font-semibold">Payments</p>
                   <p className="text-4xl font-bold text-orange-400">0</p>
-                </Card>
-              </Col>
-            </Row>
-          </div>
-
-          <div className="bg-gray-200 p-4 rounded shadow mt-4">
-            <h2 className="text-xl font-semibold">Today's Summary</h2>
-            <Row gutter={16}>
-              <Col span={8}>
-                <Card>
-                  <p className="text-xl font-semibold">Members</p>
-                  <p className="text-4xl font-bold text-orange-400">0</p>
-                </Card>
-              </Col>
-              <Col span={8}>
-                <Card>
-                  <p className="text-xl font-semibold">Listings</p>
-                  <p className="text-4xl font-bold text-orange-400">0</p>
-                </Card>
-              </Col>
-              <Col span={8}>
-                <Card>
-                  <p className="text-xl font-semibold">Payments</p>
-                  <p className="text-4xl font-bold text-orange-400">0</p>
-                </Card>
-              </Col>
-            </Row>
-          </div>
-
-          <div className="bg-gray-200 rounded shadow mt-4">
-            <div className="flex justify-between p-4 bg-orange-400 text-white uppercase mb-4">
-              <div className="font-bold">Current vacation rental bookings</div>
-              <div>
-                <Link to="/CurrentBookingsList">View All</Link>
+                </div>
               </div>
             </div>
 
-            <div className="overflow-x-auto">
+            <div className="bg-gray-200 p-4 rounded shadow">
+              <h2 className="text-xl font-semibold">Today's Summary</h2>
+              <div className="flex flex-wrap justify-between mt-4">
+                {/* Card for Guests Today */}
+                <div className="bg-white rounded p-4 shadow flex-1 mr-4">
+                  <p className="text-xl font-semibold">Members</p>
+                  <p className="text-4xl font-bold text-orange-400">0</p>
+                </div>
+
+                <div className="bg-white rounded p-4 shadow flex-1 mr-4">
+                  <p className="text-xl font-semibold">Listings</p>
+                  <p className="text-4xl font-bold text-orange-400">0</p>
+                </div>
+                <div className="bg-white rounded p-4 shadow flex-1 mr-4">
+                  <p className="text-xl font-semibold">Payments</p>
+                  <p className="text-4xl font-bold text-orange-400">0</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gray-200 rounded shadow mt-4">
+              <div className="flex justify-between p-4 bg-orange-400 text-white uppercase mb-4">
+                <div className="font-bold">
+                  Current vacation rental bookings
+                </div>
+                <div>
+                  <Link to="/CurrentBookingsList">View All</Link>
+                </div>
+              </div>
+
+          
+              <div className="overflow-x-auto">
               <Table
                 dataSource={data}
                 columns={[
@@ -177,6 +161,7 @@ export default function AdminAnalytical() {
                   },
                 ]}
               />
+            </div>
             </div>
           </div>
         </div>

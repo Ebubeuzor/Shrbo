@@ -33,6 +33,7 @@ import HostsListings from "./Component/AdminDashboard/HostsListings";
 import PropertyList from "./Component/AdminDashboard/PropertyList";
 import ApartmentListingApproval from "./Component/AdminDashboard/ApartmentListingApproval";
 import CurrentBookingsList from "./Component/AdminDashboard/CurrentBookingList";
+import UserVerificationPage from "./Component/AdminDashboard/UserVerificationPage";
 
 function App() {
   return (
@@ -81,6 +82,8 @@ function App() {
           element={<ApartmentListingApproval />}
         />
         <Route path="/CurrentBookingsList" element={<CurrentBookingsList />} />
+        <Route path="/UserVerificationPage" element={<UserVerificationPage />} />
+
       </Routes>
     </Router>
   );
