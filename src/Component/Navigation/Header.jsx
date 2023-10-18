@@ -83,6 +83,9 @@ export default function Header() {
           <Link to="/Hosting" className="text-white hover:text-gray-300 ml-4">
             Switch to Host
           </Link>
+          <Link to="/AdminAnalytical" className="text-white hover:text-gray-300 ml-4">
+           Dashboard
+          </Link>
           <div
             id="profile-dropdown"
             className={`relative ${isProfileDropdownOpen ? "group" : ""}`}
