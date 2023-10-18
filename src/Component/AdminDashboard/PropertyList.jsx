@@ -126,7 +126,7 @@ export default function PropertyList() {
           <AdminSidebar />
         </div>
 
-        <div className="md:w-4/5  w-full p-4 h-[100vh]">
+        <div className="w-full md:w-4/5 p-4 h-[100vh] overflow-auto example">
           <h1 className="text-2xl font-semibold mb-4">Property Listings</h1>
           <div className="bg-white p-4 rounded shadow">
             <Input

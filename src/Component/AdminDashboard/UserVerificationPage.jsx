@@ -105,7 +105,7 @@ export default function UserVerificationPage() {
         <div className="hidden md:block p-4 bg-orange-400 text-white w-1/5 h-[100vh]">
           <AdminSidebar />
         </div>
-        <div className="md:w-4/5 w-full p-4 h-[100vh]">
+        <div className="w-full md:w-4/5 p-4 h-[100vh] overflow-auto example">
           <h1 className="text-2xl font-semibold mb-4">User ID Verification</h1>
 
           <div className="bg-white p-4 shadow">
