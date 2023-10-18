@@ -58,13 +58,13 @@ export default function AdminAnalytical() {
               <div className="flex flex-col md:flex-row flex-wrap justify-between mt-4 gap-4">
                 {/* Card for Guests Today */}
                 <div className="bg-white rounded p-4 shadow flex-1 mr-4">
-                  <p className="text-xl font-semibold">Guests Today</p>
+                  <p className="text-xl font-semibold">Reg No of Guests </p>
                   <p className="text-4xl font-bold text-orange-400">0</p>
                 </div>
 
                 {/* Card for Hosts Today */}
                 <div className="bg-white rounded p-4 shadow flex-1 mr-4">
-                  <p className="text-xl font-semibold">Hosts Today</p>
+                  <p className="text-xl font-semibold">Reg No of Hosts </p>
                   <p className="text-4xl font-bold text-orange-400">0</p>
                 </div>
                 <div className="bg-white rounded p-4 shadow flex-1 mr-4">
@@ -77,12 +77,16 @@ export default function AdminAnalytical() {
                 </div>
                 <div className="bg-white rounded p-4 shadow flex-1 mr-4">
                   <p className="text-xl font-semibold">
-                    Total Property Listings
+                     Property Listings
                   </p>
                   <p className="text-4xl font-bold text-orange-400">0</p>
                 </div>
                 <div className="bg-white rounded p-4 shadow flex-1 mr-4">
-                  <p className="text-xl font-semibold">Payments</p>
+                  <p className="text-xl font-semibold">Revenue</p>
+                  <p className="text-4xl font-bold text-orange-400">0</p>
+                </div>
+                <div className="bg-white rounded p-4 shadow flex-1 mr-4">
+                  <p className="text-xl font-semibold">Visitors</p>
                   <p className="text-4xl font-bold text-orange-400">0</p>
                 </div>
               </div>
@@ -98,11 +102,31 @@ export default function AdminAnalytical() {
                 </div>
 
                 <div className="bg-white rounded p-4 shadow flex-1 mr-4">
-                  <p className="text-xl font-semibold">Listings</p>
+                  <p className="text-xl font-semibold">Pending Verified Users</p>
                   <p className="text-4xl font-bold text-orange-400">0</p>
                 </div>
                 <div className="bg-white rounded p-4 shadow flex-1 mr-4">
-                  <p className="text-xl font-semibold">Payments</p>
+                  <p className="text-xl font-semibold">Pending Approvals</p>
+                  <p className="text-4xl font-bold text-orange-400">0</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gray-200 p-4 rounded shadow">
+              <h2 className="text-xl font-semibold"> Summary of Apartments</h2>
+              <div className="flex flex-wrap justify-between mt-4 gap-3">
+                {/* Card for Guests Today */}
+                <div className="bg-white rounded p-4 shadow flex-1 mr-4">
+                  <p className="text-xl font-semibold">Booking Requests</p>
+                  <p className="text-4xl font-bold text-orange-400">0</p>
+                </div>
+
+                <div className="bg-white rounded p-4 shadow flex-1 mr-4">
+                  <p className="text-xl font-semibold">Reservations</p>
+                  <p className="text-4xl font-bold text-orange-400">0</p>
+                </div>
+                <div className="bg-white rounded p-4 shadow flex-1 mr-4">
+                  <p className="text-xl font-semibold">Confirmed Bookings</p>
                   <p className="text-4xl font-bold text-orange-400">0</p>
                 </div>
               </div>

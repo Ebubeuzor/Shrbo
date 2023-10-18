@@ -38,6 +38,8 @@ const AdminRolesPage = () => {
       render: (text, record) => (
         <Space size="middle">
           <Button onClick={() => showRoleModal(record)}>Change Role</Button>
+          <Button>Delete</Button>
+
         </Space>
       ),
     },
