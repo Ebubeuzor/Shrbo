@@ -122,11 +122,11 @@ export default function PropertyList() {
     <div className="bg-gray-100 h-[100vh]">
       <AdminHeader />
       <div className="flex">
-        <div className="bg-orange-400 text-white w-1/5 h-[100vh] p-4">
+        <div className="hidden md:block bg-orange-400 text-white w-1/5 h-[100vh] p-4">
           <AdminSidebar />
         </div>
 
-        <div className="w-4/5 p-4 h-[100vh]">
+        <div className="md:w-4/5  w-full p-4 h-[100vh]">
           <h1 className="text-2xl font-semibold mb-4">Property Listings</h1>
           <div className="bg-white p-4 rounded shadow">
             <Input
@@ -135,7 +135,10 @@ export default function PropertyList() {
               onChange={handleSearch}
               style={{ width: 200, marginBottom: '1rem' }}
             />
+            <div className='overflow-x-auto'>
             <Table columns={columns} dataSource={filteredProperties} />
+
+            </div>
           </div>
         </div>
       </div>

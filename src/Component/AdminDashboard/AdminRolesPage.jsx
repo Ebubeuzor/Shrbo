@@ -84,17 +84,20 @@ const AdminRolesPage = () => {
     <div className='bg-gray-100 h-[100vh]'>
       <AdminHeader />
       <div className="flex">
-        <div className="bg-orange-400 text-white w-1/5 h-[100vh] p-4">
+        <div className="bg-orange-400  text-white hidden md:block md:w-1/5 h-[100vh] p-4">
           <AdminSidebar />
         </div>
-        <div className="w-4/5 p-4 h-[100vh]">
+        <div className="md:w-4/5 w-full p-4 h-[100vh]">
           <h1>Admin Roles</h1>
         <div className='mb-4'>
         <Button type="primary" onClick={() => setNewAdminModalVisible(true)}>
             Create New Admin
           </Button>
         </div>
-          <Table columns={columns} dataSource={admins} />
+        <div className='overflow-x-auto'>
+        <Table columns={columns} dataSource={admins} />
+
+        </div>
           <Modal
             title="Change Admin Role"
             open={roleModalVisible}

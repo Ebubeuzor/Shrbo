@@ -29,11 +29,11 @@ export default function AdminAnalytical() {
     <div className="bg-gray-100 h-[100vh]">
       <AdminHeader />
       <div className="flex">
-        <div className="bg-orange-400 text-white w-1/5 h-[100vh] p-4">
+        <div className="bg-orange-400 hidden md:block text-white md:w-1/5 h-[100vh] p-4">
           <AdminSidebar />
         </div>
 
-        <div className="w-4/5 p-4 h-[100vh]">
+        <div className="w-full md:w-4/5 p-4 h-[100vh]">
           <h1 className="text-2xl font-semibold mb-4">Dashboard</h1>
           <div className="bg-white p-4 rounded shadow">
             <div className="mb-4">
@@ -55,7 +55,7 @@ export default function AdminAnalytical() {
 
             <div className="bg-gray-200 p-4 rounded shadow">
               <h2 className="text-xl font-semibold">Today's Summary</h2>
-              <div className="flex flex-wrap justify-between mt-4">
+              <div className="flex flex-wrap justify-between mt-4 gap-4">
                 {/* Card for Guests Today */}
                 <div className="bg-white rounded p-4 shadow flex-1 mr-4">
                   <p className="text-xl font-semibold">Guests Today</p>
@@ -90,7 +90,7 @@ export default function AdminAnalytical() {
 
             <div className="bg-gray-200 p-4 rounded shadow">
               <h2 className="text-xl font-semibold">Today's Summary</h2>
-              <div className="flex flex-wrap justify-between mt-4">
+              <div className="flex flex-wrap justify-between mt-4 gap-3">
                 {/* Card for Guests Today */}
                 <div className="bg-white rounded p-4 shadow flex-1 mr-4">
                   <p className="text-xl font-semibold">Members</p>
