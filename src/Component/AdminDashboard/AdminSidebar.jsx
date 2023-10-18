@@ -58,6 +58,13 @@ export default function AdminSidebar() {
         <Link to="/AdminRolesPage">
           <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">Admin Roles</li>
         </Link>
+        <Link to="/AdminSupportPage">
+          <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">Admin Support Page</li>
+        </Link>
+        <Link to="/AnnouncementPage">
+          <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">Announcement Page</li>
+        </Link>
+        
         <Link to="/">
           <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">Profile</li>
         </Link>

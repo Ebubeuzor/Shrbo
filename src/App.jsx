@@ -35,6 +35,8 @@ import ApartmentListingApproval from "./Component/AdminDashboard/ApartmentListin
 import CurrentBookingsList from "./Component/AdminDashboard/CurrentBookingList";
 import UserVerificationPage from "./Component/AdminDashboard/UserVerificationPage";
 import AdminRolesPage from "./Component/AdminDashboard/AdminRolesPage";
+import AdminSupportPage from "./Component/AdminDashboard/AdminSupportPage";
+import AnnouncementPage from "./Component/AdminDashboard/AnnouncementPage";
 
 function App() {
   return (
@@ -85,6 +87,8 @@ function App() {
         <Route path="/CurrentBookingsList" element={<CurrentBookingsList />} />
         <Route path="/UserVerificationPage" element={<UserVerificationPage />} />
         <Route path="/AdminRolesPage" element={<AdminRolesPage />} />
+        <Route path="/AdminSupportPage" element={<AdminSupportPage />} />
+        <Route path="/AnnouncementPage" element={<AnnouncementPage />} />
 
       </Routes>
     </Router>
