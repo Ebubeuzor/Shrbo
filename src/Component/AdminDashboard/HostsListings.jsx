@@ -14,6 +14,7 @@ export default function HostsListings() {
       firstName: "Alice",
       lastName: "Johnson",
       email: "alice@example.com",
+      housesHosted:2,
       image: "https://example.com/alice.jpg",
       verified: true,
       dateCreated: "2023-10-01",
@@ -24,6 +25,8 @@ export default function HostsListings() {
       firstName: "Bob",
       lastName: "Smith",
       email: "bob@example.com",
+      housesHosted:4,
+
       image: "https://example.com/bob.jpg",
       verified: false,
       dateCreated: "2023-09-15",
@@ -86,6 +89,11 @@ export default function HostsListings() {
       title: "Email",
       dataIndex: "email",
       key: "email",
+    },
+    {
+      title: "Houses Hosted",
+      dataIndex: "housesHosted",
+      key: "housesHosted",
     },
     {
       title: "Verified",
