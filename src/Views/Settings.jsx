@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Card from "../Component/Card";
 import { Link } from "react-router-dom";
 import ProfileIcon from "../assets/svg/id-card-line-icon.svg";
@@ -10,12 +10,9 @@ import Header from "../Component/Navigation/Header";
 import BottomNavigation from "../Component/Navigation/BottomNavigation";
 import HostModal from "../Component/Dashboard/HostModal";
 
-
-
 export default function Settings() {
   const [isHostModalOpen, setHostModalOpen] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,18 +37,23 @@ export default function Settings() {
   }, []);
   return (
     <div>
-      <Header/>
+      <Header />
 
       <div className="pb-32">
-      {isHostModalOpen && <HostModal isOpen={true} onClose={() => setHostModalOpen(false)} />}
+        {isHostModalOpen && (
+          <HostModal isOpen={true} onClose={() => setHostModalOpen(false)} />
+        )}
 
         <div className="max-w-2xl md:mx-auto mx-9">
           <div className="my-14">
             <h1 className="text-4xl font-medium">Account</h1>
             <div className="text-base">
               <span className="font-medium">Username,</span>
-              <span>username@gmail.com</span><br />
-              <Link to="/UsersShow" className="underline ">Go to profile</Link>
+              <span>username@gmail.com</span>
+              <br />
+              <Link to="/UsersShow" className="underline ">
+                Go to profile
+              </Link>
             </div>
           </div>
           <div className="grid md:grid-cols-2 gap-4 mb-10">
@@ -77,11 +79,11 @@ export default function Settings() {
               />
             </Link>
             <Link to="/AccountNotifications">
-            <Card
-              icon={BellIcon}
-              title="Notifications "
-              text="Provide personal details and how we can reach you"
-            />
+              <Card
+                icon={BellIcon}
+                title="Notifications "
+                text="Provide personal details and how we can reach you"
+              />
             </Link>
             <Card
               icon="hello"
@@ -96,8 +98,8 @@ export default function Settings() {
           </div>
         </div>
       </div>
-<BottomNavigation/>
-      <Footer/>
+      <BottomNavigation />
+      <Footer />
     </div>
   );
 }
