@@ -32,7 +32,7 @@ const sampleBookingDetails = {
     hostContact: "host@example.com",
     hostReviews: "4.7 out of 5 stars",
     propertyId: "ABC123",
-
+    guestComment:"lorem inpsum",
     hostCommunicationOptions: "Email, Phone, Chat",
     bookingSummary: "Summary of booking details...",
   };
@@ -68,6 +68,8 @@ const sampleBookingDetails = {
     hostCommunicationOptions: "Email, Phone, Chat",
     bookingSummary: "Summary of booking details...",
     propertyId: "XYZ789",
+    guestComment:"lorem inpsum",
+
   };
 
 const data = [
@@ -203,7 +205,7 @@ const CompletedBooking = () => {
     <p>Property Name:{selectedBooking.bookingDetails.propertyName}</p>
     <p>Property Type:{selectedBooking.bookingDetails.propertyType}</p>
     <p>Check-In Date:{selectedBooking.bookingDetails.checkInDate}</p>
-    <p>Check-Out Date:{selectedBooking.bookingDetails.checkOutDate}</p>
+    <p>CheckedOut Date:{selectedBooking.bookingDetails.checkOutDate}</p>
     <p>Rooms and Beds:{selectedBooking.bookingDetails.roomsBedsRequired}</p>
     <p>Amenities:{selectedBooking.bookingDetails.amenities}</p>
     <p>Confirmation Number:{selectedBooking.bookingDetails.confirmationNumber}</p>
@@ -219,6 +221,7 @@ const CompletedBooking = () => {
 
     <h2 className="text-xl font-semibold mt-4 mb-2">Guest Reviews and Ratings:</h2>
     <p><strong>Review and Rating:</strong> {selectedBooking.bookingDetails.reviewAndRating}</p>
+    <p><strong>Guest Comment:</strong> {selectedBooking.bookingDetails.guestComment}</p>
 
  </div>
 )}
