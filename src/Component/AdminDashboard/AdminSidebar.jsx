@@ -28,7 +28,7 @@ export default function AdminSidebar() {
     <div className="bg-orange-800 text-white p-4">
       <ul>
         <Link to="/AdminAnalytical">
-          <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
+          <li className="p-2 hover:bg-orange-400 cursor-pointer w-full ">
             Dashboard
           </li>
         </Link>
