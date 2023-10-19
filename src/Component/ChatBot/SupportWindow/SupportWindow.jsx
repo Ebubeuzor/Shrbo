@@ -38,6 +38,7 @@ const SupportWindow = (props) => {
         <div className="transition-5 cursor-default z-[1000] bottom-0 bg-white overflow-hidden md:rounded-xl fixed h-full w-full md:w-[370px] md:h-[550px] md:bottom-3 md:right-6 md:max-h-[calc(100% - 48px)] md:max-w-[calc(100% - 48px)] " style={{
                         ...styles.supportWindow,
                         ...{display:props.visible ? 'block':'none',
+                            // opacity:props.visible ? '1':'0'
                         
                       }
         }}>

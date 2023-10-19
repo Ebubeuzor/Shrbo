@@ -13,7 +13,7 @@ const Map = () => {
   };
 
   return (
-    <LoadScript googleMapsApiKey={ import.meta.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
+    <LoadScript googleMapsApiKey={ import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_API_KEY}>
       <GoogleMap
         mapContainerStyle={mapStyles}
         zoom={10}

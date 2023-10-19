@@ -1,5 +1,6 @@
 import React,{useState, useEffect, useRef } from "react";
 import {styles} from '../Style';
+import messagesent from '../../../assets/message-sent.mp3'
 
 
 const formatDate = (date) => {
@@ -23,19 +24,51 @@ const ChatEngine= (props) => {
 
     const [startTime, setStartTime] = useState(null);
     const [messages, setMessages] = useState([]);
-  const [inputMessage, setInputMessage] = useState('');
-  const [imageInput, setImageInput] = useState(null);
+    const [inputMessage, setInputMessage] = useState('');
+    const [imageInput, setImageInput] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null);
+    const [isTyping, setIsTyping] = useState(false);
+
   const automateSlide=useRef();
 
-  // useEffect(()=>{
+  useEffect(() => {
+    let typingTimeout;
+
+    const handleTyping = () => {
+      setIsTyping(true);
+
+      clearTimeout(typingTimeout);
+
+      typingTimeout = setTimeout(() => {
+        setIsTyping(false);
+      }, 1000); // Adjust the timeout duration as needed
+    };
+
+    // const handleInputMessageChange = (e) => {
+    //   setInputMessage(e.target.value);
+
+    //   if (e.target.value.trim() === "") {
+    //     // Clear typing indicator immediately if input is empty
+    //     setIsTyping(false);
+    //     clearTimeout(typingTimeout.current);
+    //   } else {
+    //     handleTyping();
+    //   }
+    // };
 
 
-  //   automateSlide.current.scrollIntoView({behavior:'smooth'});
+    
+    // Simulate typing when a message is being typed
+    if (inputMessage.trim() !== "") {
+      handleTyping();
+    }
 
 
+    return () => {
+      clearTimeout(typingTimeout);
+    };
+  }, [inputMessage]);
 
-
-  // });
 
   useEffect(() => {
     // Set the start time when the component mounts
@@ -50,6 +83,8 @@ const ChatEngine= (props) => {
       return; // Don't send empty messages
     }
 
+    messageSentSound.play();
+
     const newMessage = {
       content: inputMessage,
       image: imageInput,
@@ -59,7 +94,8 @@ const ChatEngine= (props) => {
 
     setMessages([...messages, newMessage]);
     setInputMessage(''); // Clear the input field after sending
-    setImageInput('');
+    setImageInput(null);
+    setImagePreview(null);
     automateSlide.current.scrollIntoView({behavior:'smooth'});
 
   };
@@ -67,13 +103,29 @@ const ChatEngine= (props) => {
   const handleImageInputChange = (event) => {
     const file = event.target.files[0];
     setImageInput(URL.createObjectURL(file));
+    setImagePreview(URL.createObjectURL(file));
   };
 
 
-  let imagePreview = null;
-  if (imageInput) {
-    imagePreview = <div className="max-w-[200px] mb-2"><img src={imageInput} alt="Image Preview" className="max-w-full" /></div>;
-  }
+
+//   let typingTimeout = null;
+
+// const handleTypingStart = () => {
+//   if (typingTimeout) {
+//     clearTimeout(typingTimeout);
+//   }
+  
+//   setIsTyping(true);
+//   typingTimeout = setTimeout(() => {
+//     setIsTyping(false);
+//   }, 4000); // Adjust the delay as needed
+// };
+
+
+const messageSentSound = new Audio(messagesent);
+
+
+
 
 
 
@@ -83,7 +135,7 @@ const ChatEngine= (props) => {
                         ...{
                             height:props.visible ? '90%':'0%',
                             zIndex:props.visible ? '100' :' 0',
-                            display:props.visible ? 'block' :' none'
+                            opacity:props.visible? '1':'0'
                             
                             ,
                     }
@@ -109,6 +161,15 @@ const ChatEngine= (props) => {
           </div>
 
 
+          {isTyping && (
+    <div className="self-start bg-gray-300 p-2 rounded-lg max-w-[200px]">
+    <div className="animate-typing-indicator inline-block bg-blue-300 h-2 w-2 rounded-full mr-1"></div>
+    <div className="animate-typing-indicator inline-block bg-blue-300 h-2 w-2 rounded-full mr-1"></div>
+    <div className="animate-typing-indicator inline-block bg-blue-300 h-2 w-2 rounded-full"></div>
+  </div>
+    )}
+
+
 
 
 
@@ -125,7 +186,7 @@ const ChatEngine= (props) => {
           <div>
            
             <a href={message.image} download={`image_${index}.png`} className="text-blue-500 hover:underline block">
-            <img src={message.image} alt="Sent Image" className="max-w-full mb-2" />
+            <img src={message.image} alt="Sent Image" className="max-w-full md:max-h-[150px] mb-2" />
               Download Image
             </a>
         </div>
@@ -139,6 +200,10 @@ const ChatEngine= (props) => {
         <span ref={automateSlide} className=" mt-1 "></span>
       </div>
 
+
+
+
+
       {/* Input area for typing messages */}
       <div className="flex relative">
           <input
@@ -146,7 +211,12 @@ const ChatEngine= (props) => {
             placeholder="Type your message..."
             className="flex-grow rounded-l-lg p-2 border pr-7 "
             value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
+            // onKeyDown={handleTypingStart}
+            // onKeyUp={() => {
+            //   clearTimeout(typingTimeout);
+            //   setIsTyping(false);
+            // }}
+            onChange={(e) => {setInputMessage(e.target.value);  }  }
           />
           <input
             type="file"
@@ -166,9 +236,15 @@ const ChatEngine= (props) => {
             Send
           </button>
         </div>
-
-          
-        {imagePreview}
+ {imagePreview && (
+          <div className="max-w-[200px] max-h-[100px] mt-2">
+            <img
+              src={imagePreview}
+              alt="Image Preview"
+              className="max-w-full max-h-full rounded-lg"
+            />
+          </div>
+        )}
         </div>
         </div>
     )

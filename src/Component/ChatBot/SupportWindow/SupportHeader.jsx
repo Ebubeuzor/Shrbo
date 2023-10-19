@@ -8,7 +8,7 @@ const SupportHeader= (props) => {
     return (
      
           
-          <div className=" w-full bg-slate-700 md:h-[10%] h-[8%] flex px-4 shadow-sm   ">
+          <div className=" w-full bg-slate-800 md:h-[10%] h-[8%] flex px-4 shadow-lg  ">
 
 
             <div className=" support/bot  w-[50%] text-white flex justify-start items-center ">

@@ -26,6 +26,7 @@ import ScrollToTop from "./Component/ScrollToTop";
 import HostAnalysis from "./Component/Dashboard/HostAnalysis";
 import Schduler from "./Component/Dashboard/Schduler";
 import ChatAndNotifcationTab from "./Views/ChatAndNotifcationTab";
+import Registration from "./Views/Registration"
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
         <Route path="/HostAnalysis" element={<HostAnalysis />} />
         <Route path="/Schduler" element={<Schduler />} />
         <Route path="/ChatAndNotifcationTab" element={<ChatAndNotifcationTab />} />
+        <Route path="/Registration" element={<Registration/>}/>
 
 
 

@@ -469,7 +469,7 @@ function MyDropdown({ adults, children, pets, infants }) {
   const items = [
     <div
       key={1}
-      className="flex md:p-8 p-4 gap-2  lg:w-[520px] flex-col space-y-4"
+      className="flex md:p-8 p-4 gap-2  lg:w-[420px] flex-col space-y-4"
     >
       <div className="flex items-center justify-between">
         <div className="flex-col">
@@ -506,6 +506,7 @@ function MyDropdown({ adults, children, pets, infants }) {
           </Button>
           <span>{childCount}</span>
           <Button
+          
             shape="circle"
             onClick={() => handleIncrease(setChildCount, childCount)}
           >
@@ -567,6 +568,7 @@ function MyDropdown({ adults, children, pets, infants }) {
       trigger={["click"]}
       onOpenChange={handleSubmit}
       open={visible}
+     
       dropdownRender={(menu) => (
         <div className=" bg-white">
           <Space className="p-2 flex-col w-full shadow-md">
