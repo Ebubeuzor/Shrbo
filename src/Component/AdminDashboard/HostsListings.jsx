@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import AdminHeader from './AdminNavigation/AdminHeader';
-import AdminSidebar from './AdminSidebar';
-import { Table, Input, Select, Modal } from 'antd';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import AdminHeader from "./AdminNavigation/AdminHeader";
+import AdminSidebar from "./AdminSidebar";
+import { Table, Input, Select, Modal, Space, Dropdown } from "antd";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
 
 const { confirm } = Modal;
 
@@ -11,32 +11,32 @@ export default function HostsListings() {
   const [hosts, setHosts] = useState([
     {
       id: 1,
-      firstName: 'Alice',
-      lastName: 'Johnson',
-      email: 'alice@example.com',
-      image: 'https://example.com/alice.jpg',
+      firstName: "Alice",
+      lastName: "Johnson",
+      email: "alice@example.com",
+      image: "https://example.com/alice.jpg",
       verified: true,
-      dateCreated: '2023-10-01',
-      lastLogin: '2023-10-15',
+      dateCreated: "2023-10-01",
+      lastLogin: "2023-10-15",
     },
     {
       id: 2,
-      firstName: 'Bob',
-      lastName: 'Smith',
-      email: 'bob@example.com',
-      image: 'https://example.com/bob.jpg',
+      firstName: "Bob",
+      lastName: "Smith",
+      email: "bob@example.com",
+      image: "https://example.com/bob.jpg",
       verified: false,
-      dateCreated: '2023-09-15',
-      lastLogin: '2023-10-14',
+      dateCreated: "2023-09-15",
+      lastLogin: "2023-10-14",
     },
     // Add more host data as needed
   ]);
 
   const [filters, setFilters] = useState({
-    verified: 'Any',
+    verified: "Any",
   });
 
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleFilterChange = (value) => {
     setFilters({
@@ -50,7 +50,7 @@ export default function HostsListings() {
 
   const handleDeleteHost = (hostId) => {
     confirm({
-      title: 'Do you want to delete this host?',
+      title: "Do you want to delete this host?",
       icon: <ExclamationCircleOutlined />,
       onOk() {
         const updatedHosts = hosts.filter((host) => host.id !== hostId);
@@ -61,55 +61,64 @@ export default function HostsListings() {
 
   const columns = [
     {
-      title: 'Image',
-      dataIndex: 'image',
-      key: 'image',
+      title: "Image",
+      dataIndex: "image",
+      key: "image",
       render: (image) => (
         <img
           src={image}
           alt="Host"
-          style={{ width: '30px', height: '30px', borderRadius: '50%' }}
+          style={{ width: "30px", height: "30px", borderRadius: "50%" }}
         />
       ),
     },
     {
-      title: 'First Name',
-      dataIndex: 'firstName',
-      key: 'firstName',
+      title: "First Name",
+      dataIndex: "firstName",
+      key: "firstName",
     },
     {
-      title: 'Last Name',
-      dataIndex: 'lastName',
-      key: 'lastName',
+      title: "Last Name",
+      dataIndex: "lastName",
+      key: "lastName",
     },
     {
-      title: 'Email',
-      dataIndex: 'email',
-      key: 'email',
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
     },
     {
-      title: 'Verified',
-      dataIndex: 'verified',
-      key: 'verified',
-      render: (verified) => (verified ? 'Yes' : 'No'),
+      title: "Verified",
+      dataIndex: "verified",
+      key: "verified",
+      render: (verified) => (verified ? "Yes" : "No"),
     },
     {
-      title: 'Date Created',
-      dataIndex: 'dateCreated',
-      key: 'dateCreated',
+      title: "Date Created",
+      dataIndex: "dateCreated",
+      key: "dateCreated",
     },
     {
-      title: 'Last Login',
-      dataIndex: 'lastLogin',
-      key: 'lastLogin',
+      title: "Last Login",
+      dataIndex: "lastLogin",
+      key: "lastLogin",
     },
     {
-      title: 'Actions',
-      key: 'actions',
+      title: "Actions",
+      key: "actions",
       render: (text, record) => (
         <div>
-          <Link to={`/hosts/edit/${record.id}`}>Edit</Link>
-          <span onClick={() => handleDeleteHost(record.id)}>Delete</span>
+          <Dropdown
+            menu={{
+              items,
+            }}
+            trigger={["click"]}
+          >
+            <a onClick={(e) => e.preventDefault()}>
+              <Space>Edit</Space>
+            </a>
+          </Dropdown>
+          &nbsp; <span onClick={() => handleDeleteHost(record.id)}>Delete</span>
         </div>
       ),
     },
@@ -119,7 +128,7 @@ export default function HostsListings() {
     const { verified } = filters;
 
     const matchesVerified =
-      verified === 'Any' || host.verified === (verified === 'Yes');
+      verified === "Any" || host.verified === (verified === "Yes");
 
     const matchesSearch =
       host.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -128,6 +137,24 @@ export default function HostsListings() {
 
     return matchesVerified && matchesSearch;
   });
+
+  const items = [
+    {
+      label: <div>Ban</div>,
+      key: "0",
+    },
+    {
+      label: <div>Suspend</div>,
+      key: "1",
+    },
+    {
+      type: "divider",
+    },
+    {
+      label: <div>No idea</div>,
+      key: "3",
+    },
+  ];
 
   return (
     <div className="bg-gray-100 h-[100vh]">
@@ -159,9 +186,9 @@ export default function HostsListings() {
                 <Select.Option value="No">Not Verified</Select.Option>
               </Select>
             </div>
-           <div className='overflow-x-auto'>
-           <Table columns={columns} dataSource={filteredHosts} />
-           </div>
+            <div className="overflow-x-auto">
+              <Table columns={columns} dataSource={filteredHosts} />
+            </div>
           </div>
         </div>
       </div>

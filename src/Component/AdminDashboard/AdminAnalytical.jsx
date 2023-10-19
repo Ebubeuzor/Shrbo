@@ -50,6 +50,8 @@ export default function AdminAnalytical() {
                 <option value="week">Week</option>
                 <option value="month">Month</option>
                 <option value="year">Year</option>
+                <option value="All Time">All Time</option>
+
               </select>
             </div>
 
@@ -97,7 +99,7 @@ export default function AdminAnalytical() {
               <div className="flex flex-wrap justify-between mt-4 gap-3">
                 {/* Card for Guests Today */}
                 <div className="bg-white rounded p-4 shadow flex-1 mr-4">
-                  <p className="text-xl font-semibold">Members</p>
+                  <p className="text-xl font-semibold">Users</p>
                   <p className="text-4xl font-bold text-orange-400">0</p>
                 </div>
 
@@ -143,7 +145,7 @@ export default function AdminAnalytical() {
               </div>
 
           
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto  pb-32">
               <Table
                 dataSource={data}
                 columns={[

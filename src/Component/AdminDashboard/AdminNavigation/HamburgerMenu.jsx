@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import HamburgerMenu from 'react-hamburger-menu';
+import { FaAngleDown } from 'react-icons/fa'; // You can use any icon from React-Icons
+
 
 const HamburgerMenuComponent = ({ isOpen, toggleMenu }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [propertiesShowDropdown, setPropertiesShowDropdown] = useState(false);
+  const [financeShowDropdown, setFinanceShowDropdown] = useState(false);
 
   
   const toggleDropdown = () => {
@@ -16,6 +19,9 @@ const HamburgerMenuComponent = ({ isOpen, toggleMenu }) => {
     setPropertiesShowDropdown(!propertiesShowDropdown);
   };
 
+  const toggleFinanceDropdown = () => {
+    setFinanceShowDropdown(!financeShowDropdown);
+  };
   return (
     <div>
       <div className="z-50 absolute top-3 ">
@@ -35,11 +41,17 @@ const HamburgerMenuComponent = ({ isOpen, toggleMenu }) => {
           <li className="p-2 hover-bg-orange-400 cursor-pointer w-full">Edit Homepage</li>
         </Link>
         <li
-          className={`p-2 cursor-pointer w-full ${showDropdown ? 'bg-orange-400' : ''}`}
+          className={`p-2 cursor-pointer w-full ${showDropdown ? "" : ""}`}
           onClick={toggleDropdown}
         >
-          Manage Users
-          <ul className={`list-none ${showDropdown ? 'block' : 'hidden'}`}>
+          <div className="flex justify-between items-center">
+            Manage Users <FaAngleDown />
+          </div>{" "}
+          <ul
+            className={`list-none ${
+              showDropdown ? "block bg-orange-300" : "hidden"
+            }`}
+          >
             <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
               <Link to="/GuestsListings">Guests</Link>
             </li>
@@ -50,16 +62,46 @@ const HamburgerMenuComponent = ({ isOpen, toggleMenu }) => {
         </li>
 
         <li
-          className={`p-2 cursor-pointer w-full ${propertiesShowDropdown ? 'bg-orange-400' : ''}`}
+          className={`p-2 cursor-pointer w-full ${
+            propertiesShowDropdown ? "" : ""
+          }`}
           onClick={togglePropertiesDropdown}
         >
-          Properties
-          <ul className={`list-none ${propertiesShowDropdown ? 'block' : 'hidden'}`}>
+          <div className="flex justify-between items-center">
+            Property <FaAngleDown />
+          </div>
+          <ul
+            className={`list-none ${
+              propertiesShowDropdown ? "block bg-orange-300" : "hidden"
+            }`}
+          >
             <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
               <Link to="/PropertyList">Properties Listings</Link>
             </li>
             <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
-              <Link to="/ApartmentListingApproval">Apartment Listing Approval</Link>
+              <Link to="/ApartmentListingApproval">
+                Apartment Listing Approval
+              </Link>
+            </li>
+          </ul>
+        </li>
+
+        <li
+          className={`p-2 cursor-pointer w-full ${financeShowDropdown ? '' : ''}`}
+          onClick={toggleFinanceDropdown}
+        >
+       <div className='flex justify-between items-center'>
+       Finance <FaAngleDown/>
+       </div>
+          <ul className={`list-none ${financeShowDropdown ? 'block bg-orange-300' : 'hidden'}`}>
+            <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
+              <Link to="/DisplayBookingsPaid">Paid Payment</Link>
+            </li>
+            <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
+              <Link to="/FailedPayment">Failed Payment</Link>
+            </li>
+            <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
+              <Link to="/ReceivablePayable">Recievable & Payable</Link>
             </li>
           </ul>
         </li>

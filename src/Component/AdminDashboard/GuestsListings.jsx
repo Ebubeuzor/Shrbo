@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import AdminHeader from './AdminNavigation/AdminHeader';
-import AdminSidebar from './AdminSidebar';
-import { Table, Input, Select, Modal } from 'antd';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import AdminHeader from "./AdminNavigation/AdminHeader";
+import AdminSidebar from "./AdminSidebar";
+import { Table, Input, Select, Modal, Space, Dropdown } from "antd";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
 
 const { confirm } = Modal;
 
@@ -11,53 +11,55 @@ export default function GuestsListings() {
   const [guests, setGuests] = useState([
     {
       id: 1,
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'johndoe@example.com',
-      image: 'https://assets.vogue.in/photos/640592409d03d0d41504f3a0/1:1/w_1600,h_1600,c_limit/Face%20taping%20.jpg',
+      firstName: "John",
+      lastName: "Doe",
+      email: "johndoe@example.com",
+      image:
+        "https://assets.vogue.in/photos/640592409d03d0d41504f3a0/1:1/w_1600,h_1600,c_limit/Face%20taping%20.jpg",
       verified: true,
-      dateCreated: '2023-10-01',
-      lastLogin: '2023-10-15',
+      dateCreated: "2023-10-01",
+      lastLogin: "2023-10-15",
     },
     {
       id: 2,
-      firstName: 'Jane',
-      lastName: 'Smith',
-      email: 'janesmith@example.com',
-      image: 'https://assets.vogue.in/photos/640592409d03d0d41504f3a0/1:1/w_1600,h_1600,c_limit/Face%20taping%20.jpg',
+      firstName: "Jane",
+      lastName: "Smith",
+      email: "janesmith@example.com",
+      image:
+        "https://assets.vogue.in/photos/640592409d03d0d41504f3a0/1:1/w_1600,h_1600,c_limit/Face%20taping%20.jpg",
       verified: false,
-      dateCreated: '2023-09-15',
-      lastLogin: '2023-10-14',
+      dateCreated: "2023-09-15",
+      lastLogin: "2023-10-14",
     },
     {
       id: 3,
-      firstName: 'Gab',
-      lastName: 'Adekunle',
-      email: 'adekunleja@example.com',
-      image: 'https://assets.vogue.in/photos/640592409d03d0d41504f3a0/1:1/w_1600,h_1600,c_limit/Face%20taping%20.jpg',
+      firstName: "Gab",
+      lastName: "Adekunle",
+      email: "adekunleja@example.com",
+      image:
+        "https://assets.vogue.in/photos/640592409d03d0d41504f3a0/1:1/w_1600,h_1600,c_limit/Face%20taping%20.jpg",
       verified: false,
-      dateCreated: '2023-09-15',
-      lastLogin: '2023-10-14',
+      dateCreated: "2023-09-15",
+      lastLogin: "2023-10-14",
     },
     {
       id: 4,
-      firstName: 'Will',
-      lastName: 'Smith',
-      email: 'willsmithoriginal@example.com',
-      image: 'https://assets.vogue.in/photos/640592409d03d0d41504f3a0/1:1/w_1600,h_1600,c_limit/Face%20taping%20.jpg',
+      firstName: "Will",
+      lastName: "Smith",
+      email: "willsmithoriginal@example.com",
+      image:
+        "https://assets.vogue.in/photos/640592409d03d0d41504f3a0/1:1/w_1600,h_1600,c_limit/Face%20taping%20.jpg",
       verified: false,
-      dateCreated: '2023-09-15',
-      lastLogin: '2023-10-14',
+      dateCreated: "2023-09-15",
+      lastLogin: "2023-10-14",
     },
-
-    
   ]);
 
   const [filters, setFilters] = useState({
-    verified: 'Any',
+    verified: "Any",
   });
 
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleFilterChange = (value) => {
     setFilters({
@@ -71,7 +73,7 @@ export default function GuestsListings() {
 
   const handleDeleteGuest = (guestId) => {
     confirm({
-      title: 'Do you want to delete this guest?',
+      title: "Do you want to delete this guest?",
       icon: <ExclamationCircleOutlined />,
       onOk() {
         const updatedGuests = guests.filter((guest) => guest.id !== guestId);
@@ -80,57 +82,86 @@ export default function GuestsListings() {
     });
   };
 
+  const items = [
+    {
+      label: <div>Ban</div>,
+      key: "0",
+    },
+    {
+      label: <div>Suspend</div>,
+      key: "1",
+    },
+    {
+      type: "divider",
+    },
+    {
+      label: <div>No idea</div>,
+      key: "3",
+    },
+  ];
+
   const columns = [
     {
-      title: 'Image',
-      dataIndex: 'image',
-      key: 'image',
+      title: "Image",
+      dataIndex: "image",
+      key: "image",
       render: (image) => (
         <img
           src={image}
           alt="Guest"
-          style={{ width: '30px', height: '30px', borderRadius: '50%' }}
+          style={{ width: "30px", height: "30px", borderRadius: "50%" }}
         />
       ),
     },
     {
-      title: 'First Name',
-      dataIndex: 'firstName',
-      key: 'firstName',
+      title: "First Name",
+      dataIndex: "firstName",
+      key: "firstName",
     },
     {
-      title: 'Last Name',
-      dataIndex: 'lastName',
-      key: 'lastName',
+      title: "Last Name",
+      dataIndex: "lastName",
+      key: "lastName",
     },
     {
-      title: 'Email',
-      dataIndex: 'email',
-      key: 'email',
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
     },
     {
-      title: 'Verified',
-      dataIndex: 'verified',
-      key: 'verified',
-      render: (verified) => (verified ? 'Yes' : 'No'),
+      title: "Verified",
+      dataIndex: "verified",
+      key: "verified",
+      render: (verified) => (verified ? "Yes" : "No"),
     },
     {
-      title: 'Date Created',
-      dataIndex: 'dateCreated',
-      key: 'dateCreated',
+      title: "Date Created",
+      dataIndex: "dateCreated",
+      key: "dateCreated",
     },
     {
-      title: 'Last Login',
-      dataIndex: 'lastLogin',
-      key: 'lastLogin',
+      title: "Last Login",
+      dataIndex: "lastLogin",
+      key: "lastLogin",
     },
     {
-      title: 'Actions',
-      key: 'actions',
+      title: "Actions",
+      key: "actions",
       render: (text, record) => (
         <div>
-          <Link to={`/guests/edit/${record.id}`}>Edit</Link>
-          <span onClick={() => handleDeleteGuest(record.id)}>Delete</span>
+          <Dropdown
+            menu={{
+              items,
+            }}
+            trigger={["click"]}
+          >
+            <a onClick={(e) => e.preventDefault()}>
+              <Space>Edit</Space>
+            </a>
+          </Dropdown>
+
+            &nbsp;
+          <span onClick={() => handleDeleteGuest(record.id)} className="cursor-pointer">Delete</span>
         </div>
       ),
     },
@@ -140,7 +171,7 @@ export default function GuestsListings() {
     const { verified } = filters;
 
     const matchesVerified =
-      verified === 'Any' || guest.verified === (verified === 'Yes');
+      verified === "Any" || guest.verified === (verified === "Yes");
 
     const matchesSearch =
       guest.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -181,8 +212,7 @@ export default function GuestsListings() {
               </Select>
             </div>
             <div className="overflow-x-auto">
-            <Table columns={columns} dataSource={filteredGuests} />
-
+              <Table columns={columns} dataSource={filteredGuests} />
             </div>
           </div>
         </div>

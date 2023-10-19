@@ -91,11 +91,11 @@ export default function CurrentBookingsList() {
     <div className="bg-gray-100 h-[100vh]">
       <AdminHeader />
       <div className="flex">
-        <div className="bg-orange-400 text-white w-1/5 h-[100vh] p-4">
+        <div className="bg-orange-400 hidden md:block text-white w-1/5 h-[100vh] p-4">
           <AdminSidebar />
         </div>
 
-        <div className="w-4/5 p-4 h-[100vh]">
+        <div className="w-full md:w-4/5 p-4 h-[100vh] overflow-auto example">
           <h1 className="text-2xl font-semibold mb-4">Current Vacation Rental Bookings</h1>
           <div className="bg-white p-4 rounded shadow">
             <div className="mb-4">
@@ -114,11 +114,13 @@ export default function CurrentBookingsList() {
                 {/* Add more status options as needed */}
               </Select>
             </div>
+            <div className="overflow-x-auto">
 
             <Table
               dataSource={filteredBookingData}
               columns={columns}
             />
+            </div>
           </div>
         </div>
       </div>

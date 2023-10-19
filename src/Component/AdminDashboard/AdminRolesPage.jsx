@@ -3,6 +3,7 @@ import { Form, Input, Button, Select, Space, Table, Modal } from 'antd';
 import AdminSidebar from './AdminSidebar';
 import AdminHeader from './AdminNavigation/AdminHeader';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
+import FormItem from 'antd/es/form/FormItem';
 
 const { confirm } = Modal;
 const { Option } = Select;
@@ -66,21 +67,22 @@ const AdminRolesPage = () => {
     setRoleModalVisible(true);
   };
 
-  const handleCreateNewAdmin = () => {
-    newAdminForm.validateFields().then((values) => {
-      // Handle creating a new admin user here (e.g., make an API call).
-      // Add the new admin to the admins list.
-      const newAdmin = {
-        id: admins.length + 1,
-        name: values.username,
-        role: values.role,
-      };
-      setAdmins([...admins, newAdmin]);
-
-      setNewAdminModalVisible(false);
-      newAdminForm.resetFields();
-    });
+  const handleCreateNewAdmin = (values) => {
+  
+    const newAdmin = {
+      id: admins.length + 1,
+      name: values.username,
+      role: values.role,
+    };
+    setAdmins([...admins, newAdmin]);
+  
+    setNewAdminModalVisible(false);
+    newAdminForm.resetFields();
+  
+    console.log("Form data submitted:", values);
   };
+  
+  
 
   return (
     <div className='bg-gray-100 h-[100vh]'>
@@ -121,7 +123,7 @@ const AdminRolesPage = () => {
             onOk={handleCreateNewAdmin}
             onCancel={() => setNewAdminModalVisible(false)}
           >
-            <Form form={newAdminForm} layout="vertical">
+            <Form form={newAdminForm} layout="vertical" onFinish={handleCreateNewAdmin}>
               <Form.Item
                 name="username"
                 label="Username"
@@ -142,6 +144,11 @@ const AdminRolesPage = () => {
                   <Option value="Admin">Admin</Option>
                 </Select>
               </Form.Item>
+              <FormItem>
+                <Button htmlType='submit' type='primary'>
+                  Submit
+                </Button>
+              </FormItem>
             </Form>
           </Modal>
         </div>

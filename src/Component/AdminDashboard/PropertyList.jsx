@@ -105,6 +105,8 @@ export default function PropertyList() {
       render: (text, record) => (
         <div>
           <Button type="primary">Edit</Button>
+          &nbsp;
+
           <Button type="danger" onClick={() => showConfirm(record.id)}>
             Delete
           </Button>

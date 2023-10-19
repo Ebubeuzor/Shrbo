@@ -37,6 +37,10 @@ import UserVerificationPage from "./Component/AdminDashboard/UserVerificationPag
 import AdminRolesPage from "./Component/AdminDashboard/AdminRolesPage";
 import AdminSupportPage from "./Component/AdminDashboard/AdminSupportPage";
 import AnnouncementPage from "./Component/AdminDashboard/AnnouncementPage";
+import RevenueMetricsPage from "./Component/AdminDashboard/RevenueMetricsPage";
+import DisplayBookingsPaid from "./Component/AdminDashboard/DisplayBookingsPaid";
+import FailedPayment from "./Component/AdminDashboard/FailedPayment";
+import ReceivablePayable from "./Component/AdminDashboard/ReceivablePayable";
 
 function App() {
   return (
@@ -89,6 +93,10 @@ function App() {
         <Route path="/AdminRolesPage" element={<AdminRolesPage />} />
         <Route path="/AdminSupportPage" element={<AdminSupportPage />} />
         <Route path="/AnnouncementPage" element={<AnnouncementPage />} />
+        <Route path="/RevenueMetricsPage" element={<RevenueMetricsPage />} />
+        <Route path="/DisplayBookingsPaid" element={<DisplayBookingsPaid />} />
+        <Route path="/FailedPayment" element={<FailedPayment />} />
+        <Route path="/ReceivablePayable" element={<ReceivablePayable />} />
 
       </Routes>
     </Router>
