@@ -21,7 +21,7 @@ export default function AdminSidebar() {
   };
 
   const toggleBookingStatusDropdown = () => {
-    setBookingStatusShowDropdown(!financeShowDropdown);
+    setBookingStatusShowDropdown(!bookingStatusShowDropdown);
   };
 
   return (

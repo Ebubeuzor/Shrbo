@@ -25,7 +25,7 @@ const HamburgerMenuComponent = ({ isOpen, toggleMenu }) => {
   };
 
   const toggleBookingStatusDropdown = () => {
-    setBookingStatusShowDropdown(!financeShowDropdown);
+    setBookingStatusShowDropdown(!bookingStatusShowDropdown);
   };
   return (
     <div>
