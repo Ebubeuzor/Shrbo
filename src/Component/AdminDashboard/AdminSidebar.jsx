@@ -50,10 +50,12 @@ export default function AdminSidebar() {
             }`}
           >
             <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
-              <Link to="/GuestsListings">Guests</Link>
+              <Link to="/GuestsListings" className="w-full"><div>
+              Guests</div></Link>
             </li>
             <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
-              <Link to="/HostsListings">Hosts</Link>
+              <Link to="/HostsListings" className=""><div>
+              Hosts</div></Link>
             </li>
           </ul>
         </li>
@@ -73,11 +75,14 @@ export default function AdminSidebar() {
             }`}
           >
             <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
-              <Link to="/PropertyList">Properties Listings</Link>
+              <Link to="/PropertyList"><div>
+              Properties Listings</div></Link>
             </li>
             <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
               <Link to="/ApartmentListingApproval">
+                <div>
                 Apartment Listing Approval
+                </div>
               </Link>
             </li>
           </ul>
@@ -98,13 +103,16 @@ export default function AdminSidebar() {
             }`}
           >
             <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
-              <Link to="/DisplayBookingsPaid">Paid Payment</Link>
+              <Link to="/DisplayBookingsPaid"><div>
+              Paid Payment</div></Link>
             </li>
             <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
-              <Link to="/FailedPayment">Failed Payment</Link>
+              <Link to="/FailedPayment"><div>
+              Failed Payment</div></Link>
             </li>
             <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
-              <Link to="/ReceivablePayable">Recievable & Payable</Link>
+              <Link to="/ReceivablePayable"><div>
+              Recievable & Payable</div></Link>
             </li>
           </ul>
         </li>
@@ -124,13 +132,16 @@ export default function AdminSidebar() {
             }`}
           >
             <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
-              <Link to="/BookingTable">New Booking</Link>
+              <Link to="/BookingTable"><div>
+              New Booking</div></Link>
             </li>
             <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
-              <Link to="/CompletedBooking">Completed Booking</Link>
+              <Link to="/CompletedBooking"><div>
+              Completed Booking</div></Link>
             </li>
             <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
-              <Link to="/ReceivablePayable">Recievable & Payable</Link>
+              <Link to="/ReceivablePayable"><div>
+              Recievable & Payable</div></Link>
             </li>
           </ul>
         </li>
