@@ -149,8 +149,8 @@ const HamburgerMenuComponent = ({ isOpen, toggleMenu }) => {
         <Link to="/AnnouncementPage">
           <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">Announcement Page</li>
         </Link>
-        <Link to="/">
-          <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">Profile</li>
+        <Link to="/ReviewList">
+          <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">Review List</li>
         </Link>
         <Link to="/">
           <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">Settings</li>

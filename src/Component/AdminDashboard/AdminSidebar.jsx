@@ -166,9 +166,9 @@ export default function AdminSidebar() {
           </li>
         </Link>
 
-        <Link to="/">
+        <Link to="/ReviewList">
           <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
-            Profile
+            Review List
           </li>
         </Link>
         <Link to="/">
