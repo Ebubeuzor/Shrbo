@@ -6,6 +6,7 @@ export default function AdminSidebar() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [propertiesShowDropdown, setPropertiesShowDropdown] = useState(false);
   const [financeShowDropdown, setFinanceShowDropdown] = useState(false);
+  const [bookingStatusShowDropdown, setBookingStatusShowDropdown] = useState(false);
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -17,6 +18,10 @@ export default function AdminSidebar() {
 
   const toggleFinanceDropdown = () => {
     setFinanceShowDropdown(!financeShowDropdown);
+  };
+
+  const toggleBookingStatusDropdown = () => {
+    setBookingStatusShowDropdown(!financeShowDropdown);
   };
 
   return (
@@ -97,6 +102,32 @@ export default function AdminSidebar() {
             </li>
             <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
               <Link to="/FailedPayment">Failed Payment</Link>
+            </li>
+            <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
+              <Link to="/ReceivablePayable">Recievable & Payable</Link>
+            </li>
+          </ul>
+        </li>
+
+        <li
+          className={`p-2 cursor-pointer w-full ${
+            bookingStatusShowDropdown ? "" : ""
+          }`}
+          onClick={toggleBookingStatusDropdown}
+        >
+          <div className="flex justify-between items-center">
+            Booking Status <FaAngleDown />
+          </div>
+          <ul
+            className={`list-none ${
+              bookingStatusShowDropdown ? "block bg-orange-300" : "hidden"
+            }`}
+          >
+            <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
+              <Link to="/BookingTable">New Booking</Link>
+            </li>
+            <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
+              <Link to="/CompletedBooking">Completed Booking</Link>
             </li>
             <li className="p-2 hover:bg-orange-400 cursor-pointer w-full">
               <Link to="/ReceivablePayable">Recievable & Payable</Link>

@@ -41,6 +41,8 @@ import RevenueMetricsPage from "./Component/AdminDashboard/RevenueMetricsPage";
 import DisplayBookingsPaid from "./Component/AdminDashboard/DisplayBookingsPaid";
 import FailedPayment from "./Component/AdminDashboard/FailedPayment";
 import ReceivablePayable from "./Component/AdminDashboard/ReceivablePayable";
+import BookingTable from "./Component/AdminDashboard/BookingTable";
+import CompletedBooking from "./Component/AdminDashboard/CompletedBooking";
 
 function App() {
   return (
@@ -97,6 +99,8 @@ function App() {
         <Route path="/DisplayBookingsPaid" element={<DisplayBookingsPaid />} />
         <Route path="/FailedPayment" element={<FailedPayment />} />
         <Route path="/ReceivablePayable" element={<ReceivablePayable />} />
+        <Route path="/BookingTable" element={<BookingTable />} />
+        <Route path="/CompletedBooking" element={<CompletedBooking />} />
 
       </Routes>
     </Router>
