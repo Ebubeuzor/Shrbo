@@ -9,7 +9,6 @@ import GuestIcon from "../../assets/svg/couple-icon.svg";
 import { DatePicker, Space } from "antd";
 import moment from "moment"; // Import moment
 
-
 const { RangePicker } = DatePicker;
 
 const SearchModal = ({ isOpen, onClose }) => {
@@ -72,10 +71,11 @@ const SearchModal = ({ isOpen, onClose }) => {
 
   const handleSubmit = () => {
     // Check if checkInDate and checkOutDate are valid Date objects
-    const formattedCheckInDate = checkInDate instanceof Date ? checkInDate.toLocaleDateString() : "N/A";
-    const formattedCheckOutDate = checkOutDate instanceof Date ? checkOutDate.toLocaleDateString() : "N/A";
-    
-  
+    const formattedCheckInDate =
+      checkInDate instanceof Date ? checkInDate.toLocaleDateString() : "N/A";
+    const formattedCheckOutDate =
+      checkOutDate instanceof Date ? checkOutDate.toLocaleDateString() : "N/A";
+
     // Create an object with the details you want to log
     const details = {
       location,
@@ -87,17 +87,15 @@ const SearchModal = ({ isOpen, onClose }) => {
       infants,
       selectedOption,
     };
-  
+
     // Log the details to the console
     console.log("Search Details:", details);
-  
+
     // Handle form submission here, e.g., send data to the server
-  
+
     // Close the modal
     onClose();
   };
-  
-  
 
   function GuestModal({
     visible,
@@ -287,29 +285,28 @@ const SearchModal = ({ isOpen, onClose }) => {
               components={{ DropdownIndicator }}
             />
           </div>
-          <div className="mb-4">
-  <Space direction="vertical" size={12}>
-  <RangePicker
-  value={
-    checkInDate && checkOutDate
-      ? [moment(checkInDate), moment(checkOutDate)]
-      : [null, null]
-  }
-  onChange={(dates) => {
-    if (dates && dates.length === 2) {
-      const [startDate, endDate] = dates;
-      handleCheckInDateChange(startDate.toDate());
-      handleCheckOutDateChange(endDate.toDate());
-    } else {
-      // Handle the case when the date range is cleared
-      handleCheckInDateChange(null);
-      handleCheckOutDateChange(null);
-    }
-  }}
-/>
-
-  </Space>
-</div>
+          <div className="mb-4 overflow-scroll">
+            <Space direction="vertical" size={12}>
+              <RangePicker
+                value={
+                  checkInDate && checkOutDate
+                    ? [moment(checkInDate), moment(checkOutDate)]
+                    : [null, null]
+                }
+                onChange={(dates) => {
+                  if (dates && dates.length === 2) {
+                    const [startDate, endDate] = dates;
+                    handleCheckInDateChange(startDate.toDate());
+                    handleCheckOutDateChange(endDate.toDate());
+                  } else {
+                    // Handle the case when the date range is cleared
+                    handleCheckInDateChange(null);
+                    handleCheckOutDateChange(null);
+                  }
+                }}
+              />
+            </Space>
+          </div>
 
           <div className="mb-4">
             <div

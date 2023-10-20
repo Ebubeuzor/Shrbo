@@ -241,6 +241,11 @@ The slider*/
 :where(.css-dev-only-do-not-override-3mqfnx).ant-picker-dropdown .ant-picker-panel-container .ant-picker-panels {
   flex-wrap: wrap;
 }
+
+.ant-picker-panel-container{
+  height: 300px;
+  overflow: scroll !important;
+}
   
 
 
