@@ -9,6 +9,17 @@
     width: 60px;
     height: 34px;
   }
+
+
+  :where(.css-dev-only-do-not-override-3mqfnx).ant-picker-dropdown-range {
+    padding: 10.666666666666666px 0;
+    width: 80% !important;
+  }
+  
+  .ant-picker-dropdown .css-3mqfnx .ant-picker-dropdown-range .ant-picker-dropdown-placement-bottomLeft{
+    width: 80% !important;
+  
+  }
   
   /* Hide default HTML checkbox */
   .switch input {
@@ -132,12 +143,3 @@
   height: 500px !important;
 }
 
-:where(.css-dev-only-do-not-override-3mqfnx).ant-picker-dropdown-range {
-  padding: 10.666666666666666px 0;
-  width: 80% !important;
-}
-
-.ant-picker-dropdown .css-3mqfnx .ant-picker-dropdown-range .ant-picker-dropdown-placement-bottomLeft{
-  width: 80% !important;
-
-}
