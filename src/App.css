@@ -274,5 +274,5 @@ The slider*/
 
 :where(.css-dev-only-do-not-override-3mqfnx).ant-picker-dropdown-range {
   padding: 10.666666666666666px 0;
-  width: 70%;
+  width: 80% !important;
 }
