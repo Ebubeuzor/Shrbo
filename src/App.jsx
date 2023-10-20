@@ -26,6 +26,7 @@ import ScrollToTop from "./Component/ScrollToTop";
 import HostAnalysis from "./Component/Dashboard/HostAnalysis";
 import Schduler from "./Component/Dashboard/Schduler";
 import ChatAndNotifcationTab from "./Views/ChatAndNotifcationTab";
+import Registration from "./Views/Registration"
 import EditHomepage from "./Component/AdminDashboard/EditHomepage";
 import AdminAnalytical from "./Component/AdminDashboard/AdminAnalytical";
 import GuestsListings from "./Component/AdminDashboard/GuestsListings";
@@ -76,6 +77,13 @@ function App() {
         <Route path="/Reservations" element={<Reservations />} />
         <Route path="/HostAnalysis" element={<HostAnalysis />} />
         <Route path="/Schduler" element={<Schduler />} />
+        <Route path="/ChatAndNotifcationTab" element={<ChatAndNotifcationTab />} />
+        <Route path="/Registration" element={<Registration/>}/>
+
+
+
+
+
         <Route
           path="/ChatAndNotifcationTab"
           element={<ChatAndNotifcationTab />}

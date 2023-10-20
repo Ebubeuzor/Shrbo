@@ -238,10 +238,33 @@ The slider*/
 
 
 
+<<<<<<< HEAD
 :where(.css-dev-only-do-not-override-3mqfnx).ant-picker-dropdown .ant-picker-panel-container .ant-picker-panels {
   flex-wrap: wrap;
 }
   
+=======
+
+@keyframes typing-indicator {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px); /* Adjust the amplitude (5px) as needed */
+  }
+}  
+
+
+.typing-bubble {
+  width: 20px;
+  height: 20px;
+  background-color: #3498db; /* Change the bubble color as needed */
+  display: inline-block;
+  margin-right: 5px;
+  border-radius: 50%;
+  animation: typing-indicator 1s infinite;
+}
+>>>>>>> 3f813a9ec54dd2f141761519675a3ef8f0237963
 
 
 

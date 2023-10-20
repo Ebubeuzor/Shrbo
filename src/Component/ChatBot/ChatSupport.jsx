@@ -30,10 +30,11 @@ const ChatSupport = () => {
 
             />
 
-            {!visible&& <FloatButton icon={<CommentOutlined />} badge={{
+            {!visible&& <FloatButton type="default" icon={<CommentOutlined />} badge={{
           count: 1,
         }}
-         tooltip={<div>Customer Support</div>}  onClick={ ()=>{setVisible(true)}}    />
+        
+         tooltip={<div className="   ">Customer Support</div>}  onClick={ ()=>{setVisible(true)}}    />
             }
         
 

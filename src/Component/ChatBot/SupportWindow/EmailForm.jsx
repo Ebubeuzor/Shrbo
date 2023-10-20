@@ -7,6 +7,7 @@ import Avatar from "../Avatar";
 const EmailForm = (props) => {
     const [email,setEmail]=useState('');
     const [loading,setLoading]=useState(false);
+    const [isAnimation,setIsAnimation]=useState(true);
 
     function handleSubmit(event){
             event.preventDefault();
@@ -15,9 +16,17 @@ const EmailForm = (props) => {
             props.setChat("hello");
             console.log('Sending email')
 
+            let typingTimeout;
+
+            typingTimeout = setTimeout(() => {
+                setIsAnimation(false);
+              }, 3000);
+        
+
 
     }
 
+   
 
 
     return (
@@ -27,7 +36,7 @@ const EmailForm = (props) => {
                 ...{
                     height:props.visible?"100%":"0%",
                     opacity:props.visible? '1':'0',
-                    display:props.visible?"block":"none",
+                    display:props.visible? "block":"none",
                 }
             }}
         >
