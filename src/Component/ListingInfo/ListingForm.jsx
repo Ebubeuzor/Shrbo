@@ -6,6 +6,7 @@ import { Modal, Button, Dropdown, Space, message, Form, Input } from "antd";
 import { Link } from "react-router-dom";
 import Popup from "../../hoc/Popup";
 import ReportListing from "./ReportListing";
+import CustomModal from "../CustomModal";
 
 
 export default function ListingForm() {
@@ -315,11 +316,15 @@ export default function ListingForm() {
             isModalVisible={isReportModalVisible}
             handleCancel={()=>setIsReportModalVisible(false)}
             centered={true}  
-            width={"650px"}                  
+            width={"700px"}                  
        
           >
             <ReportListing/>
           </Popup>
+
+          {/* <CustomModal isOpen={isReportModalVisible} onClose={()=>setIsReportModalVisible(false)}   >
+          <ReportListing/>
+          </CustomModal> */}
       
         
       </div>

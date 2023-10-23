@@ -13,7 +13,7 @@ const Popup = ({ isModalVisible, handleCancel, children ,title , className,cente
             footer={null}
             classNames={className}
             centered={centered}
-            width={width}
+            // width={width}
            
         > 
           {children}
