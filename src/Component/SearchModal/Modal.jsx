@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import DatePicker from "react-datepicker";
 import { Link } from "react-router-dom";
 import { Modal as AntModal, Button } from "antd"; // Rename the imported Modal
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,6 +6,10 @@ import FilterModal from "../Filter/FilterModal";
 import Select, { components } from "react-select";
 import LocationIcon from "../../assets/svg/maps-pin-black-icon.svg";
 import GuestIcon from "../../assets/svg/couple-icon.svg";
+import { DatePicker, Space } from "antd";
+import moment from "moment"; // Import moment
+
+const { RangePicker } = DatePicker;
 
 const SearchModal = ({ isOpen, onClose }) => {
   const [location, setLocation] = useState("");
@@ -67,27 +70,32 @@ const SearchModal = ({ isOpen, onClose }) => {
   };
 
   const handleSubmit = () => {
+    // Check if checkInDate and checkOutDate are valid Date objects
+    const formattedCheckInDate =
+      checkInDate instanceof Date ? checkInDate.toLocaleDateString() : "N/A";
+    const formattedCheckOutDate =
+      checkOutDate instanceof Date ? checkOutDate.toLocaleDateString() : "N/A";
+
     // Create an object with the details you want to log
     const details = {
       location,
-      checkInDate,
-      checkOutDate,
+      checkInDate: formattedCheckInDate,
+      checkOutDate: formattedCheckOutDate,
       adults,
       children,
       pets,
       infants,
       selectedOption,
     };
-  
+
     // Log the details to the console
     console.log("Search Details:", details);
-  
+
     // Handle form submission here, e.g., send data to the server
-  
+
     // Close the modal
     onClose();
   };
-  
 
   function GuestModal({
     visible,
@@ -277,24 +285,29 @@ const SearchModal = ({ isOpen, onClose }) => {
               components={{ DropdownIndicator }}
             />
           </div>
-          <div className="mb-4 bg-gray-300 p-4">
-            <label className="block font-semibold mb-2 ">Check-in Date</label>
-            <DatePicker
-              selected={checkInDate}
-              onChange={handleCheckInDateChange}
-              className="w-full px-4 py-2 border rounded-lg"
-              minDate={new Date()} // Prevent past dates
-            />
+          <div className="mb-4 overflow-scroll">
+            <Space direction="vertical" size={12}>
+              <RangePicker
+                value={
+                  checkInDate && checkOutDate
+                    ? [moment(checkInDate), moment(checkOutDate)]
+                    : [null, null]
+                }
+                onChange={(dates) => {
+                  if (dates && dates.length === 2) {
+                    const [startDate, endDate] = dates;
+                    handleCheckInDateChange(startDate.toDate());
+                    handleCheckOutDateChange(endDate.toDate());
+                  } else {
+                    // Handle the case when the date range is cleared
+                    handleCheckInDateChange(null);
+                    handleCheckOutDateChange(null);
+                  }
+                }}
+              />
+            </Space>
           </div>
-          <div className="mb-4 bg-gray-300 p-4">
-            <label className="block font-semibold mb-2">Check-out Date</label>
-            <DatePicker
-              selected={checkOutDate}
-              onChange={handleCheckOutDateChange}
-              className="w-full px-4 py-2 border rounded-lg"
-              minDate={checkInDate} // Set minimum date to check-in date
-            />
-          </div>
+
           <div className="mb-4">
             <div
               onClick={() => setGuestModalVisible(true)}
@@ -315,9 +328,7 @@ const SearchModal = ({ isOpen, onClose }) => {
               infants={infants}
             />
           </div>
-          <div>
-            {/* <FilterModal /> */}
-          </div>
+          <div>{/* <FilterModal /> */}</div>
         </div>
         <div className="absolute bottom-20 md:bottom-7 flex items-center left-0 right-0 w-[90%] mx-auto space-x-2">
           <button
