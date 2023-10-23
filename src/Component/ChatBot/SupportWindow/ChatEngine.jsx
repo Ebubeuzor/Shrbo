@@ -76,6 +76,7 @@ const ChatEngine= (props) => {
   }, []);
     
 
+  const messageSentSound = new Audio(messagesent);
  
 
   const handleSendMessage = () => {
@@ -122,7 +123,7 @@ const ChatEngine= (props) => {
 // };
 
 
-const messageSentSound = new Audio(messagesent);
+
 
 
 

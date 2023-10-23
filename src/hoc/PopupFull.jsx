@@ -5,13 +5,13 @@ import { Button, Drawer, Space } from 'antd';
 const PopupFull = ({title,onClose,open,children}) => {
  
   return (
-    <div className=' hidden'>
+    <div className=' '>
       <Drawer
         title={title}
         width={"100%"}
         onClose={onClose}
         open={open}
-        bodyStyle={{
+        stylesBody={{
           paddingBottom: 80,
         }}
       

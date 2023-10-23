@@ -5,6 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Modal, Button, Dropdown, Space, message, Form, Input } from "antd";
 import { Link } from "react-router-dom";
 import Popup from "../../hoc/Popup";
+import ReportListing from "./ReportListing";
+
 
 export default function ListingForm() {
   function showModal(e) {
@@ -13,8 +15,17 @@ export default function ListingForm() {
   }
 
   const [messageModalVisible, setMessageModalVisible] = useState(false);
+  const [isReportModalVisible, setIsReportModalVisible] = useState(false);
   const [messageSent, setMessageSent] = useState(false);
   const messageRef = useRef(null);
+  const [checkInDate, setCheckInDate] = useState(null);
+  const [checkOutDate, setCheckOutDate] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [adults, setAdults] = useState(1);
+  const [children, setChildren] = useState(0);
+  const [pets, setPets] = useState(0);
+  const [infants, setInfants] = useState(0);
+
 
   const [form] = Form.useForm(); // Define the form variable
 
@@ -45,6 +56,7 @@ export default function ListingForm() {
 
   function handleCancel() {
     setIsModalVisible(false);
+
   }
 
   const handleCheckIn = (date) => {
@@ -54,20 +66,13 @@ export default function ListingForm() {
     setCheckOutDate(date);
   };
 
-  const [checkInDate, setCheckInDate] = useState(null);
-  const [checkOutDate, setCheckOutDate] = useState(null);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [adults, setAdults] = useState(1);
-  const [children, setChildren] = useState(0);
-  const [pets, setPets] = useState(0);
-  const [infants, setInfants] = useState(0);
 
   return (
     <div className=" block w-full h-full">
       <div
         className="block mt-12 mb-12 md:sticky z-[100]  top-[80px] box-border  
-         w-full max-w-sm rounded-lg bg-white md:p-6 
-        md:shadow-xl "
+         w-full max-w-sm rounded-xl bg-white md:p-6 
+        md:shadow-xl md:ring-1 md:ring-slate-200"
       >
         <div className=" p-3 rounded relative box-border">
           <div className=" justify-between items-center flex text-sm">
@@ -163,6 +168,7 @@ export default function ListingForm() {
                     price details
                   </button>
                 </div>
+
                 {/* handles the modal  when price details is clicked  */}
                 <Popup
                   isModalVisible={isModalVisible}
@@ -238,18 +244,20 @@ export default function ListingForm() {
                     </div>
                   </div>
                   <div className="p-2">
-                    <button
-                      type="button"
-                      className="block w-full h-11 rounded bg-orange-500 px-6 pb-2 pt-2.5 text-sm font-medium uppercase leading-normal 
-                                                        text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]
-                                                        focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
-                                                        focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
-                                                        dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] 
-                                                        dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2)
-                                                        ,0_4px_18px_0_rgba(59,113,202,0.1)]]"
-                    >
-                      Book
-                    </button>
+                  <Link to="/RequestBook">
+                <button
+                  type="button"
+                  className="block w-full h-11 rounded bg-orange-500 px-6 pb-2 pt-2.5 text-sm font-medium uppercase leading-normal 
+                            text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]
+                            focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
+                            focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
+                            dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] 
+                            dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2)
+                            ,0_4px_18px_0_rgba(59,113,202,0.1)]]"
+                >
+                  Book
+                </button>
+              </Link>
                   </div>
                 </Popup>
               </div>
@@ -288,7 +296,38 @@ export default function ListingForm() {
             </div>
           </form>
         </div>
+        
+      <div className=" font-normal text-sm box-border flex items-end justify-center break-words pt-3  pl-3    ">
+                  {/* <span> see full price</span> */}
+                  <button
+                    type="button"
+                    className=" whitespace-nowrap break-normal underline flex items-center  cursor-pointer "
+                    onClick={()=>setIsReportModalVisible(true)}
+                  >
+                   <svg xmlns="http://www.w3.org/2000/svg" width={"18px"} height={"18px"}  
+                   viewBox="0 0 24 24"><title>alert-circle-outline</title><path d="M11,15H13V17H11V15M11,
+                   7H13V13H11V7M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,
+                   8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20Z" /></svg> 
+                  <span> report a problem with this listing</span>
+                  </button>
+                </div>
+          <Popup
+            isModalVisible={isReportModalVisible}
+            handleCancel={()=>setIsReportModalVisible(false)}
+            centered={true}  
+            width={"650px"}                  
+       
+          >
+            <ReportListing/>
+          </Popup>
+      
+        
       </div>
+
+
+        
+    
+      
       {/* Message Modal */}
       <Modal
           title="Message Host"
@@ -585,14 +624,14 @@ function MyDropdown({ adults, children, pets, infants }) {
         </div>
       )}
     >
-      <Space>
+      <Space className="w-full">
         <button
           type="button"
-          className=" block m-4 cursor-pointer overflow-hidden text-ellipsis text-start whitespace-nowrap text-base font-normal w-full     "
+          className=" block m-2 ml-3 cursor-pointer overflow-hidden text-ellipsis text-start whitespace-nowrap text-base font-normal w-full min-w-full     "
         >
           <span className="block">Guests</span>
            <span className="text-gray-500">
-              {adultCount + childCount} guests {infantCount!=0&& `,${infantCount} infant`} {petCount!=0&& `,${petCount} pet`} 
+               {(adultCount + childCount>1?`${adultCount + childCount} guests`:`${adultCount + childCount} guest`) }  {infantCount!=0&& (infantCount>1?`,${infantCount} infants`:`,${infantCount} infant`)}   {petCount!=0&& (petCount>1?`,${petCount} pets`:`,${petCount} pet`)} 
            </span>
         </button>
       </Space>

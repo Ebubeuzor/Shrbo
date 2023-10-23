@@ -44,6 +44,9 @@ const HouseRules=()=>{
                       type="card" />
 
                   </div>
+
+                 
+             
                 
 
               </div>

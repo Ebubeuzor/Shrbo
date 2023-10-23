@@ -473,3 +473,17 @@ const Pricing = ({
     </div>
   );
 };
+
+
+const Availability=()=>{
+  return(
+      <div>
+        
+
+
+
+
+
+      </div>
+  );
+}

@@ -2,15 +2,7 @@ import React, { useState } from "react";
 import Popup from "../../hoc/Popup";
 
 const AboutProperty = () => {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const openPopup = () => {
-    setIsPopupOpen(true);
-  };
-
-  const closePopup = () => {
-    setIsPopupOpen(false);
-  };
 
   return (
     <div className=" py-3 mb-6  ">

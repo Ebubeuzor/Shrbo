@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import adv from "../../assets/user.png";
 import PaginationExample from "../PaginationExample";
+import { Pagination } from 'antd';
 const TestimonialInfo = () => {
+
+    const [current, setCurrent] = useState(3);
+    const onChange = (page) => {
+      console.log(page);
+      setCurrent(page);
+    };
 
     const ratinginfo=[
         { 
@@ -144,7 +151,7 @@ const slides=clients.map((client)=>(
                         <div className=" pt-16  pb-4 flex flex-row items-center box-border">
                            
                             <div className=" text-3xl font-semibold">
-                                <h1 className=" ">Verified Customer Feedback </h1>
+                                <h1 className=" ">Verified Guests Feedback </h1>
                             </div>
                         </div>
                     </section>
@@ -174,10 +181,10 @@ const slides=clients.map((client)=>(
 
 
             <div className='  h-full md:overflow-y-scroll example' >
-                <div className=' w-full mb-8 uppercase '><span>Comments From Verified Purchase  </span></div>
+                <div className=' w-full mb-8 uppercase '><span>Comments From Verified Guests  </span></div>
                 <div> {slides} </div>
 
-                <PaginationExample/>
+                <Pagination current={current} className=' text-center text-orange-500 ' onChange={onChange} total={50} />
             </div>
 
 
