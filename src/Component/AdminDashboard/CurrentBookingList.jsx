@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import AdminHeader from './AdminNavigation/AdminHeader';
 import AdminSidebar from './AdminSidebar';
 import { Link } from 'react-router-dom';
-import { Table, Select } from 'antd';
-
+import { Table, Input, Select, Modal, Space, Dropdown } from "antd";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
 const { Option } = Select;
 
 export default function CurrentBookingsList() {
@@ -16,6 +16,7 @@ export default function CurrentBookingsList() {
       startDate: '2023-10-01',
       endDate: '2023-10-05',
       status: 'Booked',
+      hostName:"Host"
     },
     {
       id: 2,
@@ -25,6 +26,8 @@ export default function CurrentBookingsList() {
       startDate: '2023-10-06',
       endDate: '2023-10-10',
       status: 'Confirmed',
+      hostName:"First"
+
     },
 
     {
@@ -35,12 +38,13 @@ export default function CurrentBookingsList() {
         startDate: '2023-10-06',
         endDate: '2023-10-10',
         status: 'Confirmed',
+        hostName:"Host Name"
+
       },
     // Add more booking data as needed
   ];
 
   const [filterStatus, setFilterStatus] = useState('All');
-
   const columns = [
     {
       title: 'Property Name',
@@ -64,6 +68,11 @@ export default function CurrentBookingsList() {
       key: 'total',
     },
     {
+    title: 'Host Name',
+    dataIndex: 'hostName',
+    key: 'hostName',
+  },
+    {
       title: 'Start Date',
       dataIndex: 'startDate',
       key: 'startDate',
@@ -78,7 +87,48 @@ export default function CurrentBookingsList() {
       dataIndex: 'status',
       key: 'status',
     },
+    {
+      title: "Actions",
+      key: "actions",
+      render: (text, record) => (
+        <div>
+          <Dropdown
+            menu={{
+              items,
+            }}
+            trigger={["click"]}
+          >
+            <a onClick={(e) => e.preventDefault()}>
+              <Space className='cursor-pointer'> Edit</Space>
+            </a>
+          </Dropdown>
+          &nbsp; <span onClick={() => handleDeleteHost(record.id)} className='cursor-pointer'>Delete</span>
+        </div>
+      ),
+    },
+  
   ];
+
+  const items = [
+    {
+      label: <div><Link to="/BookingTable">
+        see full details
+        </Link> </div>,
+      key: "0",
+    },
+    {
+      label: <div>Suspend</div>,
+      key: "1",
+    },
+    {
+      type: "divider",
+    },
+    {
+      label: <div>No idea</div>,
+      key: "3",
+    },
+  ];
+  
 
   const filteredBookingData = bookingData.filter((booking) => {
     if (filterStatus === 'All') {
