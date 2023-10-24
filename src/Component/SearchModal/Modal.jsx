@@ -287,24 +287,26 @@ const SearchModal = ({ isOpen, onClose }) => {
           </div>
           <div className="mb-4 overflow-scroll">
             <Space direction="vertical" size={12}>
-              <RangePicker
-                value={
-                  checkInDate && checkOutDate
-                    ? [moment(checkInDate), moment(checkOutDate)]
-                    : [null, null]
-                }
-                onChange={(dates) => {
-                  if (dates && dates.length === 2) {
-                    const [startDate, endDate] = dates;
-                    handleCheckInDateChange(startDate.toDate());
-                    handleCheckOutDateChange(endDate.toDate());
-                  } else {
-                    // Handle the case when the date range is cleared
-                    handleCheckInDateChange(null);
-                    handleCheckOutDateChange(null);
-                  }
-                }}
-              />
+            <RangePicker
+  className="custom-picker"
+  value={
+    checkInDate && checkOutDate
+      ? [moment(checkInDate), moment(checkOutDate)]
+      : [null, null]
+  }
+  onChange={(dates) => {
+    if (dates && dates.length === 2) {
+      const [startDate, endDate] = dates;
+      handleCheckInDateChange(startDate.toDate());
+      handleCheckOutDateChange(endDate.toDate());
+    } else {
+      // Handle the case when the date range is cleared
+      handleCheckInDateChange(null);
+      handleCheckOutDateChange(null);
+    }
+  }}
+/>
+
             </Space>
           </div>
 

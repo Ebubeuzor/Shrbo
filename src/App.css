@@ -15,15 +15,7 @@
   }
 
 
-  :where(.css-dev-only-do-not-override-3mqfnx).ant-picker-dropdown-range {
-    padding: 10.666666666666666px 0;
-    width: 80% !important;
-  }
-  
-  .ant-picker-dropdown .css-3mqfnx .ant-picker-dropdown-range .ant-picker-dropdown-placement-bottomLeft{
-    width: 80% !important;
-  
-  }
+
 
 input{
     width: 100%;
@@ -248,16 +240,14 @@ The slider*/
 }
 
 
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-picker-dropdown .ant-picker-panel-container .ant-picker-panels {
-  flex-wrap: wrap;
-}
-
-.ant-picker-panel-container{
+.ant-picker-panel-layout{
+  width: 80%;
   height: 300px;
-  overflow: scroll !important;
+  flex-wrap: wrap !important;
+  overflow: scroll;
 }
-  
+
+
 
 
 @keyframes typing-indicator {
@@ -282,8 +272,3 @@ The slider*/
 
 
 
-
-:where(.css-dev-only-do-not-override-3mqfnx).ant-picker-dropdown-range {
-  padding: 10.666666666666666px 0;
-  width: 80% !important;
-}
