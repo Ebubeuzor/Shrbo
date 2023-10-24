@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Dropdown, Space  } from "antd";
 
-const Popup = ({ isModalVisible, handleCancel, children ,title , className}) => {
+const Popup = ({ isModalVisible, handleCancel, children ,title , className,centered,width}) => {
   
   return(
     <div>
@@ -11,7 +11,9 @@ const Popup = ({ isModalVisible, handleCancel, children ,title , className}) => 
             open={isModalVisible}
             onCancel={handleCancel}
             footer={null}
-            className={className}
+            classNames={className}
+            centered={centered}
+            // width={width}
            
         > 
           {children}

@@ -49,7 +49,7 @@ const HostProfilePreview=()=>{
 
             </div>
             <div className=" flex flex-col gap-8 max-w-[380px] box-border " >
-                <div className=" relative block bg-slate-100 rounded " >
+                <div className=" relative block bg-slate-100 rounded-md " >
                     <div className=" px-8 py-6 gap-6 min-h-[230px] w-full flex flex-col font-bold  rounded-2xl ">
                         <div className=" flex-grow flex flex-col items-center justify-center gap-2 ">
                             {/* add bg position */}
@@ -150,6 +150,7 @@ const HostProfilePreview=()=>{
                     </div>
 
                 </div>
+                
             </div>
           
 

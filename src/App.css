@@ -272,3 +272,63 @@ The slider*/
 
 
 
+
+/* Custom CSS */
+.selected-radio .ant-radio-checked::after {
+  background-color: rgb(251, 146, 60);
+  border: 1px solid rgb(251, 146, 60);
+}
+/* 
+.selected-radio-button .ant-radio-button-checked::after {
+  background-color: rgb(251, 146, 60);
+  border: 1px solid rgb(251, 146, 60);
+} */
+
+/* custom-radio.css */
+.ant-radio-wrapper.ant-radio-wrapper-checked .ant-radio-inner {
+  background-color: rgb(251, 146, 60);
+  border: 1px solid rgb(251, 146, 60);
+  color:  rgb(251, 146, 60);
+}
+
+/* .ant-radio-button-wrapper.ant-radio-button-wrapper-checked .ant-radio-button-inner {
+  background-color: rgb(251, 146, 60);
+  border: 1px solid rgb(251, 146, 60);
+  color:  rgb(251, 146, 60);
+} */
+
+
+/* custom-radio-button.css */
+.ant-radio-button-wrapper.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  background-color:  rgb(250, 152, 72);
+  border-color:  rgb(251, 146, 60);
+  color: white;
+}
+
+.ant-radio-button-wrapper.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover {
+  background-color:  rgb(251, 146, 60);
+  border-color:  rgb(251, 146, 60);
+  color: white;
+}
+
+
+.ant-radio-button-wrapper.ant-radio-button-wrapper:not(.ant-radio-button-wrapper-disabled):not(.ant-radio-button-wrapper-checked):hover {
+  /* background-color:  rgb(251, 146, 60); */
+  border-color:  rgb(250, 152, 72);
+  color: rgb(251, 146, 60);
+}
+
+.ant-radio-wrapper.ant-radio-wrapper:not(.ant-radio-wrapper-disabled):not(.ant-radio-wrapper-checked):hover {
+  /* background-color:  rgb(251, 146, 60); */
+  border-color:  rgb(250, 152, 72);
+  color: rgb(251, 146, 60);
+}
+
+
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-picker-dropdown-range {
+  padding: 10.666666666666666px 0;
+  width: 80% !important;
+}
+
+
