@@ -2,17 +2,24 @@ import React, { useState } from "react";
 import AdminSidebar from "./AdminSidebar";
 import AdminHeader from "./AdminNavigation/AdminHeader";
 import bellIcon from "../../assets/svg/bell-icon.svg"
+import axiosClient from "../../axoisClient";
 
 export default function EditHomepage() {
   const [image, setImage] = useState(""); // State for the homepage image URL
+  const [imageUrl, setImageUrl] = useState(""); // State for the homepage image URL
   const [title, setTitle] = useState(""); // State for the title text
   const [subtitle, setSubtitle] = useState(""); // State for the subtitle text
 
   const handleImageChange = (e) => {
     const file = e.target.files[0]; // Get the selected file
     if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setImage(imageUrl);
+      const reader = new FileReader();
+      reader.onload = () =>{
+        setImage(file);
+        setImageUrl(reader.result)
+        event.target.value = '';
+      }
+      reader.readAsDataURL(file);
     }
   };
 
@@ -31,6 +38,20 @@ export default function EditHomepage() {
     console.log("Homepage Image:", image);
     console.log("Title Text:", title);
     console.log("Subtitle Text:", subtitle);
+    const data = {
+      "image" : image,
+      imageUrl,
+      "title": title,
+      "subtitle": subtitle,
+    };
+    data.image = data.imageUrl;
+    axiosClient.post(`/homepage`,data)
+    .then((data) => {
+      console.log('Image uploaded successfully:');
+      console.log(data);
+    }).catch(() => {
+      console.log("Something went wrong");
+    })
   };
 
   return (
@@ -59,7 +80,7 @@ export default function EditHomepage() {
 
                 {image ? (
                        <img
-                       src={image}
+                       src={imageUrl}
                        alt="Selected Image"
                        className="mb-4 w-48 rounded-md"
                      />

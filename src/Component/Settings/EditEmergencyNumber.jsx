@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
-import axiosClient from "../../axoisClient";
-import { useStateContext } from "../../context/ContextProvider";
 
-const EditEmailAddress = ({ onCancel, onSave }) => {
-  const [email, setEmail] = useState("");
+import React, { useEffect, useState } from "react";
+import { useStateContext } from "../../context/ContextProvider";
+import axiosClient from "../../axoisClient";
+
+const EditEmergencyNumber = ({ onCancel, onSave }) => {
+  const [phoneNumber, setPhoneNumber] = useState("");
   const {user,setUser,token} = useStateContext();
   
   const getUserInfo = () => {
     axiosClient.get('user')
     .then((data) => {
       setUser(data.data);
-      setEmail(user.email);
+      setPhoneNumber(user.emergency_no);
     })
   }
   
@@ -20,25 +21,22 @@ const EditEmailAddress = ({ onCancel, onSave }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    onSave({ email });
+  
+    onSave({ "emergency_no":phoneNumber });
   };
-
-  const disabled = user.google_id == null ? false : true;
 
   return (
     <form name="legalName" onSubmit={handleSubmit}>
       <div className="mb-4">
         <label htmlFor="first_name" className="block font-medium">
-          Email Address
+          Emergency Number
         </label>
         <input
           type="text"
-          id="email_address"
-          name="email_address"
-          value={email}
-          disabled={disabled}
-          onChange={(e) => setEmail(e.target.value)}
+          id="phone_number"
+          name="phone_number"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
           className="border rounded-md py-2 px-3 w-full"
           required
         />
@@ -60,4 +58,4 @@ const EditEmailAddress = ({ onCancel, onSave }) => {
   );
 };
 
-export default EditEmailAddress;
+export default EditEmergencyNumber;

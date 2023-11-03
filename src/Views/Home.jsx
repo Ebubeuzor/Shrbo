@@ -11,11 +11,30 @@ import Footer from "../Component/Navigation/Footer";
 import RateHouseModal from "../Component/RateHouseModal";
 import FilterModal from "../Component/Filter/FilterModal";
 import ChatSupport from "../Component/ChatBot/ChatSupport";
+import { useStateContext } from "../context/ContextProvider";
+import axiosClient from "../axoisClient";
 export default function Home() {
+  const {user,setUser,token} = useStateContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSearchButtonFixed, setIsSearchButtonFixed] = useState(false);
   const [houseDetails, setHouseDetails] = useState(null); // Store house details here
   const [isRateHouseModalOpen, setIsRateHouseModalOpen] = useState(false);
+  const [homepageDetails, setHomepageDetails] = useState("");
+
+  useEffect(()=>{
+    axiosClient.get('user')
+    .then((data) => {
+      setUser(data.data);
+    })
+  }, []);
+
+  useEffect(()=>{
+    axiosClient.get('homepage')
+    .then(({data}) => {
+      console.log(data.data[0]);
+      setHomepageDetails(data.data[0]);
+    })
+  }, []);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -66,6 +85,10 @@ export default function Home() {
     return () => clearTimeout(timer); // Cleanup the timer on unmount
   }, []);
 
+  const style = {
+    backgroundImage: `url(${homepageDetails.image})`
+  };  
+
   return (
     <div>
       <Header />
@@ -101,16 +124,16 @@ export default function Home() {
       <div className="pageHeader"></div>
       <div className="storeFrontHomeage">
         <div>
-          <div className="hero-pattern relative bg-cover bg-center md:h-[70vh] h-[100vh] bg-[url('https://forever.travel-assets.com/flex/flexmanager/images/2022/12/09/Exterior-Cabin_Privacy_Wrigley_VRBO_APFT2__Vancouver__Therin_8256x3960.jpg?impolicy=fcrop&w=1040&h=580&q=mediumHigh')]">
+          <div className="hero-pattern relative bg-cover bg-center md:h-[70vh] h-[100vh]" style={style}>
             <h1 className="absolute inset-0 flex items-center justify-center -top-20 md:top-0 text-white md:text-6xl text-5xl lg:text-6xl p-4 text-center">
-              Find your place for together
+              {homepageDetails.title}
             </h1>
             <p className="absolute inset-0 flex items-center justify-center text-white -bottom-20 md:-bottom-40 md:text-lg text-center   text-xl">
-              Find great places, hotels, restaurants, shops.
+              {homepageDetails.subtitle}
             </p>
-            <section className="flex  justify-center bottom-0 ">
-              {/* <SearchLocation /> */}
-            </section>
+          <section className="flex  justify-center bottom-0 ">
+            {/* <SearchLocation /> */}
+          </section>
           </div>
         </div>
         <div>

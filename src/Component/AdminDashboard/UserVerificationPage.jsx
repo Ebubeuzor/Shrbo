@@ -2,38 +2,24 @@ import React, { useEffect, useState } from "react";
 import AdminHeader from "./AdminNavigation/AdminHeader";
 import AdminSidebar from "./AdminSidebar";
 import { Table,Button, Modal, Form, Input, Space, Select } from "antd";
+import axiosClient from "../../axoisClient";
 
 export default function UserVerificationPage() {
   const [users, setUsers] = useState([]);
   const [selectedUserId, setSelectedUserId] = useState(null);
-  const [verificationModalVisible, setVerificationModalVisible] =
-    useState(false);
-
-  const sampleUsers = [
-    {
-      id: 1,
-      firstName: "Junior",
-      lastName: "Doe",
-      email: "junior@gmail.com",
-      idStatus: "Not verified",
-      photo:
-        "https://media.premiumtimesng.com/wp-content/files/2014/08/National-eID-card.jpg",
-    },
-
-    {
-      id: 2,
-      firstName: "Senior",
-      lastName: "Doe",
-      email: "senior@gmail.com",
-      idStatus: "Not verified",
-      photo:
-        "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,h=432,fit=crop/mvoERzanQjc0pn0J/nigeria-driver-license-YKb0Gk24DGHEG8KD.jpg",
-    },
-  ];
-
+  const [verificationModalVisible, setVerificationModalVisible] = useState(false);
+  
+  const getUserInfo = () => {
+    axiosClient.get('userDetail')
+    .then(({data}) => {
+      console.log(data.data);
+      setUsers(data.data)
+    })
+  }
+  
   useEffect(() => {
-    setUsers(sampleUsers);
-  }, []);
+    getUserInfo();
+  },[]);
 
   const showVerificationModal = (userId) => {
     setSelectedUserId(userId);
@@ -45,31 +31,25 @@ export default function UserVerificationPage() {
   };
 
   const handleVerificationSubmit = (values) => {
-    const updatedUsers = users.map((user) => {
-      if (user.id === selectedUserId) {
-        return {
-          ...user,
-          idStatus: values.idStatus,
-        };
-      }
-
-      return user;
-    });
-
-    setUsers(updatedUsers);
+    const data = {
+      'status' : values.idStatus
+    };
+    
+    axiosClient.put(`/userDetail/${selectedUserId}`,data)
+    .then(() => {
+      getUserInfo();
+      console.log("done");
+    }).catch((e) =>{
+      console.log(e);
+    })
     setVerificationModalVisible(false);
   };
 
   const columns = [
     {
-      title: "First Name",
-      dataIndex: "firstName",
-      key: "firstName",
-    },
-    {
-      title: "Last Name",
-      dataIndex: "lastName",
-      key: "lastName",
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
     },
     {
       title: "Email",
@@ -129,13 +109,11 @@ export default function UserVerificationPage() {
             >
                 <Select placeholder="Select ID Card">
                     <Option value="Verified">Verified</Option>
-                    <Option value="Pending Verification">Pending Verification</Option>
                     <Option value="Decline">Decline</Option>
                     <Option value="Photo Not Clear">Photo Not Clear</Option>
 
                 </Select>
-            
-            
+
             </Form.Item>
             <Form.Item>
                     <img src={users.find((user) => user.id === selectedUserId)?.photo}

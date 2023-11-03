@@ -1,29 +1,35 @@
 import React,{useState} from 'react'
 
-export default function ChangePassword({ onCancel, onSave }) {
+export default function ChangePassword({ onCancel, onSave,error }) {
 
-    const [currentPassword, setCurrentPassword] = useState("");
+    const [password, setCurrentPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
-    const [confirmPassword, setConfirmPasswordPassword] = useState("");
-
+    const [password_confirmation, setConfirmPasswordPassword] = useState("");
 
     
     const handleSubmit = (e) => {
       e.preventDefault();
     
-      onSave({currentPassword, newPassword, confirmPassword });
+      onSave({password, newPassword, password_confirmation });
     };
   return (
     <form name="legalName" onSubmit={handleSubmit}>
+      {
+        error.__html && (
+            <div className="bg-red-500 rounded py-2 px-3 text-white" dangerouslySetInnerHTML={error}>
+
+            </div>
+        )
+      }
     <div className="mb-4">
       <label htmlFor="first_name" className="block font-medium">
         Current Password
       </label>
       <input
-        type="text"
+        type="password"
         id="current_password"
         name="current_password"
-        value={currentPassword}
+        value={password}
         onChange={(e) => setCurrentPassword(e.target.value)}
         className="border rounded-md py-2 px-3 w-full"
         required
@@ -34,7 +40,7 @@ export default function ChangePassword({ onCancel, onSave }) {
        New Password
       </label>
       <input
-        type="text"
+        type="password"
         id="new_password"
         name="new_password"
         value={newPassword}
@@ -48,10 +54,10 @@ export default function ChangePassword({ onCancel, onSave }) {
        Confirm Password
       </label>
       <input
-        type="text"
+        type="password"
         id="confirm_password"
         name="confirm_password"
-        value={confirmPassword}
+        value={password_confirmation}
         onChange={(e) => setConfirmPasswordPassword(e.target.value)}
         className="border rounded-md py-2 px-3 w-full"
         required

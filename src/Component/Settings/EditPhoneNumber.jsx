@@ -1,13 +1,28 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useStateContext } from "../../context/ContextProvider";
+import axiosClient from "../../axoisClient";
 
 const EditPhoneNumber = ({ onCancel, onSave }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
+  const {user,setUser,token} = useStateContext();
+  
+  const getUserInfo = () => {
+    axiosClient.get('user')
+    .then((data) => {
+      setUser(data.data);
+      setPhoneNumber(user.phone);
+    })
+  }
+  
+  useEffect(() => {
+    getUserInfo();
+  },[]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
   
-    onSave({ phoneNumber });
+    onSave({ "phone":phoneNumber });
   };
 
   return (

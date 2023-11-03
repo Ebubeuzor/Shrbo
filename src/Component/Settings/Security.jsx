@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SettingsNavigation from "./SettingsNavigation";
 import ChangePassword from "./ChangePassword";
 import GoBackButton from "../GoBackButton";
+import axiosClient from "../../axoisClient";
+import { useStateContext } from "../../context/ContextProvider";
 
 export default function Security() {
   const [isChangePassword, setIsChangePassword] = useState(false);
   const [isConfirmDeactivation, setIsConfirmDeactivation] = useState(false);
-
+  const [error, setError] = useState({__html: ""});
+  const {user,setUser,token} = useStateContext();
+  
+  const getUserInfo = () => {
+    axiosClient.get('user')
+    .then((data) => {
+      setUser(data.data);
+    })
+  }
+  
+  useEffect(() => {
+    getUserInfo();
+  },[]);
   const detailsArray = [
     {
       title: "Login",
@@ -23,6 +37,34 @@ export default function Security() {
     },
   ];
 
+  const changeUserPassword = (updatedPasswordData) => {
+    console.log("Updated Password Data:", updatedPasswordData);
+    
+    axiosClient.post('/changePassword',updatedPasswordData)
+    .then((data) => {
+      setIsChangePassword(false);
+    })
+    .catch((error) => {
+      if (error.response && error.response.status === 422) {
+        if (error.response.data.errors) {
+          const finalError = Object.values(error.response.data.errors).reduce((accum, next) => [
+            ...accum, ...next
+          ], []);
+          setError({ __html: finalError.join("<br/>") });
+        } else {
+          const finalError = Object.values(error.response.data.message).reduce((accum, next) => [
+            ...accum, ...next
+          ], []);
+          setError({ __html: finalError.join("") });
+        }
+      }
+    });
+  }
+
+  
+  const disabled = user.google_id == null ? false : true;
+
+
   return (
     <div>
       <div className="max-w-2xl mx-auto p-4">
@@ -35,11 +77,9 @@ export default function Security() {
               <div className="max-w-2xl mx-auto p-4">
                 <h2 className="text-2xl font-medium mb-4">Change Password</h2>
                 <ChangePassword
+                  error={error}
                   onCancel={() => setIsChangePassword(false)}
-                  onSave={(updatedPasswordData) => {
-                    console.log("Updated Password Data:", updatedPasswordData);
-                    setIsChangePassword(false);
-                  }}
+                  onSave={changeUserPassword}
                 />
               </div>
             )}
@@ -62,6 +102,7 @@ export default function Security() {
                   {detail.action === "Update" ? (
                     <button
                       className="underline"
+                      disabled={disabled}
                       onClick={() => setIsChangePassword(true)}
                     >
                       {detail.action}

@@ -1,20 +1,56 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import HostModal from "../Dashboard/HostModal";
 import bellIcon from "../../assets/svg/bell-icon.svg";
+import axiosClient from "../../axoisClient";
+import { useStateContext } from "../../context/ContextProvider";
+import { Button } from "antd";
 
 export default function Header() {
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [isBellDropdownOpen, setIsBellDropdownOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [notifications, setNotifications] = useState([
-    { id: 1, message: "Notification 1" },
-    { id: 2, message: "Notification 2" },
-    { id: 3, message: "Notification 3" },
-  ]);
+  const [notifications, setNotifications] = useState([]);
+  const {token,setToken,setUser,user} = useStateContext();
+  
+  const getUserInfo = () => {
+    axiosClient.get('user')
+    .then((data) => {
+      setUser(data.data);
+      setEmail(user.email);
+    })
+  }
+  
+  useEffect(() => {
+    getUserInfo();
+  },[]);
+  const navigate = useNavigate();
+
+  const getNotification = () => {
+    axiosClient.get('notification')
+    .then(({data}) => {
+      console.log(data.data);
+      setNotifications(data.data)
+    })
+  }
+  useEffect(()=>{
+    getNotification()  
+  }, []);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
+  };
+
+  const logout = () => {
+    console.log("logout");
+    axiosClient.get("logout")
+    .then(() => {
+      setToken("");
+      setUser("");
+      setTimeout(() => {
+        navigate('/Login');
+      }, 10);
+    })
   };
 
   const toggleProfileDropdown = () => {
@@ -23,6 +59,12 @@ export default function Header() {
 
   const toggleBellDropdown = () => {
     setIsBellDropdownOpen(!isBellDropdownOpen);
+    notifications.map((notification) => {
+      axiosClient.delete(`notification/${notification.id}`)
+      .then(() => {
+        getNotification()
+      })
+    })
   };
 
   const closeProfileDropdown = () => {
@@ -71,6 +113,7 @@ export default function Header() {
           <Link to="/" className="text-white hover:text-gray-300 ml-4">
             Home
           </Link>
+
           <Link to="/wishlist" className="text-white hover:text-gray-300 ml-4">
             Wishlist
           </Link>
@@ -83,9 +126,10 @@ export default function Header() {
           <Link to="/Hosting" className="text-white hover:text-gray-300 ml-4">
             Switch to Host
           </Link>
-          <Link to="/AdminAnalytical" className="text-white hover:text-gray-300 ml-4">
-           Dashboard
-          </Link>
+          {user.adminStatus != null && <Link to="/AdminAnalytical" className="text-white hover:text-gray-300 ml-4">
+            Dashboard
+            </Link>
+          }
           <div
             id="profile-dropdown"
             className={`relative ${isProfileDropdownOpen ? "group" : ""}`}
@@ -101,39 +145,42 @@ export default function Header() {
                 <Link
                   to="/Profile"
                   className="block text-gray-800 hover:text-orange-400 p-2 cursor-pointer"
-                >
+                  >
                   Edit Profile
                 </Link>
                 <Link
                   to="/Settings"
                   className="block text-gray-800 hover:text-orange-400 p-2 cursor-pointer"
-                >
+                  >
                   Settings
                 </Link>
                 <Link
                   to="/HostHomes"
                   className="block text-gray-800 hover:text-orange-400 p-2 cursor-pointer"
-                >
+                  >
                   Create a new Listings
                 </Link>
-                <Link
-                  to="/Hosting"
-                  className="block text-gray-800 hover:text-orange-400 p-2 cursor-pointer"
-                >
-                  Manage Listings
-                </Link>
+
+                {user.host != 0 && <Link
+                    to="/Hosting"
+                    className="block text-gray-800 hover:text-orange-400 p-2 cursor-pointer"
+                  >
+                    Manage Listings
+                  </Link>
+                }
                 <Link
                   to="/Listings"
                   className="block text-gray-800 hover:text-orange-400 p-2 cursor-pointer"
                 >
                   Listings
                 </Link>
-                <Link
-                  to="/logout"
+                
+                <button
                   className="block text-gray-800 hover:text-red-500 p-2 cursor-pointer"
-                >
+                  onClick={logout}
+                  >
                   Logout
-                </Link>
+                </button>
               </div>
             )}
           </div>
@@ -142,7 +189,7 @@ export default function Header() {
             id="bell-dropdown"
             className={`relative group ml-4 ${isBellDropdownOpen ? "group" : ""}`}
             onClick={toggleBellDropdown}
-          >
+            >
             <button className="text-white relative">
               <img src={bellIcon} className="w-5 h-5" alt="" />
               { notifications.length > 0 && (
